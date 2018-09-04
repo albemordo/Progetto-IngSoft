@@ -52,6 +52,18 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="modello\Automezzo.cs" />
+    <Compile Include="modello\Indirizzo.cs" />
+    <Compile Include="modello\interfacce\IAutista.cs" />
+    <Compile Include="modello\interfacce\IAutomezzo.cs" />
+    <Compile Include="modello\interfacce\IDelegato.cs" />
+    <Compile Include="modello\interfacce\IIndirizzo.cs" />
+    <Compile Include="modello\interfacce\IPuntoSpedizione.cs" />
+    <Compile Include="modello\interfacce\IResponsabile.cs" />
+    <Compile Include="modello\interfacce\ISpedizione.cs" />
+    <Compile Include="modello\interfacce\ITipologiaMerce.cs" />
+    <Compile Include="modello\interfacce\IUtente.cs" />
+    <Compile Include="modello\interfacce\TipologiaMerce.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -63,6 +75,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="LICENSE" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -75,6 +88,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".gitignore" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
