@@ -52,10 +52,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="modello\Automezzo.cs" />
-    <Compile Include="modello\interfacce\IAutomezzo.cs" />
-    <Compile Include="modello\interfacce\ITipologiaMerce.cs" />
-    <Compile Include="modello\interfacce\TipologiaMerce.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
