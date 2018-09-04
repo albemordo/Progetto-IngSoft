@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutotrasportiFantini.modello.interfacce
 {
-    interface IUtente
+    interface IDelegato : IUtente
     {
-        String idAziendale { get; set; }
-        String nome { get; set; }
-        String cognome { get; set; }
     }
 }
