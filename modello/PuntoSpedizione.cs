@@ -7,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace AutotrasportiFantini.modello
 {
-    class Automezzo : IAutomezzo
+    class PuntoSpedizione : IPuntoSpedizione
     {
         public int id { get; set; }
-        public String targa { get; set; }
-        public String prod { get; set; }
-        public String modello { get; set; }
-        public String tr { get; set; }
-        public String cod { get; set; }
+        public IIndirizzo indirizzo { get; set; }
+        public ISpedizione spedizione { get; set; }
+        public DateTime orarioArrivo { get; set; }
     }
 }

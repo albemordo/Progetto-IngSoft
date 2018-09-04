@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutotrasportiFantini.modello
+namespace AutotrasportiFantini.modello.interfacce
 {
     interface IAutomezzo
     {
