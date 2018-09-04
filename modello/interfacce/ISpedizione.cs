@@ -11,8 +11,10 @@ namespace AutotrasportiFantini.modello.interfacce
         int id { get; set; }
         float distanzaStimata { get; set; }
         float distanzaEffettiva { get; set; }
+        ITipologiaMerce tipologiaMerce { get; set; }
         float quantitaMerce { get; set; }
         int tempoPercorrenza { get; set; }
+        IAutomezzo automezzo { get; set; }
         IDelegato delegato { get; set; }
         IAutista autista { get; set; }
         IIndirizzo partenza { get; set; }
