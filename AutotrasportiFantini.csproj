@@ -46,6 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="controller\interfacce\IControllerAssegnazioneSpedizione.cs" />
+    <Compile Include="controller\interfacce\IControllerAutenticazione.cs" />
+    <Compile Include="controller\interfacce\IControllerAutomezzi.cs" />
+    <Compile Include="controller\interfacce\IControllerGestioneDipendenti.cs" />
+    <Compile Include="controller\interfacce\IControllerGestioneSpedizione.cs" />
+    <Compile Include="controller\interfacce\IControllerIndirizzi.cs" />
+    <Compile Include="controller\interfacce\IControllerListaSpedizioni.cs" />
+    <Compile Include="controller\interfacce\IControllerLog.cs" />
+    <Compile Include="controller\interfacce\IControllerPuntiSpedizione.cs" />
+    <Compile Include="controller\interfacce\IControllerSpedizioneAutista.cs" />
+    <Compile Include="controller\interfacce\IControllerTipologieMerce.cs" />
     <Compile Include="modello\Autista.cs" />
     <Compile Include="modello\Automezzo.cs" />
     <Compile Include="modello\Delegato.cs" />
