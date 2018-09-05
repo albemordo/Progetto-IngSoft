@@ -46,6 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="controller\ControllerAssegnazioneSpedizione.cs" />
+    <Compile Include="controller\ControllerAutenticazione.cs" />
+    <Compile Include="controller\ControllerGestioneDipendenti.cs" />
+    <Compile Include="controller\ControllerGestioneSpedizione.cs" />
+    <Compile Include="controller\ControllerIndirizzi.cs" />
+    <Compile Include="controller\ControllerAutomezzi.cs" />
+    <Compile Include="controller\ControllerListaSpedizioni.cs" />
+    <Compile Include="controller\ControllerLog.cs" />
+    <Compile Include="controller\ControllerPuntiSpedizione.cs" />
+    <Compile Include="controller\ControllerSpedizioniAutista.cs" />
+    <Compile Include="controller\ControllerTipologiaMerce.cs" />
     <Compile Include="controller\interfacce\IControllerAssegnazioneSpedizione.cs" />
     <Compile Include="controller\interfacce\IControllerAutenticazione.cs" />
     <Compile Include="controller\interfacce\IControllerAutomezzi.cs" />
@@ -55,7 +66,7 @@
     <Compile Include="controller\interfacce\IControllerListaSpedizioni.cs" />
     <Compile Include="controller\interfacce\IControllerLog.cs" />
     <Compile Include="controller\interfacce\IControllerPuntiSpedizione.cs" />
-    <Compile Include="controller\interfacce\IControllerSpedizioneAutista.cs" />
+    <Compile Include="controller\interfacce\IControllerSpedizioniAutista.cs" />
     <Compile Include="controller\interfacce\IControllerTipologieMerce.cs" />
     <Compile Include="modello\Autista.cs" />
     <Compile Include="modello\Automezzo.cs" />
