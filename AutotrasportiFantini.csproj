@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -74,6 +75,13 @@
     <Compile Include="modello\interfacce\IUtente.cs" />
     <Compile Include="modello\TipologiaMerce.cs" />
     <Compile Include="modello\Spedizione.cs" />
+    <Compile Include="persistenza\RepositoryAutomezzo.cs" />
+    <Compile Include="persistenza\RepositoryBase.cs" />
+    <Compile Include="persistenza\RepositoryIndirizzo.cs" />
+    <Compile Include="persistenza\RepositoryPuntoSpedizione.cs" />
+    <Compile Include="persistenza\RepositorySpedizione.cs" />
+    <Compile Include="persistenza\RepositoryTipologiaMerce.cs" />
+    <Compile Include="persistenza\SqlConnectionFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
