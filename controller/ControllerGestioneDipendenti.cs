@@ -13,36 +13,38 @@ namespace AutotrasportiFantini.controller
     class ControllerGestioneDipendenti : IControllerGestioneDipendenti
     {
         public List<IUtente> utenti;
+       
         /**
          *  Viene creata una struttura dati statica per simulare
          *  il comportamento del sistema esterno
          */
         public ControllerGestioneDipendenti()
         {
-            utenti = new List<IUtente>();
+            utenti = new List<IUtente>
+            {
+                /**
+                 *  Responsabili
+                 */
+                new Responsabile("AB100", "Federico", "Masoni"),
+                new Responsabile("BM412", "Marta", "Reverberi"),
 
-            /**
-             *  Responsabili
-             */
-            utenti.Add(new Responsabile("AB100", "Federico", "Masoni"));
-            utenti.Add(new Responsabile("BM412", "Marta", "Reverberi"));
+                /**
+                 *  Delegati 
+                 */
+                new Delegato("FX420", "Ruben", "Prandini"),
+                new Delegato("AL174", "Mario", "Rossi"),
+                new Delegato("GN471", "Lucia", "Marinacci"),
+                new Delegato("ASK438", "Sergio", "Coppola"),
 
-            /**
-             *  Delegati 
-             */
-            utenti.Add(new Delegato("FX420", "Ruben", "Prandini"));
-            utenti.Add(new Delegato("AL174", "Mario", "Rossi"));
-            utenti.Add(new Delegato("GN471", "Lucia", "Marinacci"));
-            utenti.Add(new Delegato("ASK438", "Sergio", "Coppola"));
-
-            /**
-             *  Autisti 
-             */
-            utenti.Add(new Autista("VND921", "Laura", "Capiluppi"));
-            utenti.Add(new Autista("CNS247", "Dario", "Piccinini"));
-            utenti.Add(new Autista("JNA382", "Dario", "Buttiglioni"));
-            utenti.Add(new Autista("AHD148", "Alice", "Polluzzi"));
-            utenti.Add(new Autista("FKJ532", "Alberto", "Fava"));
+                /**
+                 *  Autisti 
+                 */
+                new Autista("VND921", "Laura", "Capiluppi"),
+                new Autista("CNS247", "Dario", "Piccinini"),
+                new Autista("JNA382", "Dario", "Buttiglioni"),
+                new Autista("AHD148", "Alice", "Polluzzi"),
+                new Autista("FKJ532", "Alberto", "Fava")
+            };
         }
 
         public List<IAutista> ListaAutisti()
@@ -52,7 +54,7 @@ namespace AutotrasportiFantini.controller
             foreach (IUtente u in utenti)
             {
                 if (u is IAutista)
-                    result.Add((IAutista)u);
+                    result.Add((IAutista) u);
             }
 
             return result;
@@ -71,9 +73,19 @@ namespace AutotrasportiFantini.controller
             return result;
         }
 
+        /**
+         *  Anche questo andava eliminato, se non ricordo male
+         */
         public string RuoloUtente(IUtente utente)
         {
-            throw new NotImplementedException();
+            string ruolo;
+
+            /**
+             *  "GetType" restituisce l'intero namespace dell'istanza, 
+             *  es: AutotrasportiFantini.modello.Autista .
+             *  "Name" estrae il basename: in questo caso, Autista
+             */
+            return ((ruolo = utente.GetType().Name) != null) ? ruolo: "";
         }
 
         public IUtente VerificaCredenziali(string username, string password)
@@ -81,10 +93,13 @@ namespace AutotrasportiFantini.controller
             throw new NotImplementedException();
         }
 
+        /*
         public static void Main(string[] args)
         {
+            
             IControllerGestioneDipendenti dip = new ControllerGestioneDipendenti();
-            System.Console.WriteLine(dip.ListaAutisti().Count());
+            System.Console.WriteLine("Ruolo " +dip.RuoloUtente(dip.ListaAutisti().ElementAt(0)));
         }
+        */
     }
 }
