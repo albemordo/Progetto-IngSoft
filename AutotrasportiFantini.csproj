@@ -72,8 +72,11 @@
     <Compile Include="modello\Autista.cs" />
     <Compile Include="modello\Automezzo.cs" />
     <Compile Include="modello\Delegato.cs" />
+    <Compile Include="modello\factory\AbstractMiscellaneaFactory.cs" />
     <Compile Include="modello\factory\AbstractRisorsaFactory.cs" />
     <Compile Include="modello\factory\AbstractUtenteFactory.cs" />
+    <Compile Include="modello\factory\MiscellaneaFactory.cs" />
+    <Compile Include="modello\factory\RisorsaFactory.cs" />
     <Compile Include="modello\factory\UtenteFactory.cs" />
     <Compile Include="modello\PuntoSpedizione.cs" />
     <Compile Include="modello\Responsabile.cs" />
