@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AutotrasportiFantini.modello
 {
-	class ResponsabileFactory : FactoryUtenti
+	class FactoryResponsabili : FactoryUtenti
 	{
 		public static IUtente GetResponsabile() => new Responsabile();
 	}
