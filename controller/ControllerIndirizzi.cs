@@ -9,6 +9,7 @@ namespace AutotrasportiFantini.controller
         public IIndirizzo CreaIndirizzo(string qualificatore, string nome, string civico, string cap, string localita, string provincia)
         {
             throw new NotImplementedException();
+			
         }
 
         public void EliminaIndirizzo(IIndirizzo indirizzo)
