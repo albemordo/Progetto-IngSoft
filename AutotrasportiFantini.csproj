@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dapper.1.50.5\lib\net451\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -92,13 +95,14 @@
     <Compile Include="modello\interfacce\IUtente.cs" />
     <Compile Include="modello\TipologiaMerce.cs" />
     <Compile Include="modello\Spedizione.cs" />
+    <Compile Include="persistenza\factory\AbstractSqlConnectionFactory.cs" />
     <Compile Include="persistenza\RepositoryAutomezzo.cs" />
     <Compile Include="persistenza\RepositoryBase.cs" />
     <Compile Include="persistenza\RepositoryIndirizzo.cs" />
     <Compile Include="persistenza\RepositoryPuntoSpedizione.cs" />
     <Compile Include="persistenza\RepositorySpedizione.cs" />
     <Compile Include="persistenza\RepositoryTipologiaMerce.cs" />
-    <Compile Include="persistenza\SqlConnectionFactory.cs" />
+    <Compile Include="persistenza\factory\SqlConnectionFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -110,6 +114,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="LICENSE" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
