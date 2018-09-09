@@ -11,8 +11,8 @@ namespace AutotrasportiFantini.controller.interfacce
 	{
 		string ListaDelegati();
 
-		List<IAutista> ListaAutisti();
+		string ListaAutisti();
 
-		
+		string VerificaUtente(string username, string password);
 	}
 }

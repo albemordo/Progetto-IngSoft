@@ -6,6 +6,10 @@ namespace AutotrasportiFantini.modello
 	abstract class FactoryUtenti
 	{
 
+		/**
+		 *	TODO: Fai Enum
+		 * 
+		 */
 		public static readonly string DELEGATO = "delegato";
 
 		public static readonly string RESPONSABILE = "responsabile";
