@@ -1,6 +1,6 @@
-﻿namespace AutotrasportiFantini.view.viewRuoli
+﻿namespace AutotrasportiFantini.view
 {
-    partial class HomeDelegato : AutotrasportiFantini.view.HomeTemplate
+    partial class HomeDelegato
     {
         /// <summary>
         /// Required designer variable.
@@ -28,18 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.gestioneAutomezziButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // gestioneAutomezziButton
+            // 
+            this.gestioneAutomezziButton.Location = new System.Drawing.Point(0, 0);
+            this.gestioneAutomezziButton.Name = "gestioneAutomezziButton";
+            this.gestioneAutomezziButton.Size = new System.Drawing.Size(117, 23);
+            this.gestioneAutomezziButton.TabIndex = 1;
+            this.gestioneAutomezziButton.Text = "Gestione Automezzi";
+            this.gestioneAutomezziButton.UseVisualStyleBackColor = true;
             // 
             // HomeDelegato
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(1000, 463);
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.gestioneAutomezziButton);
             this.Name = "HomeDelegato";
-            this.Text = "Interfaccia Delegato";
+            this.Controls.SetChildIndex(this.gestioneAutomezziButton, 0);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Button gestioneAutomezziButton;
     }
 }
