@@ -6,7 +6,7 @@ namespace AutotrasportiFantini.modello
 {
     class Spedizione : ISpedizione
     {
-        public int id { get; set; }
+		public int id { get; set; }
         public float distanzaStimata { get; set; }
         public float distanzaEffettiva { get; set; }
         public ITipologiaMerce tipologiaMerce { get; set; }

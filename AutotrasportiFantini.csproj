@@ -35,6 +35,8 @@
   <ItemGroup>
     <Reference Include="Dapper, Version=1.50.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Dapper.1.50.5\lib\net451\Dapper.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -72,15 +74,14 @@
     <Compile Include="controller\interfacce\IControllerPuntiSpedizione.cs" />
     <Compile Include="controller\interfacce\IControllerSpedizioniAutista.cs" />
     <Compile Include="controller\interfacce\IControllerTipologieMerce.cs" />
+    <Compile Include="controller\interfacce\ISorgenteDati.cs" />
     <Compile Include="modello\Autista.cs" />
+    <Compile Include="modello\factory\FactoryAutisti.cs" />
     <Compile Include="modello\Automezzo.cs" />
     <Compile Include="modello\Delegato.cs" />
-    <Compile Include="modello\factory\AbstractMiscellaneaFactory.cs" />
-    <Compile Include="modello\factory\AbstractRisorsaFactory.cs" />
-    <Compile Include="modello\factory\AbstractUtenteFactory.cs" />
-    <Compile Include="modello\factory\MiscellaneaFactory.cs" />
-    <Compile Include="modello\factory\RisorsaFactory.cs" />
-    <Compile Include="modello\factory\UtenteFactory.cs" />
+    <Compile Include="modello\factory\FactoryDelegati.cs" />
+    <Compile Include="modello\factory\IFactoryRisorse.cs" />
+    <Compile Include="modello\factory\FactoryRisorse.cs" />
     <Compile Include="modello\PuntoSpedizione.cs" />
     <Compile Include="modello\Responsabile.cs" />
     <Compile Include="modello\Indirizzo.cs" />
@@ -93,9 +94,11 @@
     <Compile Include="modello\interfacce\ISpedizione.cs" />
     <Compile Include="modello\interfacce\ITipologiaMerce.cs" />
     <Compile Include="modello\interfacce\IUtente.cs" />
+    <Compile Include="modello\factory\FactoryResponsabili.cs" />
     <Compile Include="modello\TipologiaMerce.cs" />
     <Compile Include="modello\Spedizione.cs" />
     <Compile Include="persistenza\factory\AbstractSqlConnectionFactory.cs" />
+    <Compile Include="modello\factory\FactoryUtenti.cs" />
     <Compile Include="persistenza\RepositoryAutomezzo.cs" />
     <Compile Include="persistenza\RepositoryBase.cs" />
     <Compile Include="persistenza\RepositoryIndirizzo.cs" />

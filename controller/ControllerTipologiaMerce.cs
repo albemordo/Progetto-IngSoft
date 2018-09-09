@@ -1,5 +1,7 @@
 ﻿using AutotrasportiFantini.controller.interfacce;
+using AutotrasportiFantini.modello.factory;
 using AutotrasportiFantini.modello.interfacce;
+using AutotrasportiFantini.persistenza;
 using System;
 using System.Collections.Generic;
 
@@ -9,8 +11,8 @@ namespace AutotrasportiFantini.controller
     {
         public ITipologiaMerce CreaTipologiaMerce(string tipologia)
         {
-            throw new NotImplementedException();
-        }
+			throw new NotImplementedException();
+		}
 
         public void EliminaTipologiaMerce(ITipologiaMerce tipologia)
         {
