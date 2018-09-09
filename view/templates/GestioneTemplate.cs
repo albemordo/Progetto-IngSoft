@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AutotrasportiFantini.view.templates
 {
-    public partial class ViewDettagliTemplate : Form
+    public partial class GestioneTemplate : Form
     {
-        public ViewDettagliTemplate()
+        public GestioneTemplate()
         {
             InitializeComponent();
         }
