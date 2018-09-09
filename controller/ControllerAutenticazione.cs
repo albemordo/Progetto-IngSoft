@@ -13,7 +13,7 @@ namespace AutotrasportiFantini.controller
         /**
          *  Singleton
          */
-        static IControllerAutenticazione getIstanza()
+        public static IControllerAutenticazione getIstanza()
         {
             if (istanza == null)
                 istanza = new ControllerAutenticazione();
