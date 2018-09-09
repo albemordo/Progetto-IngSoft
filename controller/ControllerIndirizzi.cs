@@ -9,7 +9,6 @@ namespace AutotrasportiFantini.controller
 {
     class ControllerIndirizzi : IControllerIndirizzi
     {
-		private SqlConnectionFactory factoryConnessioni = new SqlConnectionFactory();
 		private IFactoryRisorse factoryRisorse = new FactoryRisorse();
 		private RepositoryIndirizzo repository;
 
@@ -28,7 +27,7 @@ namespace AutotrasportiFantini.controller
 
 		public ControllerIndirizzi()
 		{
-			repository = new RepositoryIndirizzo(factoryConnessioni.GetSqlConnection("dummy"));
+			repository = new RepositoryIndirizzo(new SqlConnectionFactory().GetSqlConnection("dummy"));
 		}
 
 		public IIndirizzo CreaIndirizzo(string qualificatore, string nome, string civico, string cap, string localita, string provincia)
@@ -51,12 +50,12 @@ namespace AutotrasportiFantini.controller
 
         public IIndirizzo ModificaIndirizzo(IIndirizzo indirizzo, string qualificatore, string nome, string civico, string cap, string localita, string provincia)
         {
-			IIndirizzo ind = ModificaCampi(indirizzo, qualificatore, nome, civico, cap, localita, provincia);
+			indirizzo = ModificaCampi(indirizzo, qualificatore, nome, civico, cap, localita, provincia);
 
 			//	Le modifiche vengono rese persistenti
-			repository.aggiorna(ind);
+			repository.aggiorna(indirizzo);
 
-			return ind;
+			return indirizzo;
 		}
     }
 }
