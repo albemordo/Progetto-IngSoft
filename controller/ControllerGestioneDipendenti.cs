@@ -23,6 +23,14 @@ namespace AutotrasportiFantini.controller
 		private readonly string RUOLO = "ruolo";
 
 		/**
+		 *	I seguenti valori vengono utilizzati per discriminare quale
+		 *	tipo di lista si vuole ottenere 
+		 */ 
+		private const int AUTISTI = 0;
+		private const int DELEGATI = 1;
+
+
+		/**
 		 *	Funzione da modificare quando si vorrà
 		 *	effettuare il collegamento con il sistema esterno
 		 */
@@ -87,22 +95,22 @@ namespace AutotrasportiFantini.controller
 			return dati;
 		}
 
-		private List<IUtente> ParsificaListaUtenti(int qualeLista)
+		public List<IUtente> ParsificaListaUtenti(int qualeLista)
 		{
 			string lista = null;
 			List<IUtente> utenti = new List<IUtente>();
-			Type tipo;
+			string refTipo;
 
 			switch (qualeLista)
 			{
-				case 0:
+				case AUTISTI:
 					lista = OttieniListaAutisti();
-					tipo = typeof(IAutista);
+					refTipo = FactoryUtenti.AUTISTA;
 					break;
 
-				case 1:
+				case DELEGATI:
 					lista = OttieniListaDelegati();
-					tipo = typeof(IDelegato);
+					refTipo = FactoryUtenti.DELEGATO;
 					break;
 
 				default:
@@ -112,7 +120,7 @@ namespace AutotrasportiFantini.controller
 			if (lista == null)
 				return utenti;
 
-			IUtente autista = null;
+			IUtente utente = null;
 
 			//	Parsing dell'oggetto Json
 			JArray jArray = JArray.Parse(lista);
@@ -126,15 +134,15 @@ namespace AutotrasportiFantini.controller
 				{
 					//	Nessun errore
 
-					autista = (Type.GetType(tipo))FactoryUtenti.GetUtente(FactoryUtenti.AUTISTA);
-
+					utente = FactoryUtenti.GetUtente(refTipo);
+					
 					//	Inizializzazione campi
-					autista.idAziendale = (string)token[IDAZIENDALE];
-					autista.nome = (string)token[NOME];
-					autista.cognome = (string)token[COGNOME];
+					utente.idAziendale = (string)token[IDAZIENDALE];
+					utente.nome = (string)token[NOME];
+					utente.cognome = (string)token[COGNOME];
 
 					//	Aggiunta dell'oggetto nella struttura dati di ritorno
-					result.Add(autista);
+					utenti.Add(utente);
 				}
 				else
 				{
@@ -276,8 +284,8 @@ namespace AutotrasportiFantini.controller
         
         public static void Main(string[] args)
         {
-			IControllerGestioneDipendenti gd = new ControllerGestioneDipendenti();
-			Console.WriteLine(typeof(IAutista));
+			ControllerGestioneDipendenti gd = new ControllerGestioneDipendenti();
+			Console.WriteLine(gd.ParsificaListaUtenti(1)[1].ToString());
 
 		}
         
