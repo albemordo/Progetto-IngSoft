@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutotrasportiFantini.modello;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,11 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AutotrasportiFantini.view.templates
+namespace AutotrasportiFantini.view
 {
-    public partial class GestioneTemplate : Form
+    public partial class ViewDettagliTipologiaMerce : Form
     {
-        public GestioneTemplate()
+        public ViewDettagliTipologiaMerce()
         {
             InitializeComponent();
         }

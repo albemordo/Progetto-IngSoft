@@ -1,6 +1,6 @@
-﻿namespace AutotrasportiFantini.view.templates
+﻿namespace AutotrasportiFantini.view
 {
-    partial class HomeTemplate
+    partial class ViewGestioneAutomezzo
     {
         /// <summary>
         /// Required designer variable.
@@ -28,34 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.formPanel = new System.Windows.Forms.Panel();
+            this.creaAutomezzoButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // formPanel
+            // creaAutomezzoButton
             // 
-            this.formPanel.Location = new System.Drawing.Point(2, 61);
-            this.formPanel.Name = "formPanel";
-            this.formPanel.Size = new System.Drawing.Size(1004, 618);
-            this.formPanel.TabIndex = 1;
+            this.creaAutomezzoButton.Location = new System.Drawing.Point(614, 581);
+            this.creaAutomezzoButton.Name = "creaAutomezzoButton";
+            this.creaAutomezzoButton.Size = new System.Drawing.Size(157, 37);
+            this.creaAutomezzoButton.TabIndex = 2;
+            this.creaAutomezzoButton.Text = "Crea Automezzo";
+            this.creaAutomezzoButton.UseVisualStyleBackColor = true;
+            this.creaAutomezzoButton.Click += new System.EventHandler(this.creaAutomezzoButton_Click);
             // 
-            // HomeTemplate
+            // ViewGestioneAutomezzo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1008, 681);
-            this.Controls.Add(this.formPanel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.IsMdiContainer = true;
-            this.MaximizeBox = false;
-            this.Name = "HomeTemplate";
-            this.Text = "Home Template";
+            this.ClientSize = new System.Drawing.Size(1008, 632);
+            this.Controls.Add(this.creaAutomezzoButton);
+            this.Name = "ViewGestioneAutomezzo";
+            this.Controls.SetChildIndex(this.creaAutomezzoButton, 0);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        protected System.Windows.Forms.Panel formPanel;
+        private System.Windows.Forms.Button creaAutomezzoButton;
     }
 }

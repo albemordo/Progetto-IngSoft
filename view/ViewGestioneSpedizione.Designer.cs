@@ -1,6 +1,6 @@
-﻿namespace AutotrasportiFantini.view.templates
+﻿namespace AutotrasportiFantini.view
 {
-    partial class HomeTemplate
+    partial class ViewGestioneSpedizione
     {
         /// <summary>
         /// Required designer variable.
@@ -28,34 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.formPanel = new System.Windows.Forms.Panel();
+            this.creaSpedizioneButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // formPanel
+            // creaSpedizioneButton
             // 
-            this.formPanel.Location = new System.Drawing.Point(2, 61);
-            this.formPanel.Name = "formPanel";
-            this.formPanel.Size = new System.Drawing.Size(1004, 618);
-            this.formPanel.TabIndex = 1;
+            this.creaSpedizioneButton.Location = new System.Drawing.Point(576, 581);
+            this.creaSpedizioneButton.Name = "creaSpedizioneButton";
+            this.creaSpedizioneButton.Size = new System.Drawing.Size(197, 39);
+            this.creaSpedizioneButton.TabIndex = 2;
+            this.creaSpedizioneButton.Text = "Crea Spedizione";
+            this.creaSpedizioneButton.UseVisualStyleBackColor = true;
+            this.creaSpedizioneButton.Click += new System.EventHandler(this.creaSpedizioneButton_Click);
             // 
-            // HomeTemplate
+            // ViewGestioneSpedizione
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1008, 681);
-            this.Controls.Add(this.formPanel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.IsMdiContainer = true;
-            this.MaximizeBox = false;
-            this.Name = "HomeTemplate";
-            this.Text = "Home Template";
+            this.ClientSize = new System.Drawing.Size(1008, 632);
+            this.Controls.Add(this.creaSpedizioneButton);
+            this.Name = "ViewGestioneSpedizione";
+            this.Text = "View Gestione Spedizione";
+            this.Controls.SetChildIndex(this.creaSpedizioneButton, 0);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        protected System.Windows.Forms.Panel formPanel;
+        private System.Windows.Forms.Button creaSpedizioneButton;
     }
 }
