@@ -2,17 +2,18 @@
 using System.Data.SqlClient;
 using System.Configuration;
 
-namespace AutotrasportiFantini.persistenza
+namespace AutotrasportiFantini.persistenza.factory
 {
-    class SqlConnectionFactory
+    class SqlConnectionFactory : AbstractSqlConnectionFactory
     {
-        public static SqlConnection getSqlConnection(String connectionName) 
+        public override SqlConnection GetSqlConnection(string connectionName)
         {
             try
             {
                 String connectionString = ConfigurationManager.ConnectionStrings[connectionName].ConnectionString;
                 return new SqlConnection(connectionString);
-            } catch(ConfigurationErrorsException exception)
+            }
+            catch (ConfigurationErrorsException exception)
             {
                 throw new ArgumentException("Connection string is invalid or nonexistent", "connectionName", exception);
             }
