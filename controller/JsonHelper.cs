@@ -20,14 +20,32 @@ namespace AutotrasportiFantini.controller
 		private readonly string COGNOME = "cognome";
 		private readonly string RUOLO = "ruolo";
 
+		private int GetRuolo(string ruolo)
+		{
+			int ruoloId = -1;
+			if (ruolo.ToLower().Equals("delegato"))
+				ruoloId = (int)FactoryUtenti.UTENTI.DELEGATO;
+			else if (ruolo.ToLower().Equals("responsabile"))
+				ruoloId = (int)FactoryUtenti.UTENTI.RESPONSABILE;
+			else if (ruolo.ToLower().Equals("autista"))
+				ruoloId = (int)FactoryUtenti.UTENTI.AUTISTA;
+
+			return ruoloId;
+		}
+
 		public IUtente ParsificaUtente(string json)
 		{
 			IUtente utente = null;
+			int ruolo = -1;
 
 			JObject datiParsati = JObject.Parse(json);
 
-			//	Viene estratto il ruolo
-			string ruolo = (string)datiParsati[RUOLO];
+			//	Ottenimento del ruolo
+			ruolo = GetRuolo((string)datiParsati[RUOLO]);
+
+			//	Controllo del codice del ruolo
+			if (ruolo < 0)
+				return utente;
 
 			//	In base al ruolo viene creata l'istanza di utente appropriata
 			utente = FactoryUtenti.GetUtente(ruolo);
@@ -43,7 +61,7 @@ namespace AutotrasportiFantini.controller
 		public List<IUtente> ParsificaListaUtenti(string json)
 		{
 			List<IUtente> utenti = new List<IUtente>();
-
+			int ruolo;
 			IUtente utente = null;
 
 			//	Parsing dell'oggetto Json
@@ -58,7 +76,10 @@ namespace AutotrasportiFantini.controller
 				{
 					//	Nessun errore
 
-					utente = FactoryUtenti.GetUtente((string)token[RUOLO]);
+					//	Ottenimento del ruolo
+					ruolo = GetRuolo((string)token[RUOLO]);
+
+					utente = FactoryUtenti.GetUtente(ruolo);
 
 					//	Inizializzazione campi
 					utente.idAziendale = (string)token[IDAZIENDALE];

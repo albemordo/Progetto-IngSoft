@@ -96,14 +96,14 @@ namespace AutotrasportiFantini.controller
 			return helper.ParsificaUtente(dati);
 		}
 
-        /*
+        
         public static void Main(string[] args)
         {
 			ControllerGestioneDipendenti gd = new ControllerGestioneDipendenti();
 			Console.WriteLine(gd.ListaAutisti()[1].ToString());
 
 		}
-        */
+        
     }
 
 }
