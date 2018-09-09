@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AutotrasportiFantini.modello
 {
-	class AutistaFactory : UtenteFactory
+	class AutistaFactory : FactoryUtenti
 	{
 		public static IUtente GetAutista() => new Autista();
 	}

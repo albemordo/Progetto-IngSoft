@@ -3,7 +3,7 @@ using System;
 
 namespace AutotrasportiFantini.modello
 {
-	abstract class UtenteFactory
+	abstract class FactoryUtenti
 	{
 
 		public static readonly string DELEGATO = "delegato";

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AutotrasportiFantini.modello
 {
-	class DelegatoFactory : UtenteFactory
+	class DelegatoFactory : FactoryUtenti
 	{
 		public static IUtente GetDelegato() => new Delegato();
 	}
