@@ -1,16 +1,16 @@
-﻿using AutotrasportiFantini.modello;
+﻿using AutotrasportiFantini.controller;
+using AutotrasportiFantini.controller.interfacce;
+using AutotrasportiFantini.modello;
 using AutotrasportiFantini.modello.interfacce;
+using AutotrasportiFantini.view.dettagli;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 
 //Da dove prendo tutti i dati? Come gestisco il fatto di molteplici punti di spedizione?
-//Inserimento nella tabella molto provvisorio
+//Come gestisco i molteplici orari?
+//Come aggiornare la tabella quando uno inserisce una nuova spedizione?
 namespace AutotrasportiFantini.view
 {
     public partial class ViewGestioneSpedizione : AutotrasportiFantini.view.templates.ViewGestioneTemplate
@@ -21,10 +21,15 @@ namespace AutotrasportiFantini.view
         }
         protected override void dataTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            ViewCreazioneSpedizione viewDettagliTipologiaSpedizione = new ViewCreazioneSpedizione();
-            viewDettagliTipologiaSpedizione.ShowDialog();
+            ViewDettagliSpedizione viewDettagliSpedizione = new ViewDettagliSpedizione();
+            viewDettagliSpedizione.ShowDialog();
         }
 
+        protected override void mascheraDettaglioButton_Click(object sender, EventArgs e)
+        {
+            ViewDettagliSpedizione viewDettagliSpedizione = new ViewDettagliSpedizione();
+            viewDettagliSpedizione.ShowDialog();
+        }
         protected override void addTableColumns()
         {
             dataTable.Columns.Add("identificatoSpedizione", "Identificativo Spedizione");
@@ -48,16 +53,17 @@ namespace AutotrasportiFantini.view
 
         protected override void addTableRows()
         {
+            ///CODICE DI PROVA
+            ///
             TipologiaMerce tipologiaMerce = new TipologiaMerce();
             tipologiaMerce.id = 1;
             tipologiaMerce.tipologia = "droga";
             Automezzo automezzo = new Automezzo();
-            automezzo.id = 1;
             automezzo.targa = "randomTarga";
-            automezzo.prod = "randomproduttore";
+            automezzo.produttore = "randomproduttore";
             automezzo.modello = "randommodello";
-            automezzo.tr = "random targa rimorchio";
-            automezzo.cod = "random code";
+            automezzo.targaRimorchio = "random targa rimorchio";
+            automezzo.codiceDelegato = "random code";
             Delegato delegato = new Delegato();
             delegato.cognome = "fantini";
             delegato.idAziendale = "1";
@@ -105,9 +111,19 @@ namespace AutotrasportiFantini.view
             spedizione.quantitaMerce = 1000;
             spedizione.tempoPercorrenza = 10;
             spedizione.tipologiaMerce = tipologiaMerce;
-            List<Spedizione> spedizioni = new List<Spedizione>();
-            spedizioni.Add(spedizione);
+            ///CODICE DI PROVA
+            //////CODICE DI PROVA
 
+            ///CODICE REALE
+            ///
+            IControllerAutenticazione Controller = ControllerAutenticazione.GetIstanza();
+            ControllerListaSpedizioni controllerListaSpedizioni = new ControllerListaSpedizioni();
+            List<ISpedizione> spedizioni = controllerListaSpedizioni.ListaSpedizioni(Controller.GetUtenteAutenticato());
+            ///CODICE REALE
+            ///
+
+            spedizioni = new List<ISpedizione>();
+            spedizioni.Add(spedizione);
             foreach (Spedizione sp in spedizioni)
             {
                 dataTable.Rows.Add(sp.id, sp.partenza.localita, sp.destinazione.localita, sp.puntiSpedizione, sp.distanzaStimata, sp.tipologiaMerce.tipologia, sp.quantitaMerce,

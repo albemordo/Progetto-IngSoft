@@ -61,5 +61,6 @@ namespace AutotrasportiFantini.controller
 
 			return automezzo;
         }
+
     }
 }

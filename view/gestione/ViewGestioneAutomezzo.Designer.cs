@@ -1,6 +1,6 @@
 ﻿namespace AutotrasportiFantini.view
 {
-    partial class ViewGestioneTipologieMerce
+    partial class ViewGestioneAutomezzo
     {
         /// <summary>
         /// Required designer variable.
@@ -28,31 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.creaTipologiaMerceButton = new System.Windows.Forms.Button();
+            this.creaAutomezzoButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // creaTipologiaMerceButton
+            // creaAutomezzoButton
             // 
-            this.creaTipologiaMerceButton.Location = new System.Drawing.Point(595, 581);
-            this.creaTipologiaMerceButton.Name = "creaTipologiaMerceButton";
-            this.creaTipologiaMerceButton.Size = new System.Drawing.Size(178, 39);
-            this.creaTipologiaMerceButton.TabIndex = 3;
-            this.creaTipologiaMerceButton.Text = "Crea Tipologia Merce";
-            this.creaTipologiaMerceButton.UseVisualStyleBackColor = true;
-            this.creaTipologiaMerceButton.Click += new System.EventHandler(this.creaTipologiaMerceButton_Click);
+            this.creaAutomezzoButton.Location = new System.Drawing.Point(513, 583);
+            this.creaAutomezzoButton.Name = "creaAutomezzoButton";
+            this.creaAutomezzoButton.Size = new System.Drawing.Size(227, 50);
+            this.creaAutomezzoButton.TabIndex = 2;
+            this.creaAutomezzoButton.Text = "Crea Automezzo";
+            this.creaAutomezzoButton.UseVisualStyleBackColor = true;
+            this.creaAutomezzoButton.Click += new System.EventHandler(this.creaAutomezzoButton_Click);
             // 
-            // ViewGestioneTipologieMerce
+            // ViewGestioneAutomezzo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(1008, 632);
-            this.Controls.Add(this.creaTipologiaMerceButton);
-            this.Name = "ViewGestioneTipologieMerce";
-            this.Controls.SetChildIndex(this.creaTipologiaMerceButton, 0);
+            this.ClientSize = new System.Drawing.Size(1008, 640);
+            this.Controls.Add(this.creaAutomezzoButton);
+            this.Name = "ViewGestioneAutomezzo";
+            this.Controls.SetChildIndex(this.creaAutomezzoButton, 0);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Button creaTipologiaMerceButton;
+
+        private System.Windows.Forms.Button creaAutomezzoButton;
     }
 }

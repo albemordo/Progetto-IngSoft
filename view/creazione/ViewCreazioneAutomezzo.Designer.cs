@@ -111,6 +111,7 @@
             this.aggiungiButton.TabIndex = 8;
             this.aggiungiButton.Text = "Aggiungi";
             this.aggiungiButton.UseVisualStyleBackColor = true;
+            this.aggiungiButton.Click += new System.EventHandler(this.aggiungiButton_Click);
             // 
             // ViewCreazioneAutomezzo
             // 

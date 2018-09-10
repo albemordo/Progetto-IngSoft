@@ -52,19 +52,20 @@
             // 
             // mascheraDettaglioButton
             // 
-            this.mascheraDettaglioButton.Location = new System.Drawing.Point(795, 581);
+            this.mascheraDettaglioButton.Location = new System.Drawing.Point(769, 583);
             this.mascheraDettaglioButton.Name = "mascheraDettaglioButton";
-            this.mascheraDettaglioButton.Size = new System.Drawing.Size(201, 39);
+            this.mascheraDettaglioButton.Size = new System.Drawing.Size(227, 50);
             this.mascheraDettaglioButton.TabIndex = 1;
             this.mascheraDettaglioButton.Text = "Maschera Dettaglio";
             this.mascheraDettaglioButton.UseVisualStyleBackColor = true;
+            this.mascheraDettaglioButton.Click += new System.EventHandler(this.mascheraDettaglioButton_Click);
             // 
             // ViewGestioneTemplate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(1008, 632);
+            this.ClientSize = new System.Drawing.Size(1008, 645);
             this.Controls.Add(this.mascheraDettaglioButton);
             this.Controls.Add(this.dataTable);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

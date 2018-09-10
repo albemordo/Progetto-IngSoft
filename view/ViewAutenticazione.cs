@@ -1,16 +1,13 @@
 ﻿using AutotrasportiFantini.controller;
 using AutotrasportiFantini.controller.interfacce;
+using AutotrasportiFantini.modello;
 using AutotrasportiFantini.view;
+using AutotrasportiFantini.view.templates;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+//Come mettere Invio per far in modo che faccia la funzione login?
 namespace AutotrasportiFantini
 {
     public partial class ViewAutenticazione : Form
@@ -22,17 +19,28 @@ namespace AutotrasportiFantini
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            if (/*Controller.Autentica(this.UsernameBox.Text, this.PasswordBox.Text.GetHashCode().ToString()) */ true)
+            if (Controller.Autentica(this.UsernameBox.Text, this.PasswordBox.Text.GetHashCode().ToString()) == true)
             {
-                //this.Hide();
-                HomeResponsabile homeResponsabile = new HomeResponsabile();
-                homeResponsabile.Show();
-                HomeAutista homeAutista = new HomeAutista();
-                homeAutista.Show();
-                HomeDelegato homeDelegato = new HomeDelegato();
-                homeDelegato.Show();
+                this.Hide();
+                HomeTemplate homeUtente = new HomeTemplate();
+                if (Controller.GetUtenteAutenticato() is Delegato)
+                {
+                    homeUtente = new HomeDelegato();
+                }
+                else
+                {
+                    if(Controller.GetUtenteAutenticato() is Autista)
+                    {
+                        homeUtente = new HomeAutista();
+                    }
+                    else
+                    {
+                        homeUtente = new HomeResponsabile();
+                    }
+                }
 
-                //HomeUtente.Closed += (s, args) => this.Close();
+                homeUtente.Closed += (s, args) => this.Close();
+                homeUtente.ShowDialog();
             }
             else
             {
@@ -40,6 +48,6 @@ namespace AutotrasportiFantini
             }
         }
 
-        IControllerAutenticazione Controller = ControllerAutenticazione.getIstanza();
+        IControllerAutenticazione Controller = ControllerAutenticazione.GetIstanza();
     }
 }

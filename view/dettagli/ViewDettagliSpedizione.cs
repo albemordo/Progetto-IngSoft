@@ -1,5 +1,4 @@
-﻿using AutotrasportiFantini.modello;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AutotrasportiFantini.view
+namespace AutotrasportiFantini.view.dettagli
 {
-    public partial class ViewDettagliTipologiaMerce : Form
+    public partial class ViewDettagliSpedizione : Form
     {
-        public ViewDettagliTipologiaMerce()
+        public ViewDettagliSpedizione()
         {
             InitializeComponent();
+        }
+
+        private void modificaButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

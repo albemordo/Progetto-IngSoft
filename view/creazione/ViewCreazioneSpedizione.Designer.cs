@@ -147,8 +147,9 @@
             this.confirmButton.TabIndex = 12;
             this.confirmButton.Text = "Conferma";
             this.confirmButton.UseVisualStyleBackColor = true;
+            this.confirmButton.Click += new System.EventHandler(this.confirmButton_Click);
             // 
-            // ViewDettagliSpedizione
+            // ViewCreazioneSpedizione
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -166,7 +167,7 @@
             this.Controls.Add(this.distanzaStimataLabel);
             this.Controls.Add(this.luogoArrivoLabel);
             this.Controls.Add(this.luogoPartenzaLabel);
-            this.Name = "ViewDettagliSpedizione";
+            this.Name = "ViewCreazioneSpedizione";
             this.Text = "Crea Spedizione";
             this.ResumeLayout(false);
             this.PerformLayout();

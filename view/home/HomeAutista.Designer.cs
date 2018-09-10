@@ -1,6 +1,6 @@
 ﻿namespace AutotrasportiFantini.view
 {
-    partial class HomeDelegato
+    partial class HomeAutista
     {
         /// <summary>
         /// Required designer variable.
@@ -28,34 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.gestioneAutomezziButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // gestioneAutomezziButton
+            // formPanel
             // 
-            this.gestioneAutomezziButton.Location = new System.Drawing.Point(330, 12);
-            this.gestioneAutomezziButton.Name = "gestioneAutomezziButton";
-            this.gestioneAutomezziButton.Size = new System.Drawing.Size(231, 23);
-            this.gestioneAutomezziButton.TabIndex = 3;
-            this.gestioneAutomezziButton.Text = "Gestione Automezzi";
-            this.gestioneAutomezziButton.UseVisualStyleBackColor = true;
-            this.gestioneAutomezziButton.Click += new System.EventHandler(this.gestioneAutomezziButton_Click);
+            this.formPanel.Location = new System.Drawing.Point(0, 0);
+            this.formPanel.Size = new System.Drawing.Size(1004, 635);
             // 
-            // HomeDelegato
+            // HomeAutista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(1008, 681);
-            this.Controls.Add(this.gestioneAutomezziButton);
-            this.Name = "HomeDelegato";
-            this.Text = "Home Delegato";
-            this.Controls.SetChildIndex(this.formPanel, 0);
-            this.Controls.SetChildIndex(this.gestioneAutomezziButton, 0);
+            this.ClientSize = new System.Drawing.Size(1001, 633);
+            this.Name = "HomeAutista";
+            this.Text = "Home Autista";
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button gestioneAutomezziButton;
     }
 }

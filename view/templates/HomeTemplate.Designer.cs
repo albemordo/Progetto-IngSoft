@@ -35,7 +35,7 @@
             // 
             this.formPanel.Location = new System.Drawing.Point(2, 61);
             this.formPanel.Name = "formPanel";
-            this.formPanel.Size = new System.Drawing.Size(1004, 618);
+            this.formPanel.Size = new System.Drawing.Size(1004, 632);
             this.formPanel.TabIndex = 1;
             // 
             // HomeTemplate
@@ -43,7 +43,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1008, 681);
+            this.ClientSize = new System.Drawing.Size(1008, 695);
             this.Controls.Add(this.formPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.IsMdiContainer = true;
