@@ -27,7 +27,8 @@ namespace AutotrasportiFantini.controller
 		
 		public ControllerIndirizzi()
 		{
-			repository = new RepositoryIndirizzo(new SqlConnectionFactory().GetSqlConnection("dummy"));
+			//	Init repository
+
 		}
 
 		public IIndirizzo CreaIndirizzo(string qualificatore, string nome, string civico, string cap, string localita, string provincia)

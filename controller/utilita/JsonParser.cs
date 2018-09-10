@@ -2,6 +2,7 @@
 using AutotrasportiFantini.modello.interfacce;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using static AutotrasportiFantini.modello.FactoryUtenti;
 
 namespace AutotrasportiFantini.controller
 {
@@ -22,16 +23,12 @@ namespace AutotrasportiFantini.controller
 		public IUtente ParsificaUtente(string json)
 		{
 			IUtente utente = null;
-			int ruolo = -1;
+			Utenti ruolo;
 
 			JObject datiParsati = JObject.Parse(json);
 
 			//	Ottenimento del ruolo
 			ruolo = RoleResolver.GetRuolo((string)datiParsati[RUOLO]);
-
-			//	Controllo del codice del ruolo
-			if (ruolo < 0)
-				return utente;
 
 			//	In base al ruolo viene creata l'istanza di utente appropriata
 			utente = FactoryUtenti.GetUtente(ruolo);
@@ -47,7 +44,7 @@ namespace AutotrasportiFantini.controller
 		public List<IUtente> ParsificaListaUtenti(string json)
 		{
 			List<IUtente> utenti = new List<IUtente>();
-			int ruolo;
+			Utenti ruolo;
 			IUtente utente = null;
 
 			//	Parsing dell'oggetto Json

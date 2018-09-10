@@ -15,17 +15,19 @@ namespace AutotrasportiFantini.controller
 
 		public ControllerAutomezzi()
 		{
-			repository = new RepositoryAutomezzo(new SqlConnectionFactory().GetSqlConnection("dummy"));
+			//	Init Repository
+
+
 		}
 
 		private void AssegnaCampi(IAutomezzo automezzo, string targa, string produttore, string modello, string targaRimorchio, IDelegato delegato)
 		{
 			//	Popolamento campi
 			automezzo.targa = targa;
-			automezzo.prod = produttore;
+			automezzo.produttore = produttore;
 			automezzo.modello = modello;
-			automezzo.tr = targaRimorchio;
-			automezzo.cod = delegato.idAziendale;
+			automezzo.targaRimorchio = targaRimorchio;
+			automezzo.codiceDelegato = delegato.idAziendale;
 		}
 
 		public IAutomezzo CreaAutomezzo(string targa, string produttore, string modello, string targaRimorchio, IDelegato delegato)
@@ -34,9 +36,7 @@ namespace AutotrasportiFantini.controller
 			AssegnaCampi(automezzo, targa, produttore, modello, targaRimorchio, delegato);
 
 			//	L'automezzo viene reso persistente
-			automezzo.id = repository.crea(automezzo);
-
-			if (automezzo.id < 0)
+			if(repository.crea(automezzo) == null)
 				return null;
 
 			return automezzo;
@@ -44,7 +44,7 @@ namespace AutotrasportiFantini.controller
 
         public void EliminaAutomezzo(IAutomezzo automezzo)
         {
-			repository.elimina(automezzo.id);
+			repository.elimina(automezzo.targa);
         }
 
         public List<IAutomezzo> ListaAutomezzi(IDelegato delegato)

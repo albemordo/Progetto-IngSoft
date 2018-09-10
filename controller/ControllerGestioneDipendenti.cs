@@ -11,14 +11,11 @@ namespace AutotrasportiFantini.controller
 {
     class ControllerGestioneDipendenti : IControllerGestioneDipendenti
     {
-		
-
 		/**
 		 *	I seguenti valori vengono utilizzati per discriminare quale
 		 *	tipo di lista si vuole ottenere 
 		 */ 
-		public const int AUTISTI = 0;
-		public const int DELEGATI = 1;
+		public enum ListeSupportate { AUTISTI, DELEGATI};
 
 		//	Classe che mi restituisce le stringe json desiderate
 		private ISorgenteDati sorgente = new SorgenteDati();
@@ -26,17 +23,17 @@ namespace AutotrasportiFantini.controller
 		//	Classe che aiuta a parsificare le stringhe json
 		private JsonParser helper = new JsonParser();
 
-		private List<IUtente> ParsificaListaUtenti(int qualeLista)
+		private List<IUtente> ParsificaListaUtenti(ListeSupportate qualeLista)
 		{
 			string lista = null;
 
 			switch (qualeLista)
 			{
-				case AUTISTI:
+				case ListeSupportate.AUTISTI:
 					lista = sorgente.ListaAutisti();
 					break;
 
-				case DELEGATI:
+				case ListeSupportate.DELEGATI:
 					lista = sorgente.ListaDelegati();
 					break;
 
@@ -52,7 +49,7 @@ namespace AutotrasportiFantini.controller
 
 		public List<IAutista> ListaAutisti()
         {
-			List<IUtente> utenti = ParsificaListaUtenti(AUTISTI);
+			List<IUtente> utenti = ParsificaListaUtenti(ListeSupportate.AUTISTI);
 			List<IAutista> result = new List<IAutista>();
 
 			foreach (IUtente u in utenti)
@@ -63,7 +60,7 @@ namespace AutotrasportiFantini.controller
 
         public List<IDelegato> ListaDelegati()
         {
-			List<IUtente> utenti = ParsificaListaUtenti(DELEGATI);
+			List<IUtente> utenti = ParsificaListaUtenti(ListeSupportate.DELEGATI);
 			List<IDelegato> result = new List<IDelegato>();
 
 			foreach (IUtente u in utenti)

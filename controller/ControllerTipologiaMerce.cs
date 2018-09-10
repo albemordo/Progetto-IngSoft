@@ -15,7 +15,7 @@ namespace AutotrasportiFantini.controller
 
 		public ControllerTipologiaMerce()
 		{
-			repository = new RepositoryTipologiaMerce(new SqlConnectionFactory().GetSqlConnection("dummy"));
+			//	Init repository
 		}
 
 		public ITipologiaMerce CreaTipologiaMerce(string tipologia)

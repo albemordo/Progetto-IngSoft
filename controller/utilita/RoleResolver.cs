@@ -1,25 +1,24 @@
 ﻿using AutotrasportiFantini.modello;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using static AutotrasportiFantini.modello.FactoryUtenti;
 
 namespace AutotrasportiFantini.controller
 {
 	class RoleResolver
 	{
-		public static int GetRuolo(string ruolo)
+		public static Utenti GetRuolo(string ruolo)
 		{
-			int ruoloId = -1;
-			if (ruolo.ToLower().Equals("delegato"))
-				ruoloId = (int)FactoryUtenti.UTENTI.DELEGATO;
-			else if (ruolo.ToLower().Equals("responsabile"))
-				ruoloId = (int)FactoryUtenti.UTENTI.RESPONSABILE;
-			else if (ruolo.ToLower().Equals("autista"))
-				ruoloId = (int)FactoryUtenti.UTENTI.AUTISTA;
+			Utenti ruoloId = 0;
 
+			if (ruolo.ToLower().Equals("delegato"))
+				ruoloId = FactoryUtenti.Utenti.DELEGATO;
+			else if (ruolo.ToLower().Equals("responsabile"))
+				ruoloId = FactoryUtenti.Utenti.RESPONSABILE;
+			else if (ruolo.ToLower().Equals("autista"))
+				ruoloId = FactoryUtenti.Utenti.AUTISTA;
+			
 			return ruoloId;
 		}
+
 	}
 }
