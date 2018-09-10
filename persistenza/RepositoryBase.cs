@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using System.Data;
 
 namespace AutotrasportiFantini.persistenza
 {
     abstract class RepositoryBase<TEntity, TId>
     {
-        protected SqlConnection connection;
+        protected IDbConnection connection;
 
-        public RepositoryBase(SqlConnection connection)
+        public RepositoryBase(IDbConnection connection)
         {
             this.connection = connection;
         }

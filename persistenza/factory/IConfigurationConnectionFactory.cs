@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AutotrasportiFantini.persistenza.factory
 {
-    abstract class AbstractSqlConnectionFactory
+    interface IConfigurationConnectionFactory
     {
-        public abstract SqlConnection GetSqlConnection(String connectionName);
+        IDbConnection GetConnection(String connectionName);
     }
 }

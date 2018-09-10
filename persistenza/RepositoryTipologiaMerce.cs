@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using AutotrasportiFantini.modello.interfacce;
-using System.Data.SqlClient;
+using System.Data;
 
 namespace AutotrasportiFantini.persistenza
 {
     class RepositoryTipologiaMerce : RepositoryBase<ITipologiaMerce, int>
     {
-        public RepositoryTipologiaMerce(SqlConnection connection) : base(connection)
+        public RepositoryTipologiaMerce(IDbConnection connection) : base(connection)
         {
         }
 
