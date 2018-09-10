@@ -10,7 +10,7 @@ namespace AutotrasportiFantini.controller
 {
     class ControllerAutomezzi : IControllerAutomezzi
     {
-		private IFactoryRisorse factoryRisorse = new FactoryRisorse();
+		private IRisorseFactory factoryRisorse = new RisorseFactory();
 		private RepositoryAutomezzo repository;
 
 		public ControllerAutomezzi()
@@ -23,11 +23,12 @@ namespace AutotrasportiFantini.controller
 		private void AssegnaCampi(IAutomezzo automezzo, string targa, string produttore, string modello, string targaRimorchio, IDelegato delegato)
 		{
 			//	Popolamento campi
-			automezzo.targa = targa;
-			automezzo.produttore = produttore;
-			automezzo.modello = modello;
-			automezzo.targaRimorchio = targaRimorchio;
-			automezzo.codiceDelegato = delegato.idAziendale;
+			
+			if(targa != null && targa.Length != 7)	automezzo.targa = targa;
+			if(produttore != null && produttore.Length > 0)	automezzo.produttore = produttore;
+			if(modello != null && modello.Length > 0)	automezzo.modello = modello;
+			if(targaRimorchio != null && targaRimorchio.Length > 0) automezzo.targaRimorchio = targaRimorchio;
+			if(delegato != null && delegato.idAziendale.Length > 0)	automezzo.codiceDelegato = delegato.idAziendale;
 		}
 
 		public IAutomezzo CreaAutomezzo(string targa, string produttore, string modello, string targaRimorchio, IDelegato delegato)

@@ -7,7 +7,7 @@ using AutotrasportiFantini.modello.interfacce;
 
 namespace AutotrasportiFantini.modello.factory
 {
-	class FactoryRisorse : IFactoryRisorse
+	class RisorseFactory : IRisorseFactory
 	{
 		public IAutomezzo GetAutomezzo() => new Automezzo();
 

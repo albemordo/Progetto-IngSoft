@@ -10,18 +10,18 @@ namespace AutotrasportiFantini.controller
 {
     class ControllerIndirizzi : IControllerIndirizzi
     {
-		private IFactoryRisorse factoryRisorse = new FactoryRisorse();
+		private IRisorseFactory factoryRisorse = new RisorseFactory();
 		private RepositoryIndirizzo repository;
 
 		private void AssegnaCampi(IIndirizzo indirizzo, string qualificatore, string nome, string civico, string cap, string localita, string provincia)
 		{
 			//	Popolamento dei campi
-			indirizzo.qualificatore = qualificatore;
-			indirizzo.nome = nome;
-			indirizzo.civico = civico;
-			indirizzo.cap = cap;
-			indirizzo.localita = localita;
-			indirizzo.provincia = provincia;
+			if(qualificatore != null && qualificatore.Length > 0) indirizzo.qualificatore = qualificatore;
+			if(nome != null && nome.Length > 0) indirizzo.nome = nome;
+			if(civico != null && civico.Length > 0)	indirizzo.civico = civico;
+			if(cap != null && cap.Length > 0) indirizzo.cap = cap;
+			if(localita != null && localita.Length > 0) indirizzo.localita = localita;
+			if(provincia != null && provincia.Length > 0) indirizzo.provincia = provincia;
 			
 		}
 		

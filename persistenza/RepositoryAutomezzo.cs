@@ -98,7 +98,7 @@ namespace AutotrasportiFantini.persistenza
 
         protected IAutomezzo FillFromDb(dynamic raw)
         {
-            IFactoryRisorse factoryRisorse = new FactoryRisorse();
+            IRisorseFactory factoryRisorse = new RisorseFactory();
             IAutomezzo automezzo = factoryRisorse.GetAutomezzo();
 
             automezzo.targa = raw.targa;

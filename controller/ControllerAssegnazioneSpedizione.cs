@@ -19,6 +19,7 @@ namespace AutotrasportiFantini.controller
 
         public void AssegnaAutomezzo(ISpedizione spedizione, IAutomezzo automezzo)
         {
+
 			spedizione.automezzo = automezzo;
 
 			//	L'assegnazione dell'automezzo viene reso persistente

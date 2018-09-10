@@ -8,7 +8,7 @@ namespace AutotrasportiFantini.controller
 {
     class ControllerPuntiSpedizione : IControllerPuntiSpedizione
 	{
-		private IFactoryRisorse factoryRisorse = new FactoryRisorse();
+		private IRisorseFactory factoryRisorse = new RisorseFactory();
 		RepositoryPuntoSpedizione repository;
 
         public IPuntoSpedizione AggiornaIndirizzo(IPuntoSpedizione puntoSpedizione, IIndirizzo indirizzo)

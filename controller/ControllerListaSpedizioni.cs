@@ -16,10 +16,18 @@ namespace AutotrasportiFantini.controller
 			//	Init Repository
 
 		}
+
         public List<ISpedizione> ListaSpedizioni(IUtente utente)
         {
+			List<ISpedizione> listaSpedizioni = null;
 			//	Aspetta implementazione
-			throw new NotImplementedException();
+			if (utente is IResponsabile)
+				;
+
+			else if (utente is IDelegato)
+				;
+
+			return listaSpedizioni;
         }
     }
 }
