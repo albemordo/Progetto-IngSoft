@@ -3,35 +3,36 @@ using System.Collections.Generic;
 using AutotrasportiFantini.modello.interfacce;
 using System.Data;
 
-namespace AutotrasportiFantini.persistenza
+namespace AutotrasportiFantini.persistenza.repository
 {
-    class RepositorySpedizione : RepositoryBase<ISpedizione, int>
+    class RepositoryPuntoSpedizione : RepositoryBase, IPersistenzaPuntoSpedizione
     {
-        public RepositorySpedizione(IDbConnection connection) : base(connection)
+        public RepositoryPuntoSpedizione(IDbConnection connection) : base(connection)
         {
 
         }
-        public override bool aggiorna(ISpedizione oggetto)
-        {
-            throw new NotImplementedException();
-        }
 
-        public override int crea(ISpedizione oggetto)
+        public bool aggiorna(IPuntoSpedizione oggetto)
         {
             throw new NotImplementedException();
         }
 
-        public override List<ISpedizione> elencaTutti()
+        public int crea(IPuntoSpedizione oggetto)
         {
             throw new NotImplementedException();
         }
 
-        public override void elimina(int id)
+        public List<IPuntoSpedizione> elencaTutti()
         {
             throw new NotImplementedException();
         }
 
-        public override ISpedizione getById(int id)
+        public void elimina(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IPuntoSpedizione getById(int id)
         {
             throw new NotImplementedException();
         }

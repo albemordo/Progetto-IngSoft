@@ -1,6 +1,6 @@
 ﻿using AutotrasportiFantini.controller.interfacce;
 using AutotrasportiFantini.modello.interfacce;
-using AutotrasportiFantini.persistenza;
+using AutotrasportiFantini.persistenza.repository;
 using System;
 using System.Collections.Generic;
 using System.Data;

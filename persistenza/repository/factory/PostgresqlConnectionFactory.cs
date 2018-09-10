@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Data.Common;
 
-namespace AutotrasportiFantini.persistenza.factory
+namespace AutotrasportiFantini.persistenza.repository.factory
 {
     class PostgresqlConnectionFactory : IConfigurationConnectionFactory
     {
