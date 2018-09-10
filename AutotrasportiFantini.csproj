@@ -89,7 +89,6 @@
     <Compile Include="controller\interfacce\IControllerTipologieMerce.cs" />
     <Compile Include="controller\interfacce\ISistemaLog.cs" />
     <Compile Include="controller\interfacce\ISorgenteDati.cs" />
-    <Compile Include="controller\utilita\ConnectionResolver.cs" />
     <Compile Include="controller\utilita\JsonParser.cs" />
     <Compile Include="controller\utilita\RoleResolver.cs" />
     <Compile Include="controller\SistemaLog.cs" />
@@ -128,87 +127,6 @@
     <Compile Include="persistenza\factory\PostgresqlConnectionFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="test\TestRepository.cs" />
-    <Compile Include="persistenza\factory\SqlConnectionFactory.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="view\HomeAutista.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\HomeAutista.Designer.cs">
-      <DependentUpon>HomeAutista.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\HomeDelegato.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\HomeDelegato.Designer.cs">
-      <DependentUpon>HomeDelegato.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\HomeResponsabile.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\HomeResponsabile.Designer.cs">
-      <DependentUpon>HomeResponsabile.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\templates\HomeTemplate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\templates\HomeTemplate.Designer.cs">
-      <DependentUpon>HomeTemplate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\templates\ViewGestioneTemplate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\templates\ViewGestioneTemplate.Designer.cs">
-      <DependentUpon>ViewGestioneTemplate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\ViewAutenticazione.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\ViewAutenticazione.Designer.cs">
-      <DependentUpon>ViewAutenticazione.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\ViewCreazioneAutomezzo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\ViewCreazioneAutomezzo.Designer.cs">
-      <DependentUpon>ViewCreazioneAutomezzo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\ViewCreazioneSpedizione.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\ViewCreazioneSpedizione.Designer.cs">
-      <DependentUpon>ViewCreazioneSpedizione.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\ViewCreazioneTipologiaMerce.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\ViewCreazioneTipologiaMerce.Designer.cs">
-      <DependentUpon>ViewCreazioneTipologiaMerce.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\ViewDettagliTipologiaMerce.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\ViewDettagliTipologiaMerce.Designer.cs">
-      <DependentUpon>ViewDettagliTipologiaMerce.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\ViewGestioneAutomezzo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\ViewGestioneAutomezzo.Designer.cs">
-      <DependentUpon>ViewGestioneAutomezzo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\ViewGestioneSpedizione.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\ViewGestioneSpedizione.Designer.cs">
-      <DependentUpon>ViewGestioneSpedizione.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\ViewGestioneTipologieMerce.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\ViewGestioneTipologieMerce.Designer.cs">
-      <DependentUpon>ViewGestioneTipologieMerce.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -219,45 +137,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="view\HomeAutista.resx">
-      <DependentUpon>HomeAutista.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\HomeDelegato.resx">
-      <DependentUpon>HomeDelegato.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\HomeResponsabile.resx">
-      <DependentUpon>HomeResponsabile.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\templates\HomeTemplate.resx">
-      <DependentUpon>HomeTemplate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\templates\ViewGestioneTemplate.resx">
-      <DependentUpon>ViewGestioneTemplate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\ViewAutenticazione.resx">
-      <DependentUpon>ViewAutenticazione.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\ViewCreazioneAutomezzo.resx">
-      <DependentUpon>ViewCreazioneAutomezzo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\ViewCreazioneSpedizione.resx">
-      <DependentUpon>ViewCreazioneSpedizione.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\ViewCreazioneTipologiaMerce.resx">
-      <DependentUpon>ViewCreazioneTipologiaMerce.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\ViewDettagliTipologiaMerce.resx">
-      <DependentUpon>ViewDettagliTipologiaMerce.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\ViewGestioneAutomezzo.resx">
-      <DependentUpon>ViewGestioneAutomezzo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\ViewGestioneSpedizione.resx">
-      <DependentUpon>ViewGestioneSpedizione.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\ViewGestioneTipologieMerce.resx">
-      <DependentUpon>ViewGestioneTipologieMerce.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="LICENSE" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

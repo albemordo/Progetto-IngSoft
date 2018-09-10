@@ -14,12 +14,28 @@ namespace AutotrasportiFantini.persistenza
         }
         public override bool aggiorna(IAutomezzo oggetto)
         {
-            throw new NotImplementedException();
+            String sql = "UPDATE Automezzo SET targa = @Targa, modello = @Modello, produttore = @Produttore," +
+                "targa_rimorchio = @TargaRimorchio, cod_delegato = @CodiceDelegato WHERE targa = @Targa";
+
+            using (var connection = this.connection)
+            {
+                int righeAggiornate = connection.Execute(sql, oggetto);
+
+                return righeAggiornate == 1;
+            }
         }
 
         public override String crea(IAutomezzo oggetto)
         {
-            throw new NotImplementedException();
+            String sql = "INSERT INTO Automezzo (targa, modello, produttore, targa_rimorchio, cod_delegato)" +
+                "VALUES (@Targa, @Modello, @Produttore, @TargaRimorchio, @CodiceDelegato) RETURNING targa";
+
+            using (var connection = this.connection)
+            {
+                String targa = connection.QuerySingle<String>(sql, oggetto);
+
+                return targa;
+            }
         }
 
         public override List<IAutomezzo> elencaTutti()
@@ -40,9 +56,32 @@ namespace AutotrasportiFantini.persistenza
             }
         }
 
+        public List<IAutomezzo> elencaPerDelegato(String codiceDelegato)
+        {
+            String sql = "SELECT * FROM Automezzo WHERE cod_delegato = @CodiceDelegato";
+
+            using (var connection = this.connection)
+            {
+                var rawAutomezzi = connection.Query(sql, new { CodiceDelegato = codiceDelegato }).AsList();
+
+                List<IAutomezzo> automezzi = new List<IAutomezzo>();
+                foreach (var rawAutomezzo in rawAutomezzi)
+                {
+                    automezzi.Add(this.FillFromDb(rawAutomezzo));
+                }
+
+                return automezzi;
+            }
+        }
+
         public override void elimina(String id)
         {
-            throw new NotImplementedException();
+            String sql = "DELETE FROM Automezzo WHERE targa = @Targa";
+
+            using (var connection = this.connection)
+            {
+                connection.Execute(sql, new { Targa = id });
+            }
         }
 
         public override IAutomezzo getById(String id)
