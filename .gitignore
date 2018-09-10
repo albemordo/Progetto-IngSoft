@@ -4,3 +4,4 @@ Upgrade*
 obj/
 *.user
 bin/
+test/
