@@ -87,8 +87,12 @@
     <Compile Include="controller\interfacce\IControllerPuntiSpedizione.cs" />
     <Compile Include="controller\interfacce\IControllerSpedizioniAutista.cs" />
     <Compile Include="controller\interfacce\IControllerTipologieMerce.cs" />
+    <Compile Include="controller\interfacce\ISistemaLog.cs" />
     <Compile Include="controller\interfacce\ISorgenteDati.cs" />
-    <Compile Include="controller\JsonHelper.cs" />
+    <Compile Include="controller\utilita\ConnectionResolver.cs" />
+    <Compile Include="controller\utilita\JsonParser.cs" />
+    <Compile Include="controller\utilita\RoleResolver.cs" />
+    <Compile Include="controller\SistemaLog.cs" />
     <Compile Include="controller\SorgenteDati.cs" />
     <Compile Include="modello\Autista.cs" />
     <Compile Include="modello\factory\FactoryAutisti.cs" />
@@ -127,18 +131,6 @@
     <Compile Include="persistenza\factory\SqlConnectionFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="view\HomeResponsabile.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\HomeResponsabile.Designer.cs">
-      <DependentUpon>HomeResponsabile.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\ViewCreazioneTipologiaMerce.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\ViewCreazioneTipologiaMerce.Designer.cs">
-      <DependentUpon>ViewCreazioneTipologiaMerce.cs</DependentUpon>
-    </Compile>
     <Compile Include="view\HomeAutista.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +142,18 @@
     </Compile>
     <Compile Include="view\HomeDelegato.Designer.cs">
       <DependentUpon>HomeDelegato.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\HomeResponsabile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\HomeResponsabile.Designer.cs">
+      <DependentUpon>HomeResponsabile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\templates\HomeTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\templates\HomeTemplate.Designer.cs">
+      <DependentUpon>HomeTemplate.cs</DependentUpon>
     </Compile>
     <Compile Include="view\templates\ViewGestioneTemplate.cs">
       <SubType>Form</SubType>
@@ -163,11 +167,11 @@
     <Compile Include="view\ViewAutenticazione.Designer.cs">
       <DependentUpon>ViewAutenticazione.cs</DependentUpon>
     </Compile>
-    <Compile Include="view\templates\HomeTemplate.cs">
+    <Compile Include="view\ViewCreazioneAutomezzo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="view\templates\HomeTemplate.Designer.cs">
-      <DependentUpon>HomeTemplate.cs</DependentUpon>
+    <Compile Include="view\ViewCreazioneAutomezzo.Designer.cs">
+      <DependentUpon>ViewCreazioneAutomezzo.cs</DependentUpon>
     </Compile>
     <Compile Include="view\ViewCreazioneSpedizione.cs">
       <SubType>Form</SubType>
@@ -175,11 +179,11 @@
     <Compile Include="view\ViewCreazioneSpedizione.Designer.cs">
       <DependentUpon>ViewCreazioneSpedizione.cs</DependentUpon>
     </Compile>
-    <Compile Include="view\ViewCreazioneAutomezzo.cs">
+    <Compile Include="view\ViewCreazioneTipologiaMerce.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="view\ViewCreazioneAutomezzo.Designer.cs">
-      <DependentUpon>ViewCreazioneAutomezzo.cs</DependentUpon>
+    <Compile Include="view\ViewCreazioneTipologiaMerce.Designer.cs">
+      <DependentUpon>ViewCreazioneTipologiaMerce.cs</DependentUpon>
     </Compile>
     <Compile Include="view\ViewDettagliTipologiaMerce.cs">
       <SubType>Form</SubType>
@@ -224,9 +228,6 @@
     <EmbeddedResource Include="view\HomeResponsabile.resx">
       <DependentUpon>HomeResponsabile.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="view\ViewCreazioneTipologiaMerce.resx">
-      <DependentUpon>ViewCreazioneTipologiaMerce.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="view\templates\HomeTemplate.resx">
       <DependentUpon>HomeTemplate.cs</DependentUpon>
     </EmbeddedResource>
@@ -236,11 +237,14 @@
     <EmbeddedResource Include="view\ViewAutenticazione.resx">
       <DependentUpon>ViewAutenticazione.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="view\ViewCreazioneAutomezzo.resx">
+      <DependentUpon>ViewCreazioneAutomezzo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="view\ViewCreazioneSpedizione.resx">
       <DependentUpon>ViewCreazioneSpedizione.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="view\ViewCreazioneAutomezzo.resx">
-      <DependentUpon>ViewCreazioneAutomezzo.cs</DependentUpon>
+    <EmbeddedResource Include="view\ViewCreazioneTipologiaMerce.resx">
+      <DependentUpon>ViewCreazioneTipologiaMerce.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\ViewDettagliTipologiaMerce.resx">
       <DependentUpon>ViewDettagliTipologiaMerce.cs</DependentUpon>

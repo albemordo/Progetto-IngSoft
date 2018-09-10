@@ -11,32 +11,29 @@ namespace AutotrasportiFantini.controller
 {
     class ControllerGestioneDipendenti : IControllerGestioneDipendenti
     {
-		
-
 		/**
 		 *	I seguenti valori vengono utilizzati per discriminare quale
 		 *	tipo di lista si vuole ottenere 
 		 */ 
-		public const int AUTISTI = 0;
-		public const int DELEGATI = 1;
+		public enum ListeSupportate { AUTISTI, DELEGATI};
 
 		//	Classe che mi restituisce le stringe json desiderate
 		private ISorgenteDati sorgente = new SorgenteDati();
 
 		//	Classe che aiuta a parsificare le stringhe json
-		private JsonHelper helper = new JsonHelper();
+		private JsonParser helper = new JsonParser();
 
-		private List<IUtente> ParsificaListaUtenti(int qualeLista)
+		private List<IUtente> ParsificaListaUtenti(ListeSupportate qualeLista)
 		{
 			string lista = null;
 
 			switch (qualeLista)
 			{
-				case AUTISTI:
+				case ListeSupportate.AUTISTI:
 					lista = sorgente.ListaAutisti();
 					break;
 
-				case DELEGATI:
+				case ListeSupportate.DELEGATI:
 					lista = sorgente.ListaDelegati();
 					break;
 
@@ -52,7 +49,7 @@ namespace AutotrasportiFantini.controller
 
 		public List<IAutista> ListaAutisti()
         {
-			List<IUtente> utenti = ParsificaListaUtenti(AUTISTI);
+			List<IUtente> utenti = ParsificaListaUtenti(ListeSupportate.AUTISTI);
 			List<IAutista> result = new List<IAutista>();
 
 			foreach (IUtente u in utenti)
@@ -63,7 +60,7 @@ namespace AutotrasportiFantini.controller
 
         public List<IDelegato> ListaDelegati()
         {
-			List<IUtente> utenti = ParsificaListaUtenti(DELEGATI);
+			List<IUtente> utenti = ParsificaListaUtenti(ListeSupportate.DELEGATI);
 			List<IDelegato> result = new List<IDelegato>();
 
 			foreach (IUtente u in utenti)
@@ -82,9 +79,6 @@ namespace AutotrasportiFantini.controller
 
         public IUtente VerificaCredenziali(string username, string password)
         {
-			/**
-			*	TODO: controllo errori
-			*/
 
 			//	Ottenimento dell'oggetto dei dati parsati
 			string dati = sorgente.VerificaUtente(username, password);
@@ -94,12 +88,6 @@ namespace AutotrasportiFantini.controller
 				return null;
 
 			return helper.ParsificaUtente(dati);
-		}
-
-        public static void Main(string[] args)
-        {
-			ControllerGestioneDipendenti gd = new ControllerGestioneDipendenti();
-			Console.WriteLine(gd.ListaAutisti()[1].ToString());
 		}
         
     }
