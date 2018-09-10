@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using AutotrasportiFantini.modello.interfacce;
-using System.Data.SqlClient;
+using System.Data;
 
 namespace AutotrasportiFantini.persistenza
 {
     class RepositoryIndirizzo : RepositoryBase<IIndirizzo, int>
     {
-        public RepositoryIndirizzo(SqlConnection connection) : base(connection)
+        public RepositoryIndirizzo(IDbConnection connection) : base(connection)
         {
 
         }

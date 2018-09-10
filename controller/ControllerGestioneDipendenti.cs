@@ -282,12 +282,12 @@ namespace AutotrasportiFantini.controller
 		}
 
         
-        public static void Main(string[] args)
-        {
-			ControllerGestioneDipendenti gd = new ControllerGestioneDipendenti();
-			Console.WriteLine(gd.ParsificaListaUtenti(1)[1].ToString());
+  //      public static void Main(string[] args)
+  //      {
+		//	ControllerGestioneDipendenti gd = new ControllerGestioneDipendenti();
+		//	Console.WriteLine(gd.ParsificaListaUtenti(1)[1].ToString());
 
-		}
+		//}
         
     }
 
