@@ -1,4 +1,5 @@
 ﻿using AutotrasportiFantini.modello.interfacce;
+using Newtonsoft.Json;
 
 namespace AutotrasportiFantini.modello
 {
@@ -12,5 +13,10 @@ namespace AutotrasportiFantini.modello
         public string cap { get; set; }
         public string localita { get; set; }
         public string provincia { get; set; }
+
+		public override string ToString()
+		{
+			return JsonConvert.SerializeObject(this);
+		}
     }
 }

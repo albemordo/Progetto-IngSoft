@@ -1,4 +1,5 @@
 ﻿using AutotrasportiFantini.modello.interfacce;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -22,5 +23,12 @@ namespace AutotrasportiFantini.modello
         public DateTime orarioPrevistoArrivo { get; set; }
         public DateTime orarioEffettivoPartenza { get; set; }
         public DateTime orarioEffettivoArrivo { get; set; }
-    }
+
+		public override string ToString()
+		{
+			return JsonConvert.SerializeObject(this);
+		}
+	}
+
+
 }

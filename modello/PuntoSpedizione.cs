@@ -1,4 +1,5 @@
 ﻿using AutotrasportiFantini.modello.interfacce;
+using Newtonsoft.Json;
 using System;
 
 namespace AutotrasportiFantini.modello
@@ -7,7 +8,12 @@ namespace AutotrasportiFantini.modello
     {
 		public int id { get; set; }
         public IIndirizzo indirizzo { get; set; }
-        public ISpedizione spedizione { get; set; }
+        public int spedizione { get; set; }
         public DateTime orarioArrivo { get; set; }
+
+		public override String ToString()
+		{
+			return JsonConvert.SerializeObject(this);
+		}
     }
 }
