@@ -64,7 +64,7 @@ namespace AutotrasportiFantini.controller
 					'ruolo' : 'autista'
 				}";
 
-			else if (username.ToUpper().Equals("ADX132") && password.Equals("-231203086"))
+			else if (username.ToUpper().Equals("ACD132") && password.Equals("-231203086"))
 				dati = @"
 				{
 					'idAziendale' : 'ACD132',
