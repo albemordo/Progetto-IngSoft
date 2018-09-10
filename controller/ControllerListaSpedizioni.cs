@@ -18,7 +18,8 @@ namespace AutotrasportiFantini.controller
 		}
         public List<ISpedizione> ListaSpedizioni(IUtente utente)
         {
-            throw new NotImplementedException();
+			//	Aspetta implementazione
+			throw new NotImplementedException();
         }
     }
 }

@@ -1,29 +1,46 @@
 ﻿using AutotrasportiFantini.controller.interfacce;
+using AutotrasportiFantini.modello.factory;
 using AutotrasportiFantini.modello.interfacce;
+using AutotrasportiFantini.persistenza;
 using System;
 
 namespace AutotrasportiFantini.controller
 {
     class ControllerPuntiSpedizione : IControllerPuntiSpedizione
-    {
+	{
+		private IFactoryRisorse factoryRisorse = new FactoryRisorse();
+		RepositoryPuntoSpedizione repository;
+
         public IPuntoSpedizione AggiornaIndirizzo(IPuntoSpedizione puntoSpedizione, IIndirizzo indirizzo)
         {
-            throw new NotImplementedException();
+			puntoSpedizione.indirizzo = indirizzo;
+			repository.aggiorna(puntoSpedizione);
+
+			return puntoSpedizione;
         }
 
         public IPuntoSpedizione CreaPuntoSpedizione(IIndirizzo indirizzo)
         {
-            throw new NotImplementedException();
+			IPuntoSpedizione punto = factoryRisorse.GetPuntoSpedizione();
+			punto.indirizzo = indirizzo;
+
+			//	Il punto di spedizione viene reso persistente
+			punto.id = repository.crea(punto);
+
+			return punto;
         }
 
         public void EliminaPuntoSpedizione(IPuntoSpedizione puntoSpedizione)
         {
-            throw new NotImplementedException();
+			repository.elimina(puntoSpedizione.id);
         }
 
         public IPuntoSpedizione RegistraArrivo(IPuntoSpedizione puntoSpedizione, DateTime orario)
         {
-            throw new NotImplementedException();
+			puntoSpedizione.orarioArrivo = orario;
+			repository.aggiorna(puntoSpedizione);
+
+			return puntoSpedizione;
         }
     }
 }

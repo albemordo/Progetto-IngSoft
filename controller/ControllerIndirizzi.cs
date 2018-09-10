@@ -33,7 +33,16 @@ namespace AutotrasportiFantini.controller
 
 		public IIndirizzo CreaIndirizzo(string qualificatore, string nome, string civico, string cap, string localita, string provincia)
 		{
-			IIndirizzo indirizzo = factoryRisorse.GetIndirizzo();
+			//	Prima di tutto l'indirizzo viene cercato
+			IIndirizzo indirizzo = repository.cercaIndirizzo(qualificatore, nome, civico, cap, localita, provincia);
+
+			//	Se è già presente, viene restituito
+			indirizzo = repository.cercaIndirizzo(qualificatore, nome, civico, cap, localita, provincia);
+			if (indirizzo != null)
+				return indirizzo;
+
+			//	Se non è presente, viene creato
+			indirizzo = factoryRisorse.GetIndirizzo();
 			AssegnaCampi(indirizzo, qualificatore, nome, civico, cap, localita, provincia);
 
 			//	L'indirizzo viene reso persistente
