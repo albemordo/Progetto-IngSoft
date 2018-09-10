@@ -1,5 +1,6 @@
 ﻿using AutotrasportiFantini.controller.interfacce;
 using AutotrasportiFantini.modello.interfacce;
+using AutotrasportiFantini.persistenza;
 using System;
 using System.Collections.Generic;
 
@@ -7,24 +8,31 @@ namespace AutotrasportiFantini.controller
 {
     class ControllerGestioneSpedizione : IControllerGestioneSpedizione
     {
-        public void AssegnaDelegato(ISpedizione spedizione, IDelegato delegato)
+		RepositorySpedizione repository;
+
+		public void AssegnaDelegato(ISpedizione spedizione, IDelegato delegato)
         {
-            throw new NotImplementedException();
+			spedizione.delegato = delegato;
+
+			//	L'assegnazione del delegato viene resa persistente
+			repository.aggiorna(spedizione);
         }
 
-        public ISpedizione CreaSpedizione(IIndirizzo partenzaz, IIndirizzo arrivo, List<IPuntoSpedizione> puntiSpedizione, float distanzaStimata, ITipologiaMerce tipologiaMerce, float quantitaMerce)
+        public ISpedizione CreaSpedizione(IIndirizzo partenza, IIndirizzo arrivo, List<IPuntoSpedizione> puntiSpedizione, float distanzaStimata, ITipologiaMerce tipologiaMerce, float quantitaMerce)
         {
             throw new NotImplementedException();
         }
 
         public void EliminaSpedizione(ISpedizione spedizione)
         {
-            throw new NotImplementedException();
+			repository.elimina(spedizione.id);
         }
 
         public ISpedizione ModificaDati(ISpedizione spedizione, IIndirizzo partenza, IIndirizzo arrivo, List<IPuntoSpedizione> puntiSpedizione, float distanzaStimata, ITipologiaMerce tipologiaMerce, float quantitaMerce, IAutista autista, IAutomezzo automezzo, IDelegato delegato, DateTime partenzaPrevista, DateTime arrivoPrevisto, DateTime partenzaEffettiva, DateTime arrivoEffettivo)
         {
-            throw new NotImplementedException();
+			spedizione.partenza = partenza;
+
+			return spedizione;
         }
     }
 }
