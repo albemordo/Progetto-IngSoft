@@ -2,6 +2,7 @@
 using AutotrasportiFantini.modello.factory;
 using AutotrasportiFantini.modello.interfacce;
 using AutotrasportiFantini.persistenza;
+using AutotrasportiFantini.persistenza.repository.factory;
 using System;
 using System.Collections.Generic;
 
@@ -9,8 +10,14 @@ namespace AutotrasportiFantini.controller
 {
     class ControllerGestioneSpedizione : IControllerGestioneSpedizione
     {
+		IPersistenzaSpedizione repository;
 		IRisorseFactory factory = new RisorseFactory();
-		RepositorySpedizione repository;
+
+		public ControllerGestioneSpedizione()
+		{
+			//	Init repository
+			repository = new RepositoryFactory(DbConnectionFactory.SupportedDBMS.postgresql, "TestDb").GetPersistenzaSpedizione();
+		}
 
 		public void AssegnaDelegato(ISpedizione spedizione, IDelegato delegato)
         {
@@ -37,10 +44,10 @@ namespace AutotrasportiFantini.controller
 			if (puntiSpedizione != null)
 				spedizione.puntiSpedizione = puntiSpedizione;
 
-			if (distanzaStimata > 0 && distanzaStimata != null)
+			if (distanzaStimata > 0)
 				spedizione.distanzaStimata = distanzaStimata;
 
-			if (quantitaMerce >= 0 && quantitaMerce != null)
+			if (quantitaMerce >= 0)
 				spedizione.quantitaMerce = quantitaMerce;
 
 			if (tipologiaMerce != null)
@@ -70,10 +77,10 @@ namespace AutotrasportiFantini.controller
 			if (puntiSpedizione != null)
 				spedizione.puntiSpedizione = puntiSpedizione;
 
-			if (distanzaStimata > 0 && distanzaStimata != null)
+			if (distanzaStimata > 0)
 				spedizione.distanzaStimata = distanzaStimata;
 
-			if (distanzaStimata >= 0 && quantitaMerce != null)
+			if (distanzaStimata >= 0)
 				spedizione.quantitaMerce = quantitaMerce;
 
 			if (tipologiaMerce != null)

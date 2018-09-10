@@ -1,8 +1,7 @@
 ﻿using AutotrasportiFantini.controller.interfacce;
-using AutotrasportiFantini.modello;
 using AutotrasportiFantini.modello.factory;
 using AutotrasportiFantini.modello.interfacce;
-using AutotrasportiFantini.persistenza.repository;
+using AutotrasportiFantini.persistenza;
 using AutotrasportiFantini.persistenza.repository.factory;
 using System;
 
@@ -10,8 +9,8 @@ namespace AutotrasportiFantini.controller
 {
     class ControllerIndirizzi : IControllerIndirizzi
     {
-		private IRisorseFactory factoryRisorse = new RisorseFactory();
-		private RepositoryIndirizzo repository;
+		private IPersistenzaIndirizzo repository;
+		private IRisorseFactory factory = new RisorseFactory();
 
 		private void AssegnaCampi(IIndirizzo indirizzo, string qualificatore, string nome, string civico, string cap, string localita, string provincia)
 		{
@@ -28,7 +27,7 @@ namespace AutotrasportiFantini.controller
 		public ControllerIndirizzi()
 		{
 			//	Init repository
-
+			repository = new RepositoryFactory(DbConnectionFactory.SupportedDBMS.postgresql, "TestDb").GetPersistenzaIndirizzo();
 		}
 
 		public IIndirizzo CreaIndirizzo(string qualificatore, string nome, string civico, string cap, string localita, string provincia)
@@ -42,7 +41,7 @@ namespace AutotrasportiFantini.controller
 				return indirizzo;
 
 			//	Se non è presente, viene creato
-			indirizzo = factoryRisorse.GetIndirizzo();
+			indirizzo = factory.GetIndirizzo();
 			AssegnaCampi(indirizzo, qualificatore, nome, civico, cap, localita, provincia);
 
 			//	L'indirizzo viene reso persistente

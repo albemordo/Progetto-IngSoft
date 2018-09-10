@@ -1,15 +1,23 @@
 ﻿using AutotrasportiFantini.controller.interfacce;
 using AutotrasportiFantini.modello.interfacce;
 using AutotrasportiFantini.persistenza;
+using AutotrasportiFantini.persistenza.repository.factory;
 using System;
 
 namespace AutotrasportiFantini.controller
 {
     class ControllerAssegnazioneSpedizione : IControllerAssegnazioneSpedizione
     {
-		RepositorySpedizione repository;
+		
+		IPersistenzaSpedizione repository;
 
-        public void AssegnaAutista(ISpedizione spedizione, IAutista autista)
+		public ControllerAssegnazioneSpedizione()
+		{
+			//	Init repository
+			repository = new RepositoryFactory(DbConnectionFactory.SupportedDBMS.postgresql, "TestDb").GetPersistenzaSpedizione();
+		}
+
+		public void AssegnaAutista(ISpedizione spedizione, IAutista autista)
         {
 			spedizione.autista = autista;
 

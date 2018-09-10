@@ -2,14 +2,21 @@
 using AutotrasportiFantini.modello.factory;
 using AutotrasportiFantini.modello.interfacce;
 using AutotrasportiFantini.persistenza;
+using AutotrasportiFantini.persistenza.repository.factory;
 using System;
 
 namespace AutotrasportiFantini.controller
 {
     class ControllerPuntiSpedizione : IControllerPuntiSpedizione
 	{
-		private IRisorseFactory factoryRisorse = new RisorseFactory();
-		RepositoryPuntoSpedizione repository;
+		private IPersistenzaPuntoSpedizione repository;
+		private IRisorseFactory factory = new RisorseFactory();
+
+		public ControllerPuntiSpedizione()
+		{
+			//	Init repository
+			repository = new RepositoryFactory(DbConnectionFactory.SupportedDBMS.postgresql, "TestDb").GetPersistenzaPuntoSpedizione();
+		}
 
         public IPuntoSpedizione AggiornaIndirizzo(IPuntoSpedizione puntoSpedizione, IIndirizzo indirizzo)
         {
@@ -21,7 +28,7 @@ namespace AutotrasportiFantini.controller
 
         public IPuntoSpedizione CreaPuntoSpedizione(IIndirizzo indirizzo)
         {
-			IPuntoSpedizione punto = factoryRisorse.GetPuntoSpedizione();
+			IPuntoSpedizione punto = factory.GetPuntoSpedizione();
 			punto.indirizzo = indirizzo;
 
 			//	Il punto di spedizione viene reso persistente

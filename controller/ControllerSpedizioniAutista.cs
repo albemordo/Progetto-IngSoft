@@ -1,14 +1,22 @@
 ﻿using AutotrasportiFantini.controller.interfacce;
 using AutotrasportiFantini.modello.interfacce;
 using AutotrasportiFantini.persistenza;
+using AutotrasportiFantini.persistenza.repository.factory;
 using System;
 
 namespace AutotrasportiFantini.controller
 {
     class ControllerSpedizioniAutista : IControllerSpedizioniAutista
     {
-		RepositorySpedizione repository;
-		RepositoryPuntoSpedizione repositoryPuntoSpedizione;
+		IPersistenzaSpedizione repositorySpedizione;
+		IPersistenzaPuntoSpedizione repositoryPuntoSpedizione;
+
+		public ControllerSpedizioniAutista()
+		{
+			//	Init repository
+			repositorySpedizione = new RepositoryFactory(DbConnectionFactory.SupportedDBMS.postgresql, "TestDb").GetPersistenzaSpedizione();
+			repositoryPuntoSpedizione = new RepositoryFactory(DbConnectionFactory.SupportedDBMS.postgresql, "TestDb").GetPersistenzaPuntoSpedizione();
+		}
 
 		public void RegistraFineSpedizione(ISpedizione spedizione, DateTime arrivo, float distanzaEffettiva, int tempoEffettivo)
         {
@@ -18,7 +26,7 @@ namespace AutotrasportiFantini.controller
 			spedizione.tempoPercorrenza = tempoEffettivo;
 
 			//	Le modifiche vengono rese persistenti
-			repository.aggiorna(spedizione);
+			repositorySpedizione.aggiorna(spedizione);
         }
 
         public void RegistraPartenza(ISpedizione spedizione, DateTime partenza)
@@ -27,7 +35,7 @@ namespace AutotrasportiFantini.controller
 			spedizione.orarioEffettivoPartenza = partenza;
 
 			//	La modifica viene resa persistente
-			repository.aggiorna(spedizione);
+			repositorySpedizione.aggiorna(spedizione);
         }
 
         public void RegistraPuntoSpedizione(ISpedizione spedizione, IPuntoSpedizione punto, DateTime orario)
