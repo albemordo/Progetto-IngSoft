@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutotrasportiFantini.persistenza.factory
+namespace AutotrasportiFantini.persistenza.repository.factory
 {
     interface IConfigurationConnectionFactory
     {

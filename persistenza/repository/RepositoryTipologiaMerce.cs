@@ -3,35 +3,35 @@ using System.Collections.Generic;
 using AutotrasportiFantini.modello.interfacce;
 using System.Data;
 
-namespace AutotrasportiFantini.persistenza
+namespace AutotrasportiFantini.persistenza.repository
 {
-    class RepositoryTipologiaMerce : RepositoryBase<ITipologiaMerce, int>
+    class RepositoryTipologiaMerce : RepositoryBase, IPersistenzaTipologiaMerce
     {
         public RepositoryTipologiaMerce(IDbConnection connection) : base(connection)
         {
         }
 
-        public override bool aggiorna(ITipologiaMerce oggetto)
+        public bool aggiorna(ITipologiaMerce oggetto)
         {
             throw new NotImplementedException();
         }
 
-        public override int crea(ITipologiaMerce oggetto)
+        public int crea(ITipologiaMerce oggetto)
         {
             throw new NotImplementedException();
         }
 
-        public override List<ITipologiaMerce> elencaTutti()
+        public List<ITipologiaMerce> elencaTutti()
         {
             throw new NotImplementedException();
         }
 
-        public override void elimina(int id)
+        public void elimina(int id)
         {
             throw new NotImplementedException();
         }
 
-        public override ITipologiaMerce getById(int id)
+        public ITipologiaMerce getById(int id)
         {
             throw new NotImplementedException();
         }

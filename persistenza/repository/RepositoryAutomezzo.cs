@@ -5,14 +5,14 @@ using AutotrasportiFantini.modello.interfacce;
 using AutotrasportiFantini.modello.factory;
 using System.Data;
 
-namespace AutotrasportiFantini.persistenza
+namespace AutotrasportiFantini.persistenza.repository
 {
-    class RepositoryAutomezzo : RepositoryBase<IAutomezzo, String>
+    class RepositoryAutomezzo : RepositoryBase, IPersistenzaAutomezzo
     {
         public RepositoryAutomezzo(IDbConnection connection) : base(connection)
         {
         }
-        public override bool aggiorna(IAutomezzo oggetto)
+        public bool aggiorna(IAutomezzo oggetto)
         {
             String sql = "UPDATE Automezzo SET targa = @Targa, modello = @Modello, produttore = @Produttore," +
                 "targa_rimorchio = @TargaRimorchio, cod_delegato = @CodiceDelegato WHERE targa = @Targa";
@@ -25,7 +25,7 @@ namespace AutotrasportiFantini.persistenza
             }
         }
 
-        public override String crea(IAutomezzo oggetto)
+        public String crea(IAutomezzo oggetto)
         {
             String sql = "INSERT INTO Automezzo (targa, modello, produttore, targa_rimorchio, cod_delegato)" +
                 "VALUES (@Targa, @Modello, @Produttore, @TargaRimorchio, @CodiceDelegato) RETURNING targa";
@@ -38,7 +38,7 @@ namespace AutotrasportiFantini.persistenza
             }
         }
 
-        public override List<IAutomezzo> elencaTutti()
+        public List<IAutomezzo> elencaTutti()
         {
             String sql = "SELECT * FROM Automezzo";
 
@@ -74,7 +74,7 @@ namespace AutotrasportiFantini.persistenza
             }
         }
 
-        public override void elimina(String id)
+        public void elimina(String id)
         {
             String sql = "DELETE FROM Automezzo WHERE targa = @Targa";
 
@@ -84,7 +84,7 @@ namespace AutotrasportiFantini.persistenza
             }
         }
 
-        public override IAutomezzo getById(String id)
+        public IAutomezzo getById(String id)
         {
             String sql = "SELECT * FROM Automezzo WHERE targa LIKE @TargaAutomezzo";
 
