@@ -5,24 +5,19 @@ namespace AutotrasportiFantini.modello
 {
 	abstract class FactoryUtenti
 	{
+		public enum UTENTI { AUTISTA , DELEGATO, RESPONSABILE }
 
-		public static readonly string DELEGATO = "delegato";
-
-		public static readonly string RESPONSABILE = "responsabile";
-
-		public static readonly string AUTISTA = "autista";
-
-		public static IUtente GetUtente(string ruolo)
+		public static IUtente GetUtente(int ruolo)
 		{
 			IUtente utente = null;
-			if (ruolo.ToLower().Equals(RESPONSABILE))
+			if (ruolo.Equals(UTENTI.RESPONSABILE))
 				utente = FactoryResponsabili.GetResponsabile();
-			else if (ruolo.ToLower().Equals(AUTISTA))
+			else if (ruolo.Equals(UTENTI.AUTISTA))
 				utente = FactoryAutisti.GetAutista();
-			else if (ruolo.ToLower().Equals(DELEGATO))
+			else if (ruolo.Equals(UTENTI.DELEGATO))
 				utente = FactoryDelegati.GetDelegato();
 			else
-				throw new ArgumentException("Ruolo non definito");
+				throw new ArgumentException("Ruolo non definito", "ruolo");
 
 			return utente;
 		}
