@@ -24,7 +24,7 @@ namespace AutotrasportiFantini.controller
 		private ISorgenteDati sorgente = new SorgenteDati();
 
 		//	Classe che aiuta a parsificare le stringhe json
-		private JsonHelper helper = new JsonHelper();
+		private JsonParser helper = new JsonParser();
 
 		private List<IUtente> ParsificaListaUtenti(int qualeLista)
 		{
@@ -82,9 +82,6 @@ namespace AutotrasportiFantini.controller
 
         public IUtente VerificaCredenziali(string username, string password)
         {
-			/**
-			*	TODO: controllo errori
-			*/
 
 			//	Ottenimento dell'oggetto dei dati parsati
 			string dati = sorgente.VerificaUtente(username, password);
@@ -94,14 +91,6 @@ namespace AutotrasportiFantini.controller
 				return null;
 
 			return helper.ParsificaUtente(dati);
-		}
-
-        
-        public static void Main(string[] args)
-        {
-			ControllerGestioneDipendenti gd = new ControllerGestioneDipendenti();
-			Console.WriteLine(gd.ListaAutisti()[1].ToString());
-
 		}
         
     }

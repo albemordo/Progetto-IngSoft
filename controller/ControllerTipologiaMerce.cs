@@ -24,10 +24,10 @@ namespace AutotrasportiFantini.controller
 			tipologiaMerce.tipologia = tipologia;
 
 			//	La tipologia viene resa persistente
-			repository.crea(tipologiaMerce);
+			tipologiaMerce.id = repository.crea(tipologiaMerce);
 
-			//	Lettura della tipologia, per ottenerne l'id
-			//tipologiaMerce = repository.cercaTipologia(tipologia);
+			if (tipologiaMerce.id < 0)
+				return null;
 
 			return tipologiaMerce;
 		}

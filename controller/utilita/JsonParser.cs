@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace AutotrasportiFantini.controller
 {
-	class JsonHelper
+	class JsonParser
 	{
 
 		/**
@@ -13,25 +13,11 @@ namespace AutotrasportiFantini.controller
 		 *	"nomi" delle chiavi della stringa Json, ottenuta
 		 *	dal sistema esterno. Se in futuro il loro formato
 		 *	verrà cambiato, basterà cambiare il valore di tali campi
-		 *	TODO: Metti enum
 		 */
 		private readonly string IDAZIENDALE = "idAziendale";
 		private readonly string NOME = "nome";
 		private readonly string COGNOME = "cognome";
 		private readonly string RUOLO = "ruolo";
-
-		private int GetRuolo(string ruolo)
-		{
-			int ruoloId = -1;
-			if (ruolo.ToLower().Equals("delegato"))
-				ruoloId = (int)FactoryUtenti.UTENTI.DELEGATO;
-			else if (ruolo.ToLower().Equals("responsabile"))
-				ruoloId = (int)FactoryUtenti.UTENTI.RESPONSABILE;
-			else if (ruolo.ToLower().Equals("autista"))
-				ruoloId = (int)FactoryUtenti.UTENTI.AUTISTA;
-
-			return ruoloId;
-		}
 
 		public IUtente ParsificaUtente(string json)
 		{
@@ -41,7 +27,7 @@ namespace AutotrasportiFantini.controller
 			JObject datiParsati = JObject.Parse(json);
 
 			//	Ottenimento del ruolo
-			ruolo = GetRuolo((string)datiParsati[RUOLO]);
+			ruolo = RoleResolver.GetRuolo((string)datiParsati[RUOLO]);
 
 			//	Controllo del codice del ruolo
 			if (ruolo < 0)
@@ -77,7 +63,7 @@ namespace AutotrasportiFantini.controller
 					//	Nessun errore
 
 					//	Ottenimento del ruolo
-					ruolo = GetRuolo((string)token[RUOLO]);
+					ruolo = RoleResolver.GetRuolo((string)token[RUOLO]);
 
 					utente = FactoryUtenti.GetUtente(ruolo);
 

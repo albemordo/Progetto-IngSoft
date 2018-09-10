@@ -26,8 +26,8 @@ namespace AutotrasportiFantini.controller
 			//	Controlla che i dati siano corretti
 			if ((utente = autenticazione.VerificaCredenziali(username, password)) != null)
 			{
-				
 				//	Dati Corretti
+
 				UtenteAutenticato = utente;
 				esito = true;
 			}

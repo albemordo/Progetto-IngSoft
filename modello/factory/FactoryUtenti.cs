@@ -10,11 +10,11 @@ namespace AutotrasportiFantini.modello
 		public static IUtente GetUtente(int ruolo)
 		{
 			IUtente utente = null;
-			if (ruolo.Equals(UTENTI.RESPONSABILE))
+			if (ruolo.Equals((int)UTENTI.RESPONSABILE))
 				utente = FactoryResponsabili.GetResponsabile();
-			else if (ruolo.Equals(UTENTI.AUTISTA))
+			else if (ruolo.Equals((int)UTENTI.AUTISTA))
 				utente = FactoryAutisti.GetAutista();
-			else if (ruolo.Equals(UTENTI.DELEGATO))
+			else if (ruolo.Equals((int)UTENTI.DELEGATO))
 				utente = FactoryDelegati.GetDelegato();
 			else
 				throw new ArgumentException("Ruolo non definito", "ruolo");
