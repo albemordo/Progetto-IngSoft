@@ -118,6 +118,8 @@ namespace AutotrasportiFantini.view.gestione
 
             spedizioni = new List<ISpedizione>();
             spedizioni.Add(spedizione);
+
+            dataTable.Rows.Clear();
             foreach (Spedizione sp in spedizioni)
             {
                 dataTable.Rows.Add(sp.id, sp.partenza.localita, sp.destinazione.localita, sp.puntiSpedizione, sp.distanzaStimata, sp.tipologiaMerce.tipologia, sp.quantitaMerce,

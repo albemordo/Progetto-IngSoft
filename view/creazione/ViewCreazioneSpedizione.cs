@@ -1,5 +1,4 @@
-﻿using AutotrasportiFantini.modello;
-using AutotrasportiFantini.modello.factory;
+﻿using AutotrasportiFantini.modello.factory;
 using AutotrasportiFantini.modello.interfacce;
 using AutotrasportiFantini.persistenza;
 using AutotrasportiFantini.persistenza.repository.factory;

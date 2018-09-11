@@ -5,15 +5,7 @@ using AutotrasportiFantini.modello.interfacce;
 using AutotrasportiFantini.persistenza;
 using AutotrasportiFantini.persistenza.repository.factory;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
 
 namespace AutotrasportiFantini.view
 {
@@ -31,12 +23,15 @@ namespace AutotrasportiFantini.view
             automezzo.produttore = this.marcaBox.Text;
             automezzo.targa = this.targaBox.Text;
             automezzo.targaRimorchio = this.targaRimorchioBox.Text;
-            IControllerAutenticazione controller = ControllerAutenticazione.GetIstanza();
-            IUtente utente = controller.GetUtenteAutenticato();
+            utente = ControllerAutenticazione.GetIstanza().GetUtenteAutenticato();
             automezzo.codiceDelegato = utente.idAziendale;
-            IPersistenzaFactory factoryPersistenza = new RepositoryFactory(DbConnectionFactory.SupportedDBMS.postgresql, "TestDb");
-            IPersistenzaAutomezzo repoPersistenza = factoryPersistenza.GetPersistenzaAutomezzo();
+            repoPersistenza = factoryPersistenza.GetPersistenzaAutomezzo();
             repoPersistenza.crea(automezzo);
         }
+
+        private IPersistenzaFactory factoryPersistenza = new RepositoryFactory(DbConnectionFactory.SupportedDBMS.postgresql, "TestDb");
+        private IPersistenzaAutomezzo repoPersistenza;
+        private IUtente utente;
+        IControllerAutenticazione controller;
     }
 }
