@@ -90,9 +90,9 @@
     <Compile Include="controller\interfacce\ISistemaLog.cs" />
     <Compile Include="controller\interfacce\ISorgenteDati.cs" />
     <Compile Include="controller\utilita\JsonParser.cs" />
-    <Compile Include="controller\utilita\RoleResolver.cs" />
     <Compile Include="controller\SistemaLog.cs" />
     <Compile Include="controller\SorgenteDati.cs" />
+    <Compile Include="controller\utilita\RoleResolver.cs" />
     <Compile Include="modello\Autista.cs" />
     <Compile Include="modello\factory\AutistiFactory.cs" />
     <Compile Include="modello\Automezzo.cs" />
@@ -134,7 +134,7 @@
     <Compile Include="persistenza\repository\RepositorySpedizione.cs" />
     <Compile Include="persistenza\repository\RepositoryTipologiaMerce.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="test\Program.cs" />
+    <Compile Include="test\TestGestioneDipendenti.cs" />
     <Compile Include="view\dettagli\ViewDettagliAutomezzo.cs">
       <SubType>Form</SubType>
     </Compile>
