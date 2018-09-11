@@ -11,7 +11,7 @@ namespace AutotrasportiFantini.controller
 {
     class ControllerPuntiSpedizione : IControllerPuntiSpedizione
 	{
-		IPersistenzaPuntoSpedizione repository;
+		IPersistenzaSpedizione repository;
 		IRisorseFactory factory = new RisorseFactory();
 
 		//	Logger
@@ -20,13 +20,12 @@ namespace AutotrasportiFantini.controller
 		public ControllerPuntiSpedizione()
 		{
 			//	Init repository
-			repository = new RepositoryFactory(DbConnectionFactory.SupportedDBMS.postgresql, "TestDb").GetPersistenzaPuntoSpedizione();
+			repository = new RepositoryFactory(DbConnectionFactory.SupportedDBMS.postgresql, "TestDb").GetPersistenzaSpedizione();
 		}
 
         public IPuntoSpedizione AggiornaIndirizzo(IPuntoSpedizione puntoSpedizione, IIndirizzo indirizzo)
         {
 			puntoSpedizione.indirizzo = indirizzo;
-			repository.aggiorna(puntoSpedizione);
 
 			//	Log operazione
 			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha aggiornato il punto di sped. "+puntoSpedizione.id+", assegnandogli l'indirizzo "+indirizzo);
@@ -39,9 +38,6 @@ namespace AutotrasportiFantini.controller
 			IPuntoSpedizione punto = factory.GetPuntoSpedizione();
 			punto.indirizzo = indirizzo;
 
-			//	Il punto di spedizione viene reso persistente
-			punto.id = repository.crea(punto);
-
 			//	Log operazione
 			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha creato il punto di spedizione "+punto.id+", avente come indirizzo "+indirizzo);
 
@@ -50,8 +46,6 @@ namespace AutotrasportiFantini.controller
 
         public void EliminaPuntoSpedizione(IPuntoSpedizione puntoSpedizione)
         {
-			repository.elimina(puntoSpedizione.id);
-
 			//	Log operazione
 			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha eliminato il punto di spedizione "+puntoSpedizione.indirizzo+" della spedizione "+puntoSpedizione.spedizione);
 		}
@@ -59,7 +53,6 @@ namespace AutotrasportiFantini.controller
         public IPuntoSpedizione RegistraArrivo(IPuntoSpedizione puntoSpedizione, DateTime orario)
         {
 			puntoSpedizione.orarioArrivo = orario;
-			repository.aggiorna(puntoSpedizione);
 
 			//	Log operazione
 			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha confermato l'arrivo al punto di spedizione "+puntoSpedizione.indirizzo+" della spedizione "+puntoSpedizione.spedizione);

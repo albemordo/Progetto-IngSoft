@@ -48,7 +48,7 @@ namespace AutotrasportiFantini.controller
 			AssegnaCampi(indirizzo, qualificatore, nome, civico, cap, localita, provincia);
 
 			//	L'indirizzo viene reso persistente
-			indirizzo.id = repository.crea(indirizzo);
+			indirizzo = repository.crea(indirizzo);
 
 			if (indirizzo.id < 0)
 				return null;

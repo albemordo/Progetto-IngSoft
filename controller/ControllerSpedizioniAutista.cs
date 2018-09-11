@@ -11,7 +11,6 @@ namespace AutotrasportiFantini.controller
     class ControllerSpedizioniAutista : IControllerSpedizioniAutista
     {
 		IPersistenzaSpedizione repositorySpedizione;
-		IPersistenzaPuntoSpedizione repositoryPuntoSpedizione;
 
 		//	Logger
 		IControllerLog logger = ControllerLog.GetIstanza();
@@ -20,7 +19,6 @@ namespace AutotrasportiFantini.controller
 		{
 			//	Init repository
 			repositorySpedizione = new RepositoryFactory(DbConnectionFactory.SupportedDBMS.postgresql, "TestDb").GetPersistenzaSpedizione();
-			repositoryPuntoSpedizione = new RepositoryFactory(DbConnectionFactory.SupportedDBMS.postgresql, "TestDb").GetPersistenzaPuntoSpedizione();
 		}
 
 		public void RegistraFineSpedizione(ISpedizione spedizione, DateTime arrivo, float distanzaEffettiva, int tempoEffettivo)
@@ -53,8 +51,12 @@ namespace AutotrasportiFantini.controller
         {
 			punto.orarioArrivo = orario;
 
+			foreach (IPuntoSpedizione ps in spedizione.puntiSpedizione)
+				if (ps.id == punto.id)
+					ps.orarioArrivo = orario;
+
 			//	L'arrivo ad un punto di spedizione viene reso persistente
-			repositoryPuntoSpedizione.aggiorna(punto);
+			repositorySpedizione.aggiorna(spedizione);
 
 			//	Log operazione
 			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha registrato l'orario di arrivo "+orario+" al punto di spedizione "+punto.indirizzo+" per la spededizione "+spedizione.id);

@@ -58,7 +58,7 @@ namespace AutotrasportiFantini.controller
 				spedizione.tipologiaMerce = tipologiaMerce;
 
 			//	La spedizione viene creata e resa persistente
-			repository.crea(spedizione);
+			spedizione = repository.crea(spedizione);
 
 			return spedizione;
         }

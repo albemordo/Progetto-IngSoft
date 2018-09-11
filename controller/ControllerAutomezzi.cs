@@ -38,7 +38,8 @@ namespace AutotrasportiFantini.controller
 			AssegnaCampi(automezzo, targa, produttore, modello, targaRimorchio, delegato);
 
 			//	L'automezzo viene reso persistente
-			if(repository.crea(automezzo) == null)
+			automezzo = repository.crea(automezzo);
+			if(automezzo == null)
 				return null;
 
 			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha aggiunto l'automezzo "+automezzo.targa);

@@ -118,40 +118,23 @@
     <Compile Include="modello\factory\ResponsabiliFactory.cs" />
     <Compile Include="modello\TipologiaMerce.cs" />
     <Compile Include="modello\Spedizione.cs" />
-<<<<<<< HEAD
-=======
     <Compile Include="modello\factory\UtentiFactory.cs" />
-    <Compile Include="persistenza\IPersistenzaAutomezzo.cs" />
-    <Compile Include="persistenza\IPersistenzaCRUD.cs" />
->>>>>>> 7b5f87223ac177ed19eda196b2ff537e08c6ee8e
     <Compile Include="persistenza\IPersistenzaFactory.cs" />
     <Compile Include="persistenza\IPersistenzaIndirizzo.cs" />
-    <Compile Include="persistenza\IPersistenzaPuntoSpedizione.cs" />
     <Compile Include="persistenza\IPersistenzaSpedizione.cs" />
     <Compile Include="persistenza\IPersistenzaTipologiaMerce.cs" />
     <Compile Include="persistenza\RepositoryFactory.cs" />
     <Compile Include="persistenza\repository\factory\DbConnectionFactory.cs" />
-<<<<<<< HEAD
-    <Compile Include="modello\factory\FactoryUtenti.cs" />
-    <Compile Include="persistenza\repository\factory\IConfigurationConnectionFactory.cs" />
     <Compile Include="persistenza\IPersistenzaCRUD.cs" />
     <Compile Include="persistenza\IPersistenzaAutomezzo.cs" />
-=======
     <Compile Include="persistenza\repository\factory\IConfigurationConnectionFactory.cs" />
-    <Compile Include="persistenza\repository\factory\PostgresqlConnectionFactory.cs" />
->>>>>>> 7b5f87223ac177ed19eda196b2ff537e08c6ee8e
     <Compile Include="persistenza\repository\RepositoryAutomezzo.cs" />
     <Compile Include="persistenza\repository\RepositoryBase.cs" />
     <Compile Include="persistenza\repository\RepositoryIndirizzo.cs" />
-    <Compile Include="persistenza\repository\RepositoryPuntoSpedizione.cs" />
     <Compile Include="persistenza\repository\RepositorySpedizione.cs" />
     <Compile Include="persistenza\repository\RepositoryTipologiaMerce.cs" />
-<<<<<<< HEAD
     <Compile Include="persistenza\repository\factory\PostgresqlConnectionFactory.cs" />
-=======
->>>>>>> 7b5f87223ac177ed19eda196b2ff537e08c6ee8e
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="test\Program.cs" />
     <Compile Include="view\dettagli\ViewDettagliAutomezzo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -491,6 +474,7 @@
     <Folder Include="bin\Release\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="persistenza\factory\" />
+    <Folder Include="test\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
