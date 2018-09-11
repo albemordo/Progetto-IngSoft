@@ -2,7 +2,7 @@
 
 namespace AutotrasportiFantini.modello.interfacce
 {
-    interface IPuntoSpedizione
+    public interface IPuntoSpedizione
     {
         int id { get; set; }
         IIndirizzo indirizzo { get; set; }

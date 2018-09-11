@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AutotrasportiFantini.modello.interfacce
 {
-    interface ISpedizione
+    public interface ISpedizione
     {
         int id { get; set; }
         float distanzaStimata { get; set; }

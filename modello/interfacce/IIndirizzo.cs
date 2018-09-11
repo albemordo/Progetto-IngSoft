@@ -2,7 +2,7 @@
 
 namespace AutotrasportiFantini.modello.interfacce
 {
-    interface IIndirizzo
+    public interface IIndirizzo
     {
         int id { get; set; }
         String qualificatore { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace AutotrasportiFantini.modello.interfacce
 {
-    interface IResponsabile : IUtente
+    public interface IResponsabile : IUtente
     {
     }
 }

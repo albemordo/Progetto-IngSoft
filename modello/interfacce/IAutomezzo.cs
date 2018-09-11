@@ -2,7 +2,7 @@
 
 namespace AutotrasportiFantini.modello.interfacce
 {
-    interface IAutomezzo
+    public interface IAutomezzo
     {
         String targa { get; set; }
         String produttore { get; set; }

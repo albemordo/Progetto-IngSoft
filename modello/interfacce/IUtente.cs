@@ -2,7 +2,7 @@
 
 namespace AutotrasportiFantini.modello.interfacce
 {
-    interface IUtente
+    public interface IUtente
     {
         String idAziendale { get; set; }
         String nome { get; set; }
