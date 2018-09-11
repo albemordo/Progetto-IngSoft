@@ -86,7 +86,7 @@
     <Compile Include="controller\interfacce\IControllerLog.cs" />
     <Compile Include="controller\interfacce\IControllerPuntiSpedizione.cs" />
     <Compile Include="controller\interfacce\IControllerSpedizioniAutista.cs" />
-    <Compile Include="controller\interfacce\IControllerTipologieMerce.cs" />
+    <Compile Include="controller\interfacce\IControllerTipologiaMerce.cs" />
     <Compile Include="controller\interfacce\ISistemaLog.cs" />
     <Compile Include="controller\interfacce\ISorgenteDati.cs" />
     <Compile Include="controller\utilita\JsonParser.cs" />

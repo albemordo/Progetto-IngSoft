@@ -14,7 +14,7 @@ namespace AutotrasportiFantini.view
 
         private void confermaButton_Click(object sender, EventArgs e)
         {
-            IControllerTipologieMerce controllerTipologiaMerce = new ControllerTipologiaMerce();
+            IControllerTipologiaMerce controllerTipologiaMerce = new ControllerTipologiaMerce();
             controllerTipologiaMerce.CreaTipologiaMerce(this.nomeTipologiaBox.Text);
         }
     }

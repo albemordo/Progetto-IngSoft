@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace AutotrasportiFantini.controller
 {
-    class ControllerTipologiaMerce : IControllerTipologieMerce
+    class ControllerTipologiaMerce : IControllerTipologiaMerce
     {
 		IPersistenzaTipologiaMerce repository;
 		IRisorseFactory factory = new RisorseFactory();

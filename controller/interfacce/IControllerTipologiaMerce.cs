@@ -4,7 +4,7 @@ using AutotrasportiFantini.modello.interfacce;
 
 namespace AutotrasportiFantini.controller.interfacce
 {
-    interface IControllerTipologieMerce
+    interface IControllerTipologiaMerce
     {
         List<ITipologiaMerce> ListaTipologieMerce();
         ITipologiaMerce CreaTipologiaMerce(String tipologia);
