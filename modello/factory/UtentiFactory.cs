@@ -7,6 +7,7 @@ namespace AutotrasportiFantini.modello
 	{
 		public enum Utenti { AUTISTA , DELEGATO, RESPONSABILE };
 
+
 		public static IUtente GetUtente(Utenti ruolo)
 		{
 			IUtente utente = null;
