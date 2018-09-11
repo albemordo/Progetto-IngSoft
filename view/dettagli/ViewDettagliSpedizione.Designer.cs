@@ -78,26 +78,30 @@
             this.dateTimePickerArrivoEffettivo = new System.Windows.Forms.DateTimePicker();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
+            this.tempoStimatoBox = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.automezzoComboBox = new System.Windows.Forms.ComboBox();
+            this.label21 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable)).BeginInit();
             this.SuspendLayout();
             // 
             // quantitaBox
             // 
-            this.quantitaBox.Location = new System.Drawing.Point(720, 143);
+            this.quantitaBox.Location = new System.Drawing.Point(808, 133);
             this.quantitaBox.Name = "quantitaBox";
             this.quantitaBox.Size = new System.Drawing.Size(108, 20);
             this.quantitaBox.TabIndex = 24;
             // 
             // tipologiaMerceBox
             // 
-            this.tipologiaMerceBox.Location = new System.Drawing.Point(720, 104);
+            this.tipologiaMerceBox.Location = new System.Drawing.Point(808, 94);
             this.tipologiaMerceBox.Name = "tipologiaMerceBox";
             this.tipologiaMerceBox.Size = new System.Drawing.Size(108, 20);
             this.tipologiaMerceBox.TabIndex = 23;
             // 
             // distanzaBox
             // 
-            this.distanzaBox.Location = new System.Drawing.Point(720, 28);
+            this.distanzaBox.Location = new System.Drawing.Point(808, 18);
             this.distanzaBox.Name = "distanzaBox";
             this.distanzaBox.Size = new System.Drawing.Size(108, 20);
             this.distanzaBox.TabIndex = 22;
@@ -105,7 +109,7 @@
             // quantitaLabel
             // 
             this.quantitaLabel.AutoSize = true;
-            this.quantitaLabel.Location = new System.Drawing.Point(567, 146);
+            this.quantitaLabel.Location = new System.Drawing.Point(655, 136);
             this.quantitaLabel.Name = "quantitaLabel";
             this.quantitaLabel.Size = new System.Drawing.Size(80, 13);
             this.quantitaLabel.TabIndex = 17;
@@ -114,7 +118,7 @@
             // tipologiaLabel
             // 
             this.tipologiaLabel.AutoSize = true;
-            this.tipologiaLabel.Location = new System.Drawing.Point(567, 107);
+            this.tipologiaLabel.Location = new System.Drawing.Point(655, 97);
             this.tipologiaLabel.Name = "tipologiaLabel";
             this.tipologiaLabel.Size = new System.Drawing.Size(83, 13);
             this.tipologiaLabel.TabIndex = 16;
@@ -123,7 +127,7 @@
             // distanzaStimataLabel
             // 
             this.distanzaStimataLabel.AutoSize = true;
-            this.distanzaStimataLabel.Location = new System.Drawing.Point(567, 31);
+            this.distanzaStimataLabel.Location = new System.Drawing.Point(655, 21);
             this.distanzaStimataLabel.Name = "distanzaStimataLabel";
             this.distanzaStimataLabel.Size = new System.Drawing.Size(86, 13);
             this.distanzaStimataLabel.TabIndex = 15;
@@ -131,7 +135,7 @@
             // 
             // eliminaButton
             // 
-            this.eliminaButton.Location = new System.Drawing.Point(648, 344);
+            this.eliminaButton.Location = new System.Drawing.Point(643, 337);
             this.eliminaButton.Name = "eliminaButton";
             this.eliminaButton.Size = new System.Drawing.Size(101, 26);
             this.eliminaButton.TabIndex = 26;
@@ -140,7 +144,7 @@
             // 
             // modificaButton
             // 
-            this.modificaButton.Location = new System.Drawing.Point(525, 344);
+            this.modificaButton.Location = new System.Drawing.Point(520, 337);
             this.modificaButton.Name = "modificaButton";
             this.modificaButton.Size = new System.Drawing.Size(101, 26);
             this.modificaButton.TabIndex = 25;
@@ -370,7 +374,7 @@
             // 
             // distanzaEffettivaBox
             // 
-            this.distanzaEffettivaBox.Location = new System.Drawing.Point(720, 67);
+            this.distanzaEffettivaBox.Location = new System.Drawing.Point(808, 57);
             this.distanzaEffettivaBox.Name = "distanzaEffettivaBox";
             this.distanzaEffettivaBox.Size = new System.Drawing.Size(108, 20);
             this.distanzaEffettivaBox.TabIndex = 52;
@@ -378,7 +382,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(567, 70);
+            this.label13.Location = new System.Drawing.Point(655, 60);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(90, 13);
             this.label13.TabIndex = 51;
@@ -386,7 +390,7 @@
             // 
             // delegaButton
             // 
-            this.delegaButton.Location = new System.Drawing.Point(784, 344);
+            this.delegaButton.Location = new System.Drawing.Point(779, 337);
             this.delegaButton.Name = "delegaButton";
             this.delegaButton.Size = new System.Drawing.Size(101, 26);
             this.delegaButton.TabIndex = 53;
@@ -397,7 +401,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(481, 274);
+            this.label14.Location = new System.Drawing.Point(491, 216);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(39, 13);
             this.label14.TabIndex = 54;
@@ -406,7 +410,7 @@
             // autistaComboBox
             // 
             this.autistaComboBox.FormattingEnabled = true;
-            this.autistaComboBox.Location = new System.Drawing.Point(570, 270);
+            this.autistaComboBox.Location = new System.Drawing.Point(580, 212);
             this.autistaComboBox.Name = "autistaComboBox";
             this.autistaComboBox.Size = new System.Drawing.Size(211, 21);
             this.autistaComboBox.TabIndex = 55;
@@ -414,15 +418,16 @@
             // delegatoComboBox
             // 
             this.delegatoComboBox.FormattingEnabled = true;
-            this.delegatoComboBox.Location = new System.Drawing.Point(570, 308);
+            this.delegatoComboBox.Location = new System.Drawing.Point(580, 250);
             this.delegatoComboBox.Name = "delegatoComboBox";
             this.delegatoComboBox.Size = new System.Drawing.Size(211, 21);
             this.delegatoComboBox.TabIndex = 57;
+            this.delegatoComboBox.SelectedIndexChanged += new System.EventHandler(this.delegatoComboBox_SelectedIndexChanged);
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(481, 312);
+            this.label15.Location = new System.Drawing.Point(491, 254);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(50, 13);
             this.label15.TabIndex = 56;
@@ -492,11 +497,48 @@
             this.label19.TabIndex = 62;
             this.label19.Text = "Orario Previsto";
             // 
+            // tempoStimatoBox
+            // 
+            this.tempoStimatoBox.Location = new System.Drawing.Point(808, 170);
+            this.tempoStimatoBox.Name = "tempoStimatoBox";
+            this.tempoStimatoBox.Size = new System.Drawing.Size(108, 20);
+            this.tempoStimatoBox.TabIndex = 67;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(655, 173);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(78, 13);
+            this.label20.TabIndex = 66;
+            this.label20.Text = "Tempo Stimato";
+            // 
+            // automezzoComboBox
+            // 
+            this.automezzoComboBox.FormattingEnabled = true;
+            this.automezzoComboBox.Location = new System.Drawing.Point(580, 287);
+            this.automezzoComboBox.Name = "automezzoComboBox";
+            this.automezzoComboBox.Size = new System.Drawing.Size(211, 21);
+            this.automezzoComboBox.TabIndex = 69;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(491, 291);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(59, 13);
+            this.label21.TabIndex = 68;
+            this.label21.Text = "Automezzo";
+            // 
             // ViewDettagliSpedizione
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(937, 681);
+            this.Controls.Add(this.automezzoComboBox);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.tempoStimatoBox);
+            this.Controls.Add(this.label20);
             this.Controls.Add(this.dateTimePickerArrivoPrevisto);
             this.Controls.Add(this.dateTimePickerArrivoEffettivo);
             this.Controls.Add(this.label18);
@@ -607,5 +649,9 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerArrivoEffettivo;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox tempoStimatoBox;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.ComboBox automezzoComboBox;
+        private System.Windows.Forms.Label label21;
     }
 }

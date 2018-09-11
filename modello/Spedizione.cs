@@ -29,10 +29,11 @@ namespace AutotrasportiFantini.modello
         public DateTime orarioEffettivoArrivo { get; set; }
         public String codiceDelegato { get; set; }
         public String codiceAutista { get; set; }
-    
-		public override string ToString()
-		{
-			return JsonConvert.SerializeObject(this);
-		}
-	}
+
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
+    }
+
 }
