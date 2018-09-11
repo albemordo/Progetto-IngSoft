@@ -1,4 +1,6 @@
 ﻿using AutotrasportiFantini.controller.interfacce;
+using AutotrasportiFantini.controller.log;
+using AutotrasportiFantini.controller.log.interfacce;
 using AutotrasportiFantini.modello.interfacce;
 using AutotrasportiFantini.persistenza;
 using AutotrasportiFantini.persistenza.repository.factory;
@@ -10,7 +12,6 @@ namespace AutotrasportiFantini.controller
     {
 		IPersistenzaSpedizione repository;
 		IControllerLog logger = ControllerLog.GetIstanza();
-		IUtente utenteAutenticato = ControllerAutenticazione.GetIstanza().GetUtenteAutenticato();
 
 		public ControllerListaSpedizioni()
 		{
@@ -33,7 +34,7 @@ namespace AutotrasportiFantini.controller
 				listaSpedizioni = repository.cercaPerAutista(utente.idAziendale);
 
 			//	Viene creato il log dell'operazione
-			logger.CreaLog("richiesto la lista delle spedizioni");
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha richiesto la lista delle spedizioni");
 
 			return listaSpedizioni;
         }

@@ -1,4 +1,6 @@
 ﻿using AutotrasportiFantini.controller.interfacce;
+using AutotrasportiFantini.controller.log;
+using AutotrasportiFantini.controller.log.interfacce;
 using AutotrasportiFantini.modello.interfacce;
 using AutotrasportiFantini.persistenza;
 using AutotrasportiFantini.persistenza.repository.factory;
@@ -27,7 +29,7 @@ namespace AutotrasportiFantini.controller
 			repository.aggiorna(spedizione);
 
 			//	Viene creato il log dell'operazione
-			logger.CreaLog("assegnato alla spedizione N° " + spedizione.id + " l'autista " + autista.ToString());
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha assegnato alla spedizione N° " + spedizione.id + " l'autista " + autista.idAziendale);
 		}
 
         public void AssegnaAutomezzo(ISpedizione spedizione, IAutomezzo automezzo)
@@ -39,7 +41,7 @@ namespace AutotrasportiFantini.controller
 			repository.aggiorna(spedizione);
 
 			//	Viene creato il log dell'operazione
-			logger.CreaLog("assegnato alla spedizione N° " + spedizione.id + " l'automezzo " + automezzo.ToString());
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale+" ha assegnato alla spedizione N° " + spedizione.id + " l'automezzo " + automezzo.targa);
 		}
 
         public void AssegnaOrari(ISpedizione spedizione, DateTime partenzaPrevista, DateTime arrivoPrevisto)
@@ -51,7 +53,7 @@ namespace AutotrasportiFantini.controller
 			repository.aggiorna(spedizione);
 
 			//	Viene creato il log dell'operazione
-			logger.CreaLog("assegnato alla spedizione N° " + spedizione.id + " gli orari previsti(partenza, arrivo) (" + partenzaPrevista+","+arrivoPrevisto+")");
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha assegnato alla spedizione N° " + spedizione.id + " gli orari previsti(partenza, arrivo) (" + partenzaPrevista+","+arrivoPrevisto+")");
 		}
     }
 }

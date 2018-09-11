@@ -1,11 +1,8 @@
 ﻿using AutotrasportiFantini.controller.interfacce;
+using AutotrasportiFantini.controller.log.interfacce;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AutotrasportiFantini.controller
+namespace AutotrasportiFantini.controller.log
 {
 	class SistemaLog : ISistemaLog
 	{
@@ -14,7 +11,7 @@ namespace AutotrasportiFantini.controller
 			//	Creazione dei log
 
 			//	Debug
-			Console.WriteLine("Log : " + messaggio);
+			Console.WriteLine(messaggio);
 		}
 	}
 }

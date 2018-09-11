@@ -1,9 +1,8 @@
 ﻿using AutotrasportiFantini.controller.interfacce;
-using AutotrasportiFantini.modello;
-using AutotrasportiFantini.modello.factory;
+using AutotrasportiFantini.controller.log;
+using AutotrasportiFantini.controller.log.interfacce;
+using AutotrasportiFantini.controller.utilita;
 using AutotrasportiFantini.modello.interfacce;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 
@@ -22,6 +21,9 @@ namespace AutotrasportiFantini.controller
 
 		//	Classe che aiuta a parsificare le stringhe json
 		JsonParser helper = new JsonParser();
+
+		//	Logger
+		IControllerLog logger = ControllerLog.GetIstanza();
 
 		private List<IUtente> ParsificaListaUtenti(ListeSupportate qualeLista)
 		{
@@ -55,6 +57,9 @@ namespace AutotrasportiFantini.controller
 			foreach (IUtente u in utenti)
 				result.Add(u as IAutista);
 
+			//	Log operazione
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha richiesto la lista degli autisti");
+
 			return result;
         }
 
@@ -66,6 +71,9 @@ namespace AutotrasportiFantini.controller
 			foreach (IUtente u in utenti)
 				result.Add(u as IDelegato);
 
+			//	Log operazione
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha richiesto la lista dei delegati");
+
 			return result;
 		}
 
@@ -76,6 +84,17 @@ namespace AutotrasportiFantini.controller
         {
 			throw new NotImplementedException();
         }
+
+		public IUtente OttieniUtente(string idAziendale)
+		{
+			//	Ottenimento dei dati dal sistema esterno
+			string datiUtente = sorgente.OttieniUtente(idAziendale);
+
+			//	L'utente viene creato tramite il parsificatore
+			IUtente utente = helper.ParsificaUtente(datiUtente);
+
+			return utente;
+		}
 
         public IUtente VerificaCredenziali(string username, string password)
         {

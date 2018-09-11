@@ -1,14 +1,13 @@
-﻿using AutotrasportiFantini.controller.interfacce;
+﻿using AutotrasportiFantini.controller.log.interfacce;
 using AutotrasportiFantini.modello.interfacce;
 using System;
 
-namespace AutotrasportiFantini.controller
+namespace AutotrasportiFantini.controller.log
 {
     class ControllerLog : IControllerLog
     {
-
-		ISistemaLog SistemaLog = new SistemaLog();
-		IUtente UtenteAutenticato = ControllerAutenticazione.GetIstanza().GetUtenteAutenticato();
+		IUtente utente;
+		ISistemaLog SistemaLog;
 		protected static ControllerLog istanza;
 
 		/**
@@ -22,14 +21,16 @@ namespace AutotrasportiFantini.controller
 			return istanza;
 		}
 
-		private ControllerLog() { }
+		protected ControllerLog()
+		{
+			utente = ControllerAutenticazione.GetIstanza().GetUtenteAutenticato();
+			SistemaLog = new SistemaLog();
+		}
 
         public void CreaLog(string messaggio)
         {
-			string Preambolo = (UtenteAutenticato != null) ? UtenteAutenticato.ToString() : "Utente non autenticato";
-
 			//	Chiamata al sistema esterno
-			SistemaLog.CreaLog(Preambolo+": "+messaggio);
+			SistemaLog.CreaLog(DateTime.Now+": "+messaggio);
         }
     }
 }

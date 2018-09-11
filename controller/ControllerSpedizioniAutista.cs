@@ -1,4 +1,6 @@
 ﻿using AutotrasportiFantini.controller.interfacce;
+using AutotrasportiFantini.controller.log;
+using AutotrasportiFantini.controller.log.interfacce;
 using AutotrasportiFantini.modello.interfacce;
 using AutotrasportiFantini.persistenza;
 using AutotrasportiFantini.persistenza.repository.factory;
@@ -10,6 +12,9 @@ namespace AutotrasportiFantini.controller
     {
 		IPersistenzaSpedizione repositorySpedizione;
 		IPersistenzaPuntoSpedizione repositoryPuntoSpedizione;
+
+		//	Logger
+		IControllerLog logger = ControllerLog.GetIstanza();
 
 		public ControllerSpedizioniAutista()
 		{
@@ -27,7 +32,10 @@ namespace AutotrasportiFantini.controller
 
 			//	Le modifiche vengono rese persistenti
 			repositorySpedizione.aggiorna(spedizione);
-        }
+
+			//	Log operazione
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha registrato i dati per concludere la spedizione "+spedizione.id+": orario di arrivo "+arrivo+", distanza effettiva "+distanzaEffettiva+", tempo effettivo "+tempoEffettivo);
+		}
 
         public void RegistraPartenza(ISpedizione spedizione, DateTime partenza)
         {
@@ -36,31 +44,20 @@ namespace AutotrasportiFantini.controller
 
 			//	La modifica viene resa persistente
 			repositorySpedizione.aggiorna(spedizione);
-        }
+
+			//	Log operazione
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha registrato l'orario di partenza "+partenza+", per la spedizione "+spedizione);
+		}
 
         public void RegistraPuntoSpedizione(ISpedizione spedizione, IPuntoSpedizione punto, DateTime orario)
         {
-			/**
-			 *	Soluzione 1: si aggiorna il punto di spedizione dentro la
-			 *	spedizione stessa
-			 */
-			/*
-			foreach(IPuntoSpedizione puntoS in spedizione.puntiSpedizione)
-				if (puntoS.id.Equals(punto.id))
-				{
-					puntoS.orarioArrivo = orario;
-					
-					repository.aggiorna(spedizione);
-				}
-			*/
-
-			/**
-			 *	Soluzione 2: si aggiorna direttamente il punto di spedizione
-			 */
 			punto.orarioArrivo = orario;
 
 			//	L'arrivo ad un punto di spedizione viene reso persistente
 			repositoryPuntoSpedizione.aggiorna(punto);
-        }
+
+			//	Log operazione
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha registrato l'orario di arrivo "+orario+" al punto di spedizione "+punto.indirizzo+" per la spededizione "+spedizione.id);
+		}
     }
 }

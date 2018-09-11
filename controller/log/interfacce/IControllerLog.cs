@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AutotrasportiFantini.controller.interfacce
+namespace AutotrasportiFantini.controller.log.interfacce
 {
     interface IControllerLog
     {

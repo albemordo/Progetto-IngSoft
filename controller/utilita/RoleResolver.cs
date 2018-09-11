@@ -1,8 +1,7 @@
 ﻿using AutotrasportiFantini.modello;
-using System;
 using static AutotrasportiFantini.modello.FactoryUtenti;
 
-namespace AutotrasportiFantini.controller
+namespace AutotrasportiFantini.controller.utilita
 {
 	class RoleResolver
 	{
