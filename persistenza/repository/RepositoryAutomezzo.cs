@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using AutotrasportiFantini.modello.interfacce;
 using AutotrasportiFantini.modello.factory;
 using System.Data;
+using AutotrasportiFantini.modello;
+using System.Linq;
 
 namespace AutotrasportiFantini.persistenza.repository
 {
@@ -15,7 +17,7 @@ namespace AutotrasportiFantini.persistenza.repository
         public bool aggiorna(IAutomezzo oggetto)
         {
             String sql = "UPDATE Automezzo SET targa = @Targa, modello = @Modello, produttore = @Produttore," +
-                "targa_rimorchio = @TargaRimorchio, cod_delegato = @CodiceDelegato WHERE targa = @Targa";
+                "targarimorchio = @TargaRimorchio, codicedelegato = @CodiceDelegato WHERE targa = @Targa";
 
             using (var connection = this.connection)
             {
@@ -25,16 +27,16 @@ namespace AutotrasportiFantini.persistenza.repository
             }
         }
 
-        public String crea(IAutomezzo oggetto)
+        public IAutomezzo crea(IAutomezzo oggetto)
         {
-            String sql = "INSERT INTO Automezzo (targa, modello, produttore, targa_rimorchio, cod_delegato)" +
+            String sql = "INSERT INTO Automezzo (targa, modello, produttore, targarimorchio, codicedelegato)" +
                 "VALUES (@Targa, @Modello, @Produttore, @TargaRimorchio, @CodiceDelegato) RETURNING targa";
 
             using (var connection = this.connection)
             {
                 String targa = connection.QuerySingle<String>(sql, oggetto);
 
-                return targa;
+                return oggetto;
             }
         }
 
@@ -44,33 +46,21 @@ namespace AutotrasportiFantini.persistenza.repository
 
             using (var connection = this.connection)
             {
-                var rawAutomezzi = connection.Query(sql).AsList();
-                
-                List<IAutomezzo> automezzi = new List<IAutomezzo>();
-                foreach(var rawAutomezzo in rawAutomezzi)
-                {
-                    automezzi.Add(this.FillFromDb(rawAutomezzo));
-                }
+                IEnumerable<IAutomezzo> automezzi = connection.Query<Automezzo>(sql);
 
-                return automezzi;
+                return automezzi.ToList();
             }
         }
 
         public List<IAutomezzo> elencaPerDelegato(String codiceDelegato)
         {
-            String sql = "SELECT * FROM Automezzo WHERE cod_delegato = @CodiceDelegato";
+            String sql = "SELECT * FROM Automezzo WHERE codicedelegato = @CodiceDelegato";
 
             using (var connection = this.connection)
             {
-                var rawAutomezzi = connection.Query(sql, new { CodiceDelegato = codiceDelegato }).AsList();
+                IEnumerable<IAutomezzo> automezzi = connection.Query<Automezzo>(sql, new { CodiceDelegato = codiceDelegato });
 
-                List<IAutomezzo> automezzi = new List<IAutomezzo>();
-                foreach (var rawAutomezzo in rawAutomezzi)
-                {
-                    automezzi.Add(this.FillFromDb(rawAutomezzo));
-                }
-
-                return automezzi;
+                return automezzi.ToList();
             }
         }
 
@@ -90,24 +80,10 @@ namespace AutotrasportiFantini.persistenza.repository
 
             using (var connection = this.connection)
             {
-                var rawAutomezzo = connection.QuerySingle(sql, new { TargaAutomezzo = id });
+                IAutomezzo automezzo = connection.QuerySingle<Automezzo>(sql, new { TargaAutomezzo = id });
 
-                return this.FillFromDb(rawAutomezzo);
+                return automezzo;
             }
-        }
-
-        protected IAutomezzo FillFromDb(dynamic raw)
-        {
-            IFactoryRisorse factoryRisorse = new FactoryRisorse();
-            IAutomezzo automezzo = factoryRisorse.GetAutomezzo();
-
-            automezzo.targa = raw.targa;
-            automezzo.modello = raw.modello;
-            automezzo.produttore = raw.produttore;
-            automezzo.targaRimorchio = raw.targa_rimorchio;
-            automezzo.codiceDelegato = raw.cod_delegato;
-
-            return automezzo;
         }
     }
 }

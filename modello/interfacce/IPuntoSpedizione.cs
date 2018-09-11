@@ -6,7 +6,7 @@ namespace AutotrasportiFantini.modello.interfacce
     {
         int id { get; set; }
         IIndirizzo indirizzo { get; set; }
-        ISpedizione spedizione { get; set; }
+        int spedizione { get; set; }
         DateTime orarioArrivo { get; set; }
     }
 }

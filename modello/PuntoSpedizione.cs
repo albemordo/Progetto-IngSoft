@@ -7,7 +7,7 @@ namespace AutotrasportiFantini.modello
     {
 		public int id { get; set; }
         public IIndirizzo indirizzo { get; set; }
-        public ISpedizione spedizione { get; set; }
+        public int spedizione { get; set; }
         public DateTime orarioArrivo { get; set; }
     }
 }
