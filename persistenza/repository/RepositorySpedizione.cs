@@ -203,7 +203,7 @@ namespace AutotrasportiFantini.persistenza.repository
                         @CodiceSpedizione = puntoSpedizione.spedizione,
                         @CodiceIndirizzo = puntoSpedizione.indirizzo.id,
                         @OrarioArrivo = puntoSpedizione.orarioArrivo
-                    }));
+                    });
 
                     puntoSpedizione.id = idPuntoSpedizione;
                 }
