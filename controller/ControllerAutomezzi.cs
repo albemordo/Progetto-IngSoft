@@ -9,8 +9,9 @@ namespace AutotrasportiFantini.controller
 {
     class ControllerAutomezzi : IControllerAutomezzi
     {
-		private IPersistenzaAutomezzo repository;
-		private IRisorseFactory factory = new RisorseFactory();
+		IPersistenzaAutomezzo repository;
+		IRisorseFactory factory = new RisorseFactory();
+		IControllerLog logger = ControllerLog.GetIstanza();
 
 		public ControllerAutomezzi()
 		{

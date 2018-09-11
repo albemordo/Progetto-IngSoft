@@ -9,19 +9,19 @@ using System.Collections.Generic;
 
 namespace AutotrasportiFantini.controller
 {
-    class ControllerGestioneDipendenti : IControllerGestioneDipendenti
-    {
+	class ControllerGestioneDipendenti : IControllerGestioneDipendenti
+	{
 		/**
 		 *	I seguenti valori vengono utilizzati per discriminare quale
 		 *	tipo di lista si vuole ottenere 
-		 */ 
-		public enum ListeSupportate { AUTISTI, DELEGATI};
+		 */
+		public enum ListeSupportate { AUTISTI, DELEGATI };
 
 		//	Classe che mi restituisce le stringe json desiderate
-		private ISorgenteDati sorgente = new SorgenteDati();
+		ISorgenteDati sorgente = new SorgenteDati();
 
 		//	Classe che aiuta a parsificare le stringhe json
-		private JsonParser helper = new JsonParser();
+		JsonParser helper = new JsonParser();
 
 		private List<IUtente> ParsificaListaUtenti(ListeSupportate qualeLista)
 		{
@@ -53,7 +53,7 @@ namespace AutotrasportiFantini.controller
 			List<IAutista> result = new List<IAutista>();
 
 			foreach (IUtente u in utenti)
-				result.Add((IAutista)u);
+				result.Add(u as IAutista);
 
 			return result;
         }
@@ -64,7 +64,7 @@ namespace AutotrasportiFantini.controller
 			List<IDelegato> result = new List<IDelegato>();
 
 			foreach (IUtente u in utenti)
-				result.Add((IDelegato)u);
+				result.Add(u as IDelegato);
 
 			return result;
 		}

@@ -7,16 +7,24 @@ namespace AutotrasportiFantini.controller
     class ControllerAutenticazione : IControllerAutenticazione
     {
         protected static IControllerAutenticazione istanza;
-		private IUtente UtenteAutenticato { get; set; }
+
+		IControllerGestioneDipendenti autenticazione = new ControllerGestioneDipendenti();
+
+		IUtente UtenteAutenticato;
 
         private ControllerAutenticazione() { }
 
-		private IControllerGestioneDipendenti autenticazione = new ControllerGestioneDipendenti();
 
 		/**
          *  Singleton
          */
-		public static IControllerAutenticazione GetIstanza() => istanza ?? new ControllerAutenticazione();
+		public static IControllerAutenticazione GetIstanza()
+		{
+			if (istanza is null)
+				istanza = new ControllerAutenticazione();
+
+			return istanza;
+		}
 
         public bool Autentica(string username, string password)
         {

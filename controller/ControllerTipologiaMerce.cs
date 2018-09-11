@@ -9,8 +9,8 @@ namespace AutotrasportiFantini.controller
 {
     class ControllerTipologiaMerce : IControllerTipologieMerce
     {
-		private IPersistenzaTipologiaMerce repository;
-		private IRisorseFactory factory = new RisorseFactory();
+		IPersistenzaTipologiaMerce repository;
+		IRisorseFactory factory = new RisorseFactory();
 
 		public ControllerTipologiaMerce()
 		{

@@ -9,8 +9,8 @@ namespace AutotrasportiFantini.controller
 {
     class ControllerPuntiSpedizione : IControllerPuntiSpedizione
 	{
-		private IPersistenzaPuntoSpedizione repository;
-		private IRisorseFactory factory = new RisorseFactory();
+		IPersistenzaPuntoSpedizione repository;
+		IRisorseFactory factory = new RisorseFactory();
 
 		public ControllerPuntiSpedizione()
 		{

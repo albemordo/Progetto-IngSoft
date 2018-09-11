@@ -9,8 +9,8 @@ namespace AutotrasportiFantini.controller
 {
     class ControllerIndirizzi : IControllerIndirizzi
     {
-		private IPersistenzaIndirizzo repository;
-		private IRisorseFactory factory = new RisorseFactory();
+		IPersistenzaIndirizzo repository;
+		IRisorseFactory factory = new RisorseFactory();
 
 		private void AssegnaCampi(IIndirizzo indirizzo, string qualificatore, string nome, string civico, string cap, string localita, string provincia)
 		{
@@ -49,7 +49,7 @@ namespace AutotrasportiFantini.controller
 
 			if (indirizzo.id < 0)
 				return null;
-
+			
 			return indirizzo;
         }
 

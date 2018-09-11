@@ -8,7 +8,9 @@ namespace AutotrasportiFantini.controller
 {
     class ControllerListaSpedizioni : IControllerListaSpedizioni
     {
-		private IPersistenzaSpedizione repository;
+		IPersistenzaSpedizione repository;
+		IControllerLog logger = ControllerLog.GetIstanza();
+		IUtente utenteAutenticato = ControllerAutenticazione.GetIstanza().GetUtenteAutenticato();
 
 		public ControllerListaSpedizioni()
 		{
@@ -23,12 +25,15 @@ namespace AutotrasportiFantini.controller
 			//	In base a chi chiede la lista delle spedizione, si ottiene una lista diversa
 			if (utente is IResponsabile)
 				listaSpedizioni = repository.elencaTutti();
-
+			
 			else if (utente is IDelegato)
 				listaSpedizioni = repository.cercaPerDelegato(utente.idAziendale);
 
 			else if (utente is IAutista)
 				listaSpedizioni = repository.cercaPerAutista(utente.idAziendale);
+
+			//	Viene creato il log dell'operazione
+			logger.CreaLog("richiesto la lista delle spedizioni");
 
 			return listaSpedizioni;
         }
