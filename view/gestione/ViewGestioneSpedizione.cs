@@ -1,16 +1,11 @@
-﻿using AutotrasportiFantini.controller;
-using AutotrasportiFantini.controller.interfacce;
-using AutotrasportiFantini.modello;
+﻿using AutotrasportiFantini.modello;
+using AutotrasportiFantini.modello.factory;
 using AutotrasportiFantini.modello.interfacce;
 using AutotrasportiFantini.view.dettagli;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-
-//Da dove prendo tutti i dati? Come gestisco il fatto di molteplici punti di spedizione?
-//Come gestisco i molteplici orari?
-//Come aggiornare la tabella quando uno inserisce una nuova spedizione?
 namespace AutotrasportiFantini.view
 {
     public partial class ViewGestioneSpedizione : AutotrasportiFantini.view.templates.ViewGestioneTemplate
@@ -21,21 +16,27 @@ namespace AutotrasportiFantini.view
         }
         protected override void dataTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            ViewDettagliSpedizione viewDettagliSpedizione = new ViewDettagliSpedizione();
+            spedizione = spedizioni[dataTable.CurrentCell.RowIndex];
+            viewDettagliSpedizione = new ViewDettagliSpedizione(spedizione);
+            viewDettagliSpedizione.ShowDialog();
+        }
+        protected override void mascheraDettaglioButton_Click(object sender, EventArgs e)
+        {
+            spedizione = spedizioni[dataTable.CurrentCell.RowIndex];
+            viewDettagliSpedizione = new ViewDettagliSpedizione(spedizione);
             viewDettagliSpedizione.ShowDialog();
         }
 
-        protected override void mascheraDettaglioButton_Click(object sender, EventArgs e)
+        private void creaSpedizioneButton_Click(object sender, EventArgs e)
         {
-            ViewDettagliSpedizione viewDettagliSpedizione = new ViewDettagliSpedizione();
-            viewDettagliSpedizione.ShowDialog();
+            viewCreaSpedizione = new ViewCreazioneSpedizione();
+            viewCreaSpedizione.ShowDialog();
         }
         protected override void addTableColumns()
         {
             dataTable.Columns.Add("identificatoSpedizione", "Identificativo Spedizione");
             dataTable.Columns.Add("luogoPartenza", "Luogo Partenza");
             dataTable.Columns.Add("luogoArrivo", "Luogo Arrivo");
-            dataTable.Columns.Add("puntiSpedizione", "Punti Spedizione");
             dataTable.Columns.Add("distanzaStimata", "Distanza Stimata");
             dataTable.Columns.Add("tipologiaMerce", "Tipologia Merce");
             dataTable.Columns.Add("quantitaMerce", "Quantita Merce");
@@ -46,7 +47,6 @@ namespace AutotrasportiFantini.view
             dataTable.Columns.Add("orarioArrivoPrevisto", "Orario Arrivo Previsto");
             dataTable.Columns.Add("orarioPartenzaEffettivo", "Orario Partenza Effettivo");
             dataTable.Columns.Add("orarioArrivoEffettivo", "Orario Arrivo Effettivo");
-            dataTable.Columns.Add("orariEffettiviPuntiSpedizione", "Orari Effettivi Punti Spedizione");
             dataTable.Columns.Add("chilometriPercorsi", "Chilometri Percorsi");
             dataTable.Columns.Add("tempoPercorrenza", "Tempo Percorrenza");
         }
@@ -89,6 +89,33 @@ namespace AutotrasportiFantini.view
             arrivo.cap = "12322";
             arrivo.civico = "lknasd";
             List<IPuntoSpedizione> puntiSpedizione = new List<IPuntoSpedizione>();
+            PuntoSpedizione puntoSpedizione = new PuntoSpedizione();
+            puntoSpedizione.id = 1;
+            Indirizzo indirizzoPuntoSpedizione = new Indirizzo();
+            indirizzoPuntoSpedizione.id = 1;
+            indirizzoPuntoSpedizione.localita = "puntoSpedizione1";
+            indirizzoPuntoSpedizione.nome = "mmmh nome?";
+            indirizzoPuntoSpedizione.provincia = "random";
+            indirizzoPuntoSpedizione.qualificatore = "asd";
+            indirizzoPuntoSpedizione.cap = "12322";
+            indirizzoPuntoSpedizione.civico = "lknasd";
+            puntoSpedizione.indirizzo = indirizzoPuntoSpedizione;
+            puntoSpedizione.orarioArrivo= new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 14, 00, 00);
+            puntoSpedizione.spedizione = 1;
+            puntiSpedizione.Add(puntoSpedizione);
+            Indirizzo indirizzoPuntoSpedizione2 = new Indirizzo();
+            PuntoSpedizione puntoSpedizione2 = new PuntoSpedizione();
+            indirizzoPuntoSpedizione2.id = 1;
+            indirizzoPuntoSpedizione2.localita = "puntoSpedizione2";
+            indirizzoPuntoSpedizione2.nome = "asasdw?";
+            indirizzoPuntoSpedizione2.provincia = "raagwgagasndom";
+            indirizzoPuntoSpedizione2.qualificatore = "aasgasgsd";
+            indirizzoPuntoSpedizione2.cap = "12123322";
+            indirizzoPuntoSpedizione2.civico = "lknasd";
+            puntoSpedizione2.indirizzo = indirizzoPuntoSpedizione2;
+            puntoSpedizione2.orarioArrivo = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 15, 00, 00);
+            puntoSpedizione2.spedizione = 2;
+            puntiSpedizione.Add(puntoSpedizione2);
             DateTime orarioPrevistoPartenza = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 10, 00, 00);
             DateTime orarioPrevistoArrivo = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day + 1, 20, 00, 00);
             DateTime orarioEffettivoPartenza = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 10, 1, 0);
@@ -116,27 +143,61 @@ namespace AutotrasportiFantini.view
 
             ///CODICE REALE
             ///
-            IControllerAutenticazione Controller = ControllerAutenticazione.GetIstanza();
-            ControllerListaSpedizioni controllerListaSpedizioni = new ControllerListaSpedizioni();
-            List<ISpedizione> spedizioni = controllerListaSpedizioni.ListaSpedizioni(Controller.GetUtenteAutenticato());
+            //IControllerAutenticazione Controller = ControllerAutenticazione.GetIstanza();
+            //IControllerListaSpedizioni controllerListaSpedizioni = new ControllerListaSpedizioni();
+            //List<ISpedizione> spedizioni = controllerListaSpedizioni.ListaSpedizioni(Controller.GetUtenteAutenticato());
             ///CODICE REALE
             ///
 
             spedizioni = new List<ISpedizione>();
             spedizioni.Add(spedizione);
             dataTable.Rows.Clear();
-            foreach (Spedizione sp in spedizioni)
+
+            int max = 0;
+            foreach(Spedizione sp in spedizioni)
             {
-                dataTable.Rows.Add(sp.id, sp.partenza.localita, sp.destinazione.localita, sp.puntiSpedizione, sp.distanzaStimata, sp.tipologiaMerce.tipologia, sp.quantitaMerce,
-                    sp.autista.cognome, sp.automezzo.targa, sp.delegato.cognome, sp.orarioPrevistoPartenza, sp.orarioPrevistoArrivo, sp.orarioEffettivoPartenza, sp.orarioEffettivoArrivo,
-                    "boh", sp.distanzaEffettiva, sp.tempoPercorrenza);
+                if (sp.puntiSpedizione.Count > max)
+                    max = sp.puntiSpedizione.Count;
+            }
+
+            for (int i = 0; i < max; i++)
+            {
+                dataTable.Columns.Add("puntoSpedizione"+i, "Punto Spedizione " +i);
+                dataTable.Columns.Add("orarioArrivoEffettivoPuntoSpedizione" + i, "O.E Arrivo P.D.S " + i);
+            }
+
+            for (int i = 0; i < spedizioni.Count; i++)
+            {
+                ISpedizione spedizioneTemp = new RisorseFactory().GetSpedizione();
+                spedizioneTemp = spedizioni[i];
+                this.dataTable.Rows.Add();
+                dataTable.Rows[i].Cells[0].Value = spedizioneTemp.id;
+                dataTable.Rows[i].Cells[1].Value = spedizioneTemp.partenza.localita;
+                dataTable.Rows[i].Cells[2].Value = spedizioneTemp.destinazione.localita;
+                dataTable.Rows[i].Cells[3].Value = spedizioneTemp.distanzaStimata;
+                dataTable.Rows[i].Cells[4].Value = spedizioneTemp.tipologiaMerce.tipologia;
+                dataTable.Rows[i].Cells[5].Value = spedizioneTemp.quantitaMerce;
+                dataTable.Rows[i].Cells[6].Value = spedizioneTemp.autista.cognome;
+                dataTable.Rows[i].Cells[7].Value = spedizioneTemp.automezzo.targa;
+                dataTable.Rows[i].Cells[8].Value = spedizioneTemp.delegato.cognome;
+                dataTable.Rows[i].Cells[9].Value = spedizioneTemp.orarioPrevistoPartenza;
+                dataTable.Rows[i].Cells[10].Value = spedizioneTemp.orarioPrevistoArrivo;
+                dataTable.Rows[i].Cells[11].Value = spedizioneTemp.orarioEffettivoPartenza;
+                dataTable.Rows[i].Cells[12].Value = spedizioneTemp.orarioEffettivoArrivo;
+                dataTable.Rows[i].Cells[13].Value = spedizioneTemp.distanzaEffettiva;
+                dataTable.Rows[i].Cells[14].Value = spedizioneTemp.tempoPercorrenza;
+                for(int j = 0; j < spedizioneTemp.puntiSpedizione.Count; j++)
+                {
+                    dataTable.Rows[i].Cells[15+j*2].Value = spedizioneTemp.puntiSpedizione[j].indirizzo.localita;
+                    dataTable.Rows[i].Cells[16+j*2].Value = spedizioneTemp.puntiSpedizione[j].orarioArrivo;
+                }
+
             }
         }
 
-        private void creaSpedizioneButton_Click(object sender, EventArgs e)
-        {
-            ViewCreazioneSpedizione viewCreaSpedizione = new ViewCreazioneSpedizione();
-            viewCreaSpedizione.ShowDialog();
-        }
+        ViewDettagliSpedizione viewDettagliSpedizione;
+        ViewCreazioneSpedizione viewCreaSpedizione;
+        private ISpedizione spedizione = new RisorseFactory().GetSpedizione();
+        private List<ISpedizione> spedizioni;
     }
 }

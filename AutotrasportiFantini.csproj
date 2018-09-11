@@ -134,12 +134,24 @@
     <Compile Include="persistenza\repository\RepositorySpedizione.cs" />
     <Compile Include="persistenza\repository\RepositoryTipologiaMerce.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="test\TestGestioneDipendenti.cs" />
+    <Compile Include="test\Program.cs" />
     <Compile Include="view\dettagli\ViewDettagliAutomezzo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="view\dettagli\ViewDettagliAutomezzo.Designer.cs">
       <DependentUpon>ViewDettagliAutomezzo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\dettagli\ViewDettagliPuntiSpedizioneAutista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\dettagli\ViewDettagliPuntiSpedizioneAutista.Designer.cs">
+      <DependentUpon>ViewDettagliPuntiSpedizioneAutista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\dettagli\ViewDettagliPuntoSpedizione.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\dettagli\ViewDettagliPuntoSpedizione.Designer.cs">
+      <DependentUpon>ViewDettagliPuntoSpedizione.cs</DependentUpon>
     </Compile>
     <Compile Include="view\dettagli\ViewDettagliSpedizione.cs">
       <SubType>Form</SubType>
@@ -261,6 +273,12 @@
     </Compile>
     <EmbeddedResource Include="view\dettagli\ViewDettagliAutomezzo.resx">
       <DependentUpon>ViewDettagliAutomezzo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\dettagli\ViewDettagliPuntiSpedizioneAutista.resx">
+      <DependentUpon>ViewDettagliPuntiSpedizioneAutista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\dettagli\ViewDettagliPuntoSpedizione.resx">
+      <DependentUpon>ViewDettagliPuntoSpedizione.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\dettagli\ViewDettagliSpedizione.resx">
       <DependentUpon>ViewDettagliSpedizione.cs</DependentUpon>

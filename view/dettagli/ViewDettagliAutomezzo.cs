@@ -1,6 +1,7 @@
-﻿using AutotrasportiFantini.modello.interfacce;
-using AutotrasportiFantini.persistenza;
-using AutotrasportiFantini.persistenza.repository.factory;
+﻿using AutotrasportiFantini.controller;
+using AutotrasportiFantini.controller.interfacce;
+using AutotrasportiFantini.modello;
+using AutotrasportiFantini.modello.interfacce;
 using System;
 using System.Windows.Forms;
 
@@ -20,22 +21,16 @@ namespace AutotrasportiFantini.view.dettagli
 
         private void modificaButton_Click(object sender, EventArgs e)
         {
-            automezzo.modello = this.modelloBox.Text;
-            automezzo.produttore = this.marcaBox.Text;
-            automezzo.targa = this.targaBox.Text;
-            automezzo.targaRimorchio = this.targaRimorchioBox.Text;
-            repoPersistenza = factoryPersistenza.GetPersistenzaAutomezzo();
-            repoPersistenza.aggiorna(automezzo);
+            controllerAutomezzi.ModificaAutomezzo(automezzo, this.targaBox.Text, this.marcaBox.Text, this.modelloBox.Text, this.targaRimorchioBox.Text, (Delegato)controllerAutenticazione.GetUtenteAutenticato());
         }
 
         private void eliminaButton_Click(object sender, EventArgs e)
         {
-            repoPersistenza = factoryPersistenza.GetPersistenzaAutomezzo();
-            repoPersistenza.elimina(automezzo.targa);
+            controllerAutomezzi.EliminaAutomezzo(automezzo);
         }
 
-        IPersistenzaFactory factoryPersistenza = new RepositoryFactory(DbConnectionFactory.SupportedDBMS.postgresql, "TestDb");
-        IPersistenzaAutomezzo repoPersistenza;
+        IControllerAutomezzi controllerAutomezzi = new ControllerAutomezzi();
+        IControllerAutenticazione controllerAutenticazione = ControllerAutenticazione.GetIstanza();
         private IAutomezzo automezzo;
     }
 }

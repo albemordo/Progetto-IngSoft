@@ -64,7 +64,7 @@ namespace AutotrasportiFantini.view
 
             ///CODICE REALE
             ///
-            /// IControllerAutenticazione Controller = ControllerAutenticazione.GetIstanza();
+            ///IControllerAutenticazione Controller = ControllerAutenticazione.GetIstanza();
             ///IControllerAutomezzi controllerAutomezzi = new ControllerAutomezzi();
             ///List<IAutomezzo> automezzi = controllerAutomezzi.ListaAutomezzi((Delegato) Controller.GetUtenteAutenticato());
             ///CODICE REALE

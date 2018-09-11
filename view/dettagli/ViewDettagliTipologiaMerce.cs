@@ -1,6 +1,6 @@
-﻿using AutotrasportiFantini.modello.interfacce;
-using AutotrasportiFantini.persistenza;
-using AutotrasportiFantini.persistenza.repository.factory;
+﻿using AutotrasportiFantini.controller;
+using AutotrasportiFantini.controller.interfacce;
+using AutotrasportiFantini.modello.interfacce;
 using System;
 using System.Windows.Forms;
 
@@ -17,19 +17,15 @@ namespace AutotrasportiFantini.view
 
         private void modificaButton_Click(object sender, EventArgs e)
         {
-            tipologiaMerce.tipologia = this.nomeTipologiaMerceBox.Text;
-            repoPersistenza = factoryPersistenza.GetPersistenzaTipologiaMerce();
-            repoPersistenza.aggiorna(tipologiaMerce);
+            controllerTipologiaMerce.ModificaTipologiaMerce(tipologiaMerce, this.nomeTipologiaMerceBox.Text);
         }
 
         private void eliminaButton_Click(object sender, EventArgs e)
         {
-            repoPersistenza = factoryPersistenza.GetPersistenzaTipologiaMerce();
-            repoPersistenza.elimina(tipologiaMerce.id);
+            controllerTipologiaMerce.EliminaTipologiaMerce(tipologiaMerce);
         }
 
-        IPersistenzaFactory factoryPersistenza = new RepositoryFactory(DbConnectionFactory.SupportedDBMS.postgresql, "TestDb");
-        IPersistenzaTipologiaMerce repoPersistenza;
+        IControllerTipologiaMerce controllerTipologiaMerce = new ControllerTipologiaMerce();
         private ITipologiaMerce tipologiaMerce;
     }
 }
