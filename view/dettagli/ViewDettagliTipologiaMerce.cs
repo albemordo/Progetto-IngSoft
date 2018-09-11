@@ -12,9 +12,13 @@ namespace AutotrasportiFantini.view
         {
             InitializeComponent();
             this.tipologiaMerce = tipologiaMerce;
+            setup();
+            
+        }
+        private void setup()
+        {
             this.nomeTipologiaMerceBox.Text = tipologiaMerce.tipologia;
         }
-
         private void modificaButton_Click(object sender, EventArgs e)
         {
             controllerTipologiaMerce.ModificaTipologiaMerce(tipologiaMerce, this.nomeTipologiaMerceBox.Text);

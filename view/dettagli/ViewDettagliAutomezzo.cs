@@ -13,6 +13,11 @@ namespace AutotrasportiFantini.view.dettagli
         {
             InitializeComponent();
             this.automezzo = automezzo;
+            setup();
+        }
+
+        private void setup()
+        {
             this.modelloBox.Text = automezzo.modello;
             this.targaBox.Text = automezzo.targa;
             this.targaRimorchioBox.Text = automezzo.targaRimorchio;

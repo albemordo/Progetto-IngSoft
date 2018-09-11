@@ -8,6 +8,11 @@ namespace AutotrasportiFantini.view
         public HomeDelegato()
         {
             InitializeComponent();
+            setup();
+        }  
+
+        private void setup()
+        {
             viewGestioneSpedizione.TopLevel = false;
             viewGestioneSpedizione.AutoScroll = true;
             viewGestioneAutomezzo.TopLevel = false;
@@ -15,7 +20,7 @@ namespace AutotrasportiFantini.view
             this.formPanel.Controls.Clear();
             this.formPanel.Controls.Add(viewGestioneSpedizione);
             viewGestioneSpedizione.Show();
-        }  
+        }
 
         private void gestioneAutomezziButton_Click(object sender, EventArgs e)
         {
@@ -30,7 +35,8 @@ namespace AutotrasportiFantini.view
             this.formPanel.Controls.Add(viewGestioneSpedizione);
             viewGestioneAutomezzo.Show();
         }
-        private ViewAssegnazioneSpedizione viewGestioneSpedizione = new ViewAssegnazioneSpedizione();
-        private ViewGestioneAutomezzo viewGestioneAutomezzo = new ViewGestioneAutomezzo();
+
+        ViewAssegnazioneSpedizione viewGestioneSpedizione = new ViewAssegnazioneSpedizione();
+        ViewGestioneAutomezzo viewGestioneAutomezzo = new ViewGestioneAutomezzo();
     }
 }

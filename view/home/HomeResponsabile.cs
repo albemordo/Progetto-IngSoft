@@ -30,9 +30,8 @@ namespace AutotrasportiFantini.view
             viewGestioneTipologiaMerce.Show();
         }
 
-        private ViewGestioneSpedizione viewGestioneSpedizione = new ViewGestioneSpedizione();
-        private ViewGestioneTipologieMerce viewGestioneTipologiaMerce = new ViewGestioneTipologieMerce();
+        ViewGestioneSpedizione viewGestioneSpedizione = new ViewGestioneSpedizione();
+        ViewGestioneTipologieMerce viewGestioneTipologiaMerce = new ViewGestioneTipologieMerce();
     }
-
 
 }

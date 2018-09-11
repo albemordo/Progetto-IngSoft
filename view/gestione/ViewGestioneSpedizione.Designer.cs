@@ -33,7 +33,7 @@
             // 
             // creaSpedizioneButton
             // 
-            this.creaSpedizioneButton.Location = new System.Drawing.Point(516, 583);
+            this.creaSpedizioneButton.Location = new System.Drawing.Point(513, 583);
             this.creaSpedizioneButton.Name = "creaSpedizioneButton";
             this.creaSpedizioneButton.Size = new System.Drawing.Size(227, 50);
             this.creaSpedizioneButton.TabIndex = 2;

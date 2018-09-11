@@ -15,17 +15,20 @@ namespace AutotrasportiFantini.view.gestione
             InitializeComponent();
         }
 
-        protected override void dataTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void createViewDettagliSpedizioneAutista()
         {
             spedizione = spedizioni[dataTable.CurrentCell.RowIndex];
-            ViewDettagliSpedizioneAutista viewDettagliSpedizioneAutista = new ViewDettagliSpedizioneAutista(spedizione);
+            viewDettagliSpedizioneAutista = new ViewDettagliSpedizioneAutista(spedizione);
             viewDettagliSpedizioneAutista.ShowDialog();
         }
+        protected override void dataTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            createViewDettagliSpedizioneAutista();
+        }
+
         protected override void mascheraDettaglioButton_Click(object sender, EventArgs e)
         {
-            spedizione = spedizioni[dataTable.CurrentCell.RowIndex];
-            ViewDettagliSpedizioneAutista viewDettagliSpedizioneAutista = new ViewDettagliSpedizioneAutista(spedizione);
-            viewDettagliSpedizioneAutista.ShowDialog();
+            createViewDettagliSpedizioneAutista();
         }
 
         protected override void addTableColumns()

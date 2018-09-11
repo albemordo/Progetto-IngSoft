@@ -13,17 +13,19 @@ namespace AutotrasportiFantini.view
         {
             InitializeComponent();
         }
-        protected override void dataTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void createViewDettaglitipologiaMerce()
         {
             tipologiaMerce = tipologie[dataTable.CurrentCell.RowIndex];
             viewDettagliTipologiaMerce = new ViewDettagliTipologiaMerce(tipologiaMerce);
             viewDettagliTipologiaMerce.ShowDialog();
         }
+        protected override void dataTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            createViewDettaglitipologiaMerce();
+        }
         protected override void mascheraDettaglioButton_Click(object sender, EventArgs e)
         {
-            tipologiaMerce = tipologie[dataTable.CurrentCell.RowIndex];
-            viewDettagliTipologiaMerce = new ViewDettagliTipologiaMerce(tipologiaMerce);
-            viewDettagliTipologiaMerce.ShowDialog();
+            createViewDettaglitipologiaMerce();
         }
         protected override void addTableColumns()
         {
@@ -66,9 +68,9 @@ namespace AutotrasportiFantini.view
             creaTipologiaMerce.ShowDialog();
         }
 
-        private List<ITipologiaMerce> tipologie;
-        private ViewDettagliTipologiaMerce viewDettagliTipologiaMerce;
+        List<ITipologiaMerce> tipologie;
+        ViewDettagliTipologiaMerce viewDettagliTipologiaMerce;
         ViewCreazioneTipologiaMerce creaTipologiaMerce;
-        private ITipologiaMerce tipologiaMerce = new RisorseFactory().GetTipologiaMerce();
+        ITipologiaMerce tipologiaMerce = new RisorseFactory().GetTipologiaMerce();
     }
 }

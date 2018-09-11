@@ -135,6 +135,7 @@
     <Compile Include="persistenza\repository\RepositoryTipologiaMerce.cs" />
     <Compile Include="persistenza\repository\factory\PostgresqlConnectionFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="test\Program.cs" />
     <Compile Include="view\dettagli\ViewDettagliAutomezzo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -474,7 +475,6 @@
     <Folder Include="bin\Release\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="persistenza\factory\" />
-    <Folder Include="test\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

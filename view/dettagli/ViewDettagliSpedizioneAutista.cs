@@ -12,6 +12,11 @@ namespace AutotrasportiFantini.view.dettagli
         {
             InitializeComponent();
             this.spedizione = spedizione;
+            
+        }
+
+        private void setup()
+        {
             this.addTableColumns();
             this.addTableRows();
             this.quantitaBox.Text = spedizione.quantitaMerce.ToString();
@@ -86,7 +91,7 @@ namespace AutotrasportiFantini.view.dettagli
 
         private void modificaButton_Click(object sender, System.EventArgs e)
         {
-            
+            controllerSpedizioniAutista.RegistraPartenza(spedizione, this.dateTimePickerPartenzaEffettiva.Value);
         }
 
         private void terminaButton_Click(object sender, System.EventArgs e)

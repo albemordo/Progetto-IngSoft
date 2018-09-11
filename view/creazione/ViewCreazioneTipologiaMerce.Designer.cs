@@ -51,7 +51,7 @@
             // 
             // confermaButton
             // 
-            this.confermaButton.Location = new System.Drawing.Point(136, 63);
+            this.confermaButton.Location = new System.Drawing.Point(109, 63);
             this.confermaButton.Name = "confermaButton";
             this.confermaButton.Size = new System.Drawing.Size(75, 23);
             this.confermaButton.TabIndex = 2;

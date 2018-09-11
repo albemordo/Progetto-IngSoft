@@ -1,6 +1,4 @@
-﻿using AutotrasportiFantini.controller;
-using AutotrasportiFantini.controller.interfacce;
-using AutotrasportiFantini.modello;
+﻿using AutotrasportiFantini.modello;
 using AutotrasportiFantini.modello.factory;
 using AutotrasportiFantini.modello.interfacce;
 using AutotrasportiFantini.view.dettagli;
@@ -16,18 +14,20 @@ namespace AutotrasportiFantini.view.gestione
         {
             InitializeComponent();
         }
+        private void createViewDettagliSpedizioneDelegato() {
+            spedizione = spedizioni[dataTable.CurrentCell.RowIndex];
+            viewDettagliSpedizioneDelegato = new ViewDettagliSpedizioneDelegato(spedizione);
+            viewDettagliSpedizioneDelegato.ShowDialog();
+        }
+
         protected override void dataTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            spedizione = spedizioni[dataTable.CurrentCell.RowIndex];
-            ViewDettagliSpedizioneDelegato viewDettagliSpedizioneDelegato = new ViewDettagliSpedizioneDelegato(spedizione);
-            viewDettagliSpedizioneDelegato.ShowDialog();
+            createViewDettagliSpedizioneDelegato();
         }
 
         protected override void mascheraDettaglioButton_Click(object sender, EventArgs e)
         {
-            spedizione = spedizioni[dataTable.CurrentCell.RowIndex];
-            ViewDettagliSpedizioneDelegato viewDettagliSpedizioneDelegato = new ViewDettagliSpedizioneDelegato(spedizione);
-            viewDettagliSpedizioneDelegato.ShowDialog();
+            createViewDettagliSpedizioneDelegato();
         }
         protected override void addTableColumns()
         {
@@ -129,6 +129,8 @@ namespace AutotrasportiFantini.view.gestione
             spedizione.quantitaMerce = 1000;
             spedizione.tempoPercorrenza = 10;
             spedizione.tipologiaMerce = tipologiaMerce;
+            spedizioni = new List<ISpedizione>();
+            spedizioni.Add(spedizione);
             ///CODICE DI PROVA
             //////CODICE DI PROVA
 
@@ -139,8 +141,7 @@ namespace AutotrasportiFantini.view.gestione
             ///List<ISpedizione> spedizioni = controllerListaSpedizioni.ListaSpedizioni(Controller.GetUtenteAutenticato());
             ///CODICE REALE
             ///
-            spedizioni = new List<ISpedizione>();
-            spedizioni.Add(spedizione);
+
             dataTable.Rows.Clear();
             int max = 0;
             foreach (Spedizione sp in spedizioni)
@@ -177,5 +178,6 @@ namespace AutotrasportiFantini.view.gestione
         }
         ISpedizione spedizione;
         List<ISpedizione> spedizioni;
+        ViewDettagliSpedizioneDelegato viewDettagliSpedizioneDelegato;
     }
 }

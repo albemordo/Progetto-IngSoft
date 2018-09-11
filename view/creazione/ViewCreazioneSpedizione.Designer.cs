@@ -57,7 +57,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.quantitaBox = new System.Windows.Forms.TextBox();
-            this.tipologiaMerceBox = new System.Windows.Forms.TextBox();
             this.distanzaBox = new System.Windows.Forms.TextBox();
             this.provinciaPartenzaBox = new System.Windows.Forms.TextBox();
             this.quantitaLabel = new System.Windows.Forms.Label();
@@ -79,6 +78,7 @@
             this.provinciaPunto = new System.Windows.Forms.TextBox();
             this.inserisciPuntoSpedizioneButton = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
+            this.merceListBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // confirmButton
@@ -310,21 +310,14 @@
             // 
             // quantitaBox
             // 
-            this.quantitaBox.Location = new System.Drawing.Point(650, 310);
+            this.quantitaBox.Location = new System.Drawing.Point(650, 359);
             this.quantitaBox.Name = "quantitaBox";
             this.quantitaBox.Size = new System.Drawing.Size(108, 20);
             this.quantitaBox.TabIndex = 74;
             // 
-            // tipologiaMerceBox
-            // 
-            this.tipologiaMerceBox.Location = new System.Drawing.Point(650, 271);
-            this.tipologiaMerceBox.Name = "tipologiaMerceBox";
-            this.tipologiaMerceBox.Size = new System.Drawing.Size(108, 20);
-            this.tipologiaMerceBox.TabIndex = 73;
-            // 
             // distanzaBox
             // 
-            this.distanzaBox.Location = new System.Drawing.Point(650, 231);
+            this.distanzaBox.Location = new System.Drawing.Point(650, 206);
             this.distanzaBox.Name = "distanzaBox";
             this.distanzaBox.Size = new System.Drawing.Size(108, 20);
             this.distanzaBox.TabIndex = 72;
@@ -339,7 +332,7 @@
             // quantitaLabel
             // 
             this.quantitaLabel.AutoSize = true;
-            this.quantitaLabel.Location = new System.Drawing.Point(497, 313);
+            this.quantitaLabel.Location = new System.Drawing.Point(544, 362);
             this.quantitaLabel.Name = "quantitaLabel";
             this.quantitaLabel.Size = new System.Drawing.Size(80, 13);
             this.quantitaLabel.TabIndex = 70;
@@ -348,7 +341,7 @@
             // tipologiaLabel
             // 
             this.tipologiaLabel.AutoSize = true;
-            this.tipologiaLabel.Location = new System.Drawing.Point(497, 274);
+            this.tipologiaLabel.Location = new System.Drawing.Point(541, 284);
             this.tipologiaLabel.Name = "tipologiaLabel";
             this.tipologiaLabel.Size = new System.Drawing.Size(83, 13);
             this.tipologiaLabel.TabIndex = 69;
@@ -357,7 +350,7 @@
             // distanzaStimataLabel
             // 
             this.distanzaStimataLabel.AutoSize = true;
-            this.distanzaStimataLabel.Location = new System.Drawing.Point(497, 234);
+            this.distanzaStimataLabel.Location = new System.Drawing.Point(538, 209);
             this.distanzaStimataLabel.Name = "distanzaStimataLabel";
             this.distanzaStimataLabel.Size = new System.Drawing.Size(86, 13);
             this.distanzaStimataLabel.TabIndex = 68;
@@ -496,11 +489,20 @@
             this.label21.TabIndex = 128;
             this.label21.Text = "Punto di spedizione";
             // 
+            // merceListBox
+            // 
+            this.merceListBox.FormattingEnabled = true;
+            this.merceListBox.Location = new System.Drawing.Point(650, 242);
+            this.merceListBox.Name = "merceListBox";
+            this.merceListBox.Size = new System.Drawing.Size(120, 95);
+            this.merceListBox.TabIndex = 129;
+            // 
             // ViewCreazioneSpedizione
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(868, 444);
+            this.Controls.Add(this.merceListBox);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.inserisciPuntoSpedizioneButton);
             this.Controls.Add(this.civicoPunto);
@@ -543,7 +545,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.quantitaBox);
-            this.Controls.Add(this.tipologiaMerceBox);
             this.Controls.Add(this.distanzaBox);
             this.Controls.Add(this.provinciaPartenzaBox);
             this.Controls.Add(this.quantitaLabel);
@@ -589,7 +590,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox quantitaBox;
-        private System.Windows.Forms.TextBox tipologiaMerceBox;
         private System.Windows.Forms.TextBox distanzaBox;
         private System.Windows.Forms.TextBox provinciaPartenzaBox;
         private System.Windows.Forms.Label quantitaLabel;
@@ -611,5 +611,6 @@
         private System.Windows.Forms.TextBox provinciaPunto;
         private System.Windows.Forms.Button inserisciPuntoSpedizioneButton;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.ListBox merceListBox;
     }
 }

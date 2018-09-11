@@ -82,9 +82,9 @@
             // 
             // terminaButton
             // 
-            this.terminaButton.Location = new System.Drawing.Point(782, 304);
+            this.terminaButton.Location = new System.Drawing.Point(650, 287);
             this.terminaButton.Name = "terminaButton";
-            this.terminaButton.Size = new System.Drawing.Size(101, 26);
+            this.terminaButton.Size = new System.Drawing.Size(127, 26);
             this.terminaButton.TabIndex = 152;
             this.terminaButton.Text = "Termina Spedizione";
             this.terminaButton.UseVisualStyleBackColor = true;
@@ -92,7 +92,7 @@
             // 
             // modificaButton
             // 
-            this.modificaButton.Location = new System.Drawing.Point(633, 304);
+            this.modificaButton.Location = new System.Drawing.Point(526, 287);
             this.modificaButton.Name = "modificaButton";
             this.modificaButton.Size = new System.Drawing.Size(101, 26);
             this.modificaButton.TabIndex = 150;
@@ -102,7 +102,7 @@
             // 
             // quantitaBox
             // 
-            this.quantitaBox.Location = new System.Drawing.Point(833, 109);
+            this.quantitaBox.Location = new System.Drawing.Point(676, 105);
             this.quantitaBox.Name = "quantitaBox";
             this.quantitaBox.ReadOnly = true;
             this.quantitaBox.Size = new System.Drawing.Size(108, 20);
@@ -110,7 +110,7 @@
             // 
             // tipologiaMerceBox
             // 
-            this.tipologiaMerceBox.Location = new System.Drawing.Point(833, 70);
+            this.tipologiaMerceBox.Location = new System.Drawing.Point(676, 66);
             this.tipologiaMerceBox.Name = "tipologiaMerceBox";
             this.tipologiaMerceBox.ReadOnly = true;
             this.tipologiaMerceBox.Size = new System.Drawing.Size(108, 20);
@@ -118,7 +118,7 @@
             // 
             // distanzaBox
             // 
-            this.distanzaBox.Location = new System.Drawing.Point(833, 32);
+            this.distanzaBox.Location = new System.Drawing.Point(676, 28);
             this.distanzaBox.Name = "distanzaBox";
             this.distanzaBox.ReadOnly = true;
             this.distanzaBox.Size = new System.Drawing.Size(108, 20);
@@ -127,7 +127,7 @@
             // quantitaLabel
             // 
             this.quantitaLabel.AutoSize = true;
-            this.quantitaLabel.Location = new System.Drawing.Point(680, 112);
+            this.quantitaLabel.Location = new System.Drawing.Point(523, 108);
             this.quantitaLabel.Name = "quantitaLabel";
             this.quantitaLabel.Size = new System.Drawing.Size(80, 13);
             this.quantitaLabel.TabIndex = 146;
@@ -136,7 +136,7 @@
             // tipologiaLabel
             // 
             this.tipologiaLabel.AutoSize = true;
-            this.tipologiaLabel.Location = new System.Drawing.Point(680, 73);
+            this.tipologiaLabel.Location = new System.Drawing.Point(523, 69);
             this.tipologiaLabel.Name = "tipologiaLabel";
             this.tipologiaLabel.Size = new System.Drawing.Size(83, 13);
             this.tipologiaLabel.TabIndex = 145;
@@ -145,7 +145,7 @@
             // distanzaStimataLabel
             // 
             this.distanzaStimataLabel.AutoSize = true;
-            this.distanzaStimataLabel.Location = new System.Drawing.Point(680, 35);
+            this.distanzaStimataLabel.Location = new System.Drawing.Point(523, 31);
             this.distanzaStimataLabel.Name = "distanzaStimataLabel";
             this.distanzaStimataLabel.Size = new System.Drawing.Size(86, 13);
             this.distanzaStimataLabel.TabIndex = 144;
@@ -155,7 +155,7 @@
             // 
             this.automezzoComboBox.Enabled = false;
             this.automezzoComboBox.FormattingEnabled = true;
-            this.automezzoComboBox.Location = new System.Drawing.Point(607, 252);
+            this.automezzoComboBox.Location = new System.Drawing.Point(573, 228);
             this.automezzoComboBox.Name = "automezzoComboBox";
             this.automezzoComboBox.Size = new System.Drawing.Size(211, 21);
             this.automezzoComboBox.TabIndex = 143;
@@ -163,7 +163,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(551, 257);
+            this.label15.Location = new System.Drawing.Point(508, 231);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(59, 13);
             this.label15.TabIndex = 142;
@@ -173,7 +173,7 @@
             // 
             this.autistaComboBox.Enabled = false;
             this.autistaComboBox.FormattingEnabled = true;
-            this.autistaComboBox.Location = new System.Drawing.Point(607, 207);
+            this.autistaComboBox.Location = new System.Drawing.Point(573, 189);
             this.autistaComboBox.Name = "autistaComboBox";
             this.autistaComboBox.Size = new System.Drawing.Size(211, 21);
             this.autistaComboBox.TabIndex = 141;
@@ -181,15 +181,15 @@
             // dateTimePickerArrivoPrevisto
             // 
             this.dateTimePickerArrivoPrevisto.Enabled = false;
-            this.dateTimePickerArrivoPrevisto.Location = new System.Drawing.Point(160, 337);
+            this.dateTimePickerArrivoPrevisto.Location = new System.Drawing.Point(85, 330);
             this.dateTimePickerArrivoPrevisto.Name = "dateTimePickerArrivoPrevisto";
-            this.dateTimePickerArrivoPrevisto.Size = new System.Drawing.Size(163, 20);
+            this.dateTimePickerArrivoPrevisto.Size = new System.Drawing.Size(179, 20);
             this.dateTimePickerArrivoPrevisto.TabIndex = 140;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(70, 343);
+            this.label13.Location = new System.Drawing.Point(129, 314);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(76, 13);
             this.label13.TabIndex = 139;
@@ -198,15 +198,15 @@
             // dateTimePickerPartenzaPrevisto
             // 
             this.dateTimePickerPartenzaPrevisto.Enabled = false;
-            this.dateTimePickerPartenzaPrevisto.Location = new System.Drawing.Point(160, 149);
+            this.dateTimePickerPartenzaPrevisto.Location = new System.Drawing.Point(85, 152);
             this.dateTimePickerPartenzaPrevisto.Name = "dateTimePickerPartenzaPrevisto";
-            this.dateTimePickerPartenzaPrevisto.Size = new System.Drawing.Size(163, 20);
+            this.dateTimePickerPartenzaPrevisto.Size = new System.Drawing.Size(179, 20);
             this.dateTimePickerPartenzaPrevisto.TabIndex = 138;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(70, 149);
+            this.label16.Location = new System.Drawing.Point(117, 136);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(76, 13);
             this.label16.TabIndex = 137;
@@ -215,7 +215,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(562, 210);
+            this.label14.Location = new System.Drawing.Point(523, 192);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(39, 13);
             this.label14.TabIndex = 136;
@@ -234,7 +234,7 @@
             // 
             // civicoArrivoBox
             // 
-            this.civicoArrivoBox.Location = new System.Drawing.Point(315, 298);
+            this.civicoArrivoBox.Location = new System.Drawing.Point(326, 291);
             this.civicoArrivoBox.Name = "civicoArrivoBox";
             this.civicoArrivoBox.ReadOnly = true;
             this.civicoArrivoBox.Size = new System.Drawing.Size(86, 20);
@@ -243,7 +243,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(273, 304);
+            this.label11.Location = new System.Drawing.Point(284, 297);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(36, 13);
             this.label11.TabIndex = 133;
@@ -252,7 +252,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(53, 304);
+            this.label12.Location = new System.Drawing.Point(64, 297);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(26, 13);
             this.label12.TabIndex = 132;
@@ -260,7 +260,7 @@
             // 
             // capArrivoBox
             // 
-            this.capArrivoBox.Location = new System.Drawing.Point(112, 298);
+            this.capArrivoBox.Location = new System.Drawing.Point(123, 291);
             this.capArrivoBox.Name = "capArrivoBox";
             this.capArrivoBox.ReadOnly = true;
             this.capArrivoBox.Size = new System.Drawing.Size(97, 20);
@@ -268,7 +268,7 @@
             // 
             // civicoPartenzaBox
             // 
-            this.civicoPartenzaBox.Location = new System.Drawing.Point(366, 113);
+            this.civicoPartenzaBox.Location = new System.Drawing.Point(326, 110);
             this.civicoPartenzaBox.Name = "civicoPartenzaBox";
             this.civicoPartenzaBox.ReadOnly = true;
             this.civicoPartenzaBox.Size = new System.Drawing.Size(86, 20);
@@ -277,7 +277,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(324, 120);
+            this.label9.Location = new System.Drawing.Point(284, 117);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(36, 13);
             this.label9.TabIndex = 129;
@@ -286,7 +286,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(88, 116);
+            this.label10.Location = new System.Drawing.Point(61, 116);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(26, 13);
             this.label10.TabIndex = 128;
@@ -294,7 +294,7 @@
             // 
             // capPartenzaBox
             // 
-            this.capPartenzaBox.Location = new System.Drawing.Point(147, 110);
+            this.capPartenzaBox.Location = new System.Drawing.Point(120, 110);
             this.capPartenzaBox.Name = "capPartenzaBox";
             this.capPartenzaBox.ReadOnly = true;
             this.capPartenzaBox.Size = new System.Drawing.Size(97, 20);
@@ -302,7 +302,7 @@
             // 
             // qualificatoreArrivoBox
             // 
-            this.qualificatoreArrivoBox.Location = new System.Drawing.Point(315, 249);
+            this.qualificatoreArrivoBox.Location = new System.Drawing.Point(326, 242);
             this.qualificatoreArrivoBox.Name = "qualificatoreArrivoBox";
             this.qualificatoreArrivoBox.ReadOnly = true;
             this.qualificatoreArrivoBox.Size = new System.Drawing.Size(86, 20);
@@ -310,7 +310,7 @@
             // 
             // nomeArrivoBox
             // 
-            this.nomeArrivoBox.Location = new System.Drawing.Point(315, 200);
+            this.nomeArrivoBox.Location = new System.Drawing.Point(326, 193);
             this.nomeArrivoBox.Name = "nomeArrivoBox";
             this.nomeArrivoBox.ReadOnly = true;
             this.nomeArrivoBox.Size = new System.Drawing.Size(86, 20);
@@ -318,7 +318,7 @@
             // 
             // localitaArrivoBox
             // 
-            this.localitaArrivoBox.Location = new System.Drawing.Point(112, 207);
+            this.localitaArrivoBox.Location = new System.Drawing.Point(123, 200);
             this.localitaArrivoBox.Name = "localitaArrivoBox";
             this.localitaArrivoBox.ReadOnly = true;
             this.localitaArrivoBox.Size = new System.Drawing.Size(97, 20);
@@ -327,7 +327,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(53, 210);
+            this.label5.Location = new System.Drawing.Point(64, 203);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 13);
             this.label5.TabIndex = 123;
@@ -336,7 +336,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(274, 206);
+            this.label6.Location = new System.Drawing.Point(285, 199);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(35, 13);
             this.label6.TabIndex = 122;
@@ -345,7 +345,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(243, 255);
+            this.label7.Location = new System.Drawing.Point(254, 248);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(66, 13);
             this.label7.TabIndex = 121;
@@ -354,7 +354,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(53, 255);
+            this.label8.Location = new System.Drawing.Point(64, 248);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(51, 13);
             this.label8.TabIndex = 120;
@@ -362,7 +362,7 @@
             // 
             // provinciaArrivoBox
             // 
-            this.provinciaArrivoBox.Location = new System.Drawing.Point(112, 249);
+            this.provinciaArrivoBox.Location = new System.Drawing.Point(123, 242);
             this.provinciaArrivoBox.Name = "provinciaArrivoBox";
             this.provinciaArrivoBox.ReadOnly = true;
             this.provinciaArrivoBox.Size = new System.Drawing.Size(97, 20);
@@ -370,7 +370,7 @@
             // 
             // qualificatorePartenzaBox
             // 
-            this.qualificatorePartenzaBox.Location = new System.Drawing.Point(366, 75);
+            this.qualificatorePartenzaBox.Location = new System.Drawing.Point(326, 72);
             this.qualificatorePartenzaBox.Name = "qualificatorePartenzaBox";
             this.qualificatorePartenzaBox.ReadOnly = true;
             this.qualificatorePartenzaBox.Size = new System.Drawing.Size(86, 20);
@@ -378,7 +378,7 @@
             // 
             // nomePartenzaBox
             // 
-            this.nomePartenzaBox.Location = new System.Drawing.Point(366, 33);
+            this.nomePartenzaBox.Location = new System.Drawing.Point(326, 30);
             this.nomePartenzaBox.Name = "nomePartenzaBox";
             this.nomePartenzaBox.ReadOnly = true;
             this.nomePartenzaBox.Size = new System.Drawing.Size(86, 20);
@@ -386,7 +386,7 @@
             // 
             // localitaPartenzaBox
             // 
-            this.localitaPartenzaBox.Location = new System.Drawing.Point(147, 37);
+            this.localitaPartenzaBox.Location = new System.Drawing.Point(120, 37);
             this.localitaPartenzaBox.Name = "localitaPartenzaBox";
             this.localitaPartenzaBox.ReadOnly = true;
             this.localitaPartenzaBox.Size = new System.Drawing.Size(97, 20);
@@ -395,7 +395,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(88, 40);
+            this.label4.Location = new System.Drawing.Point(61, 40);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 13);
             this.label4.TabIndex = 115;
@@ -404,7 +404,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(325, 40);
+            this.label3.Location = new System.Drawing.Point(285, 37);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 114;
@@ -413,7 +413,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(294, 82);
+            this.label2.Location = new System.Drawing.Point(254, 79);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 13);
             this.label2.TabIndex = 113;
@@ -422,7 +422,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(88, 78);
+            this.label1.Location = new System.Drawing.Point(61, 78);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 13);
             this.label1.TabIndex = 112;
@@ -430,7 +430,7 @@
             // 
             // provinciaPartenzaBox
             // 
-            this.provinciaPartenzaBox.Location = new System.Drawing.Point(147, 72);
+            this.provinciaPartenzaBox.Location = new System.Drawing.Point(120, 72);
             this.provinciaPartenzaBox.Name = "provinciaPartenzaBox";
             this.provinciaPartenzaBox.ReadOnly = true;
             this.provinciaPartenzaBox.Size = new System.Drawing.Size(97, 20);
@@ -439,7 +439,7 @@
             // luogoArrivoLabel
             // 
             this.luogoArrivoLabel.AutoSize = true;
-            this.luogoArrivoLabel.Location = new System.Drawing.Point(16, 174);
+            this.luogoArrivoLabel.Location = new System.Drawing.Point(13, 181);
             this.luogoArrivoLabel.Name = "luogoArrivoLabel";
             this.luogoArrivoLabel.Size = new System.Drawing.Size(78, 13);
             this.luogoArrivoLabel.TabIndex = 110;
@@ -457,7 +457,7 @@
             // dateTimePickerPartenzaEffettiva
             // 
             this.dateTimePickerPartenzaEffettiva.CustomFormat = "MM/dd/yyyy hh:mm:ss";
-            this.dateTimePickerPartenzaEffettiva.Location = new System.Drawing.Point(432, 149);
+            this.dateTimePickerPartenzaEffettiva.Location = new System.Drawing.Point(288, 152);
             this.dateTimePickerPartenzaEffettiva.Name = "dateTimePickerPartenzaEffettiva";
             this.dateTimePickerPartenzaEffettiva.Size = new System.Drawing.Size(178, 20);
             this.dateTimePickerPartenzaEffettiva.TabIndex = 154;
@@ -465,7 +465,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(350, 155);
+            this.label17.Location = new System.Drawing.Point(326, 136);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(77, 13);
             this.label17.TabIndex = 153;
@@ -473,15 +473,15 @@
             // 
             // dateTimePickerArrivoEffettivo
             // 
-            this.dateTimePickerArrivoEffettivo.Location = new System.Drawing.Point(432, 337);
+            this.dateTimePickerArrivoEffettivo.Location = new System.Drawing.Point(288, 330);
             this.dateTimePickerArrivoEffettivo.Name = "dateTimePickerArrivoEffettivo";
-            this.dateTimePickerArrivoEffettivo.Size = new System.Drawing.Size(132, 20);
+            this.dateTimePickerArrivoEffettivo.Size = new System.Drawing.Size(178, 20);
             this.dateTimePickerArrivoEffettivo.TabIndex = 156;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(350, 343);
+            this.label18.Location = new System.Drawing.Point(326, 314);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(77, 13);
             this.label18.TabIndex = 155;
@@ -489,7 +489,7 @@
             // 
             // distanzaEffettivaBox
             // 
-            this.distanzaEffettivaBox.Location = new System.Drawing.Point(833, 152);
+            this.distanzaEffettivaBox.Location = new System.Drawing.Point(676, 148);
             this.distanzaEffettivaBox.Name = "distanzaEffettivaBox";
             this.distanzaEffettivaBox.Size = new System.Drawing.Size(108, 20);
             this.distanzaEffettivaBox.TabIndex = 158;
@@ -497,7 +497,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(680, 155);
+            this.label19.Location = new System.Drawing.Point(523, 151);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(90, 13);
             this.label19.TabIndex = 157;
@@ -507,7 +507,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 636);
+            this.ClientSize = new System.Drawing.Size(803, 636);
             this.Controls.Add(this.distanzaEffettivaBox);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.dateTimePickerArrivoEffettivo);

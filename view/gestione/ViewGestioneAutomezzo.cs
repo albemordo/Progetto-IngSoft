@@ -14,18 +14,24 @@ namespace AutotrasportiFantini.view
         {
             InitializeComponent();
         }
+
+        private void createViewDettagliAutomezzo()
+        {
+            automezzo = automezzi[dataTable.CurrentCell.RowIndex];
+            viewDettagliAutomezzo = new ViewDettagliAutomezzo(automezzo);
+            viewDettagliAutomezzo.ShowDialog();
+        }
+
         protected override void dataTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            automezzo = automezzi[dataTable.CurrentCell.RowIndex];
-            viewDettagliAutomezzo = new ViewDettagliAutomezzo(automezzo);
-            viewDettagliAutomezzo.ShowDialog();
+            createViewDettagliAutomezzo();
         }
+
         protected override void mascheraDettaglioButton_Click(object sender, EventArgs e)
         {
-            automezzo = automezzi[dataTable.CurrentCell.RowIndex];
-            viewDettagliAutomezzo = new ViewDettagliAutomezzo(automezzo);
-            viewDettagliAutomezzo.ShowDialog();
+            createViewDettagliAutomezzo();
         }
+
         private void creaAutomezzoButton_Click(object sender, EventArgs e)
         {
             viewCreazioneAutomezzo = new ViewCreazioneAutomezzo();
@@ -77,9 +83,9 @@ namespace AutotrasportiFantini.view
             }
         }
 
-        private List<IAutomezzo> automezzi;
-        private ViewDettagliAutomezzo viewDettagliAutomezzo;
-        private ViewCreazioneAutomezzo viewCreazioneAutomezzo;
-        private IAutomezzo automezzo = new RisorseFactory().GetAutomezzo();
+        List<IAutomezzo> automezzi;
+        ViewDettagliAutomezzo viewDettagliAutomezzo;
+        ViewCreazioneAutomezzo viewCreazioneAutomezzo;
+        IAutomezzo automezzo = new RisorseFactory().GetAutomezzo();
     }
 }

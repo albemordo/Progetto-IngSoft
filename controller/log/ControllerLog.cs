@@ -23,7 +23,6 @@ namespace AutotrasportiFantini.controller.log
 
 		protected ControllerLog()
 		{
-			utente = ControllerAutenticazione.GetIstanza().GetUtenteAutenticato();
 			SistemaLog = new SistemaLog();
 		}
 

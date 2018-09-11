@@ -63,7 +63,7 @@
             // 
             // inserisciOrarioButton
             // 
-            this.inserisciOrarioButton.Location = new System.Drawing.Point(154, 203);
+            this.inserisciOrarioButton.Location = new System.Drawing.Point(152, 195);
             this.inserisciOrarioButton.Name = "inserisciOrarioButton";
             this.inserisciOrarioButton.Size = new System.Drawing.Size(101, 26);
             this.inserisciOrarioButton.TabIndex = 75;
@@ -177,7 +177,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(397, 252);
+            this.ClientSize = new System.Drawing.Size(397, 233);
             this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.inserisciOrarioButton);

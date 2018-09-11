@@ -1,5 +1,6 @@
 ﻿using AutotrasportiFantini.controller;
 using AutotrasportiFantini.controller.interfacce;
+using AutotrasportiFantini.modello;
 using AutotrasportiFantini.modello.factory;
 using AutotrasportiFantini.modello.interfacce;
 using System;
@@ -14,7 +15,7 @@ namespace AutotrasportiFantini.view.dettagli
         {
             InitializeComponent();
             this.spedizione = spedizione;
-            
+            setup();
         }
 
         private void setup()
@@ -36,7 +37,6 @@ namespace AutotrasportiFantini.view.dettagli
             this.qualificatorePartenzaBox.Text = spedizione.partenza.qualificatore;
             this.distanzaBox.Text = spedizione.distanzaStimata.ToString();
             this.distanzaEffettivaBox.Text = spedizione.distanzaEffettiva.ToString();
-            this.tipologiaMerceBox.Text = spedizione.tipologiaMerce.tipologia;
             this.provinciaPartenzaBox.Text = spedizione.partenza.localita;
             this.dateTimePickerArrivoPrevisto.Value = spedizione.orarioPrevistoArrivo;
             this.dateTimePickerArrivoEffettivo.Value = spedizione.orarioEffettivoArrivo;
@@ -52,21 +52,34 @@ namespace AutotrasportiFantini.view.dettagli
             this.dateTimePickerPartenzaPrevisto.CustomFormat = "MM/dd/yyyy hh:mm:ss";
             this.fillComboBoxAutisti();
             this.fillComboBoxDelegati();
+            foreach (ITipologiaMerce tipologiaMerce in controllerTipologiaMerce.ListaTipologieMerce())
+            {
+                this.merceListBox.Items.Add(tipologiaMerce);
+            }
         }
         private void fillComboBoxAutomezzi()
         {
-            List<IAutomezzo> automezzi = controllerAutomezzi.ListaAutomezzi((IDelegato) this.delegatoComboBox.SelectedItem);
-            this.autistaComboBox.DataSource = automezzi;
+            this.listBoxAutomezzo.Items.Clear();
+            foreach (IAutomezzo automezzo in controllerAutomezzi.ListaAutomezzi((IDelegato)this.listBoxDelegato.SelectedItem))
+            {
+                this.listBoxAutomezzo.Items.Add(automezzo);
+            }
         }
         private void fillComboBoxAutisti()
         {
-            List<IAutista> autisti = controllerGestioneDipendenti.ListaAutisti();
-            this.autistaComboBox.DataSource = autisti;
+            this.listBoxAutista.Items.Clear();
+            foreach (IAutista autista in controllerGestioneDipendenti.ListaAutisti())
+            {
+                this.listBoxAutista.Items.Add(autista);
+            }
         }
         private void fillComboBoxDelegati()
         {
-            List<IDelegato> delegati = controllerGestioneDipendenti.ListaDelegati();
-            this.delegatoComboBox.DataSource = delegati;
+            this.listBoxDelegato.Items.Clear();
+            foreach (IAutomezzo automezzo in controllerGestioneDipendenti.ListaDelegati())
+            {
+                this.listBoxDelegato.Items.Add(automezzo);
+            }
         }
         private void addTableColumns()
         {
@@ -99,7 +112,7 @@ namespace AutotrasportiFantini.view.dettagli
             IIndirizzo arrivo = controllerIndirizzi.CreaIndirizzo(this.qualificatoreArrivoBox.Text, this.nomeArrivoBox.Text, this.civicoArrivoBox.Text, this.capArrivoBox.Text, this.localitaArrivoBox.Text, this.provinciaArrivoBox.Text);
             IIndirizzo partenza = controllerIndirizzi.CreaIndirizzo(this.qualificatorePartenzaBox.Text, this.nomePartenzaBox.Text, this.civicoPartenzaBox.Text, this.capPartenzaBox.Text, this.localitaPartenzaBox.Text, this.provinciaPartenzaBox.Text);
             List<IPuntoSpedizione> listaPuntiSpedizione = new List<IPuntoSpedizione>();
-            ITipologiaMerce tipologiaMerceTemp = new ControllerTipologiaMerce().CreaTipologiaMerce(this.tipologiaMerceBox.Text);
+            ITipologiaMerce tipologiaMerceTemp = (TipologiaMerce) this.merceListBox.SelectedItem;
             for (int i = 0; i < dataTable.RowCount; i++)
             {
                 IPuntoSpedizione puntoSpedizioneTemp = new RisorseFactory().GetPuntoSpedizione();
@@ -107,8 +120,8 @@ namespace AutotrasportiFantini.view.dettagli
                 listaPuntiSpedizione.Add(puntoSpedizioneTemp);
             }
             controllerSpedizioni.ModificaDati(spedizione, partenza, arrivo, listaPuntiSpedizione, float.Parse(this.distanzaBox.Text), float.Parse(this.distanzaEffettivaBox.Text),
-                int.Parse(this.tempoStimatoBox.Text), tipologiaMerceTemp, float.Parse(this.quantitaBox.Text), (IAutista)this.autistaComboBox.SelectedItem, (IAutomezzo)this.automezzoComboBox.SelectedItem,
-                (IDelegato)this.delegatoComboBox.SelectedItem, this.dateTimePickerPartenzaPrevisto.Value, this.dateTimePickerArrivoPrevisto.Value, this.dateTimePickerPartenzaEffettivo.Value,
+                int.Parse(this.tempoStimatoBox.Text), tipologiaMerceTemp, float.Parse(this.quantitaBox.Text), (IAutista)this.listBoxAutista.SelectedItem, (IAutomezzo)this.listBoxAutomezzo.SelectedItem,
+                (IDelegato)this.listBoxDelegato.SelectedItem, this.dateTimePickerPartenzaPrevisto.Value, this.dateTimePickerArrivoPrevisto.Value, this.dateTimePickerPartenzaEffettivo.Value,
                 this.dateTimePickerArrivoPrevisto.Value);
         }
 
@@ -116,30 +129,29 @@ namespace AutotrasportiFantini.view.dettagli
         {
             controllerSpedizioni.EliminaSpedizione(spedizione);
         }
-
+        
         private void dataTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             puntoSpedizione = spedizione.puntiSpedizione[dataTable.CurrentCell.RowIndex];
-            viewDettagliPuntoSpedizione = new ViewDettagliPuntoSpedizioneAutista(puntoSpedizione);
+            viewDettagliPuntoSpedizione = new ViewDettagliPuntoSpedizione(puntoSpedizione);
             viewDettagliPuntoSpedizione.ShowDialog();
         }
         private void delegaButton_Click(object sender, EventArgs e)
         {
-            controllerSpedizioni.AssegnaDelegato(spedizione, (IDelegato)this.delegatoComboBox.SelectedItem);
+            controllerSpedizioni.AssegnaDelegato(spedizione, (IDelegato)this.listBoxDelegato.SelectedItem);
         }
         private void delegatoComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             fillComboBoxAutomezzi();
         }
+
         IControllerGestioneSpedizione controllerSpedizioni = new ControllerGestioneSpedizione();
-        IControllerAutenticazione controllerAutenticazione = ControllerAutenticazione.GetIstanza();
         IControllerGestioneDipendenti controllerGestioneDipendenti = new ControllerGestioneDipendenti();
         IControllerIndirizzi controllerIndirizzi = new ControllerIndirizzi();
         IControllerAutomezzi controllerAutomezzi = new ControllerAutomezzi();
-        ViewDettagliPuntoSpedizioneAutista viewDettagliPuntoSpedizione;
-        private ISpedizione spedizione;
-        private IPuntoSpedizione puntoSpedizione;
-
-        
+        ViewDettagliPuntoSpedizione viewDettagliPuntoSpedizione;
+        ISpedizione spedizione;
+        IPuntoSpedizione puntoSpedizione;
+        IControllerTipologiaMerce controllerTipologiaMerce = new ControllerTipologiaMerce();
     }
 }

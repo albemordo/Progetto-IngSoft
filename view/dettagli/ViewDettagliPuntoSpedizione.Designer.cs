@@ -1,6 +1,6 @@
 ﻿namespace AutotrasportiFantini.view.dettagli
 {
-    partial class ViewDettagliPuntoSpedizioneAutista
+    partial class ViewDettagliPuntoSpedizione
     {
         /// <summary>
         /// Required designer variable.
@@ -48,7 +48,7 @@
             // 
             // civicoBox
             // 
-            this.civicoBox.Location = new System.Drawing.Point(309, 122);
+            this.civicoBox.Location = new System.Drawing.Point(334, 121);
             this.civicoBox.Name = "civicoBox";
             this.civicoBox.Size = new System.Drawing.Size(86, 20);
             this.civicoBox.TabIndex = 57;
@@ -56,7 +56,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(255, 125);
+            this.label9.Location = new System.Drawing.Point(280, 124);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(36, 13);
             this.label9.TabIndex = 56;
@@ -65,7 +65,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(35, 122);
+            this.label10.Location = new System.Drawing.Point(14, 121);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(26, 13);
             this.label10.TabIndex = 55;
@@ -73,28 +73,28 @@
             // 
             // capBox
             // 
-            this.capBox.Location = new System.Drawing.Point(106, 119);
+            this.capBox.Location = new System.Drawing.Point(85, 118);
             this.capBox.Name = "capBox";
             this.capBox.Size = new System.Drawing.Size(97, 20);
             this.capBox.TabIndex = 54;
             // 
             // qualificatoreBox
             // 
-            this.qualificatoreBox.Location = new System.Drawing.Point(309, 72);
+            this.qualificatoreBox.Location = new System.Drawing.Point(334, 71);
             this.qualificatoreBox.Name = "qualificatoreBox";
             this.qualificatoreBox.Size = new System.Drawing.Size(86, 20);
             this.qualificatoreBox.TabIndex = 53;
             // 
             // nomeBox
             // 
-            this.nomeBox.Location = new System.Drawing.Point(309, 22);
+            this.nomeBox.Location = new System.Drawing.Point(334, 21);
             this.nomeBox.Name = "nomeBox";
             this.nomeBox.Size = new System.Drawing.Size(86, 20);
             this.nomeBox.TabIndex = 52;
             // 
             // localitaBox
             // 
-            this.localitaBox.Location = new System.Drawing.Point(106, 26);
+            this.localitaBox.Location = new System.Drawing.Point(85, 25);
             this.localitaBox.Name = "localitaBox";
             this.localitaBox.Size = new System.Drawing.Size(97, 20);
             this.localitaBox.TabIndex = 51;
@@ -102,7 +102,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(35, 26);
+            this.label4.Location = new System.Drawing.Point(14, 25);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 13);
             this.label4.TabIndex = 50;
@@ -111,7 +111,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(256, 25);
+            this.label3.Location = new System.Drawing.Point(281, 24);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 49;
@@ -120,7 +120,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(225, 75);
+            this.label2.Location = new System.Drawing.Point(250, 74);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 13);
             this.label2.TabIndex = 48;
@@ -129,7 +129,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(35, 72);
+            this.label1.Location = new System.Drawing.Point(14, 71);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 13);
             this.label1.TabIndex = 47;
@@ -137,7 +137,7 @@
             // 
             // provinciaBox
             // 
-            this.provinciaBox.Location = new System.Drawing.Point(106, 69);
+            this.provinciaBox.Location = new System.Drawing.Point(85, 68);
             this.provinciaBox.Name = "provinciaBox";
             this.provinciaBox.Size = new System.Drawing.Size(97, 20);
             this.provinciaBox.TabIndex = 46;
@@ -165,7 +165,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(35, 160);
+            this.label5.Location = new System.Drawing.Point(77, 170);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 13);
             this.label5.TabIndex = 61;
@@ -173,7 +173,7 @@
             // 
             // dateTimePicker
             // 
-            this.dateTimePicker.Location = new System.Drawing.Point(106, 160);
+            this.dateTimePicker.Location = new System.Drawing.Point(148, 164);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker.TabIndex = 62;

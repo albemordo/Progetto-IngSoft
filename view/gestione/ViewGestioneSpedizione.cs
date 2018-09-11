@@ -14,17 +14,20 @@ namespace AutotrasportiFantini.view
         {
             InitializeComponent();
         }
-        protected override void dataTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+
+        private void createViewDettagliSpedizione()
         {
             spedizione = spedizioni[dataTable.CurrentCell.RowIndex];
             viewDettagliSpedizione = new ViewDettagliSpedizione(spedizione);
             viewDettagliSpedizione.ShowDialog();
         }
+        protected override void dataTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            createViewDettagliSpedizione();
+        }
         protected override void mascheraDettaglioButton_Click(object sender, EventArgs e)
         {
-            spedizione = spedizioni[dataTable.CurrentCell.RowIndex];
-            viewDettagliSpedizione = new ViewDettagliSpedizione(spedizione);
-            viewDettagliSpedizione.ShowDialog();
+            createViewDettagliSpedizione();
         }
 
         private void creaSpedizioneButton_Click(object sender, EventArgs e)
@@ -186,18 +189,17 @@ namespace AutotrasportiFantini.view
                 dataTable.Rows[i].Cells[12].Value = spedizioneTemp.orarioEffettivoArrivo;
                 dataTable.Rows[i].Cells[13].Value = spedizioneTemp.distanzaEffettiva;
                 dataTable.Rows[i].Cells[14].Value = spedizioneTemp.tempoPercorrenza;
-                for(int j = 0; j < spedizioneTemp.puntiSpedizione.Count; j++)
+                for (int j = 0; j < spedizioneTemp.puntiSpedizione.Count; j++)
                 {
-                    dataTable.Rows[i].Cells[15+j*2].Value = spedizioneTemp.puntiSpedizione[j].indirizzo.localita;
-                    dataTable.Rows[i].Cells[16+j*2].Value = spedizioneTemp.puntiSpedizione[j].orarioArrivo;
+                    dataTable.Rows[i].Cells[15 + j * 2].Value = spedizioneTemp.puntiSpedizione[j].indirizzo.localita;
+                    dataTable.Rows[i].Cells[16 + j * 2].Value = spedizioneTemp.puntiSpedizione[j].orarioArrivo;
                 }
-
             }
         }
 
         ViewDettagliSpedizione viewDettagliSpedizione;
         ViewCreazioneSpedizione viewCreaSpedizione;
-        private ISpedizione spedizione = new RisorseFactory().GetSpedizione();
-        private List<ISpedizione> spedizioni;
+        ISpedizione spedizione = new RisorseFactory().GetSpedizione();
+        List<ISpedizione> spedizioni;
     }
 }

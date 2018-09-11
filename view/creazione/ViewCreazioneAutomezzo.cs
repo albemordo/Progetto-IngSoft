@@ -16,6 +16,15 @@ namespace AutotrasportiFantini.view
         private void aggiungiButton_Click(object sender, EventArgs e)
         {
             controllerAutomezzi.CreaAutomezzo(this.targaBox.Text, this.marcaBox.Text, this.modelloBox.Text, this.targaRimorchioBox.Text,(IDelegato) controllerAutenticazione.GetUtenteAutenticato());
+            this.pulisciCampi();
+        }
+
+        private void pulisciCampi()
+        {
+            this.targaBox.Text = "";
+            this.marcaBox.Text = "";
+            this.modelloBox.Text = "";
+            this.targaRimorchioBox.Text = "";
         }
 
         IControllerAutenticazione controllerAutenticazione = ControllerAutenticazione.GetIstanza();

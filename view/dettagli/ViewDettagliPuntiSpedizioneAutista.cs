@@ -2,13 +2,6 @@
 using AutotrasportiFantini.controller.interfacce;
 using AutotrasportiFantini.modello.interfacce;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AutotrasportiFantini.view.dettagli
@@ -18,8 +11,13 @@ namespace AutotrasportiFantini.view.dettagli
         public ViewDettagliPuntiSpedizioneAutista(ISpedizione spedizione, IPuntoSpedizione puntoSpedizione)
         {
             InitializeComponent();
+
             this.puntoSpedizione = puntoSpedizione;
             this.spedizione = spedizione;
+            this.setup();
+        }
+        private void setup()
+        {
             this.localitaBox.Text = puntoSpedizione.indirizzo.localita;
             this.nomeBox.Text = puntoSpedizione.indirizzo.nome;
             this.provinciaBox.Text = puntoSpedizione.indirizzo.provincia;
@@ -30,17 +28,13 @@ namespace AutotrasportiFantini.view.dettagli
             this.dateTimePicker.Format = DateTimePickerFormat.Custom;
             this.dateTimePicker.CustomFormat = "MM/dd/yyyy hh:mm:ss";
         }
-
-
         private void inserisciOrarioButton_Click(object sender, EventArgs e)
         {
             controllerSpedizioniAutista.RegistraPuntoSpedizione(spedizione, puntoSpedizione, this.dateTimePicker.Value);
         }
 
-        private IPuntoSpedizione puntoSpedizione;
-        private ISpedizione spedizione;
-        IControllerIndirizzi controllerIndirizzi = new ControllerIndirizzi();
+        IPuntoSpedizione puntoSpedizione;
+        ISpedizione spedizione;
         IControllerSpedizioniAutista controllerSpedizioniAutista = new ControllerSpedizioniAutista();
-        IControllerGestioneSpedizione controllerGestioneSpedizione = new ControllerGestioneSpedizione();
     }
 }

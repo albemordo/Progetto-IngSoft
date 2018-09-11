@@ -1,7 +1,6 @@
 ﻿using AutotrasportiFantini.controller;
 using AutotrasportiFantini.controller.interfacce;
 using AutotrasportiFantini.modello.interfacce;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace AutotrasportiFantini.view.dettagli
@@ -12,6 +11,10 @@ namespace AutotrasportiFantini.view.dettagli
         {
             InitializeComponent();
             this.spedizione = spedizione;
+        }
+
+        private void setup()
+        {
             this.addTableColumns();
             this.addTableRows();
             this.quantitaBox.Text = spedizione.quantitaMerce.ToString();
@@ -35,7 +38,6 @@ namespace AutotrasportiFantini.view.dettagli
             this.fillComboBoxAutisti();
             this.fillComboBoxAutomezzi();
         }
-
         private void addTableColumns()
         {
             dataTable.Columns.Add("localita", "Località");
@@ -60,16 +62,22 @@ namespace AutotrasportiFantini.view.dettagli
                 dataTable.Rows[i].Cells[6].Value = spedizione.puntiSpedizione[i].orarioArrivo;
             }
         }
+
         private void fillComboBoxAutomezzi()
         {
-            List<IAutomezzo> automezzi = controllerAutomezzi.ListaAutomezzi((IDelegato)controllerAutenticazione.GetUtenteAutenticato());
-            this.automezzoComboBox.DataSource = automezzi;
+            this.listBoxAutomezzo.Items.Clear();
+            foreach (IAutomezzo automezzo in controllerAutomezzi.ListaAutomezzi((IDelegato) this.controllerAutenticazione.GetUtenteAutenticato()))
+            {
+                this.listBoxAutomezzo.Items.Add(automezzo);
+            }
         }
-
         private void fillComboBoxAutisti()
         {
-            List<IAutista> autisti = controllerGestioneDipendenti.ListaAutisti();
-            this.autistaComboBox.DataSource = autisti;
+            this.listBoxAutista.Items.Clear();
+            foreach (IAutista autista in controllerGestioneDipendenti.ListaAutisti())
+            {
+                this.listBoxAutista.Items.Add(autista);
+            }
         }
 
         private void modificaButton_Click(object sender, System.EventArgs e)
@@ -79,8 +87,8 @@ namespace AutotrasportiFantini.view.dettagli
 
         private void autistaButton_Click(object sender, System.EventArgs e)
         {
-            controllerAssegnazioneSpedizione.AssegnaAutista(spedizione, (IAutista)this.autistaComboBox.SelectedItem);
-            controllerAssegnazioneSpedizione.AssegnaAutomezzo(spedizione, (IAutomezzo)this.automezzoComboBox.SelectedItem);
+            controllerAssegnazioneSpedizione.AssegnaAutista(spedizione, (IAutista)this.listBoxAutista.SelectedItem);
+            controllerAssegnazioneSpedizione.AssegnaAutomezzo(spedizione, (IAutomezzo)this.listBoxAutomezzo.SelectedItem);
         }
 
         IControllerAssegnazioneSpedizione controllerAssegnazioneSpedizione = new ControllerAssegnazioneSpedizione();
@@ -88,7 +96,7 @@ namespace AutotrasportiFantini.view.dettagli
         IControllerAutenticazione controllerAutenticazione = ControllerAutenticazione.GetIstanza();
         IControllerGestioneDipendenti controllerGestioneDipendenti = new ControllerGestioneDipendenti();
         IControllerAutomezzi controllerAutomezzi = new ControllerAutomezzi();
-        private ISpedizione spedizione;
-        private IPuntoSpedizione puntoSpedizione; 
+        ISpedizione spedizione;
+
     }
 }

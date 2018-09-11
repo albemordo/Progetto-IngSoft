@@ -6,12 +6,18 @@ using System.Windows.Forms;
 
 namespace AutotrasportiFantini.view.dettagli
 {
-    public partial class ViewDettagliPuntoSpedizioneAutista : Form
+    public partial class ViewDettagliPuntoSpedizione : Form
     {
-        public ViewDettagliPuntoSpedizioneAutista(IPuntoSpedizione puntoSpedizione)
+        public ViewDettagliPuntoSpedizione(IPuntoSpedizione puntoSpedizione)
         {
             InitializeComponent();
             this.puntoSpedizione = puntoSpedizione;
+            setup();
+            
+        }
+
+        private void setup()
+        {
             this.localitaBox.Text = puntoSpedizione.indirizzo.localita;
             this.nomeBox.Text = puntoSpedizione.indirizzo.nome;
             this.provinciaBox.Text = puntoSpedizione.indirizzo.provincia;
@@ -35,10 +41,9 @@ namespace AutotrasportiFantini.view.dettagli
             controllerPuntiSpedizione.EliminaPuntoSpedizione(puntoSpedizione);
         }
 
-        private IPuntoSpedizione puntoSpedizione;
+        IPuntoSpedizione puntoSpedizione;
         IControllerIndirizzi controllerIndirizzi = new ControllerIndirizzi();
         IControllerPuntiSpedizione controllerPuntiSpedizione = new ControllerPuntiSpedizione();
-        IControllerGestioneSpedizione controllerGestioneSpedizione = new ControllerGestioneSpedizione();
     }
 
     

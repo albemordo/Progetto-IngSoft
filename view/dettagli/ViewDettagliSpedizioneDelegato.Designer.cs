@@ -30,7 +30,6 @@
         {
             this.dateTimePickerPartenzaPrevisto = new System.Windows.Forms.DateTimePicker();
             this.label16 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.civicoArrivoBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -60,9 +59,6 @@
             this.dataTable = new System.Windows.Forms.DataGridView();
             this.dateTimePickerArrivoPrevisto = new System.Windows.Forms.DateTimePicker();
             this.label13 = new System.Windows.Forms.Label();
-            this.autistaComboBox = new System.Windows.Forms.ComboBox();
-            this.automezzoComboBox = new System.Windows.Forms.ComboBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.quantitaBox = new System.Windows.Forms.TextBox();
             this.tipologiaMerceBox = new System.Windows.Forms.TextBox();
             this.distanzaBox = new System.Windows.Forms.TextBox();
@@ -70,8 +66,11 @@
             this.tipologiaLabel = new System.Windows.Forms.Label();
             this.distanzaStimataLabel = new System.Windows.Forms.Label();
             this.autistaButton = new System.Windows.Forms.Button();
-            this.eliminaButton = new System.Windows.Forms.Button();
             this.modificaButton = new System.Windows.Forms.Button();
+            this.listBoxAutomezzo = new System.Windows.Forms.ListBox();
+            this.listBoxAutista = new System.Windows.Forms.ListBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,15 +89,6 @@
             this.label16.Size = new System.Drawing.Size(76, 13);
             this.label16.TabIndex = 91;
             this.label16.Text = "Orario Previsto";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(492, 207);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(39, 13);
-            this.label14.TabIndex = 89;
-            this.label14.Text = "Autista";
             // 
             // civicoArrivoBox
             // 
@@ -348,31 +338,6 @@
             this.label13.TabIndex = 95;
             this.label13.Text = "Orario Previsto";
             // 
-            // autistaComboBox
-            // 
-            this.autistaComboBox.FormattingEnabled = true;
-            this.autistaComboBox.Location = new System.Drawing.Point(537, 204);
-            this.autistaComboBox.Name = "autistaComboBox";
-            this.autistaComboBox.Size = new System.Drawing.Size(211, 21);
-            this.autistaComboBox.TabIndex = 97;
-            // 
-            // automezzoComboBox
-            // 
-            this.automezzoComboBox.FormattingEnabled = true;
-            this.automezzoComboBox.Location = new System.Drawing.Point(537, 249);
-            this.automezzoComboBox.Name = "automezzoComboBox";
-            this.automezzoComboBox.Size = new System.Drawing.Size(211, 21);
-            this.automezzoComboBox.TabIndex = 99;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(481, 254);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(59, 13);
-            this.label15.TabIndex = 98;
-            this.label15.Text = "Automezzo";
-            // 
             // quantitaBox
             // 
             this.quantitaBox.Location = new System.Drawing.Point(640, 98);
@@ -426,26 +391,17 @@
             // 
             // autistaButton
             // 
-            this.autistaButton.Location = new System.Drawing.Point(670, 296);
+            this.autistaButton.Location = new System.Drawing.Point(588, 296);
             this.autistaButton.Name = "autistaButton";
-            this.autistaButton.Size = new System.Drawing.Size(101, 26);
+            this.autistaButton.Size = new System.Drawing.Size(183, 26);
             this.autistaButton.TabIndex = 108;
-            this.autistaButton.Text = "Imposta Autista";
+            this.autistaButton.Text = "Imposta Autista ed Automezzo";
             this.autistaButton.UseVisualStyleBackColor = true;
             this.autistaButton.Click += new System.EventHandler(this.autistaButton_Click);
             // 
-            // eliminaButton
-            // 
-            this.eliminaButton.Location = new System.Drawing.Point(534, 296);
-            this.eliminaButton.Name = "eliminaButton";
-            this.eliminaButton.Size = new System.Drawing.Size(101, 26);
-            this.eliminaButton.TabIndex = 107;
-            this.eliminaButton.Text = "Elimina";
-            this.eliminaButton.UseVisualStyleBackColor = true;
-            // 
             // modificaButton
             // 
-            this.modificaButton.Location = new System.Drawing.Point(411, 296);
+            this.modificaButton.Location = new System.Drawing.Point(466, 296);
             this.modificaButton.Name = "modificaButton";
             this.modificaButton.Size = new System.Drawing.Size(101, 26);
             this.modificaButton.TabIndex = 106;
@@ -453,13 +409,50 @@
             this.modificaButton.UseVisualStyleBackColor = true;
             this.modificaButton.Click += new System.EventHandler(this.modificaButton_Click);
             // 
+            // listBoxAutomezzo
+            // 
+            this.listBoxAutomezzo.FormattingEnabled = true;
+            this.listBoxAutomezzo.Location = new System.Drawing.Point(609, 180);
+            this.listBoxAutomezzo.Name = "listBoxAutomezzo";
+            this.listBoxAutomezzo.Size = new System.Drawing.Size(120, 95);
+            this.listBoxAutomezzo.TabIndex = 112;
+            // 
+            // listBoxAutista
+            // 
+            this.listBoxAutista.FormattingEnabled = true;
+            this.listBoxAutista.Location = new System.Drawing.Point(483, 180);
+            this.listBoxAutista.Name = "listBoxAutista";
+            this.listBoxAutista.Size = new System.Drawing.Size(120, 95);
+            this.listBoxAutista.TabIndex = 111;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(637, 164);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(59, 13);
+            this.label21.TabIndex = 110;
+            this.label21.Text = "Automezzo";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(521, 164);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(39, 13);
+            this.label17.TabIndex = 109;
+            this.label17.Text = "Autista";
+            // 
             // ViewDettagliSpedizioneDelegato
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(776, 635);
+            this.Controls.Add(this.listBoxAutomezzo);
+            this.Controls.Add(this.listBoxAutista);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.label17);
             this.Controls.Add(this.autistaButton);
-            this.Controls.Add(this.eliminaButton);
             this.Controls.Add(this.modificaButton);
             this.Controls.Add(this.quantitaBox);
             this.Controls.Add(this.tipologiaMerceBox);
@@ -467,14 +460,10 @@
             this.Controls.Add(this.quantitaLabel);
             this.Controls.Add(this.tipologiaLabel);
             this.Controls.Add(this.distanzaStimataLabel);
-            this.Controls.Add(this.automezzoComboBox);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.autistaComboBox);
             this.Controls.Add(this.dateTimePickerArrivoPrevisto);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.dateTimePickerPartenzaPrevisto);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.label14);
             this.Controls.Add(this.dataTable);
             this.Controls.Add(this.civicoArrivoBox);
             this.Controls.Add(this.label11);
@@ -515,7 +504,6 @@
 
         private System.Windows.Forms.DateTimePicker dateTimePickerPartenzaPrevisto;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox civicoArrivoBox;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
@@ -545,9 +533,6 @@
         private System.Windows.Forms.DataGridView dataTable;
         private System.Windows.Forms.DateTimePicker dateTimePickerArrivoPrevisto;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox autistaComboBox;
-        private System.Windows.Forms.ComboBox automezzoComboBox;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox quantitaBox;
         private System.Windows.Forms.TextBox tipologiaMerceBox;
         private System.Windows.Forms.TextBox distanzaBox;
@@ -555,7 +540,10 @@
         private System.Windows.Forms.Label tipologiaLabel;
         private System.Windows.Forms.Label distanzaStimataLabel;
         private System.Windows.Forms.Button autistaButton;
-        private System.Windows.Forms.Button eliminaButton;
         private System.Windows.Forms.Button modificaButton;
+        private System.Windows.Forms.ListBox listBoxAutomezzo;
+        private System.Windows.Forms.ListBox listBoxAutista;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label17;
     }
 }

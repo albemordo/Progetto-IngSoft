@@ -38,7 +38,7 @@
             // 
             // gestioneAutomezziButton
             // 
-            this.gestioneAutomezziButton.Location = new System.Drawing.Point(305, 5);
+            this.gestioneAutomezziButton.Location = new System.Drawing.Point(244, 6);
             this.gestioneAutomezziButton.Name = "gestioneAutomezziButton";
             this.gestioneAutomezziButton.Size = new System.Drawing.Size(227, 50);
             this.gestioneAutomezziButton.TabIndex = 3;
@@ -48,7 +48,7 @@
             // 
             // gestioneSpedizioniAssegnateButton
             // 
-            this.gestioneSpedizioniAssegnateButton.Location = new System.Drawing.Point(34, 5);
+            this.gestioneSpedizioniAssegnateButton.Location = new System.Drawing.Point(12, 6);
             this.gestioneSpedizioniAssegnateButton.Name = "gestioneSpedizioniAssegnateButton";
             this.gestioneSpedizioniAssegnateButton.Size = new System.Drawing.Size(227, 50);
             this.gestioneSpedizioniAssegnateButton.TabIndex = 4;

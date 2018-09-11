@@ -7,12 +7,17 @@ namespace AutotrasportiFantini.view
         public HomeAutista()
         {
             InitializeComponent();
+            setup();
+        }
+
+        private void setup()
+        {
             viewGestioneSpedizioneAssegnata.TopLevel = false;
             viewGestioneSpedizioneAssegnata.AutoScroll = true;
             this.formPanel.Controls.Clear();
             this.formPanel.Controls.Add(viewGestioneSpedizioneAssegnata);
             viewGestioneSpedizioneAssegnata.Show();
         }
-        private ViewGestioneSpedizioneAssegnata viewGestioneSpedizioneAssegnata = new ViewGestioneSpedizioneAssegnata();
+        ViewGestioneSpedizioneAssegnata viewGestioneSpedizioneAssegnata = new ViewGestioneSpedizioneAssegnata();
     }
 }
