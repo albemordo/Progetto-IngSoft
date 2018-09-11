@@ -57,12 +57,15 @@ namespace AutotrasportiFantini.controller
 
 			else if (username.ToUpper().Equals("ADX132") && password.Equals("-231203086"))
 				dati = @"
+
 				{
 					'idAziendale' : 'ADX132',
 					'nome' : 'Dario',
 					'cognome' : 'Rondini',
 					'ruolo' : 'autista'
-				}";
+				}
+				
+				";
 
 			else if (username.ToUpper().Equals("ACD132") && password.Equals("-231203086"))
 				dati = @"
@@ -71,6 +74,58 @@ namespace AutotrasportiFantini.controller
 					'nome' : 'Abdul',
 					'cognome' : 'Aziz',
 					'ruolo' : 'responsabile'
+				}";
+
+			return dati;
+		}
+
+		public string OttieniUtente(string username)
+		{
+			string dati = null;
+
+			if (username.ToUpper().Equals("ADX132"))
+				dati = @"
+				{
+					'idAziendale' : 'ADX132',
+					'nome' : 'Dario',
+					'cognome' : 'Rondini',
+					'ruolo' : 'autista'
+				}";
+
+			else if (username.ToUpper().Equals("ACD132"))
+				dati = @"
+				{
+					'idAziendale' : 'ACD132',
+					'nome' : 'Abdul',
+					'cognome' : 'Aziz',
+					'ruolo' : 'responsabile'
+				}";
+
+			else if (username.ToUpper().Equals("DAS544"))
+				dati = @"
+				{
+					'idAziendale' : 'DAS544',
+					'nome' : 'Luigi',
+					'cognome' : 'Delnero',
+					'ruolo' : 'delegato'
+				}";
+
+			else if (username.ToUpper().Equals("AND103"))
+				dati = @"
+				{
+					'idAziendale' : 'AND103',
+					'nome' : 'Pierluigi',
+					'cognome' : 'Verona',
+					'ruolo' : 'delegato'
+				}";
+
+			else if (username.ToUpper().Equals("AFX132"))
+				dati = @"
+				{
+					'idAziendale' : 'AFX132',
+					'nome' : 'Matteo',
+					'cognome' : 'Bondini',
+					'ruolo' : 'autista'
 				}";
 
 			return dati;

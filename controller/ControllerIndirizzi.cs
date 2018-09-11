@@ -1,4 +1,6 @@
 ﻿using AutotrasportiFantini.controller.interfacce;
+using AutotrasportiFantini.controller.log;
+using AutotrasportiFantini.controller.log.interfacce;
 using AutotrasportiFantini.modello.factory;
 using AutotrasportiFantini.modello.interfacce;
 using AutotrasportiFantini.persistenza;
@@ -11,6 +13,7 @@ namespace AutotrasportiFantini.controller
     {
 		IPersistenzaIndirizzo repository;
 		IRisorseFactory factory = new RisorseFactory();
+		IControllerLog logger = ControllerLog.GetIstanza();
 
 		private void AssegnaCampi(IIndirizzo indirizzo, string qualificatore, string nome, string civico, string cap, string localita, string provincia)
 		{
@@ -49,17 +52,25 @@ namespace AutotrasportiFantini.controller
 
 			if (indirizzo.id < 0)
 				return null;
-			
+
+			//	Log operazione
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha aggiunto l'indirizzo "+indirizzo);
+
 			return indirizzo;
         }
 
         public void EliminaIndirizzo(IIndirizzo indirizzo)
         {
 			repository.elimina(indirizzo.id);
-        }
+
+			//	Log operazione
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha eliminato l'indirizzo "+indirizzo);
+		}
 
         public IIndirizzo ModificaIndirizzo(IIndirizzo indirizzo, string qualificatore, string nome, string civico, string cap, string localita, string provincia)
         {
+			//	Log operazione
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha modificato l'indirizzo "+indirizzo);
 
 			AssegnaCampi(indirizzo, qualificatore, nome, civico, cap, localita, provincia);
 

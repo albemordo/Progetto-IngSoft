@@ -1,4 +1,6 @@
 ﻿using AutotrasportiFantini.controller.interfacce;
+using AutotrasportiFantini.controller.log;
+using AutotrasportiFantini.controller.log.interfacce;
 using AutotrasportiFantini.modello.factory;
 using AutotrasportiFantini.modello.interfacce;
 using AutotrasportiFantini.persistenza;
@@ -39,22 +41,28 @@ namespace AutotrasportiFantini.controller
 			if(repository.crea(automezzo) == null)
 				return null;
 
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha aggiunto l'automezzo "+automezzo.targa);
+
 			return automezzo;
         }
 
         public void EliminaAutomezzo(IAutomezzo automezzo)
         {
 			repository.elimina(automezzo.targa);
-        }
 
-        public List<IAutomezzo> ListaAutomezzi(IDelegato delegato)
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha eliminato l'automezzo " + automezzo.targa);
+		}
+
+		public List<IAutomezzo> ListaAutomezzi(IDelegato delegato)
         {
 			//	Manca il delegato
-			return repository.elencaTutti();
+			return repository.elencaPerDelegato(delegato.idAziendale);
         }
 
         public IAutomezzo ModificaAutomezzo(IAutomezzo automezzo, string targa, string produttore, string modello, string targaRimorchio, IDelegato delegato)
-        {
+		{
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha aggiunto l'automezzo " + automezzo.targa);
+
 			AssegnaCampi(automezzo, targa, produttore, modello, targaRimorchio, delegato);
 
 			//	Le modifiche vengono rese persistenti

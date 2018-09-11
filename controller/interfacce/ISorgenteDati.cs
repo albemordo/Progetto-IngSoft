@@ -14,5 +14,7 @@ namespace AutotrasportiFantini.controller.interfacce
 		string ListaAutisti();
 
 		string VerificaUtente(string username, string password);
+
+		string OttieniUtente(string idAziendale);
 	}
 }

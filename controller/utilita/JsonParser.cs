@@ -4,21 +4,20 @@ using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using static AutotrasportiFantini.modello.FactoryUtenti;
 
-namespace AutotrasportiFantini.controller
+namespace AutotrasportiFantini.controller.utilita
 {
 	class JsonParser
 	{
 
 		/**
-		 *	I valori dei campi readonly presentati quà sotto rappresentano
-		 *	"nomi" delle chiavi della stringa Json, ottenuta
-		 *	dal sistema esterno. Se in futuro il loro formato
-		 *	verrà cambiato, basterà cambiare il valore di tali campi
+		 *	I valori dei campi definiti appena sotto, servono
+		 *	per fare match tra il formato del sistema esterno
+		 *	e il loro signifcato all'interno dell'applicazione
 		 */
-		private readonly string IDAZIENDALE = "idAziendale";
-		private readonly string NOME = "nome";
-		private readonly string COGNOME = "cognome";
-		private readonly string RUOLO = "ruolo";
+		readonly string IDAZIENDALE = "idAziendale";
+		readonly string NOME = "nome";
+		readonly string COGNOME = "cognome";
+		readonly string RUOLO = "ruolo";
 
 		public IUtente ParsificaUtente(string json)
 		{

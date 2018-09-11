@@ -1,4 +1,6 @@
 ﻿using AutotrasportiFantini.controller.interfacce;
+using AutotrasportiFantini.controller.log;
+using AutotrasportiFantini.controller.log.interfacce;
 using AutotrasportiFantini.modello.factory;
 using AutotrasportiFantini.modello.interfacce;
 using AutotrasportiFantini.persistenza;
@@ -12,6 +14,7 @@ namespace AutotrasportiFantini.controller
     {
 		IPersistenzaSpedizione repository;
 		IRisorseFactory factory = new RisorseFactory();
+		IControllerLog logger = ControllerLog.GetIstanza();
 
 		public ControllerGestioneSpedizione()
 		{
@@ -21,14 +24,15 @@ namespace AutotrasportiFantini.controller
 
 		public void AssegnaDelegato(ISpedizione spedizione, IDelegato delegato)
         {
-			if (delegato != null)
-			{
-				spedizione.delegato = delegato;
+			
+			spedizione.delegato = delegato;
 
-				//	L'assegnazione del delegato viene resa persistente
-				repository.aggiorna(spedizione);
-			}
-        }
+			//	L'assegnazione del delegato viene resa persistente
+			repository.aggiorna(spedizione);
+
+			//	Log operazione
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha assegnato alla spedizione "+spedizione.id+" il delegato "+delegato.idAziendale);
+		}
 
         public ISpedizione CreaSpedizione(IIndirizzo partenza, IIndirizzo arrivo, List<IPuntoSpedizione> puntiSpedizione, float distanzaStimata, ITipologiaMerce tipologiaMerce, float quantitaMerce)
         {
@@ -63,9 +67,12 @@ namespace AutotrasportiFantini.controller
         {
 			if(spedizione != null)
 				repository.elimina(spedizione.id);
-        }
 
-        public ISpedizione ModificaDati(ISpedizione spedizione, IIndirizzo partenza, IIndirizzo arrivo, List<IPuntoSpedizione> puntiSpedizione, float distanzaStimata, ITipologiaMerce tipologiaMerce, float quantitaMerce, IAutista autista, IAutomezzo automezzo, IDelegato delegato, DateTime partenzaPrevista, DateTime arrivoPrevisto, DateTime partenzaEffettiva, DateTime arrivoEffettivo)
+			//	Log operazione
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha eliminato la spedizione "+spedizione.id);
+		}
+
+        public ISpedizione ModificaDati(ISpedizione spedizione, IIndirizzo partenza, IIndirizzo arrivo, List<IPuntoSpedizione> puntiSpedizione, float distanzaStimata, float distanzaEffettiva, int tempoPercorrenza, ITipologiaMerce tipologiaMerce, float quantitaMerce, IAutista autista, IAutomezzo automezzo, IDelegato delegato, DateTime partenzaPrevista, DateTime arrivoPrevisto, DateTime partenzaEffettiva, DateTime arrivoEffettivo)
         {
 			//	Popolamento dei campi
 			if (partenza != null)
@@ -80,7 +87,13 @@ namespace AutotrasportiFantini.controller
 			if (distanzaStimata > 0)
 				spedizione.distanzaStimata = distanzaStimata;
 
-			if (distanzaStimata >= 0)
+			if (distanzaEffettiva > 0)
+				spedizione.distanzaEffettiva = distanzaEffettiva;
+
+			if (tempoPercorrenza > 0)
+				spedizione.tempoPercorrenza = tempoPercorrenza;
+
+			if (quantitaMerce >= 0)
 				spedizione.quantitaMerce = quantitaMerce;
 
 			if (tipologiaMerce != null)
@@ -106,6 +119,9 @@ namespace AutotrasportiFantini.controller
 
 			if (arrivoEffettivo != null)
 				spedizione.orarioEffettivoArrivo = arrivoEffettivo;
+
+			//	Log operazione
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha modificato la spedizione "+spedizione.id);
 
 			return spedizione;
         }
