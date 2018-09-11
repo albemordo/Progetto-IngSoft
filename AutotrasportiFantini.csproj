@@ -265,6 +265,12 @@
     <EmbeddedResource Include="view\dettagli\ViewDettagliSpedizione.resx">
       <DependentUpon>ViewDettagliSpedizione.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="view\dettagli\ViewDettagliSpedizioneAutista.resx">
+      <DependentUpon>ViewDettagliSpedizioneAutista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\dettagli\ViewDettagliSpedizioneDelegato.resx">
+      <DependentUpon>ViewDettagliSpedizioneDelegato.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="view\home\HomeAutista.resx">
       <DependentUpon>HomeAutista.cs</DependentUpon>
     </EmbeddedResource>

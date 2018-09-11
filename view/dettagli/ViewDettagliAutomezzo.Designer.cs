@@ -139,8 +139,10 @@
             this.Controls.Add(this.targaLabel);
             this.Controls.Add(this.modelloLabel);
             this.Controls.Add(this.marcaLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "ViewDettagliAutomezzo";
-            this.Text = "ViewDettagliAutomezzo";
+            this.Text = "Dettagli Automezzo";
             this.ResumeLayout(false);
             this.PerformLayout();
 

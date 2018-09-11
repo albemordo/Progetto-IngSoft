@@ -1,14 +1,9 @@
-﻿using AutotrasportiFantini.controller;
-using AutotrasportiFantini.controller.interfacce;
-using AutotrasportiFantini.modello;
+﻿using AutotrasportiFantini.modello;
+using AutotrasportiFantini.modello.factory;
 using AutotrasportiFantini.modello.interfacce;
 using AutotrasportiFantini.view.dettagli;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace AutotrasportiFantini.view
@@ -21,17 +16,19 @@ namespace AutotrasportiFantini.view
         }
         protected override void dataTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            ViewDettagliAutomezzo viewDettagliAutomezzo = new ViewDettagliAutomezzo();
+            automezzo = automezzi[dataTable.CurrentCell.RowIndex];
+            viewDettagliAutomezzo = new ViewDettagliAutomezzo(automezzo);
             viewDettagliAutomezzo.ShowDialog();
         }
         protected override void mascheraDettaglioButton_Click(object sender, EventArgs e)
         {
-            ViewDettagliAutomezzo viewDettagliAutomezzo = new ViewDettagliAutomezzo();
+            automezzo = automezzi[dataTable.CurrentCell.RowIndex];
+            viewDettagliAutomezzo = new ViewDettagliAutomezzo(automezzo);
             viewDettagliAutomezzo.ShowDialog();
         }
         private void creaAutomezzoButton_Click(object sender, EventArgs e)
         {
-            ViewCreazioneAutomezzo viewCreazioneAutomezzo = new ViewCreazioneAutomezzo();
+            viewCreazioneAutomezzo = new ViewCreazioneAutomezzo();
             viewCreazioneAutomezzo.ShowDialog();
         }
 
@@ -53,7 +50,15 @@ namespace AutotrasportiFantini.view
             automezzo.modello = "randommodello";
             automezzo.targaRimorchio = "random targa rimorchio";
             automezzo.codiceDelegato = "random code";
-            List<IAutomezzo> automezzi = new List<IAutomezzo>();
+            automezzi = new List<IAutomezzo>();
+            automezzi.Add(automezzo);
+            automezzo = new Automezzo();
+            automezzo.targa = "MORDO";
+            automezzo.produttore = "ALBERTO";
+            automezzo.modello = "albertoCamion";
+            automezzo.targaRimorchio = "targaRimorchioMordo";
+            automezzo.codiceDelegato = "3";
+            automezzi.Add(automezzo);
             ///CODICE DI PROVA
             //////CODICE DI PROVA
 
@@ -65,12 +70,16 @@ namespace AutotrasportiFantini.view
             ///CODICE REALE
             ///
 
-            automezzi = new List<IAutomezzo>();
-            automezzi.Add(automezzo);
+            dataTable.Rows.Clear();
             foreach (Automezzo sp in automezzi)
             {
                 dataTable.Rows.Add(sp.produttore, sp.modello, sp.targa, sp.targaRimorchio);
             }
         }
+
+        private List<IAutomezzo> automezzi;
+        private ViewDettagliAutomezzo viewDettagliAutomezzo;
+        private ViewCreazioneAutomezzo viewCreazioneAutomezzo;
+        private IAutomezzo automezzo = new RisorseFactory().GetAutomezzo();
     }
 }

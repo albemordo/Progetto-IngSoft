@@ -1,43 +1,35 @@
-﻿using AutotrasportiFantini.modello;
-using AutotrasportiFantini.modello.factory;
-using AutotrasportiFantini.modello.interfacce;
+﻿using AutotrasportiFantini.modello.interfacce;
 using AutotrasportiFantini.persistenza;
 using AutotrasportiFantini.persistenza.repository.factory;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AutotrasportiFantini.view
 {
     public partial class ViewDettagliTipologiaMerce : Form
     {
-        public ViewDettagliTipologiaMerce()
+        public ViewDettagliTipologiaMerce(ITipologiaMerce tipologiaMerce)
         {
             InitializeComponent();
+            this.tipologiaMerce = tipologiaMerce;
+            this.nomeTipologiaMerceBox.Text = tipologiaMerce.tipologia;
         }
 
         private void modificaButton_Click(object sender, EventArgs e)
         {
-            ITipologiaMerce tipologia = new RisorseFactory().GetTipologiaMerce();
-            tipologia.tipologia = this.nomeTipologiaMerceBox.Text;
-            IPersistenzaFactory factoryPersistenza = new RepositoryFactory(DbConnectionFactory.SupportedDBMS.postgresql, "TestDb");
-            IPersistenzaTipologiaMerce repoPersistenza = factoryPersistenza.GetPersistenzaTipologiaMerce();
-            repoPersistenza.aggiorna(tipologia);
+            tipologiaMerce.tipologia = this.nomeTipologiaMerceBox.Text;
+            repoPersistenza = factoryPersistenza.GetPersistenzaTipologiaMerce();
+            repoPersistenza.aggiorna(tipologiaMerce);
         }
 
         private void eliminaButton_Click(object sender, EventArgs e)
         {
-            ITipologiaMerce tipologia = new RisorseFactory().GetTipologiaMerce();
-            tipologia.tipologia = this.nomeTipologiaMerceBox.Text;
-            IPersistenzaFactory factoryPersistenza = new RepositoryFactory(DbConnectionFactory.SupportedDBMS.postgresql, "TestDb");
-            IPersistenzaTipologiaMerce repoPersistenza = factoryPersistenza.GetPersistenzaTipologiaMerce();
-            repoPersistenza.elimina(0);
+            repoPersistenza = factoryPersistenza.GetPersistenzaTipologiaMerce();
+            repoPersistenza.elimina(tipologiaMerce.id);
         }
+
+        IPersistenzaFactory factoryPersistenza = new RepositoryFactory(DbConnectionFactory.SupportedDBMS.postgresql, "TestDb");
+        IPersistenzaTipologiaMerce repoPersistenza;
+        private ITipologiaMerce tipologiaMerce;
     }
 }

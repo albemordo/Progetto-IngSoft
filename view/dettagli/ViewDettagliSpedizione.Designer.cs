@@ -178,6 +178,7 @@
             this.Controls.Add(this.distanzaStimataLabel);
             this.Controls.Add(this.luogoArrivoLabel);
             this.Controls.Add(this.luogoPartenzaLabel);
+            this.MaximizeBox = false;
             this.Name = "ViewDettagliSpedizione";
             this.Text = "ViewDettagliSpedizione";
             this.ResumeLayout(false);

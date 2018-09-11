@@ -79,6 +79,7 @@
             this.Controls.Add(this.modificaButton);
             this.Controls.Add(this.nomeTipologiaMerceBox);
             this.Controls.Add(this.nomeTipologiaMerceLabel);
+            this.MaximizeBox = false;
             this.Name = "ViewDettagliTipologiaMerce";
             this.Text = "Dettagli Tipologia Merce";
             this.ResumeLayout(false);
