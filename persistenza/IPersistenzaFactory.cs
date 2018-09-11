@@ -11,7 +11,6 @@ namespace AutotrasportiFantini.persistenza
     {
         IPersistenzaAutomezzo GetPersistenzaAutomezzo();
         IPersistenzaIndirizzo GetPersistenzaIndirizzo();
-        IPersistenzaPuntoSpedizione GetPersistenzaPuntoSpedizione();
         IPersistenzaSpedizione GetPersistenzaSpedizione();
         IPersistenzaTipologiaMerce GetPersistenzaTipologiaMerce();
     }
