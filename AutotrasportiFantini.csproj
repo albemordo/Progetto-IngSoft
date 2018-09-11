@@ -118,9 +118,12 @@
     <Compile Include="modello\factory\ResponsabiliFactory.cs" />
     <Compile Include="modello\TipologiaMerce.cs" />
     <Compile Include="modello\Spedizione.cs" />
+<<<<<<< HEAD
+=======
     <Compile Include="modello\factory\UtentiFactory.cs" />
     <Compile Include="persistenza\IPersistenzaAutomezzo.cs" />
     <Compile Include="persistenza\IPersistenzaCRUD.cs" />
+>>>>>>> 7b5f87223ac177ed19eda196b2ff537e08c6ee8e
     <Compile Include="persistenza\IPersistenzaFactory.cs" />
     <Compile Include="persistenza\IPersistenzaIndirizzo.cs" />
     <Compile Include="persistenza\IPersistenzaPuntoSpedizione.cs" />
@@ -128,21 +131,44 @@
     <Compile Include="persistenza\IPersistenzaTipologiaMerce.cs" />
     <Compile Include="persistenza\RepositoryFactory.cs" />
     <Compile Include="persistenza\repository\factory\DbConnectionFactory.cs" />
+<<<<<<< HEAD
+    <Compile Include="modello\factory\FactoryUtenti.cs" />
+    <Compile Include="persistenza\repository\factory\IConfigurationConnectionFactory.cs" />
+    <Compile Include="persistenza\IPersistenzaCRUD.cs" />
+    <Compile Include="persistenza\IPersistenzaAutomezzo.cs" />
+=======
     <Compile Include="persistenza\repository\factory\IConfigurationConnectionFactory.cs" />
     <Compile Include="persistenza\repository\factory\PostgresqlConnectionFactory.cs" />
+>>>>>>> 7b5f87223ac177ed19eda196b2ff537e08c6ee8e
     <Compile Include="persistenza\repository\RepositoryAutomezzo.cs" />
     <Compile Include="persistenza\repository\RepositoryBase.cs" />
     <Compile Include="persistenza\repository\RepositoryIndirizzo.cs" />
     <Compile Include="persistenza\repository\RepositoryPuntoSpedizione.cs" />
     <Compile Include="persistenza\repository\RepositorySpedizione.cs" />
     <Compile Include="persistenza\repository\RepositoryTipologiaMerce.cs" />
+<<<<<<< HEAD
+    <Compile Include="persistenza\repository\factory\PostgresqlConnectionFactory.cs" />
+=======
+>>>>>>> 7b5f87223ac177ed19eda196b2ff537e08c6ee8e
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="test\TestGestioneDipendenti.cs" />
+    <Compile Include="test\Program.cs" />
     <Compile Include="view\dettagli\ViewDettagliAutomezzo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="view\dettagli\ViewDettagliAutomezzo.Designer.cs">
       <DependentUpon>ViewDettagliAutomezzo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\dettagli\ViewDettagliPuntiSpedizioneAutista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\dettagli\ViewDettagliPuntiSpedizioneAutista.Designer.cs">
+      <DependentUpon>ViewDettagliPuntiSpedizioneAutista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\dettagli\ViewDettagliPuntoSpedizione.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\dettagli\ViewDettagliPuntoSpedizione.Designer.cs">
+      <DependentUpon>ViewDettagliPuntoSpedizione.cs</DependentUpon>
     </Compile>
     <Compile Include="view\dettagli\ViewDettagliSpedizione.cs">
       <SubType>Form</SubType>
@@ -264,6 +290,12 @@
     </Compile>
     <EmbeddedResource Include="view\dettagli\ViewDettagliAutomezzo.resx">
       <DependentUpon>ViewDettagliAutomezzo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\dettagli\ViewDettagliPuntiSpedizioneAutista.resx">
+      <DependentUpon>ViewDettagliPuntiSpedizioneAutista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\dettagli\ViewDettagliPuntoSpedizione.resx">
+      <DependentUpon>ViewDettagliPuntoSpedizione.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\dettagli\ViewDettagliSpedizione.resx">
       <DependentUpon>ViewDettagliSpedizione.cs</DependentUpon>

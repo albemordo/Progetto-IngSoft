@@ -7,6 +7,10 @@ namespace AutotrasportiFantini.modello
 {
     class Spedizione : ISpedizione
     {
+        public Spedizione()
+        {
+            this.puntiSpedizione = new List<IPuntoSpedizione>();
+        }
 		public int id { get; set; }
         public float distanzaStimata { get; set; }
         public float distanzaEffettiva { get; set; }
@@ -24,6 +28,11 @@ namespace AutotrasportiFantini.modello
         public DateTime orarioEffettivoPartenza { get; set; }
         public DateTime orarioEffettivoArrivo { get; set; }
 
+<<<<<<< HEAD
+        public String codiceDelegato { get; set; }
+        public String codiceAutista { get; set; }
+    }
+=======
 		public override string ToString()
 		{
 			return JsonConvert.SerializeObject(this);
@@ -31,4 +40,5 @@ namespace AutotrasportiFantini.modello
 	}
 
 
+>>>>>>> 7b5f87223ac177ed19eda196b2ff537e08c6ee8e
 }

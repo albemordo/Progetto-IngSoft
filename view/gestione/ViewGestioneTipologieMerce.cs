@@ -1,6 +1,4 @@
-﻿using AutotrasportiFantini.controller;
-using AutotrasportiFantini.controller.interfacce;
-using AutotrasportiFantini.modello;
+﻿using AutotrasportiFantini.modello;
 using AutotrasportiFantini.modello.factory;
 using AutotrasportiFantini.modello.interfacce;
 using System;
@@ -31,7 +29,6 @@ namespace AutotrasportiFantini.view
         {
            dataTable.Columns.Add("nomeTipologiaMerce", "Nome Tipologia Merce");
         }
-
         protected override void addTableRows()
         {
             ///CODICE REALE
@@ -45,11 +42,11 @@ namespace AutotrasportiFantini.view
 
             ///CODICE TEST
             ///
-            TipologiaMerce tipologiaMerce = new TipologiaMerce();
-            tipologiaMerce.tipologia = "legno";
-            tipologiaMerce.id = 1;
+            TipologiaMerce tipologiaMerce1 = new TipologiaMerce();
+            tipologiaMerce1.tipologia = "legno";
+            tipologiaMerce1.id = 1;
             tipologie = new List<ITipologiaMerce>();
-            tipologie.Add(tipologiaMerce);
+            tipologie.Add(tipologiaMerce1);
             TipologiaMerce tipologiaMerce2 = new TipologiaMerce();
             tipologiaMerce2.tipologia = "droga";
             tipologiaMerce2.id = 2;
@@ -63,14 +60,15 @@ namespace AutotrasportiFantini.view
                 dataTable.Rows.Add(sp.tipologia);
             }
         }
-
         private void creaTipologiaMerceButton_Click(object sender, EventArgs e)
         {
-            ViewCreazioneTipologiaMerce creaTipologiaMerce = new ViewCreazioneTipologiaMerce();
+            creaTipologiaMerce = new ViewCreazioneTipologiaMerce();
             creaTipologiaMerce.ShowDialog();
         }
+
         private List<ITipologiaMerce> tipologie;
         private ViewDettagliTipologiaMerce viewDettagliTipologiaMerce;
+        ViewCreazioneTipologiaMerce creaTipologiaMerce;
         private ITipologiaMerce tipologiaMerce = new RisorseFactory().GetTipologiaMerce();
     }
 }

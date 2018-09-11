@@ -30,11 +30,6 @@ namespace AutotrasportiFantini.persistenza
             return new RepositoryIndirizzo(this.connection);
         }
 
-        public IPersistenzaPuntoSpedizione GetPersistenzaPuntoSpedizione()
-        {
-            return new RepositoryPuntoSpedizione(this.connection);
-        }
-
         public IPersistenzaSpedizione GetPersistenzaSpedizione()
         {
             return new RepositorySpedizione(this.connection);
