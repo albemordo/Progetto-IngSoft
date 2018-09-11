@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AutotrasportiFantini.view
+namespace AutotrasportiFantini.view.dettagli
 {
-    public partial class ViewCreazioneTipologiaMerce : Form
+    public partial class ViewDettagliSpedizioneAutista : Form
     {
-        public ViewCreazioneTipologiaMerce()
+        public ViewDettagliSpedizioneAutista()
         {
             InitializeComponent();
         }

@@ -57,8 +57,9 @@
             this.confermaButton.TabIndex = 2;
             this.confermaButton.Text = "Aggiungi";
             this.confermaButton.UseVisualStyleBackColor = true;
+            this.confermaButton.Click += new System.EventHandler(this.confermaButton_Click);
             // 
-            // CreaTipologiaMerce
+            // ViewCreazioneTipologiaMerce
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -66,7 +67,7 @@
             this.Controls.Add(this.confermaButton);
             this.Controls.Add(this.nomeTipologiaBox);
             this.Controls.Add(this.nomeTipologiaLabel);
-            this.Name = "CreaTipologiaMerce";
+            this.Name = "ViewCreazioneTipologiaMerce";
             this.Text = "Crea Tipologia Merce";
             this.ResumeLayout(false);
             this.PerformLayout();

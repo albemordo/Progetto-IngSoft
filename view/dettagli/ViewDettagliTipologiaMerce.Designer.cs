@@ -58,6 +58,7 @@
             this.modificaButton.TabIndex = 2;
             this.modificaButton.Text = "Modifica";
             this.modificaButton.UseVisualStyleBackColor = true;
+            this.modificaButton.Click += new System.EventHandler(this.modificaButton_Click);
             // 
             // eliminaButton
             // 
@@ -67,6 +68,7 @@
             this.eliminaButton.TabIndex = 3;
             this.eliminaButton.Text = "Elimina";
             this.eliminaButton.UseVisualStyleBackColor = true;
+            this.eliminaButton.Click += new System.EventHandler(this.eliminaButton_Click);
             // 
             // ViewDettagliTipologiaMerce
             // 
@@ -77,6 +79,7 @@
             this.Controls.Add(this.modificaButton);
             this.Controls.Add(this.nomeTipologiaMerceBox);
             this.Controls.Add(this.nomeTipologiaMerceLabel);
+            this.MaximizeBox = false;
             this.Name = "ViewDettagliTipologiaMerce";
             this.Text = "Dettagli Tipologia Merce";
             this.ResumeLayout(false);

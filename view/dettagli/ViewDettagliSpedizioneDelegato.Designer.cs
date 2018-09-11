@@ -1,6 +1,6 @@
-﻿namespace AutotrasportiFantini.view.templates
+﻿namespace AutotrasportiFantini.view.dettagli
 {
-    partial class HomeTemplate
+    partial class ViewDettagliSpedizioneDelegato
     {
         /// <summary>
         /// Required designer variable.
@@ -28,34 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.formPanel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // formPanel
-            // 
-            this.formPanel.Location = new System.Drawing.Point(2, 61);
-            this.formPanel.Name = "formPanel";
-            this.formPanel.Size = new System.Drawing.Size(1004, 632);
-            this.formPanel.TabIndex = 1;
-            // 
-            // HomeTemplate
+            // ViewDettagliSpedizioneDelegato
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1008, 695);
-            this.Controls.Add(this.formPanel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.IsMdiContainer = true;
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.MaximizeBox = false;
-            this.Name = "HomeTemplate";
-            this.Text = "Home Template";
+            this.Name = "ViewDettagliSpedizioneDelegato";
+            this.Text = "ViewDettagliSpedizioneDelegato";
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        protected System.Windows.Forms.Panel formPanel;
     }
 }

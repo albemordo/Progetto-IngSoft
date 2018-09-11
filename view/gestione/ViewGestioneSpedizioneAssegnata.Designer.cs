@@ -1,6 +1,6 @@
-﻿namespace AutotrasportiFantini.view
+﻿namespace AutotrasportiFantini.view.gestione
 {
-    partial class HomeAutista
+    partial class ViewGestioneSpedizioneAssegnata
     {
         /// <summary>
         /// Required designer variable.
@@ -28,16 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // HomeAutista
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(1008, 681);
-            this.Name = "HomeAutista";
-            this.Text = "Home Autista";
-            this.ResumeLayout(false);
-
+            this.components = new System.ComponentModel.Container();
         }
 
         #endregion

@@ -33,5 +33,10 @@ namespace AutotrasportiFantini.view.templates
         {
 
         }
+
+        protected virtual void mascheraDettaglioButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

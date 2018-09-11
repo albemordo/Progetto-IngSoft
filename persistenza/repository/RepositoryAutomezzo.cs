@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using AutotrasportiFantini.modello.interfacce;
-using AutotrasportiFantini.modello.factory;
 using System.Data;
 using AutotrasportiFantini.modello;
 using System.Linq;

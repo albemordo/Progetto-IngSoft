@@ -1,26 +1,26 @@
 ﻿using AutotrasportiFantini.controller.interfacce;
 using AutotrasportiFantini.modello.factory;
 using AutotrasportiFantini.modello.interfacce;
-using AutotrasportiFantini.persistenza.repository;
+using AutotrasportiFantini.persistenza;
 using AutotrasportiFantini.persistenza.repository.factory;
-using System;
 using System.Collections.Generic;
 
 namespace AutotrasportiFantini.controller
 {
-    class ControllerTipologiaMerce : IControllerTipologieMerce
+    class ControllerTipologiaMerce : IControllerTipologiaMerce
     {
-		private IFactoryRisorse factoryRisorse = new FactoryRisorse();
-		private RepositoryTipologiaMerce repository;
+		IPersistenzaTipologiaMerce repository;
+		IRisorseFactory factory = new RisorseFactory();
 
 		public ControllerTipologiaMerce()
 		{
 			//	Init repository
+			repository = new RepositoryFactory(DbConnectionFactory.SupportedDBMS.postgresql, "TestDb").GetPersistenzaTipologiaMerce();
 		}
 
 		public ITipologiaMerce CreaTipologiaMerce(string tipologia)
         {
-			ITipologiaMerce tipologiaMerce = factoryRisorse.GetTipologiaMerce();
+			ITipologiaMerce tipologiaMerce = factory.GetTipologiaMerce();
 			tipologiaMerce.tipologia = tipologia;
 
 			//	La tipologia viene resa persistente

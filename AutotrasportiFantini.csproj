@@ -65,13 +65,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="controller\ControllerAssegnazioneSpedizione.cs" />
+    <Compile Include="controller\ControllerAutenticazione.cs" />
+    <Compile Include="controller\ControllerGestioneDipendenti.cs" />
+    <Compile Include="controller\ControllerGestioneSpedizione.cs" />
+    <Compile Include="controller\ControllerIndirizzi.cs" />
+    <Compile Include="controller\ControllerAutomezzi.cs" />
+    <Compile Include="controller\ControllerListaSpedizioni.cs" />
+    <Compile Include="controller\ControllerLog.cs" />
+    <Compile Include="controller\ControllerPuntiSpedizione.cs" />
+    <Compile Include="controller\ControllerSpedizioniAutista.cs" />
+    <Compile Include="controller\ControllerTipologiaMerce.cs" />
+    <Compile Include="controller\interfacce\IControllerAssegnazioneSpedizione.cs" />
+    <Compile Include="controller\interfacce\IControllerAutenticazione.cs" />
+    <Compile Include="controller\interfacce\IControllerAutomezzi.cs" />
+    <Compile Include="controller\interfacce\IControllerGestioneDipendenti.cs" />
+    <Compile Include="controller\interfacce\IControllerGestioneSpedizione.cs" />
+    <Compile Include="controller\interfacce\IControllerIndirizzi.cs" />
+    <Compile Include="controller\interfacce\IControllerListaSpedizioni.cs" />
+    <Compile Include="controller\interfacce\IControllerLog.cs" />
+    <Compile Include="controller\interfacce\IControllerPuntiSpedizione.cs" />
+    <Compile Include="controller\interfacce\IControllerSpedizioniAutista.cs" />
+    <Compile Include="controller\interfacce\IControllerTipologiaMerce.cs" />
+    <Compile Include="controller\interfacce\ISistemaLog.cs" />
+    <Compile Include="controller\interfacce\ISorgenteDati.cs" />
+    <Compile Include="controller\utilita\JsonParser.cs" />
+    <Compile Include="controller\SistemaLog.cs" />
+    <Compile Include="controller\SorgenteDati.cs" />
+    <Compile Include="controller\utilita\RoleResolver.cs" />
     <Compile Include="modello\Autista.cs" />
-    <Compile Include="modello\factory\FactoryAutisti.cs" />
+    <Compile Include="modello\factory\AutistiFactory.cs" />
     <Compile Include="modello\Automezzo.cs" />
     <Compile Include="modello\Delegato.cs" />
-    <Compile Include="modello\factory\FactoryDelegati.cs" />
-    <Compile Include="modello\factory\IFactoryRisorse.cs" />
-    <Compile Include="modello\factory\FactoryRisorse.cs" />
+    <Compile Include="modello\factory\DelegatiFactory.cs" />
+    <Compile Include="modello\factory\IRisorseFactory.cs" />
+    <Compile Include="modello\factory\RisorseFactory.cs" />
     <Compile Include="modello\PuntoSpedizione.cs" />
     <Compile Include="modello\Responsabile.cs" />
     <Compile Include="modello\Indirizzo.cs" />
@@ -84,9 +112,15 @@
     <Compile Include="modello\interfacce\ISpedizione.cs" />
     <Compile Include="modello\interfacce\ITipologiaMerce.cs" />
     <Compile Include="modello\interfacce\IUtente.cs" />
-    <Compile Include="modello\factory\FactoryResponsabili.cs" />
+    <Compile Include="modello\factory\ResponsabiliFactory.cs" />
     <Compile Include="modello\TipologiaMerce.cs" />
     <Compile Include="modello\Spedizione.cs" />
+<<<<<<< HEAD
+=======
+    <Compile Include="modello\factory\UtentiFactory.cs" />
+    <Compile Include="persistenza\IPersistenzaAutomezzo.cs" />
+    <Compile Include="persistenza\IPersistenzaCRUD.cs" />
+>>>>>>> 7b5f87223ac177ed19eda196b2ff537e08c6ee8e
     <Compile Include="persistenza\IPersistenzaFactory.cs" />
     <Compile Include="persistenza\IPersistenzaIndirizzo.cs" />
     <Compile Include="persistenza\IPersistenzaPuntoSpedizione.cs" />
@@ -94,19 +128,141 @@
     <Compile Include="persistenza\IPersistenzaTipologiaMerce.cs" />
     <Compile Include="persistenza\RepositoryFactory.cs" />
     <Compile Include="persistenza\repository\factory\DbConnectionFactory.cs" />
+<<<<<<< HEAD
     <Compile Include="modello\factory\FactoryUtenti.cs" />
     <Compile Include="persistenza\repository\factory\IConfigurationConnectionFactory.cs" />
     <Compile Include="persistenza\IPersistenzaCRUD.cs" />
     <Compile Include="persistenza\IPersistenzaAutomezzo.cs" />
+=======
+    <Compile Include="persistenza\repository\factory\IConfigurationConnectionFactory.cs" />
+    <Compile Include="persistenza\repository\factory\PostgresqlConnectionFactory.cs" />
+>>>>>>> 7b5f87223ac177ed19eda196b2ff537e08c6ee8e
     <Compile Include="persistenza\repository\RepositoryAutomezzo.cs" />
     <Compile Include="persistenza\repository\RepositoryBase.cs" />
     <Compile Include="persistenza\repository\RepositoryIndirizzo.cs" />
     <Compile Include="persistenza\repository\RepositoryPuntoSpedizione.cs" />
     <Compile Include="persistenza\repository\RepositorySpedizione.cs" />
     <Compile Include="persistenza\repository\RepositoryTipologiaMerce.cs" />
+<<<<<<< HEAD
     <Compile Include="persistenza\repository\factory\PostgresqlConnectionFactory.cs" />
+=======
+>>>>>>> 7b5f87223ac177ed19eda196b2ff537e08c6ee8e
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="test\TestRepository.cs" />
+    <Compile Include="test\TestGestioneDipendenti.cs" />
+    <Compile Include="view\dettagli\ViewDettagliAutomezzo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\dettagli\ViewDettagliAutomezzo.Designer.cs">
+      <DependentUpon>ViewDettagliAutomezzo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\dettagli\ViewDettagliSpedizione.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\dettagli\ViewDettagliSpedizione.Designer.cs">
+      <DependentUpon>ViewDettagliSpedizione.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\dettagli\ViewDettagliSpedizioneAutista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\dettagli\ViewDettagliSpedizioneAutista.Designer.cs">
+      <DependentUpon>ViewDettagliSpedizioneAutista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\dettagli\ViewDettagliSpedizioneDelegato.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\dettagli\ViewDettagliSpedizioneDelegato.Designer.cs">
+      <DependentUpon>ViewDettagliSpedizioneDelegato.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\gestione\ViewAssegnazioneSpedizione.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\gestione\ViewAssegnazioneSpedizione.Designer.cs">
+      <DependentUpon>ViewAssegnazioneSpedizione.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\gestione\ViewGestioneSpedizioneAssegnata.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\gestione\ViewGestioneSpedizioneAssegnata.Designer.cs">
+      <DependentUpon>ViewGestioneSpedizioneAssegnata.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\home\HomeAutista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\home\HomeAutista.Designer.cs">
+      <DependentUpon>HomeAutista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\home\HomeDelegato.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\home\HomeDelegato.Designer.cs">
+      <DependentUpon>HomeDelegato.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\home\HomeResponsabile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\home\HomeResponsabile.Designer.cs">
+      <DependentUpon>HomeResponsabile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\templates\HomeTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\templates\HomeTemplate.Designer.cs">
+      <DependentUpon>HomeTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\templates\ViewGestioneTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\templates\ViewGestioneTemplate.Designer.cs">
+      <DependentUpon>ViewGestioneTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\ViewAutenticazione.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\ViewAutenticazione.Designer.cs">
+      <DependentUpon>ViewAutenticazione.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\creazione\ViewCreazioneAutomezzo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\creazione\ViewCreazioneAutomezzo.Designer.cs">
+      <DependentUpon>ViewCreazioneAutomezzo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\creazione\ViewCreazioneSpedizione.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\creazione\ViewCreazioneSpedizione.Designer.cs">
+      <DependentUpon>ViewCreazioneSpedizione.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\creazione\ViewCreazioneTipologiaMerce.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\creazione\ViewCreazioneTipologiaMerce.Designer.cs">
+      <DependentUpon>ViewCreazioneTipologiaMerce.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\dettagli\ViewDettagliTipologiaMerce.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\dettagli\ViewDettagliTipologiaMerce.Designer.cs">
+      <DependentUpon>ViewDettagliTipologiaMerce.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\gestione\ViewGestioneAutomezzo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\gestione\ViewGestioneAutomezzo.Designer.cs">
+      <DependentUpon>ViewGestioneAutomezzo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\gestione\ViewGestioneSpedizione.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\gestione\ViewGestioneSpedizione.Designer.cs">
+      <DependentUpon>ViewGestioneSpedizione.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\gestione\ViewGestioneTipologieMerce.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\gestione\ViewGestioneTipologieMerce.Designer.cs">
+      <DependentUpon>ViewGestioneTipologieMerce.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -117,8 +273,104 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="view\dettagli\ViewDettagliAutomezzo.resx">
+      <DependentUpon>ViewDettagliAutomezzo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\dettagli\ViewDettagliSpedizione.resx">
+      <DependentUpon>ViewDettagliSpedizione.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\dettagli\ViewDettagliSpedizioneAutista.resx">
+      <DependentUpon>ViewDettagliSpedizioneAutista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\dettagli\ViewDettagliSpedizioneDelegato.resx">
+      <DependentUpon>ViewDettagliSpedizioneDelegato.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\home\HomeAutista.resx">
+      <DependentUpon>HomeAutista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\home\HomeDelegato.resx">
+      <DependentUpon>HomeDelegato.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\home\HomeResponsabile.resx">
+      <DependentUpon>HomeResponsabile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\templates\HomeTemplate.resx">
+      <DependentUpon>HomeTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\templates\ViewGestioneTemplate.resx">
+      <DependentUpon>ViewGestioneTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\ViewAutenticazione.resx">
+      <DependentUpon>ViewAutenticazione.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\creazione\ViewCreazioneAutomezzo.resx">
+      <DependentUpon>ViewCreazioneAutomezzo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\creazione\ViewCreazioneSpedizione.resx">
+      <DependentUpon>ViewCreazioneSpedizione.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\creazione\ViewCreazioneTipologiaMerce.resx">
+      <DependentUpon>ViewCreazioneTipologiaMerce.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\dettagli\ViewDettagliTipologiaMerce.resx">
+      <DependentUpon>ViewDettagliTipologiaMerce.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\gestione\ViewGestioneAutomezzo.resx">
+      <DependentUpon>ViewGestioneAutomezzo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\gestione\ViewGestioneSpedizione.resx">
+      <DependentUpon>ViewGestioneSpedizione.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\gestione\ViewGestioneTipologieMerce.resx">
+      <DependentUpon>ViewGestioneTipologieMerce.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include=".vs\AutotrasportiFantini\v15\Server\sqlite3\db.lock" />
+    <None Include=".vs\AutotrasportiFantini\v15\Server\sqlite3\storage.ide" />
+    <None Include=".vs\AutotrasportiFantini\v15\Server\sqlite3\storage.ide-shm" />
+    <None Include=".vs\AutotrasportiFantini\v15\Server\sqlite3\storage.ide-wal" />
+    <None Include=".vs\ProjectSettings.json" />
+    <None Include=".vs\slnx.sqlite" />
+    <None Include=".vs\VSWorkspaceState.json" />
     <None Include="LICENSE" />
+    <None Include="obj\Debug\AutotrasportiFantini.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\AutotrasportiFantini.csprojAssemblyReference.cache" />
+    <None Include="obj\Release\AutotrasportiFantini.csproj.CoreCompileInputs.cache" />
     <None Include="packages.config" />
+    <None Include="packages\Dapper.1.50.5\Dapper.1.50.5.nupkg" />
+    <None Include="packages\Newtonsoft.Json.11.0.2\LICENSE.md" />
+    <None Include="packages\Newtonsoft.Json.11.0.2\Newtonsoft.Json.11.0.2.nupkg" />
+    <None Include="packages\Npgsql.4.0.3\.signature.p7s" />
+    <None Include="packages\Npgsql.4.0.3\Npgsql.4.0.3.nupkg" />
+    <None Include="packages\System.Runtime.CompilerServices.Unsafe.4.5.0\.signature.p7s" />
+    <None Include="packages\System.Runtime.CompilerServices.Unsafe.4.5.0\lib\uap10.0.16300\_._" />
+    <None Include="packages\System.Runtime.CompilerServices.Unsafe.4.5.0\ref\uap10.0.16300\_._" />
+    <None Include="packages\System.Runtime.CompilerServices.Unsafe.4.5.0\System.Runtime.CompilerServices.Unsafe.4.5.0.nupkg" />
+    <None Include="packages\System.Threading.Tasks.Extensions.4.5.0\.signature.p7s" />
+    <None Include="packages\System.Threading.Tasks.Extensions.4.5.0\lib\netcoreapp2.1\_._" />
+    <None Include="packages\System.Threading.Tasks.Extensions.4.5.0\lib\uap10.0.16300\_._" />
+    <None Include="packages\System.Threading.Tasks.Extensions.4.5.0\ref\netcoreapp2.1\_._" />
+    <None Include="packages\System.Threading.Tasks.Extensions.4.5.0\ref\uap10.0.16300\_._" />
+    <None Include="packages\System.Threading.Tasks.Extensions.4.5.0\System.Threading.Tasks.Extensions.4.5.0.nupkg" />
+    <None Include="packages\System.ValueTuple.4.5.0\.signature.p7s" />
+    <None Include="packages\System.ValueTuple.4.5.0\lib\MonoAndroid10\_._" />
+    <None Include="packages\System.ValueTuple.4.5.0\lib\MonoTouch10\_._" />
+    <None Include="packages\System.ValueTuple.4.5.0\lib\netcoreapp2.0\_._" />
+    <None Include="packages\System.ValueTuple.4.5.0\lib\netstandard2.0\_._" />
+    <None Include="packages\System.ValueTuple.4.5.0\lib\uap10.0.16299\_._" />
+    <None Include="packages\System.ValueTuple.4.5.0\lib\xamarinios10\_._" />
+    <None Include="packages\System.ValueTuple.4.5.0\lib\xamarinmac20\_._" />
+    <None Include="packages\System.ValueTuple.4.5.0\lib\xamarintvos10\_._" />
+    <None Include="packages\System.ValueTuple.4.5.0\lib\xamarinwatchos10\_._" />
+    <None Include="packages\System.ValueTuple.4.5.0\ref\MonoAndroid10\_._" />
+    <None Include="packages\System.ValueTuple.4.5.0\ref\MonoTouch10\_._" />
+    <None Include="packages\System.ValueTuple.4.5.0\ref\netcoreapp2.0\_._" />
+    <None Include="packages\System.ValueTuple.4.5.0\ref\netstandard2.0\_._" />
+    <None Include="packages\System.ValueTuple.4.5.0\ref\uap10.0.16299\_._" />
+    <None Include="packages\System.ValueTuple.4.5.0\ref\xamarinios10\_._" />
+    <None Include="packages\System.ValueTuple.4.5.0\ref\xamarinmac20\_._" />
+    <None Include="packages\System.ValueTuple.4.5.0\ref\xamarintvos10\_._" />
+    <None Include="packages\System.ValueTuple.4.5.0\ref\xamarinwatchos10\_._" />
+    <None Include="packages\System.ValueTuple.4.5.0\System.ValueTuple.4.5.0.nupkg" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -134,11 +386,90 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="packages\Dapper.1.50.5\lib\net451\Dapper.dll" />
+    <Content Include="packages\Dapper.1.50.5\lib\net451\Dapper.xml" />
+    <Content Include="packages\Dapper.1.50.5\lib\netstandard1.3\Dapper.dll" />
+    <Content Include="packages\Dapper.1.50.5\lib\netstandard1.3\Dapper.xml" />
+    <Content Include="packages\Dapper.1.50.5\lib\netstandard2.0\Dapper.dll" />
+    <Content Include="packages\Dapper.1.50.5\lib\netstandard2.0\Dapper.xml" />
+    <Content Include="packages\Newtonsoft.Json.11.0.2\lib\net20\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.11.0.2\lib\net20\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.11.0.2\lib\net35\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.11.0.2\lib\net35\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.11.0.2\lib\net40\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.11.0.2\lib\net40\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.11.0.2\lib\netstandard1.0\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.11.0.2\lib\netstandard1.0\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.11.0.2\lib\netstandard1.3\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.11.0.2\lib\netstandard1.3\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.11.0.2\lib\netstandard2.0\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.11.0.2\lib\portable-net40+sl5+win8+wp8+wpa81\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.11.0.2\lib\portable-net40+sl5+win8+wp8+wpa81\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.11.0.2\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.11.0.2\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.xml" />
+    <Content Include="packages\Npgsql.4.0.3\lib\net451\Npgsql.dll" />
+    <Content Include="packages\Npgsql.4.0.3\lib\net451\Npgsql.pdb" />
+    <Content Include="packages\Npgsql.4.0.3\lib\net451\Npgsql.xml" />
+    <Content Include="packages\Npgsql.4.0.3\lib\net45\Npgsql.dll" />
+    <Content Include="packages\Npgsql.4.0.3\lib\net45\Npgsql.pdb" />
+    <Content Include="packages\Npgsql.4.0.3\lib\net45\Npgsql.xml" />
+    <Content Include="packages\Npgsql.4.0.3\lib\netstandard2.0\Npgsql.dll" />
+    <Content Include="packages\Npgsql.4.0.3\lib\netstandard2.0\Npgsql.pdb" />
+    <Content Include="packages\Npgsql.4.0.3\lib\netstandard2.0\Npgsql.xml" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.4.5.0\lib\netcoreapp2.0\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.4.5.0\lib\netcoreapp2.0\System.Runtime.CompilerServices.Unsafe.xml" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.4.5.0\lib\netstandard1.0\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.4.5.0\lib\netstandard1.0\System.Runtime.CompilerServices.Unsafe.xml" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.4.5.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.4.5.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.xml" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.4.5.0\LICENSE.TXT" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.4.5.0\ref\netstandard1.0\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.4.5.0\ref\netstandard1.0\System.Runtime.CompilerServices.Unsafe.xml" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.4.5.0\ref\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.4.5.0\ref\netstandard2.0\System.Runtime.CompilerServices.Unsafe.xml" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.4.5.0\THIRD-PARTY-NOTICES.TXT" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.4.5.0\useSharedDesignerContext.txt" />
+    <Content Include="packages\System.Runtime.CompilerServices.Unsafe.4.5.0\version.txt" />
+    <Content Include="packages\System.Threading.Tasks.Extensions.4.5.0\lib\netstandard1.0\System.Threading.Tasks.Extensions.dll" />
+    <Content Include="packages\System.Threading.Tasks.Extensions.4.5.0\lib\netstandard1.0\System.Threading.Tasks.Extensions.xml" />
+    <Content Include="packages\System.Threading.Tasks.Extensions.4.5.0\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll" />
+    <Content Include="packages\System.Threading.Tasks.Extensions.4.5.0\lib\netstandard2.0\System.Threading.Tasks.Extensions.xml" />
+    <Content Include="packages\System.Threading.Tasks.Extensions.4.5.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll" />
+    <Content Include="packages\System.Threading.Tasks.Extensions.4.5.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.xml" />
+    <Content Include="packages\System.Threading.Tasks.Extensions.4.5.0\LICENSE.TXT" />
+    <Content Include="packages\System.Threading.Tasks.Extensions.4.5.0\ref\netstandard1.0\System.Threading.Tasks.Extensions.dll" />
+    <Content Include="packages\System.Threading.Tasks.Extensions.4.5.0\ref\netstandard1.0\System.Threading.Tasks.Extensions.xml" />
+    <Content Include="packages\System.Threading.Tasks.Extensions.4.5.0\ref\netstandard2.0\System.Threading.Tasks.Extensions.dll" />
+    <Content Include="packages\System.Threading.Tasks.Extensions.4.5.0\ref\netstandard2.0\System.Threading.Tasks.Extensions.xml" />
+    <Content Include="packages\System.Threading.Tasks.Extensions.4.5.0\THIRD-PARTY-NOTICES.TXT" />
+    <Content Include="packages\System.Threading.Tasks.Extensions.4.5.0\useSharedDesignerContext.txt" />
+    <Content Include="packages\System.Threading.Tasks.Extensions.4.5.0\version.txt" />
+    <Content Include="packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll" />
+    <Content Include="packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.xml" />
+    <Content Include="packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll" />
+    <Content Include="packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.xml" />
+    <Content Include="packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll" />
+    <Content Include="packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.xml" />
+    <Content Include="packages\System.ValueTuple.4.5.0\lib\portable-net40+sl4+win8+wp8\System.ValueTuple.dll" />
+    <Content Include="packages\System.ValueTuple.4.5.0\lib\portable-net40+sl4+win8+wp8\System.ValueTuple.xml" />
+    <Content Include="packages\System.ValueTuple.4.5.0\LICENSE.TXT" />
+    <Content Include="packages\System.ValueTuple.4.5.0\ref\net461\System.ValueTuple.dll" />
+    <Content Include="packages\System.ValueTuple.4.5.0\ref\net47\System.ValueTuple.dll" />
+    <Content Include="packages\System.ValueTuple.4.5.0\ref\portable-net40+sl4+win8+wp8\System.ValueTuple.dll" />
+    <Content Include="packages\System.ValueTuple.4.5.0\THIRD-PARTY-NOTICES.TXT" />
+    <Content Include="packages\System.ValueTuple.4.5.0\useSharedDesignerContext.txt" />
+    <Content Include="packages\System.ValueTuple.4.5.0\version.txt" />
     <Content Include="Resources\loginIconSmall.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include=".vs\Progetto-IngSoft\v15\" />
     <Folder Include="bin\Debug\" />
     <Folder Include="bin\Release\" />
+    <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="persistenza\factory\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -32,11 +32,15 @@
             this.gestioneTipologiaMerce = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
+            // formPanel
+            // 
+            this.formPanel.Size = new System.Drawing.Size(1004, 641);
+            // 
             // gestioneSpedizioniButton
             // 
-            this.gestioneSpedizioniButton.Location = new System.Drawing.Point(22, 12);
+            this.gestioneSpedizioniButton.Location = new System.Drawing.Point(12, 6);
             this.gestioneSpedizioniButton.Name = "gestioneSpedizioniButton";
-            this.gestioneSpedizioniButton.Size = new System.Drawing.Size(118, 23);
+            this.gestioneSpedizioniButton.Size = new System.Drawing.Size(227, 50);
             this.gestioneSpedizioniButton.TabIndex = 3;
             this.gestioneSpedizioniButton.Text = "Gestione Spedizioni";
             this.gestioneSpedizioniButton.UseVisualStyleBackColor = true;
@@ -44,9 +48,9 @@
             // 
             // gestioneTipologiaMerce
             // 
-            this.gestioneTipologiaMerce.Location = new System.Drawing.Point(378, 12);
+            this.gestioneTipologiaMerce.Location = new System.Drawing.Point(244, 6);
             this.gestioneTipologiaMerce.Name = "gestioneTipologiaMerce";
-            this.gestioneTipologiaMerce.Size = new System.Drawing.Size(122, 23);
+            this.gestioneTipologiaMerce.Size = new System.Drawing.Size(227, 50);
             this.gestioneTipologiaMerce.TabIndex = 4;
             this.gestioneTipologiaMerce.Text = "Gestioni Tipologie Merci";
             this.gestioneTipologiaMerce.UseVisualStyleBackColor = true;
@@ -55,7 +59,7 @@
             // HomeResponsabile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(1008, 681);
+            this.ClientSize = new System.Drawing.Size(1008, 702);
             this.Controls.Add(this.gestioneTipologiaMerce);
             this.Controls.Add(this.gestioneSpedizioniButton);
             this.Name = "HomeResponsabile";

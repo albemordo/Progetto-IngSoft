@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AutotrasportiFantini.modello.factory
 {
-	interface IFactoryRisorse
+	interface IRisorseFactory
 	{
 		ISpedizione GetSpedizione();
 

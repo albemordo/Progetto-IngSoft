@@ -54,6 +54,7 @@ namespace AutotrasportiFantini.controller
 					'cognome' : 'Delnero',
 					'ruolo' : 'delegato'
 				}";
+
 			else if (username.ToUpper().Equals("ADX132") && password.Equals("-231203086"))
 				dati = @"
 				{
@@ -61,6 +62,15 @@ namespace AutotrasportiFantini.controller
 					'nome' : 'Dario',
 					'cognome' : 'Rondini',
 					'ruolo' : 'autista'
+				}";
+
+			else if (username.ToUpper().Equals("ACD132") && password.Equals("-231203086"))
+				dati = @"
+				{
+					'idAziendale' : 'ACD132',
+					'nome' : 'Abdul',
+					'cognome' : 'Aziz',
+					'ruolo' : 'responsabile'
 				}";
 
 			return dati;

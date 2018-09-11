@@ -1,4 +1,5 @@
 ﻿using AutotrasportiFantini.modello.interfacce;
+using Newtonsoft.Json;
 using System;
 
 namespace AutotrasportiFantini.modello
@@ -10,5 +11,10 @@ namespace AutotrasportiFantini.modello
         public String modello { get; set; }
         public String targaRimorchio { get; set; }
         public String codiceDelegato { get; set; }
+
+		public override String ToString()
+		{
+			return JsonConvert.SerializeObject(this);
+		}
     }
 }

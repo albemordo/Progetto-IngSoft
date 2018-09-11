@@ -1,4 +1,5 @@
 ﻿using AutotrasportiFantini.modello.interfacce;
+using Newtonsoft.Json;
 
 namespace AutotrasportiFantini.modello
 {
@@ -11,7 +12,7 @@ namespace AutotrasportiFantini.modello
 
 		public override string ToString()
 		{
-			return "[ID Aziendale: \"" + idAziendale + "\", Nome: \"" + nome + "\", Cognome: \"" + cognome + "\", Ruolo: \"" + this.GetType().Name + "\"]";
+			return JsonConvert.SerializeObject(this);
 		}
 	}
 }

@@ -1,6 +1,6 @@
 ﻿namespace AutotrasportiFantini.view
 {
-    partial class ViewGestioneSpedizione
+    partial class ViewGestioneTipologieMerce
     {
         /// <summary>
         /// Required designer variable.
@@ -28,33 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.creaSpedizioneButton = new System.Windows.Forms.Button();
+            this.creaTipologiaMerceButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // creaSpedizioneButton
+            // creaTipologiaMerceButton
             // 
-            this.creaSpedizioneButton.Location = new System.Drawing.Point(576, 581);
-            this.creaSpedizioneButton.Name = "creaSpedizioneButton";
-            this.creaSpedizioneButton.Size = new System.Drawing.Size(197, 39);
-            this.creaSpedizioneButton.TabIndex = 2;
-            this.creaSpedizioneButton.Text = "Crea Spedizione";
-            this.creaSpedizioneButton.UseVisualStyleBackColor = true;
-            this.creaSpedizioneButton.Click += new System.EventHandler(this.creaSpedizioneButton_Click);
+            this.creaTipologiaMerceButton.Location = new System.Drawing.Point(520, 583);
+            this.creaTipologiaMerceButton.Name = "creaTipologiaMerceButton";
+            this.creaTipologiaMerceButton.Size = new System.Drawing.Size(227, 50);
+            this.creaTipologiaMerceButton.TabIndex = 3;
+            this.creaTipologiaMerceButton.Text = "Crea Tipologia Merce";
+            this.creaTipologiaMerceButton.UseVisualStyleBackColor = true;
+            this.creaTipologiaMerceButton.Click += new System.EventHandler(this.creaTipologiaMerceButton_Click);
             // 
-            // ViewGestioneSpedizione
+            // ViewGestioneTipologieMerce
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(1008, 632);
-            this.Controls.Add(this.creaSpedizioneButton);
-            this.Name = "ViewGestioneSpedizione";
-            this.Text = "View Gestione Spedizione";
-            this.Controls.SetChildIndex(this.creaSpedizioneButton, 0);
+            this.ClientSize = new System.Drawing.Size(1008, 642);
+            this.Controls.Add(this.creaTipologiaMerceButton);
+            this.Name = "ViewGestioneTipologieMerce";
+            this.Controls.SetChildIndex(this.creaTipologiaMerceButton, 0);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button creaSpedizioneButton;
+        private System.Windows.Forms.Button creaTipologiaMerceButton;
     }
 }

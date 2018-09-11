@@ -1,38 +1,38 @@
 ﻿using AutotrasportiFantini.controller.interfacce;
 using AutotrasportiFantini.modello.factory;
 using AutotrasportiFantini.modello.interfacce;
-using AutotrasportiFantini.persistenza.repository;
+using AutotrasportiFantini.persistenza;
 using AutotrasportiFantini.persistenza.repository.factory;
-using System;
 using System.Collections.Generic;
 
 namespace AutotrasportiFantini.controller
 {
     class ControllerAutomezzi : IControllerAutomezzi
     {
-		private IFactoryRisorse factoryRisorse = new FactoryRisorse();
-		private RepositoryAutomezzo repository;
+		IPersistenzaAutomezzo repository;
+		IRisorseFactory factory = new RisorseFactory();
+		IControllerLog logger = ControllerLog.GetIstanza();
 
 		public ControllerAutomezzi()
 		{
 			//	Init Repository
-
-
+			repository = new RepositoryFactory(DbConnectionFactory.SupportedDBMS.postgresql, "TestDb").GetPersistenzaAutomezzo();
 		}
 
 		private void AssegnaCampi(IAutomezzo automezzo, string targa, string produttore, string modello, string targaRimorchio, IDelegato delegato)
 		{
 			//	Popolamento campi
-			automezzo.targa = targa;
-			automezzo.produttore = produttore;
-			automezzo.modello = modello;
-			automezzo.targaRimorchio = targaRimorchio;
-			automezzo.codiceDelegato = delegato.idAziendale;
+			
+			if(targa != null && targa.Length == 7)	automezzo.targa = targa;
+			if(produttore != null && produttore.Length > 0)	automezzo.produttore = produttore;
+			if(modello != null && modello.Length > 0)	automezzo.modello = modello;
+			if(targaRimorchio != null && targaRimorchio.Length > 0) automezzo.targaRimorchio = targaRimorchio;
+			if(delegato != null && delegato.idAziendale.Length > 0)	automezzo.codiceDelegato = delegato.idAziendale;
 		}
 
 		public IAutomezzo CreaAutomezzo(string targa, string produttore, string modello, string targaRimorchio, IDelegato delegato)
         {
-			IAutomezzo automezzo = factoryRisorse.GetAutomezzo();
+			IAutomezzo automezzo = factory.GetAutomezzo();
 			AssegnaCampi(automezzo, targa, produttore, modello, targaRimorchio, delegato);
 
 			//	L'automezzo viene reso persistente
@@ -62,5 +62,6 @@ namespace AutotrasportiFantini.controller
 
 			return automezzo;
         }
+
     }
 }

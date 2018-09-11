@@ -2,7 +2,7 @@
 
 namespace AutotrasportiFantini.modello.interfacce
 {
-    interface ITipologiaMerce
+    public interface ITipologiaMerce
     {
         int id { get; set; }
         String tipologia { get; set; }

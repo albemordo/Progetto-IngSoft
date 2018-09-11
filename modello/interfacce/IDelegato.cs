@@ -1,6 +1,6 @@
 ﻿namespace AutotrasportiFantini.modello.interfacce
 {
-    interface IDelegato : IUtente
+    public interface IDelegato : IUtente
     {
     }
 }

@@ -141,18 +141,19 @@
             // 
             // confirmButton
             // 
-            this.confirmButton.Location = new System.Drawing.Point(153, 251);
+            this.confirmButton.Location = new System.Drawing.Point(265, 423);
             this.confirmButton.Name = "confirmButton";
             this.confirmButton.Size = new System.Drawing.Size(132, 30);
             this.confirmButton.TabIndex = 12;
             this.confirmButton.Text = "Conferma";
             this.confirmButton.UseVisualStyleBackColor = true;
+            this.confirmButton.Click += new System.EventHandler(this.confirmButton_Click);
             // 
-            // ViewDettagliSpedizione
+            // ViewCreazioneSpedizione
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(433, 289);
+            this.ClientSize = new System.Drawing.Size(722, 538);
             this.Controls.Add(this.confirmButton);
             this.Controls.Add(this.quantitaBox);
             this.Controls.Add(this.tipologiaMerceBox);
@@ -166,7 +167,7 @@
             this.Controls.Add(this.distanzaStimataLabel);
             this.Controls.Add(this.luogoArrivoLabel);
             this.Controls.Add(this.luogoPartenzaLabel);
-            this.Name = "ViewDettagliSpedizione";
+            this.Name = "ViewCreazioneSpedizione";
             this.Text = "Crea Spedizione";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -1,8 +1,7 @@
 ﻿using AutotrasportiFantini.controller.interfacce;
-using AutotrasportiFantini.modello;
 using AutotrasportiFantini.modello.factory;
 using AutotrasportiFantini.modello.interfacce;
-using AutotrasportiFantini.persistenza.repository;
+using AutotrasportiFantini.persistenza;
 using AutotrasportiFantini.persistenza.repository.factory;
 using System;
 
@@ -10,25 +9,25 @@ namespace AutotrasportiFantini.controller
 {
     class ControllerIndirizzi : IControllerIndirizzi
     {
-		private IFactoryRisorse factoryRisorse = new FactoryRisorse();
-		private RepositoryIndirizzo repository;
+		IPersistenzaIndirizzo repository;
+		IRisorseFactory factory = new RisorseFactory();
 
 		private void AssegnaCampi(IIndirizzo indirizzo, string qualificatore, string nome, string civico, string cap, string localita, string provincia)
 		{
 			//	Popolamento dei campi
-			indirizzo.qualificatore = qualificatore;
-			indirizzo.nome = nome;
-			indirizzo.civico = civico;
-			indirizzo.cap = cap;
-			indirizzo.localita = localita;
-			indirizzo.provincia = provincia;
+			if(qualificatore != null && qualificatore.Length > 0) indirizzo.qualificatore = qualificatore;
+			if(nome != null && nome.Length > 0) indirizzo.nome = nome;
+			if(civico != null && civico.Length > 0)	indirizzo.civico = civico;
+			if(cap != null && cap.Length > 0) indirizzo.cap = cap;
+			if(localita != null && localita.Length > 0) indirizzo.localita = localita;
+			if(provincia != null && provincia.Length > 0) indirizzo.provincia = provincia;
 			
 		}
 		
 		public ControllerIndirizzi()
 		{
 			//	Init repository
-
+			repository = new RepositoryFactory(DbConnectionFactory.SupportedDBMS.postgresql, "TestDb").GetPersistenzaIndirizzo();
 		}
 
 		public IIndirizzo CreaIndirizzo(string qualificatore, string nome, string civico, string cap, string localita, string provincia)
@@ -42,7 +41,7 @@ namespace AutotrasportiFantini.controller
 				return indirizzo;
 
 			//	Se non è presente, viene creato
-			indirizzo = factoryRisorse.GetIndirizzo();
+			indirizzo = factory.GetIndirizzo();
 			AssegnaCampi(indirizzo, qualificatore, nome, civico, cap, localita, provincia);
 
 			//	L'indirizzo viene reso persistente
@@ -50,7 +49,7 @@ namespace AutotrasportiFantini.controller
 
 			if (indirizzo.id < 0)
 				return null;
-
+			
 			return indirizzo;
         }
 

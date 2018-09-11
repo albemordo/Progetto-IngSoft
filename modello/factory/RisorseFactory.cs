@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutotrasportiFantini.modello.interfacce;
+﻿using AutotrasportiFantini.modello.interfacce;
 
 namespace AutotrasportiFantini.modello.factory
 {
-	class FactoryRisorse : IFactoryRisorse
+	class RisorseFactory : IRisorseFactory
 	{
 		public IAutomezzo GetAutomezzo() => new Automezzo();
 
