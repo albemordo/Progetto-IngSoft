@@ -56,19 +56,7 @@ namespace AutotrasportiFantini.view.gestione
             spedizioni = controllerListaSpedizioni.ListaSpedizioni(Controller.UtenteAutenticato);
             dataTable.Rows.Clear();
 
-            int max = 0;
-            foreach (Spedizione sp in spedizioni)
-            {
-                if (sp.puntiSpedizione.Count > max)
-                    max = sp.puntiSpedizione.Count;
-            }
-
-            for (int i = 0; i < max; i++)
-            {
-                dataTable.Columns.Add("puntoSpedizione" + i, "Punto Spedizione " + i);
-                dataTable.Columns.Add("orarioArrivoEffettivoPuntoSpedizione" + i, "O.E Arrivo P.D.S " + i);
-            }
-
+            
             for (int i = 0; i < spedizioni.Count; i++)
             {
                 ISpedizione spedizioneTemp = new RisorseFactory().GetSpedizione();
@@ -118,14 +106,7 @@ namespace AutotrasportiFantini.view.gestione
 
                 dataTable.Rows[i].Cells[13].Value = spedizioneTemp.distanzaEffettiva;
                 dataTable.Rows[i].Cells[14].Value = spedizioneTemp.tempoPercorrenza;
-                for (int j = 0; j < spedizioneTemp.puntiSpedizione.Count; j++)
-                {
-                    dataTable.Rows[i].Cells[15 + j * 2].Value = spedizioneTemp.puntiSpedizione[j].indirizzo.localita;
-                    if (spedizioneTemp.puntiSpedizione[j].orarioArrivo != DateTime.MinValue)
-                    {
-                        dataTable.Rows[i].Cells[16 + j * 2].Value = spedizioneTemp.puntiSpedizione[j].orarioArrivo;
-                    }
-                }
+                
             }
         }
 

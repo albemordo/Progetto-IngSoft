@@ -33,7 +33,6 @@ namespace AutotrasportiFantini.view
             {
                 ps.indirizzo = controllerIndirizzi.CreaIndirizzo(ps.indirizzo.qualificatore, ps.indirizzo.nome, ps.indirizzo.civico, ps.indirizzo.cap, ps.indirizzo.localita, ps.indirizzo.provincia);
             }
-            Console.WriteLine(JsonConvert.SerializeObject(puntiSpedizione));
             ISpedizione spedizione = controllerSpedizioni.CreaSpedizione(partenza, arrivo, puntiSpedizione, float.Parse(this.distanzaBox.Text), (ITipologiaMerce)this.merceListBox.SelectedItem, float.Parse(this.quantitaBox.Text));
             
             this.pulisciCampi();

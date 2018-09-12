@@ -7,6 +7,7 @@ using AutotrasportiFantini.modello;
 using AutotrasportiFantini.persistenza.repository.factory;
 using AutotrasportiFantini.controller.interfacce;
 using AutotrasportiFantini.controller;
+using Newtonsoft.Json;
 //using AutotrasportiFantini.controller.interfacce;
 //using AutotrasportiFantini.controller;
 
@@ -89,6 +90,9 @@ namespace AutotrasportiFantini.persistenza.repository
                 String codiceDelegato = oggetto.delegato == null ? null : oggetto.delegato.idAziendale;
                 String codiceAutista = oggetto.autista == null ? null : oggetto.autista.idAziendale;
                 int? codiceAutomezzo = oggetto.automezzo?.id;
+
+
+                Console.WriteLine(codiceAutomezzo);
 
                 int idSpedizione = connection.QuerySingle<int>(sqlSpedizione, new
                 {
