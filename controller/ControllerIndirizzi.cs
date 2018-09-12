@@ -39,7 +39,6 @@ namespace AutotrasportiFantini.controller
 			IIndirizzo indirizzo = repository.cercaIndirizzo(qualificatore, nome, civico, cap, localita, provincia);
 
 			//	Se è già presente, viene restituito
-			indirizzo = repository.cercaIndirizzo(qualificatore, nome, civico, cap, localita, provincia);
 			if (indirizzo != null)
 				return indirizzo;
 

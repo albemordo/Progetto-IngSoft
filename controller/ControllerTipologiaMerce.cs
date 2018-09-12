@@ -25,6 +25,9 @@ namespace AutotrasportiFantini.controller
 
 		public ITipologiaMerce CreaTipologiaMerce(string tipologia)
         {
+			if (tipologia == null)
+				return null;
+
 			ITipologiaMerce tipologiaMerce = factory.GetTipologiaMerce();
 			tipologiaMerce.tipologia = tipologia;
 
@@ -42,10 +45,13 @@ namespace AutotrasportiFantini.controller
 
         public void EliminaTipologiaMerce(ITipologiaMerce tipologia)
         {
-			repository.elimina(tipologia.id);
+			if (tipologia != null && tipologia.id > 0)
+			{
+				repository.elimina(tipologia.id);
 
-			//	Log operazione
-			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha rimosso la tipologia merce "+tipologia.tipologia);
+				//	Log operazione
+				logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha rimosso la tipologia merce " + tipologia.tipologia);
+			}
 		}
 
         public List<ITipologiaMerce> ListaTipologieMerce()
@@ -58,8 +64,11 @@ namespace AutotrasportiFantini.controller
 
         public ITipologiaMerce ModificaTipologiaMerce(ITipologiaMerce tipologia, string nomeTipologia)
         {
+			if (nomeTipologia.Equals(tipologia.tipologia))
+				return tipologia;
+
 			//	Log operazione
-			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha modificato la tipologia "+tipologia.tipologia);
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha modificato la tipologia "+tipologia.tipologia+" in "+nomeTipologia);
 
 			tipologia.tipologia = nomeTipologia;
 

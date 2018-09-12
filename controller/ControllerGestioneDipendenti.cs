@@ -78,7 +78,7 @@ namespace AutotrasportiFantini.controller
 		}
 
         /**
-         *  Anche questo andava eliminato, se non ricordo male
+         *  Anche questo andava eliminato
          */
         public string RuoloUtente(IUtente utente)
         {
