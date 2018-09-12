@@ -7,7 +7,7 @@ namespace AutotrasportiFantini.controller.interfacce
     {
 		Boolean Autentica(String username, String password);
         Boolean IsAutenticato();
-        IUtente UtenteAutenticato { get; set; }
+        IUtente UtenteAutenticato { get; }
         void ChiudiSessione();
     }
 }

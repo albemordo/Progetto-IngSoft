@@ -16,7 +16,7 @@ namespace AutotrasportiFantini.controller
 		IControllerGestioneDipendenti autenticazione = new ControllerGestioneDipendenti();
 
 		//	Viene salvata l'istanza dell'utente che si è autenticato, per tutta la durata della sessione
-		public IUtente UtenteAutenticato { get; set; }
+		public IUtente UtenteAutenticato { get; private set; }
 
         private ControllerAutenticazione() { }
 

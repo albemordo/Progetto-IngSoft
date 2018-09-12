@@ -25,10 +25,13 @@ namespace AutotrasportiFantini.controller
 
         public IPuntoSpedizione AggiornaIndirizzo(IPuntoSpedizione puntoSpedizione, IIndirizzo indirizzo)
         {
-			puntoSpedizione.indirizzo = indirizzo;
+			if (!puntoSpedizione.indirizzo.Equals(indirizzo))
+			{
+				puntoSpedizione.indirizzo = indirizzo;
 
-			//	Log operazione
-			logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha aggiornato il punto di sped. "+puntoSpedizione.id+", assegnandogli l'indirizzo "+indirizzo);
+				//	Log operazione
+				logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha aggiornato il punto di sped. " + puntoSpedizione.id + ", assegnandogli l'indirizzo " + indirizzo);
+			}
 
 			return puntoSpedizione;
         }

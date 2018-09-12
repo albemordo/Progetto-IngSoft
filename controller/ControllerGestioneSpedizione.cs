@@ -74,56 +74,103 @@ namespace AutotrasportiFantini.controller
 			logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha eliminato la spedizione "+spedizione.id);
 		}
 
-        public ISpedizione ModificaDati(ISpedizione spedizione, IIndirizzo partenza, IIndirizzo arrivo, List<IPuntoSpedizione> puntiSpedizione, float distanzaStimata, float distanzaEffettiva, int tempoPercorrenza, ITipologiaMerce tipologiaMerce, float quantitaMerce, IAutista autista, IAutomezzo automezzo, IDelegato delegato, DateTime partenzaPrevista, DateTime arrivoPrevisto, DateTime partenzaEffettiva, DateTime arrivoEffettivo)
-        {
-			//	Popolamento dei campi
-			if (partenza != null)
-				spedizione.partenza = partenza;
+		public ISpedizione ModificaDati(ISpedizione spedizione, IIndirizzo partenza, IIndirizzo arrivo, List<IPuntoSpedizione> puntiSpedizione, float distanzaStimata, float distanzaEffettiva, int tempoPercorrenza, ITipologiaMerce tipologiaMerce, float quantitaMerce, IAutista autista, IAutomezzo automezzo, IDelegato delegato, DateTime partenzaPrevista, DateTime arrivoPrevisto, DateTime partenzaEffettiva, DateTime arrivoEffettivo)
+		{
+			string cambiamenti = "{ ";
 
-			if (arrivo != null)
+			//	Popolamento dei campi
+
+			//	Per ogni modifica, ne viene loggato il valore
+			if (partenza != null && !spedizione.partenza.Equals(partenza)) {
+				spedizione.partenza = partenza;
+				cambiamenti += "[partenza: da "+spedizione.partenza+" a " + partenza + "] ";
+			}
+
+			if (arrivo != null && !spedizione.destinazione.Equals(arrivo))
+			{ 
 				spedizione.destinazione = arrivo;
+				cambiamenti += "[destinazione: da "+spedizione.destinazione+" a " + arrivo + "] ";
+			}
 
 			if (puntiSpedizione != null)
 				spedizione.puntiSpedizione = puntiSpedizione;
 
-			if (distanzaStimata > 0)
+			if (distanzaStimata > 0 && !distanzaStimata.Equals(spedizione.distanzaStimata))
+			{
 				spedizione.distanzaStimata = distanzaStimata;
+				cambiamenti += "[distanza stimata: da "+spedizione.distanzaStimata+" a "+distanzaStimata+"] ";
+			}
 
-			if (distanzaEffettiva > 0)
+			if (distanzaEffettiva > 0 && !spedizione.distanzaEffettiva.Equals(distanzaEffettiva))
+			{
 				spedizione.distanzaEffettiva = distanzaEffettiva;
+				cambiamenti += "[distanza effettiva: da "+spedizione.distanzaEffettiva+" a " + distanzaEffettiva + "] ";
+			}
 
-			if (tempoPercorrenza > 0)
+			if (tempoPercorrenza > 0 && !spedizione.tempoPercorrenza.Equals(tempoPercorrenza))
+			{
 				spedizione.tempoPercorrenza = tempoPercorrenza;
+				cambiamenti += "[tempo percorrenza: da " + spedizione.tempoPercorrenza + " a " + tempoPercorrenza + "] ";
+			}
 
-			if (quantitaMerce >= 0)
+			if (quantitaMerce >= 0 && !spedizione.quantitaMerce.Equals(quantitaMerce))
+			{
 				spedizione.quantitaMerce = quantitaMerce;
+				cambiamenti += "[quantita merce: da " + spedizione.quantitaMerce + " a " + quantitaMerce + "] ";
+			}
 
-			if (tipologiaMerce != null)
+			if (tipologiaMerce != null && !spedizione.tipologiaMerce.Equals(tipologiaMerce))
+			{
 				spedizione.tipologiaMerce = tipologiaMerce;
+				cambiamenti += "[tipologia merce: da " + spedizione.tipologiaMerce.tipologia + " a " + tipologiaMerce.tipologia + "] ";
+			}
 
-			if (autista != null)
+			if (autista != null && !spedizione.autista.idAziendale.Equals(autista.idAziendale))
+			{
 				spedizione.autista = autista;
+				cambiamenti += "[autista: da " + spedizione.autista.idAziendale + " a " + autista.idAziendale + "] ";
+			}
 
-			if (automezzo != null)
+			if (automezzo != null && !spedizione.automezzo.id.Equals(automezzo.id))
+			{
 				spedizione.automezzo = automezzo;
+				cambiamenti += "[automezzo: da " + spedizione.automezzo.id + " a " + automezzo.id + "] ";
+			}
 
-			if (delegato != null)
+			if (delegato != null && !spedizione.delegato.idAziendale.Equals(delegato.idAziendale))
+			{
 				spedizione.delegato = delegato;
+				cambiamenti += "[delegato: da " + spedizione.autista.idAziendale + " a " + autista.idAziendale + "] ";
+			}
 
-			if (partenzaPrevista != null)
+			if (partenzaPrevista != null && !spedizione.orarioPrevistoPartenza.Equals(partenzaPrevista))
+			{
+				cambiamenti += "[partenza prevista: da " + spedizione.orarioPrevistoPartenza + " a " + partenzaPrevista + "] ";
 				spedizione.orarioPrevistoPartenza = partenzaPrevista;
+			}
 
-			if (partenzaEffettiva != null)
+			if (partenzaEffettiva != null && !spedizione.orarioEffettivoPartenza.Equals(partenzaEffettiva))
+			{
+				cambiamenti += "[partenza effettivo: da " + spedizione.orarioEffettivoPartenza + " a " + partenzaEffettiva + "] ";
 				spedizione.orarioEffettivoPartenza = partenzaEffettiva;
+			}
 
-			if (arrivoPrevisto != null)
+			if (arrivoPrevisto != null && !spedizione.orarioPrevistoArrivo.Equals(arrivoPrevisto))
+			{
+				cambiamenti += "[arrivo previsto: da " + spedizione.orarioPrevistoArrivo + " a " + arrivoPrevisto + "] ";
 				spedizione.orarioPrevistoArrivo = arrivoPrevisto;
+			}
 
-			if (arrivoEffettivo != null)
+			if (arrivoEffettivo != null && !spedizione.orarioEffettivoArrivo.Equals(arrivoEffettivo))
+			{
+				cambiamenti += "[arrivo effettivo: da " + spedizione.orarioEffettivoArrivo + " a " + arrivoEffettivo + "] ";
 				spedizione.orarioEffettivoArrivo = arrivoEffettivo;
+			}
+
+			cambiamenti += "}";
 
 			//	Log operazione
-			logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha modificato la spedizione "+spedizione.id);
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha modificato "+cambiamenti+" della spedizione "+spedizione.id);
 
 			return spedizione;
         }
