@@ -11,6 +11,7 @@ namespace AutotrasportiFantini.modello
         public String modello { get; set; }
         public String targaRimorchio { get; set; }
         public String codiceDelegato { get; set; }
+		public int id { get; set; }
 
 		public override String ToString()
 		{
