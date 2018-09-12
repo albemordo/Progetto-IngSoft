@@ -8,13 +8,29 @@ using AutotrasportiFantini.modello.factory;
 using AutotrasportiFantini.modello;
 using Newtonsoft.Json;
 using AutotrasportiFantini.persistenza.repository.factory;
-using AutotrasportiFantini.controller.interfacce;
-using AutotrasportiFantini.controller;
+//using AutotrasportiFantini.controller.interfacce;
+//using AutotrasportiFantini.controller;
 
 namespace AutotrasportiFantini.persistenza.repository
 {
     class RepositorySpedizione : RepositoryBase, IPersistenzaSpedizione
     {
+        protected String selectQuery = "SELECT " +
+                    "s.id, s.distanzaStimata, s.distanzaEffettiva, s.quantitaMerce, s.durata, s.orarioPrevistoPartenza, s.orarioPrevistoArrivo, s.orarioEffettivoPartenza, s.orarioEffettivoArrivo, s.codiceDelegato, s.codiceAutista, " +
+                    "tm.id, tm.tipologia, " +
+                    "a.*, " +
+                    "ip.id, ip.qualificatore, ip.nome, ip.civico, ip.cap, ip.localita, ip.provincia, " +
+                    "ia.id, ia.qualificatore, ia.nome, ia.civico, ip.cap, ia.localita, ia.provincia, " +
+                    "ps.id, ps.fk_spedizione as spedizione, ps.orario_arrivo, " +
+                    "ips.id, ips.qualificatore, ips.nome, ips.civico, ips.cap, ips.localita, ips.provincia " +
+                    "FROM spedizione as s " +
+                    "INNER JOIN tipologiamerce as tm ON tm.id = s.fk_tipologiamerce " +
+                    "LEFT OUTER JOIN automezzo as a ON a.id = s.fk_automezzo " +
+                    "INNER JOIN indirizzo as ip ON ip.id = s.fk_indirizzo_partenza " +
+                    "INNER JOIN indirizzo as ia ON ia.id = s.fk_indirizzo_arrivo " +
+                    "LEFT OUTER JOIN puntospedizione as ps ON ps.fk_spedizione = s.id " +
+                    "LEFT OUTER JOIN indirizzo as ips ON ips.id = ps.fk_indirizzo";
+
         public RepositorySpedizione(DbConnectionFactory factory, DbConnectionFactory.SupportedDBMS dbms, String connectionName) : base(factory, dbms, connectionName)
         {
         }
@@ -61,109 +77,7 @@ namespace AutotrasportiFantini.persistenza.repository
                 return (aggiornaSpedizione == 1 && aggiornaPuntoSpedizione);
             }
         }
-
-        public List<ISpedizione> cercaPerAutista(string codiceAutista)
-        {
-            String sql = "SELECT " +
-                    "s.id, s.distanzaStimata, s.distanzaEffettiva, s.quantitaMerce, s.durata, s.orarioPrevistoPartenza, s.orarioPrevistoArrivo, s.orarioEffettivoPartenza, s.orarioEffettivoArrivo, s.codiceDelegato, s.codiceAutista, " +
-                    "tm.id, tm.tipologia, " +
-                    "a.*, " +
-                    "ip.id, ip.qualificatore, ip.nome, ip.civico, ip.cap, ip.localita, ip.provincia, " +
-                    "ia.id, ia.qualificatore, ia.nome, ia.civico, ip.cap, ia.localita, ia.provincia, " +
-                    "ps.id, ps.fk_spedizione, ps.orario_arrivo, " +
-                    "ips.id, ips.qualificatore, ips.nome, ips.civico, ips.cap, ips.localita, ips.provincia " +
-                    "FROM spedizione as s " +
-                    "INNER JOIN tipologiamerce as tm ON tm.id = s.fk_tipologiamerce " +
-                    "LEFT OUTER JOIN automezzo as a ON a.targa = s.fk_automezzo " +
-                    "INNER JOIN indirizzo as ip ON ip.id = s.fk_indirizzo_partenza " +
-                    "INNER JOIN indirizzo as ia ON ia.id = s.fk_indirizzo_arrivo " +
-                    "INNER JOIN puntospedizione as ps ON ps.fk_spedizione = s.id " +
-                    "INNER JOIN indirizzo as ips ON ips.id = ps.fk_indirizzo" +
-                    "WHERE s.codiceAutista = @CodiceAutista";
-
-            using (var connection = this.getConnection())
-            {
-                var dizionarioSpedizioni = new Dictionary<int, Spedizione>();
-                IEnumerable<ISpedizione> spedizioni = connection.Query<Spedizione, TipologiaMerce, Automezzo, Indirizzo, Indirizzo, PuntoSpedizione, Indirizzo, Spedizione>(
-                    sql,
-                    (spedizione, tipologiaMerce, automezzo, indirizzoPartenza, indirizzoArrivo, puntoSpedizione, indirizzoPuntoSpedizione) =>
-                    {
-                        Spedizione entrySpedizione;
-
-                        if (!dizionarioSpedizioni.TryGetValue(spedizione.id, out entrySpedizione))
-                        {
-                            entrySpedizione = spedizione;
-
-                            spedizione.tipologiaMerce = tipologiaMerce;
-                            spedizione.automezzo = automezzo;
-                            spedizione.partenza = indirizzoPartenza;
-                            spedizione.destinazione = indirizzoArrivo;
-
-                            dizionarioSpedizioni.Add(spedizione.id, entrySpedizione);
-                        }
-
-                        puntoSpedizione.indirizzo = indirizzoPuntoSpedizione;
-                        entrySpedizione.puntiSpedizione.Add(puntoSpedizione);
-
-                        return entrySpedizione;
-                    }, new { CodiceAutista = codiceAutista }, splitOn: "id,targa,id,id,id,id"
-                    ).Distinct();
-
-                return spedizioni.ToList();
-            }
-        }
-
-        public List<ISpedizione> cercaPerDelegato(string codiceDelegato)
-        {
-            String sql = "SELECT " +
-                    "s.id, s.distanzaStimata, s.distanzaEffettiva, s.quantitaMerce, s.durata, s.orarioPrevistoPartenza, s.orarioPrevistoArrivo, s.orarioEffettivoPartenza, s.orarioEffettivoArrivo, s.codiceDelegato, s.codiceAutista, " +
-                    "tm.id, tm.tipologia, " +
-                    "a.*, " +
-                    "ip.id, ip.qualificatore, ip.nome, ip.civico, ip.cap, ip.localita, ip.provincia, " +
-                    "ia.id, ia.qualificatore, ia.nome, ia.civico, ip.cap, ia.localita, ia.provincia, " +
-                    "ps.id, ps.fk_spedizione, ps.orario_arrivo, " +
-                    "ips.id, ips.qualificatore, ips.nome, ips.civico, ips.cap, ips.localita, ips.provincia " +
-                    "FROM spedizione as s " +
-                    "INNER JOIN tipologiamerce as tm ON tm.id = s.fk_tipologiamerce " +
-                    "LEFT OUTER JOIN automezzo as a ON a.targa = s.fk_automezzo " +
-                    "INNER JOIN indirizzo as ip ON ip.id = s.fk_indirizzo_partenza " +
-                    "INNER JOIN indirizzo as ia ON ia.id = s.fk_indirizzo_arrivo " +
-                    "INNER JOIN puntospedizione as ps ON ps.fk_spedizione = s.id " +
-                    "INNER JOIN indirizzo as ips ON ips.id = ps.fk_indirizzo" +
-                    "WHERE s.codiceDelegato = @CodiceDelegato";
-
-            using (var connection = this.getConnection())
-            {
-                var dizionarioSpedizioni = new Dictionary<int, Spedizione>();
-                IEnumerable<ISpedizione> spedizioni = connection.Query<Spedizione, TipologiaMerce, Automezzo, Indirizzo, Indirizzo, PuntoSpedizione, Indirizzo, Spedizione>(
-                    sql,
-                    (spedizione, tipologiaMerce, automezzo, indirizzoPartenza, indirizzoArrivo, puntoSpedizione, indirizzoPuntoSpedizione) =>
-                    {
-                        Spedizione entrySpedizione;
-
-                        if (!dizionarioSpedizioni.TryGetValue(spedizione.id, out entrySpedizione))
-                        {
-                            entrySpedizione = spedizione;
-
-                            spedizione.tipologiaMerce = tipologiaMerce;
-                            spedizione.automezzo = automezzo;
-                            spedizione.partenza = indirizzoPartenza;
-                            spedizione.destinazione = indirizzoArrivo;
-
-                            dizionarioSpedizioni.Add(spedizione.id, entrySpedizione);
-                        }
-
-                        puntoSpedizione.indirizzo = indirizzoPuntoSpedizione;
-                        entrySpedizione.puntiSpedizione.Add(puntoSpedizione);
-
-                        return entrySpedizione;
-                    }, new { CodiceDelegato = codiceDelegato }, splitOn: "id,targa,id,id,id,id"
-                    ).Distinct();
-
-                return spedizioni.ToList();
-            }
-        }
-
+        
         public ISpedizione crea(ISpedizione oggetto)
         {
             String sqlSpedizione = "INSERT INTO Spedizione (orarioprevistopartenza, orarioprevistoarrivo, orarioeffettivopartenza, orarioeffettivoarrivo, distanzastimata, distanzaeffettiva, durata, codicedelegato, codiceautista," +
@@ -215,30 +129,43 @@ namespace AutotrasportiFantini.persistenza.repository
             }
         }
 
+        public ISpedizione getById(int id)
+        {
+            String sql = this.selectQuery + " WHERE s.id = @Id";
+
+            return this.elencaPer(sql, new { Id = id }).Distinct().Single();
+        }
+
         public List<ISpedizione> elencaTutti()
         {
-            String sql = "SELECT " +
-                    "s.id, s.distanzaStimata, s.distanzaEffettiva, s.quantitaMerce, s.durata, s.orarioPrevistoPartenza, s.orarioPrevistoArrivo, s.orarioEffettivoPartenza, s.orarioEffettivoArrivo, s.codiceDelegato, s.codiceAutista, " +
-                    "tm.id, tm.tipologia, " +
-                    "a.*, " +
-                    "ip.id, ip.qualificatore, ip.nome, ip.civico, ip.cap, ip.localita, ip.provincia, " +
-                    "ia.id, ia.qualificatore, ia.nome, ia.civico, ip.cap, ia.localita, ia.provincia, " +
-                    "ps.id, ps.fk_spedizione as spedizione, ps.orario_arrivo, " +
-                    "ips.id, ips.qualificatore, ips.nome, ips.civico, ips.cap, ips.localita, ips.provincia " +
-                    "FROM spedizione as s " +
-                    "INNER JOIN tipologiamerce as tm ON tm.id = s.fk_tipologiamerce " +
-                    "LEFT OUTER JOIN automezzo as a ON a.targa = s.fk_automezzo " +
-                    "INNER JOIN indirizzo as ip ON ip.id = s.fk_indirizzo_partenza " +
-                    "INNER JOIN indirizzo as ia ON ia.id = s.fk_indirizzo_arrivo " +
-                    "INNER JOIN puntospedizione as ps ON ps.fk_spedizione = s.id " +
-                    "INNER JOIN indirizzo as ips ON ips.id = ps.fk_indirizzo";
+            String sql = this.selectQuery;
 
+            return this.elencaPer(sql, null).Distinct().ToList();
+        }
+
+        public List<ISpedizione> cercaPerDelegato(string codiceDelegato)
+        {
+            String sql = this.selectQuery + " WHERE s.codiceDelegato = @CodiceDelegato";
+
+            return this.elencaPer(sql, new { CodiceDelegato = codiceDelegato }).Distinct().ToList();
+        }
+
+        public List<ISpedizione> cercaPerAutista(string codiceAutista)
+        {
+            String sql = this.selectQuery + " WHERE s.codiceAutista = @CodiceAutista";
+
+            return this.elencaPer(sql, new { CodiceAutista = codiceAutista }).Distinct().ToList();
+        }
+
+        protected IEnumerable<ISpedizione> elencaPer(String sql, object mapping)
+        {
             using (var connection = this.getConnection())
             {
                 IControllerGestioneDipendenti gestioneDipendenti = new ControllerGestioneDipendenti();
 
                 var dizionarioSpedizioni = new Dictionary<int, Spedizione>();
-                IEnumerable<ISpedizione> spedizioni = connection.Query<Spedizione, TipologiaMerce, Automezzo, Indirizzo, Indirizzo, PuntoSpedizione, Indirizzo, Spedizione>(
+
+                return connection.Query< Spedizione, TipologiaMerce, Automezzo, Indirizzo, Indirizzo, PuntoSpedizione, Indirizzo, Spedizione>(
                     sql,
                     (spedizione, tipologiaMerce, automezzo, indirizzoPartenza, indirizzoArrivo, puntoSpedizione, indirizzoPuntoSpedizione) =>
                     {
@@ -261,14 +188,16 @@ namespace AutotrasportiFantini.persistenza.repository
                                 spedizione.delegato = (IDelegato)gestioneDipendenti.OttieniUtente(spedizione.codiceDelegato);
                         }
 
-                        puntoSpedizione.indirizzo = indirizzoPuntoSpedizione;
-                        entrySpedizione.puntiSpedizione.Add(puntoSpedizione);
+                        if (puntoSpedizione != null)
+                        {
+                            puntoSpedizione.indirizzo = indirizzoPuntoSpedizione;
+                            entrySpedizione.puntiSpedizione.Add(puntoSpedizione);
+                        }
 
                         return entrySpedizione;
-                    }, splitOn: "id,targa,id,id,id,id"
-                    ).Distinct();
-
-                return spedizioni.ToList();
+                    },
+                    mapping
+                    );
             }
         }
 
@@ -279,64 +208,6 @@ namespace AutotrasportiFantini.persistenza.repository
             using (var connection = this.getConnection())
             {
                 connection.Execute(sql, new { Id = id });
-            }
-        }
-
-        public ISpedizione getById(int id)
-        {
-            String sql = "SELECT " +
-                    "s.id, s.distanzaStimata, s.distanzaEffettiva, s.quantitaMerce, s.durata, s.orarioPrevistoPartenza, s.orarioPrevistoArrivo, s.orarioEffettivoPartenza, s.orarioEffettivoArrivo, s.codiceDelegato, s.codiceAutista, " +
-                    "tm.id, tm.tipologia, " +
-                    "a.*, " +
-                    "ip.id, ip.qualificatore, ip.nome, ip.civico, ip.cap, ip.localita, ip.provincia, " +
-                    "ia.id, ia.qualificatore, ia.nome, ia.civico, ip.cap, ia.localita, ia.provincia, " +
-                    "ps.id, ps.fk_spedizione as spedizione, ps.orario_arrivo, " +
-                    "ips.id, ips.qualificatore, ips.nome, ips.civico, ips.cap, ips.localita, ips.provincia " +
-                    "FROM spedizione as s " +
-                    "INNER JOIN tipologiamerce as tm ON tm.id = s.fk_tipologiamerce " +
-                    "LEFT OUTER JOIN automezzo as a ON a.targa = s.fk_automezzo " +
-                    "INNER JOIN indirizzo as ip ON ip.id = s.fk_indirizzo_partenza " +
-                    "INNER JOIN indirizzo as ia ON ia.id = s.fk_indirizzo_arrivo " +
-                    "INNER JOIN puntospedizione as ps ON ps.fk_spedizione = s.id " +
-                    "INNER JOIN indirizzo as ips ON ips.id = ps.fk_indirizzo " +
-                    "WHERE s.id = @Id";
-
-            using (var connection = this.getConnection())
-            {
-                IControllerGestioneDipendenti gestioneDipendenti = new ControllerGestioneDipendenti();
-
-                var dizionarioSpedizioni = new Dictionary<int, Spedizione>();
-                IEnumerable<ISpedizione> spedizioni = connection.Query<Spedizione, TipologiaMerce, Automezzo, Indirizzo, Indirizzo, PuntoSpedizione, Indirizzo, Spedizione>(
-                    sql,
-                    (spedizione, tipologiaMerce, automezzo, indirizzoPartenza, indirizzoArrivo, puntoSpedizione, indirizzoPuntoSpedizione) =>
-                    {
-                        Spedizione entrySpedizione;
-
-                        if (!dizionarioSpedizioni.TryGetValue(spedizione.id, out entrySpedizione))
-                        {
-                            entrySpedizione = spedizione;
-
-                            spedizione.tipologiaMerce = tipologiaMerce;
-                            spedizione.automezzo = automezzo;
-                            spedizione.partenza = indirizzoPartenza;
-                            spedizione.destinazione = indirizzoArrivo;
-
-                            dizionarioSpedizioni.Add(spedizione.id, entrySpedizione);
-
-                            if (spedizione.codiceAutista != null)
-                                spedizione.autista = (IAutista) gestioneDipendenti.OttieniUtente(spedizione.codiceAutista);
-                            if (spedizione.codiceDelegato != null)
-                                spedizione.delegato = (IDelegato) gestioneDipendenti.OttieniUtente(spedizione.codiceDelegato);
-                        }
-
-                        puntoSpedizione.indirizzo = indirizzoPuntoSpedizione;
-                        entrySpedizione.puntiSpedizione.Add(puntoSpedizione);
-
-                        return entrySpedizione;
-                    }, new { Id = id }, splitOn: "id,targa,id,id,id,id"
-                    ).Distinct();
-
-                return spedizioni.Single();
             }
         }
 
