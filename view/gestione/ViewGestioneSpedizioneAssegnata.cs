@@ -35,13 +35,16 @@ namespace AutotrasportiFantini.view.gestione
 
         protected override void addTableColumns()
         {
+            dataTable.Columns.Clear();
             dataTable.Columns.Add("identificatoSpedizione", "Identificativo Spedizione");
             dataTable.Columns.Add("luogoPartenza", "Luogo Partenza");
             dataTable.Columns.Add("luogoArrivo", "Luogo Arrivo");
             dataTable.Columns.Add("distanzaStimata", "Distanza Stimata");
             dataTable.Columns.Add("tipologiaMerce", "Tipologia Merce");
             dataTable.Columns.Add("quantitaMerce", "Quantita Merce");
+            dataTable.Columns.Add("Autista", "Autista");
             dataTable.Columns.Add("Automezzo", "Automezzo");
+            dataTable.Columns.Add("Delegato", "Delegato");
             dataTable.Columns.Add("orarioPartenzaPrevisto", "Orario Partenza Previsto");
             dataTable.Columns.Add("orarioArrivoPrevisto", "Orario Arrivo Previsto");
             dataTable.Columns.Add("orarioPartenzaEffettivo", "Orario Partenza Effettivo");
@@ -79,19 +82,52 @@ namespace AutotrasportiFantini.view.gestione
                 dataTable.Rows[i].Cells[3].Value = spedizioneTemp.distanzaStimata;
                 dataTable.Rows[i].Cells[4].Value = spedizioneTemp.tipologiaMerce.tipologia;
                 dataTable.Rows[i].Cells[5].Value = spedizioneTemp.quantitaMerce;
-                dataTable.Rows[i].Cells[6].Value = spedizioneTemp.automezzo.targa;
-                dataTable.Rows[i].Cells[7].Value = spedizioneTemp.orarioPrevistoPartenza;
-                dataTable.Rows[i].Cells[8].Value = spedizioneTemp.orarioPrevistoArrivo;
-                dataTable.Rows[i].Cells[9].Value = spedizioneTemp.orarioEffettivoPartenza;
-                dataTable.Rows[i].Cells[10].Value = spedizioneTemp.orarioEffettivoArrivo;
-                dataTable.Rows[i].Cells[11].Value = spedizioneTemp.distanzaEffettiva;
-                dataTable.Rows[i].Cells[12].Value = spedizioneTemp.tempoPercorrenza;
-                for (int j = 0; j < spedizioneTemp.puntiSpedizione.Count; j++)
+
+                if (spedizioneTemp.autista is null == false)
                 {
-                    dataTable.Rows[i].Cells[13 + j * 2].Value = spedizioneTemp.puntiSpedizione[j].indirizzo.localita;
-                    dataTable.Rows[i].Cells[14 + j * 2].Value = spedizioneTemp.puntiSpedizione[j].orarioArrivo;
+                    dataTable.Rows[i].Cells[6].Value = spedizioneTemp.autista.cognome;
                 }
 
+                if (spedizioneTemp.automezzo is null == false)
+                {
+                    dataTable.Rows[i].Cells[7].Value = spedizioneTemp.automezzo.targa;
+                }
+
+                if (spedizioneTemp.delegato is null == false)
+                {
+                    dataTable.Rows[i].Cells[8].Value = spedizioneTemp.delegato.cognome;
+                }
+
+                if (spedizioneTemp.orarioPrevistoPartenza != DateTime.MinValue)
+                {
+                    dataTable.Rows[i].Cells[9].Value = spedizioneTemp.orarioPrevistoPartenza;
+                }
+
+                if (spedizioneTemp.orarioPrevistoPartenza != DateTime.MinValue)
+                {
+                    dataTable.Rows[i].Cells[10].Value = spedizioneTemp.orarioPrevistoArrivo;
+                }
+
+                if (spedizioneTemp.orarioEffettivoPartenza != DateTime.MinValue)
+                {
+                    dataTable.Rows[i].Cells[11].Value = spedizioneTemp.orarioEffettivoPartenza;
+                }
+
+                if (spedizioneTemp.orarioEffettivoArrivo != DateTime.MinValue)
+                {
+                    dataTable.Rows[i].Cells[12].Value = spedizioneTemp.orarioEffettivoArrivo;
+                }
+
+                dataTable.Rows[i].Cells[13].Value = spedizioneTemp.distanzaEffettiva;
+                dataTable.Rows[i].Cells[14].Value = spedizioneTemp.tempoPercorrenza;
+                for (int j = 0; j < spedizioneTemp.puntiSpedizione.Count; j++)
+                {
+                    dataTable.Rows[i].Cells[15 + j * 2].Value = spedizioneTemp.puntiSpedizione[j].indirizzo.localita;
+                    if (spedizioneTemp.puntiSpedizione[j].orarioArrivo != DateTime.MinValue)
+                    {
+                        dataTable.Rows[i].Cells[16 + j * 2].Value = spedizioneTemp.puntiSpedizione[j].orarioArrivo;
+                    }
+                }
             }
         }
 

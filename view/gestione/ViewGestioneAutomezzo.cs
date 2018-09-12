@@ -42,6 +42,7 @@ namespace AutotrasportiFantini.view
 
         protected override void addTableColumns()
         {
+            dataTable.Columns.Clear();
             dataTable.Columns.Add("marca", "Marca");
             dataTable.Columns.Add("modello", "Modello");
             dataTable.Columns.Add("targa", "Targa");
