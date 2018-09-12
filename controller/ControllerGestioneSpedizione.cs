@@ -81,15 +81,16 @@ namespace AutotrasportiFantini.controller
 			//	Popolamento dei campi
 
 			//	Per ogni modifica, ne viene loggato il valore
-			if (partenza != null && !spedizione.partenza.Equals(partenza)) {
+			if (partenza != null && !spedizione.partenza.Equals(partenza))
+			{
+				cambiamenti += "[partenza: da " + spedizione.partenza + " a " + partenza + "] ";
 				spedizione.partenza = partenza;
-				cambiamenti += "[partenza: da "+spedizione.partenza+" a " + partenza + "] ";
 			}
 
 			if (arrivo != null && !spedizione.destinazione.Equals(arrivo))
-			{ 
+			{
+				cambiamenti += "[destinazione: da " + spedizione.destinazione + " a " + arrivo + "] ";
 				spedizione.destinazione = arrivo;
-				cambiamenti += "[destinazione: da "+spedizione.destinazione+" a " + arrivo + "] ";
 			}
 
 			if (puntiSpedizione != null)
@@ -97,50 +98,50 @@ namespace AutotrasportiFantini.controller
 
 			if (distanzaStimata > 0 && !distanzaStimata.Equals(spedizione.distanzaStimata))
 			{
+				cambiamenti += "[distanza stimata: da " + spedizione.distanzaStimata + " a " + distanzaStimata + "] ";
 				spedizione.distanzaStimata = distanzaStimata;
-				cambiamenti += "[distanza stimata: da "+spedizione.distanzaStimata+" a "+distanzaStimata+"] ";
 			}
 
 			if (distanzaEffettiva > 0 && !spedizione.distanzaEffettiva.Equals(distanzaEffettiva))
 			{
+				cambiamenti += "[distanza effettiva: da " + spedizione.distanzaEffettiva + " a " + distanzaEffettiva + "] ";
 				spedizione.distanzaEffettiva = distanzaEffettiva;
-				cambiamenti += "[distanza effettiva: da "+spedizione.distanzaEffettiva+" a " + distanzaEffettiva + "] ";
 			}
 
 			if (tempoPercorrenza > 0 && !spedizione.tempoPercorrenza.Equals(tempoPercorrenza))
 			{
-				spedizione.tempoPercorrenza = tempoPercorrenza;
 				cambiamenti += "[tempo percorrenza: da " + spedizione.tempoPercorrenza + " a " + tempoPercorrenza + "] ";
+				spedizione.tempoPercorrenza = tempoPercorrenza;
 			}
 
 			if (quantitaMerce >= 0 && !spedizione.quantitaMerce.Equals(quantitaMerce))
 			{
-				spedizione.quantitaMerce = quantitaMerce;
 				cambiamenti += "[quantita merce: da " + spedizione.quantitaMerce + " a " + quantitaMerce + "] ";
+				spedizione.quantitaMerce = quantitaMerce;
 			}
 
 			if (tipologiaMerce != null && !spedizione.tipologiaMerce.Equals(tipologiaMerce))
 			{
-				spedizione.tipologiaMerce = tipologiaMerce;
 				cambiamenti += "[tipologia merce: da " + spedizione.tipologiaMerce.tipologia + " a " + tipologiaMerce.tipologia + "] ";
+				spedizione.tipologiaMerce = tipologiaMerce;
 			}
 
 			if (autista != null && !spedizione.autista.idAziendale.Equals(autista.idAziendale))
 			{
-				spedizione.autista = autista;
 				cambiamenti += "[autista: da " + spedizione.autista.idAziendale + " a " + autista.idAziendale + "] ";
+				spedizione.autista = autista;
 			}
 
 			if (automezzo != null && !spedizione.automezzo.id.Equals(automezzo.id))
 			{
-				spedizione.automezzo = automezzo;
 				cambiamenti += "[automezzo: da " + spedizione.automezzo.id + " a " + automezzo.id + "] ";
+				spedizione.automezzo = automezzo;
 			}
 
 			if (delegato != null && !spedizione.delegato.idAziendale.Equals(delegato.idAziendale))
 			{
-				spedizione.delegato = delegato;
 				cambiamenti += "[delegato: da " + spedizione.autista.idAziendale + " a " + autista.idAziendale + "] ";
+				spedizione.delegato = delegato;
 			}
 
 			if (partenzaPrevista != null && !spedizione.orarioPrevistoPartenza.Equals(partenzaPrevista))
@@ -151,7 +152,7 @@ namespace AutotrasportiFantini.controller
 
 			if (partenzaEffettiva != null && !spedizione.orarioEffettivoPartenza.Equals(partenzaEffettiva))
 			{
-				cambiamenti += "[partenza effettivo: da " + spedizione.orarioEffettivoPartenza + " a " + partenzaEffettiva + "] ";
+				cambiamenti += "[partenza effettiva: da " + spedizione.orarioEffettivoPartenza + " a " + partenzaEffettiva + "] ";
 				spedizione.orarioEffettivoPartenza = partenzaEffettiva;
 			}
 

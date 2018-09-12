@@ -50,7 +50,7 @@ namespace AutotrasportiFantini.controller
 
         public void EliminaAutomezzo(IAutomezzo automezzo)
         {
-			repository.elimina(automezzo.targa);
+			repository.elimina(automezzo.id);
 
 			//	Log operazione
 			logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha eliminato l'automezzo " + automezzo.targa);

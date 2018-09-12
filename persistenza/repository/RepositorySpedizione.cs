@@ -8,6 +8,8 @@ using AutotrasportiFantini.modello.factory;
 using AutotrasportiFantini.modello;
 using Newtonsoft.Json;
 using AutotrasportiFantini.persistenza.repository.factory;
+using AutotrasportiFantini.controller.interfacce;
+using AutotrasportiFantini.controller;
 //using AutotrasportiFantini.controller.interfacce;
 //using AutotrasportiFantini.controller;
 
