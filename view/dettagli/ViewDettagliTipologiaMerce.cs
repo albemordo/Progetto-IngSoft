@@ -30,6 +30,6 @@ namespace AutotrasportiFantini.view
         }
 
         IControllerTipologiaMerce controllerTipologiaMerce = new ControllerTipologiaMerce();
-        private ITipologiaMerce tipologiaMerce;
+        ITipologiaMerce tipologiaMerce;
     }
 }

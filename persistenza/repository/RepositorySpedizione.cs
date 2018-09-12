@@ -2,11 +2,8 @@
 using System;
 using System.Collections.Generic;
 using AutotrasportiFantini.modello.interfacce;
-using System.Data;
 using System.Linq;
-using AutotrasportiFantini.modello.factory;
 using AutotrasportiFantini.modello;
-using Newtonsoft.Json;
 using AutotrasportiFantini.persistenza.repository.factory;
 using AutotrasportiFantini.controller.interfacce;
 using AutotrasportiFantini.controller;
@@ -48,7 +45,7 @@ namespace AutotrasportiFantini.persistenza.repository
             {
                 String codiceDelegato = oggetto.delegato == null ? null : oggetto.delegato.idAziendale;
                 String codiceAutista = oggetto.autista == null ? null : oggetto.autista.idAziendale;
-                String codiceAutomezzo = oggetto.automezzo == null ? null : oggetto.automezzo.targa;
+                int? codiceAutomezzo = oggetto.automezzo?.id;
 
                 int aggiornaSpedizione = connection.Execute(sqlSpedizione, new
                 {
@@ -91,7 +88,7 @@ namespace AutotrasportiFantini.persistenza.repository
             {
                 String codiceDelegato = oggetto.delegato == null ? null : oggetto.delegato.idAziendale;
                 String codiceAutista = oggetto.autista == null ? null : oggetto.autista.idAziendale;
-                String codiceAutomezzo = oggetto.automezzo == null ? null : oggetto.automezzo.targa;
+                int? codiceAutomezzo = oggetto.automezzo?.id;
 
                 int idSpedizione = connection.QuerySingle<int>(sqlSpedizione, new
                 {
@@ -228,6 +225,16 @@ namespace AutotrasportiFantini.persistenza.repository
                 });
 
                 return aggiornati > 0;
+            }
+        }
+
+        public void eliminaPuntoSpedizione(int id)
+        {
+            String sql = "DELETE FROM PuntoSpedizione WHERE id = @Id";
+
+            using (var connection = this.getConnection())
+            {
+                connection.Execute(sql, new { Id = id });
             }
         }
     }
