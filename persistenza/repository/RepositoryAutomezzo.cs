@@ -16,12 +16,14 @@ namespace AutotrasportiFantini.persistenza.repository
         }
         public bool aggiorna(IAutomezzo oggetto)
         {
-            String sql = "UPDATE Automezzo SET targa = @Targa, modello = @Modello, produttore = @Produttore," +
-                "targarimorchio = @TargaRimorchio, codicedelegato = @CodiceDelegato WHERE targa = @Targa";
+            String sql = "UPDATE Automezzo SET targa = @Targa, modello = @Modello, produttore = @Produttore, " +
+                "targarimorchio = @TargaRimorchio, codicedelegato = @CodiceDelegato WHERE id = @Id";
 
             using (var connection = this.getConnection())
             {
                 int righeAggiornate = connection.Execute(sql, oggetto);
+
+                Console.WriteLine(righeAggiornate);
 
                 return righeAggiornate == 1;
             }
@@ -30,11 +32,13 @@ namespace AutotrasportiFantini.persistenza.repository
         public IAutomezzo crea(IAutomezzo oggetto)
         {
             String sql = "INSERT INTO Automezzo (targa, modello, produttore, targarimorchio, codicedelegato)" +
-                "VALUES (@Targa, @Modello, @Produttore, @TargaRimorchio, @CodiceDelegato) RETURNING targa";
+                "VALUES (@Targa, @Modello, @Produttore, @TargaRimorchio, @CodiceDelegato) RETURNING id";
 
             using (var connection = this.getConnection())
             {
-                String targa = connection.QuerySingle<String>(sql, oggetto);
+                int id = connection.QuerySingle<int>(sql, oggetto);
+
+                oggetto.id = id;
 
                 return oggetto;
             }
@@ -64,23 +68,23 @@ namespace AutotrasportiFantini.persistenza.repository
             }
         }
 
-        public void elimina(String id)
+        public void elimina(int id)
         {
-            String sql = "DELETE FROM Automezzo WHERE targa = @Targa";
+            String sql = "DELETE FROM Automezzo WHERE id = @Id";
 
             using (var connection = this.getConnection())
             {
-                connection.Execute(sql, new { Targa = id });
+                connection.Execute(sql, new { Id = id });
             }
         }
 
-        public IAutomezzo getById(String id)
+        public IAutomezzo getById(int id)
         {
-            String sql = "SELECT * FROM Automezzo WHERE targa LIKE @TargaAutomezzo";
+            String sql = "SELECT * FROM Automezzo WHERE id = @Id";
 
             using (var connection = this.getConnection())
             {
-                IAutomezzo automezzo = connection.QuerySingle<Automezzo>(sql, new { TargaAutomezzo = id });
+                IAutomezzo automezzo = connection.QuerySingle<Automezzo>(sql, new { Id = id });
 
                 return automezzo;
             }

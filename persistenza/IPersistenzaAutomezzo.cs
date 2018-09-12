@@ -7,7 +7,7 @@ using AutotrasportiFantini.modello.interfacce;
 
 namespace AutotrasportiFantini.persistenza
 {
-    interface IPersistenzaAutomezzo : IPersistenzaCRUD<IAutomezzo, string>
+    interface IPersistenzaAutomezzo : IPersistenzaCRUD<IAutomezzo, int>
     {
         List<IAutomezzo> elencaPerDelegato(String codiceDelegato);
     }

@@ -65,37 +65,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="controller\ControllerAssegnazioneSpedizione.cs" />
-    <Compile Include="controller\ControllerAutenticazione.cs" />
-    <Compile Include="controller\ControllerGestioneDipendenti.cs" />
-    <Compile Include="controller\ControllerGestioneSpedizione.cs" />
-    <Compile Include="controller\ControllerIndirizzi.cs" />
-    <Compile Include="controller\ControllerAutomezzi.cs" />
-    <Compile Include="controller\ControllerListaSpedizioni.cs" />
-    <Compile Include="controller\log\ControllerLog.cs" />
-    <Compile Include="controller\ControllerPuntiSpedizione.cs" />
-    <Compile Include="controller\ControllerSpedizioniAutista.cs" />
-    <Compile Include="controller\ControllerTipologiaMerce.cs" />
-    <Compile Include="controller\interfacce\IControllerAssegnazioneSpedizione.cs" />
-    <Compile Include="controller\interfacce\IControllerAutenticazione.cs" />
-    <Compile Include="controller\interfacce\IControllerAutomezzi.cs" />
-    <Compile Include="controller\interfacce\IControllerGestioneDipendenti.cs" />
-    <Compile Include="controller\interfacce\IControllerGestioneSpedizione.cs" />
-    <Compile Include="controller\interfacce\IControllerIndirizzi.cs" />
-    <Compile Include="controller\interfacce\IControllerListaSpedizioni.cs" />
-    <Compile Include="controller\log\FormatoLogStandard.cs" />
-    <Compile Include="controller\log\FormatoLogTimestamp.cs" />
-    <Compile Include="controller\log\interfacce\IControllerLog.cs" />
-    <Compile Include="controller\interfacce\IControllerPuntiSpedizione.cs" />
-    <Compile Include="controller\interfacce\IControllerSpedizioniAutista.cs" />
-    <Compile Include="controller\interfacce\IControllerTipologiaMerce.cs" />
-    <Compile Include="controller\log\interfacce\IFormatoLog.cs" />
-    <Compile Include="controller\log\interfacce\ISistemaLog.cs" />
-    <Compile Include="controller\interfacce\ISorgenteDati.cs" />
-    <Compile Include="controller\utilita\JsonParser.cs" />
-    <Compile Include="controller\log\SistemaLog.cs" />
-    <Compile Include="controller\SorgenteDati.cs" />
-    <Compile Include="controller\utilita\RoleResolver.cs" />
     <Compile Include="modello\Autista.cs" />
     <Compile Include="modello\factory\AutistiFactory.cs" />
     <Compile Include="modello\Automezzo.cs" />
@@ -135,133 +104,7 @@
     <Compile Include="persistenza\repository\RepositoryTipologiaMerce.cs" />
     <Compile Include="persistenza\repository\factory\PostgresqlConnectionFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="test\Program.cs" />
-    <Compile Include="view\dettagli\ViewDettagliAutomezzo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\dettagli\ViewDettagliAutomezzo.Designer.cs">
-      <DependentUpon>ViewDettagliAutomezzo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\dettagli\ViewDettagliPuntiSpedizioneAutista.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\dettagli\ViewDettagliPuntiSpedizioneAutista.Designer.cs">
-      <DependentUpon>ViewDettagliPuntiSpedizioneAutista.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\dettagli\ViewDettagliPuntoSpedizione.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\dettagli\ViewDettagliPuntoSpedizione.Designer.cs">
-      <DependentUpon>ViewDettagliPuntoSpedizione.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\dettagli\ViewDettagliSpedizione.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\dettagli\ViewDettagliSpedizione.Designer.cs">
-      <DependentUpon>ViewDettagliSpedizione.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\dettagli\ViewDettagliSpedizioneAutista.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\dettagli\ViewDettagliSpedizioneAutista.Designer.cs">
-      <DependentUpon>ViewDettagliSpedizioneAutista.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\dettagli\ViewDettagliSpedizioneDelegato.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\dettagli\ViewDettagliSpedizioneDelegato.Designer.cs">
-      <DependentUpon>ViewDettagliSpedizioneDelegato.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\gestione\ViewAssegnazioneSpedizione.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\gestione\ViewAssegnazioneSpedizione.Designer.cs">
-      <DependentUpon>ViewAssegnazioneSpedizione.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\gestione\ViewGestioneSpedizioneAssegnata.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\gestione\ViewGestioneSpedizioneAssegnata.Designer.cs">
-      <DependentUpon>ViewGestioneSpedizioneAssegnata.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\home\HomeAutista.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\home\HomeAutista.Designer.cs">
-      <DependentUpon>HomeAutista.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\home\HomeDelegato.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\home\HomeDelegato.Designer.cs">
-      <DependentUpon>HomeDelegato.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\home\HomeResponsabile.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\home\HomeResponsabile.Designer.cs">
-      <DependentUpon>HomeResponsabile.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\templates\HomeTemplate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\templates\HomeTemplate.Designer.cs">
-      <DependentUpon>HomeTemplate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\templates\ViewGestioneTemplate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\templates\ViewGestioneTemplate.Designer.cs">
-      <DependentUpon>ViewGestioneTemplate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\ViewAutenticazione.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\ViewAutenticazione.Designer.cs">
-      <DependentUpon>ViewAutenticazione.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\creazione\ViewCreazioneAutomezzo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\creazione\ViewCreazioneAutomezzo.Designer.cs">
-      <DependentUpon>ViewCreazioneAutomezzo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\creazione\ViewCreazioneSpedizione.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\creazione\ViewCreazioneSpedizione.Designer.cs">
-      <DependentUpon>ViewCreazioneSpedizione.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\creazione\ViewCreazioneTipologiaMerce.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\creazione\ViewCreazioneTipologiaMerce.Designer.cs">
-      <DependentUpon>ViewCreazioneTipologiaMerce.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\dettagli\ViewDettagliTipologiaMerce.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\dettagli\ViewDettagliTipologiaMerce.Designer.cs">
-      <DependentUpon>ViewDettagliTipologiaMerce.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\gestione\ViewGestioneAutomezzo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\gestione\ViewGestioneAutomezzo.Designer.cs">
-      <DependentUpon>ViewGestioneAutomezzo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\gestione\ViewGestioneSpedizione.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\gestione\ViewGestioneSpedizione.Designer.cs">
-      <DependentUpon>ViewGestioneSpedizione.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\gestione\ViewGestioneTipologieMerce.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\gestione\ViewGestioneTipologieMerce.Designer.cs">
-      <DependentUpon>ViewGestioneTipologieMerce.cs</DependentUpon>
-    </Compile>
+    <Compile Include="test\TestRepository.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -272,66 +115,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="view\dettagli\ViewDettagliAutomezzo.resx">
-      <DependentUpon>ViewDettagliAutomezzo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\dettagli\ViewDettagliPuntiSpedizioneAutista.resx">
-      <DependentUpon>ViewDettagliPuntiSpedizioneAutista.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\dettagli\ViewDettagliPuntoSpedizione.resx">
-      <DependentUpon>ViewDettagliPuntoSpedizione.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\dettagli\ViewDettagliSpedizione.resx">
-      <DependentUpon>ViewDettagliSpedizione.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\dettagli\ViewDettagliSpedizioneAutista.resx">
-      <DependentUpon>ViewDettagliSpedizioneAutista.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\dettagli\ViewDettagliSpedizioneDelegato.resx">
-      <DependentUpon>ViewDettagliSpedizioneDelegato.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\gestione\ViewAssegnazioneSpedizione.resx">
-      <DependentUpon>ViewAssegnazioneSpedizione.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\home\HomeAutista.resx">
-      <DependentUpon>HomeAutista.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\home\HomeDelegato.resx">
-      <DependentUpon>HomeDelegato.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\home\HomeResponsabile.resx">
-      <DependentUpon>HomeResponsabile.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\templates\HomeTemplate.resx">
-      <DependentUpon>HomeTemplate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\templates\ViewGestioneTemplate.resx">
-      <DependentUpon>ViewGestioneTemplate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\ViewAutenticazione.resx">
-      <DependentUpon>ViewAutenticazione.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\creazione\ViewCreazioneAutomezzo.resx">
-      <DependentUpon>ViewCreazioneAutomezzo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\creazione\ViewCreazioneSpedizione.resx">
-      <DependentUpon>ViewCreazioneSpedizione.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\creazione\ViewCreazioneTipologiaMerce.resx">
-      <DependentUpon>ViewCreazioneTipologiaMerce.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\dettagli\ViewDettagliTipologiaMerce.resx">
-      <DependentUpon>ViewDettagliTipologiaMerce.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\gestione\ViewGestioneAutomezzo.resx">
-      <DependentUpon>ViewGestioneAutomezzo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\gestione\ViewGestioneSpedizione.resx">
-      <DependentUpon>ViewGestioneSpedizione.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\gestione\ViewGestioneTipologieMerce.resx">
-      <DependentUpon>ViewGestioneTipologieMerce.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include=".vs\AutotrasportiFantini\v15\Server\sqlite3\db.lock" />
     <None Include=".vs\AutotrasportiFantini\v15\Server\sqlite3\storage.ide" />
     <None Include=".vs\AutotrasportiFantini\v15\Server\sqlite3\storage.ide-shm" />
@@ -476,6 +259,7 @@
     <Folder Include=".vs\Progetto-IngSoft\v15\" />
     <Folder Include="bin\Debug\" />
     <Folder Include="bin\Release\" />
+    <Folder Include="controller\interfacce\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="persistenza\factory\" />
   </ItemGroup>
