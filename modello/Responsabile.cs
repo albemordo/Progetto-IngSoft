@@ -10,7 +10,7 @@ namespace AutotrasportiFantini.modello
         public string cognome { get; set; }
 		public override string ToString()
 		{
-			return JsonConvert.SerializeObject(this);
+			return idAziendale + ": " + nome + " " + cognome;
 		}
 	}
 }

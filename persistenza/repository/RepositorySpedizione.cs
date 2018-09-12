@@ -7,9 +7,6 @@ using AutotrasportiFantini.modello;
 using AutotrasportiFantini.persistenza.repository.factory;
 using AutotrasportiFantini.controller.interfacce;
 using AutotrasportiFantini.controller;
-using Newtonsoft.Json;
-//using AutotrasportiFantini.controller.interfacce;
-//using AutotrasportiFantini.controller;
 
 namespace AutotrasportiFantini.persistenza.repository
 {
@@ -18,10 +15,10 @@ namespace AutotrasportiFantini.persistenza.repository
         protected String selectQuery = "SELECT " +
                     "s.id, s.distanzaStimata, s.distanzaEffettiva, s.quantitaMerce, s.durata, s.orarioPrevistoPartenza, s.orarioPrevistoArrivo, s.orarioEffettivoPartenza, s.orarioEffettivoArrivo, s.codiceDelegato, s.codiceAutista, " +
                     "tm.id, tm.tipologia, " +
-                    "a.*, " +
+                    "a.id, a.targa, a.modello, a.produttore, a.targarimorchio, a.codicedelegato, " +
                     "ip.id, ip.qualificatore, ip.nome, ip.civico, ip.cap, ip.localita, ip.provincia, " +
                     "ia.id, ia.qualificatore, ia.nome, ia.civico, ip.cap, ia.localita, ia.provincia, " +
-                    "ps.id, ps.fk_spedizione as spedizione, ps.orario_arrivo, " +
+                    "ps.id, ps.fk_spedizione as spedizione, ps.orarioarrivo, " +
                     "ips.id, ips.qualificatore, ips.nome, ips.civico, ips.cap, ips.localita, ips.provincia " +
                     "FROM spedizione as s " +
                     "INNER JOIN tipologiamerce as tm ON tm.id = s.fk_tipologiamerce " +
@@ -83,16 +80,13 @@ namespace AutotrasportiFantini.persistenza.repository
             String sqlSpedizione = "INSERT INTO Spedizione (orarioprevistopartenza, orarioprevistoarrivo, orarioeffettivopartenza, orarioeffettivoarrivo, distanzastimata, distanzaeffettiva, durata, codicedelegato, codiceautista," +
                 "fk_tipologiamerce, fk_automezzo, quantitamerce, fk_indirizzo_partenza, fk_indirizzo_arrivo) VALUES (@OrarioPrevistoPartenza, @OrarioPrevistoArrivo, @OrarioEffettivoPartenza, @OrarioEffettivoArrivo, " +
                 "@DistanzaStimata, @DistanzaEffettiva, @Durata, @CodiceDelegato, @CodiceAutista, @CodiceTipologiaMerce, @CodiceAutomezzo, @QuantitaMerce, @CodiceIndirizzoPartenza, @CodiceIndirizzoArrivo) RETURNING id";
-            String sqlPuntoSpedizione = "INSERT INTO PuntoSpedizione (fk_spedizione, fk_indirizzo, orario_arrivo) VALUES (@CodiceSpedizione, @CodiceIndirizzo, @OrarioArrivo) RETURNING id";
+            String sqlPuntoSpedizione = "INSERT INTO PuntoSpedizione (fk_spedizione, fk_indirizzo, orarioarrivo) VALUES (@CodiceSpedizione, @CodiceIndirizzo, @OrarioArrivo) RETURNING id";
 
             using (var connection = this.getConnection())
             {
                 String codiceDelegato = oggetto.delegato == null ? null : oggetto.delegato.idAziendale;
                 String codiceAutista = oggetto.autista == null ? null : oggetto.autista.idAziendale;
                 int? codiceAutomezzo = oggetto.automezzo?.id;
-
-
-                Console.WriteLine(codiceAutomezzo);
 
                 int idSpedizione = connection.QuerySingle<int>(sqlSpedizione, new
                 {
@@ -216,7 +210,7 @@ namespace AutotrasportiFantini.persistenza.repository
 
         public bool aggiornaPuntoSpedizione(IPuntoSpedizione puntoSpedizione)
         {
-            String sqlPuntoSpedizione = "UPDATE PuntoSpedizione SET fk_spedizione = @CodiceSpedizione, fk_indirizzo = @CodiceIndirizzo, orario_arrivo = @OrarioArrivo WHERE id = @Id";
+            String sqlPuntoSpedizione = "UPDATE PuntoSpedizione SET fk_spedizione = @CodiceSpedizione, fk_indirizzo = @CodiceIndirizzo, orarioarrivo = @OrarioArrivo WHERE id = @Id";
 
             using (var connection = this.getConnection())
             {
