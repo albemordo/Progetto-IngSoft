@@ -13,7 +13,7 @@ namespace AutotrasportiFantini.persistenza.repository
     class RepositorySpedizione : RepositoryBase, IPersistenzaSpedizione
     {
         protected String selectQuery = "SELECT " +
-                    "s.id, s.distanzaStimata, s.distanzaEffettiva, s.quantitaMerce, s.durata, s.orarioPrevistoPartenza, s.orarioPrevistoArrivo, s.orarioEffettivoPartenza, s.orarioEffettivoArrivo, s.codiceDelegato, s.codiceAutista, " +
+                    "s.id, s.distanzaStimata, s.distanzaEffettiva, s.quantitaMerce, s.durata as tempopercorrenza, s.orarioPrevistoPartenza, s.orarioPrevistoArrivo, s.orarioEffettivoPartenza, s.orarioEffettivoArrivo, s.codiceDelegato, s.codiceAutista, " +
                     "tm.id, tm.tipologia, " +
                     "a.id, a.targa, a.modello, a.produttore, a.targarimorchio, a.codicedelegato, " +
                     "ip.id, ip.qualificatore, ip.nome, ip.civico, ip.cap, ip.localita, ip.provincia, " +
