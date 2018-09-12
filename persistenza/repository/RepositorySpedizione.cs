@@ -230,5 +230,15 @@ namespace AutotrasportiFantini.persistenza.repository
                 return aggiornati > 0;
             }
         }
+
+        public void eliminaPuntoSpedizione(int id)
+        {
+            String sql = "DELETE FROM PuntoSpedizione WHERE id = @Id";
+
+            using (var connection = this.getConnection())
+            {
+                connection.Execute(sql, new { Id = id });
+            }
+        }
     }
 }
