@@ -34,6 +34,7 @@ namespace AutotrasportiFantini.controller
 
 		public IAutomezzo CreaAutomezzo(string targa, string produttore, string modello, string targaRimorchio, IDelegato delegato)
         {
+
 			IAutomezzo automezzo = factory.GetAutomezzo();
 			AssegnaCampi(automezzo, targa, produttore, modello, targaRimorchio, delegato);
 
@@ -42,6 +43,7 @@ namespace AutotrasportiFantini.controller
 			if(automezzo == null)
 				return null;
 
+			//	Log operazione
 			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha aggiunto l'automezzo "+automezzo.targa);
 
 			return automezzo;
@@ -51,18 +53,41 @@ namespace AutotrasportiFantini.controller
         {
 			repository.elimina(automezzo.targa);
 
+			//	Log operazione
 			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha eliminato l'automezzo " + automezzo.targa);
 		}
 
 		public List<IAutomezzo> ListaAutomezzi(IDelegato delegato)
         {
+			if (delegato.idAziendale == null)
+				return null;
+
+			//	Log operazione
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha cercato la lista degli automezzi di " + delegato.idAziendale);
+
 			//	Manca il delegato
 			return repository.elencaPerDelegato(delegato.idAziendale);
-        }
+		}
 
         public IAutomezzo ModificaAutomezzo(IAutomezzo automezzo, string targa, string produttore, string modello, string targaRimorchio, IDelegato delegato)
 		{
-			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha aggiunto l'automezzo " + automezzo.targa);
+			string cambiamenti = "[";
+
+			if (targa != null && !automezzo.targa.Equals(targa))
+				cambiamenti += "targa ";
+
+			if (produttore != null && !automezzo.produttore.Equals(produttore))
+				cambiamenti += "produttore ";
+
+			if (modello != null && !automezzo.modello.Equals(modello))
+				cambiamenti += "modello ";
+
+			if (targaRimorchio != null && !automezzo.targaRimorchio.Equals(targaRimorchio))
+				cambiamenti += "targa_rimorchio ";
+
+			cambiamenti += "]";
+
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha modificato "+cambiamenti+" dell'automezzo " + automezzo.targa);
 
 			AssegnaCampi(automezzo, targa, produttore, modello, targaRimorchio, delegato);
 

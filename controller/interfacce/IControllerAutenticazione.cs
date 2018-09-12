@@ -5,7 +5,9 @@ namespace AutotrasportiFantini.controller.interfacce
 {
     interface IControllerAutenticazione
     {
-        Boolean Autentica(String username, String password);
+		IUtente UtenteAutenticato { get; set; }
+
+		Boolean Autentica(String username, String password);
         Boolean IsAutenticato();
         IUtente GetUtenteAutenticato();
         void ChiudiSessione();

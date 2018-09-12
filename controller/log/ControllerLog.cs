@@ -6,7 +6,6 @@ namespace AutotrasportiFantini.controller.log
 {
     class ControllerLog : IControllerLog
     {
-		IUtente utente;
 		ISistemaLog SistemaLog;
 		protected static ControllerLog istanza;
 

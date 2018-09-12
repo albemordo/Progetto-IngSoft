@@ -16,7 +16,7 @@ namespace AutotrasportiFantini.controller
 		IControllerGestioneDipendenti autenticazione = new ControllerGestioneDipendenti();
 
 		//	Viene salvata l'istanza dell'utente che si è autenticato, per tutta la durata della sessione
-		IUtente UtenteAutenticato;
+		public IUtente UtenteAutenticato { get; set; }
 
         private ControllerAutenticazione() { }
 
@@ -58,7 +58,7 @@ namespace AutotrasportiFantini.controller
         public void ChiudiSessione()
 		{
 			//	Viene creato il log per la fine della sessione di login
-			logger.CreaLog(" tentativo di login per lo username " + UtenteAutenticato.idAziendale);
+			logger.CreaLog(UtenteAutenticato.idAziendale+" ha terminato la sessione");
 
 			UtenteAutenticato = null;
 		}
