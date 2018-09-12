@@ -36,5 +36,10 @@ namespace AutotrasportiFantini.view.templates
         {
 
         }
+
+        protected void aggiornaButton_Click(object sender, EventArgs e)
+        {
+            this.setupTable();
+        }
     }
 }

@@ -33,6 +33,7 @@ namespace AutotrasportiFantini.view.gestione
         }
         protected override void addTableColumns()
         {
+            dataTable.Columns.Clear();
             dataTable.Columns.Add("identificatoSpedizione", "Identificativo Spedizione");
             dataTable.Columns.Add("luogoPartenza", "Luogo Partenza");
             dataTable.Columns.Add("luogoArrivo", "Luogo Arrivo");

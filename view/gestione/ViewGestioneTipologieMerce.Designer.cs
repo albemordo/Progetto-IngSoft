@@ -33,7 +33,7 @@
             // 
             // creaTipologiaMerceButton
             // 
-            this.creaTipologiaMerceButton.Location = new System.Drawing.Point(513, 583);
+            this.creaTipologiaMerceButton.Location = new System.Drawing.Point(290, 583);
             this.creaTipologiaMerceButton.Name = "creaTipologiaMerceButton";
             this.creaTipologiaMerceButton.Size = new System.Drawing.Size(227, 50);
             this.creaTipologiaMerceButton.TabIndex = 3;

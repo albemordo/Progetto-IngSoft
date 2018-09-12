@@ -33,7 +33,7 @@
             // 
             // creaAutomezzoButton
             // 
-            this.creaAutomezzoButton.Location = new System.Drawing.Point(513, 583);
+            this.creaAutomezzoButton.Location = new System.Drawing.Point(299, 583);
             this.creaAutomezzoButton.Name = "creaAutomezzoButton";
             this.creaAutomezzoButton.Size = new System.Drawing.Size(227, 50);
             this.creaAutomezzoButton.TabIndex = 2;

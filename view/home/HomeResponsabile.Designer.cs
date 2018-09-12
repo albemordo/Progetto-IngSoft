@@ -30,6 +30,7 @@
         {
             this.gestioneSpedizioniButton = new System.Windows.Forms.Button();
             this.gestioneTipologiaMerce = new System.Windows.Forms.Button();
+            this.aggiornaButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // formPanel
@@ -56,10 +57,20 @@
             this.gestioneTipologiaMerce.UseVisualStyleBackColor = true;
             this.gestioneTipologiaMerce.Click += new System.EventHandler(this.gestioneTipologiaMerce_Click);
             // 
+            // aggiornaButton
+            // 
+            this.aggiornaButton.Location = new System.Drawing.Point(477, 6);
+            this.aggiornaButton.Name = "aggiornaButton";
+            this.aggiornaButton.Size = new System.Drawing.Size(227, 50);
+            this.aggiornaButton.TabIndex = 5;
+            this.aggiornaButton.Text = "Aggiorna Tabella";
+            this.aggiornaButton.UseVisualStyleBackColor = true;
+            // 
             // HomeResponsabile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(1008, 702);
+            this.Controls.Add(this.aggiornaButton);
             this.Controls.Add(this.gestioneTipologiaMerce);
             this.Controls.Add(this.gestioneSpedizioniButton);
             this.Name = "HomeResponsabile";
@@ -67,6 +78,7 @@
             this.Controls.SetChildIndex(this.formPanel, 0);
             this.Controls.SetChildIndex(this.gestioneSpedizioniButton, 0);
             this.Controls.SetChildIndex(this.gestioneTipologiaMerce, 0);
+            this.Controls.SetChildIndex(this.aggiornaButton, 0);
             this.ResumeLayout(false);
 
         }
@@ -75,5 +87,6 @@
 
         private System.Windows.Forms.Button gestioneSpedizioniButton;
         private System.Windows.Forms.Button gestioneTipologiaMerce;
+        private System.Windows.Forms.Button aggiornaButton;
     }
 }
