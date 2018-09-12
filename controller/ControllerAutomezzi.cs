@@ -70,21 +70,21 @@ namespace AutotrasportiFantini.controller
 
         public IAutomezzo ModificaAutomezzo(IAutomezzo automezzo, string targa, string produttore, string modello, string targaRimorchio, IDelegato delegato)
 		{
-			string cambiamenti = "[";
+			string cambiamenti = "{ ";
 
 			if (targa != null && !automezzo.targa.Equals(targa))
-				cambiamenti += "targa ";
+				cambiamenti += "[targa: da "+automezzo.targa+" a "+targa+"] ";
 
 			if (produttore != null && !automezzo.produttore.Equals(produttore))
-				cambiamenti += "produttore ";
+				cambiamenti += "[produttore: da "+automezzo.produttore+" a "+produttore+"] ";
 
 			if (modello != null && !automezzo.modello.Equals(modello))
-				cambiamenti += "modello ";
+				cambiamenti += "[modello: da "+automezzo.modello+" a "+modello+"] ";
 
 			if (targaRimorchio != null && !automezzo.targaRimorchio.Equals(targaRimorchio))
-				cambiamenti += "targa_rimorchio ";
+				cambiamenti += "[targa_rimorchio: da "+automezzo.targaRimorchio+" a"+targaRimorchio+"] ";
 
-			cambiamenti += "]";
+			cambiamenti += "}";
 
 			logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha modificato "+cambiamenti+" dell'automezzo " + automezzo.targa);
 
