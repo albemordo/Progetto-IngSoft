@@ -15,7 +15,7 @@ namespace AutotrasportiFantini.modello
 
 		public override String ToString()
 		{
-			return JsonConvert.SerializeObject(this);
+			return targa+": "+produttore+" "+modello;
 		}
     }
 }
