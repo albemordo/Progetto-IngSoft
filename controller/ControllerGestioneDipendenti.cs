@@ -58,7 +58,7 @@ namespace AutotrasportiFantini.controller
 				result.Add(u as IAutista);
 
 			//	Log operazione
-			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha richiesto la lista degli autisti");
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha richiesto la lista degli autisti");
 
 			return result;
         }
@@ -72,7 +72,7 @@ namespace AutotrasportiFantini.controller
 				result.Add(u as IDelegato);
 
 			//	Log operazione
-			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha richiesto la lista dei delegati");
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha richiesto la lista dei delegati");
 
 			return result;
 		}

@@ -28,7 +28,7 @@ namespace AutotrasportiFantini.controller
 			puntoSpedizione.indirizzo = indirizzo;
 
 			//	Log operazione
-			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha aggiornato il punto di sped. "+puntoSpedizione.id+", assegnandogli l'indirizzo "+indirizzo);
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha aggiornato il punto di sped. "+puntoSpedizione.id+", assegnandogli l'indirizzo "+indirizzo);
 
 			return puntoSpedizione;
         }
@@ -39,7 +39,7 @@ namespace AutotrasportiFantini.controller
 			punto.indirizzo = indirizzo;
 
 			//	Log operazione
-			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha creato il punto di spedizione "+punto.id+", avente come indirizzo "+indirizzo);
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha creato il punto di spedizione "+punto.id+", avente come indirizzo "+indirizzo);
 
 			return punto;
         }
@@ -47,7 +47,7 @@ namespace AutotrasportiFantini.controller
         public void EliminaPuntoSpedizione(IPuntoSpedizione puntoSpedizione)
         {
 			//	Log operazione
-			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha eliminato il punto di spedizione "+puntoSpedizione.indirizzo+" della spedizione "+puntoSpedizione.spedizione);
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha eliminato il punto di spedizione "+puntoSpedizione.indirizzo+" della spedizione "+puntoSpedizione.spedizione);
 		}
 
         public IPuntoSpedizione RegistraArrivo(IPuntoSpedizione puntoSpedizione, DateTime orario)
@@ -55,7 +55,7 @@ namespace AutotrasportiFantini.controller
 			puntoSpedizione.orarioArrivo = orario;
 
 			//	Log operazione
-			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha confermato l'arrivo al punto di spedizione "+puntoSpedizione.indirizzo+" della spedizione "+puntoSpedizione.spedizione);
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha confermato l'arrivo al punto di spedizione "+puntoSpedizione.indirizzo+" della spedizione "+puntoSpedizione.spedizione);
 
 			return puntoSpedizione;
         }

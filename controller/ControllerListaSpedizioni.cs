@@ -34,8 +34,8 @@ namespace AutotrasportiFantini.controller
 				listaSpedizioni = repository.cercaPerAutista(utente.idAziendale);
 
 			//	Viene creato il log dell'operazione
-			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha richiesto la lista delle spedizioni");
-
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha richiesto la lista delle spedizioni");
+			
 			return listaSpedizioni;
         }
     }

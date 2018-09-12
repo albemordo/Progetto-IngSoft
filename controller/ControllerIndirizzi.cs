@@ -53,7 +53,7 @@ namespace AutotrasportiFantini.controller
 				return null;
 
 			//	Log operazione
-			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha aggiunto l'indirizzo "+indirizzo);
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha aggiunto l'indirizzo "+indirizzo);
 
 			return indirizzo;
         }
@@ -63,13 +63,13 @@ namespace AutotrasportiFantini.controller
 			repository.elimina(indirizzo.id);
 
 			//	Log operazione
-			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha eliminato l'indirizzo "+indirizzo);
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha eliminato l'indirizzo "+indirizzo);
 		}
 
         public IIndirizzo ModificaIndirizzo(IIndirizzo indirizzo, string qualificatore, string nome, string civico, string cap, string localita, string provincia)
         {
 			//	Log operazione
-			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha modificato l'indirizzo "+indirizzo);
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha modificato l'indirizzo "+indirizzo);
 
 			AssegnaCampi(indirizzo, qualificatore, nome, civico, cap, localita, provincia);
 

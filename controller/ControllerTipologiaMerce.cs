@@ -38,7 +38,7 @@ namespace AutotrasportiFantini.controller
 				return null;
 
 			//	Log operazione
-			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale+" ha aggiunto la tipologia merce "+tipologiaMerce.tipologia);
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale+" ha aggiunto la tipologia merce "+tipologiaMerce.tipologia);
 
 			return tipologiaMerce;
 		}
@@ -50,14 +50,14 @@ namespace AutotrasportiFantini.controller
 				repository.elimina(tipologia.id);
 
 				//	Log operazione
-				logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha rimosso la tipologia merce " + tipologia.tipologia);
+				logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha rimosso la tipologia merce " + tipologia.tipologia);
 			}
 		}
 
         public List<ITipologiaMerce> ListaTipologieMerce()
         {
 			//	Log operazione
-			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha richiesto la lista delle tipologie della merce");
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha richiesto la lista delle tipologie della merce");
 
 			return repository.elencaTutti();
         }
@@ -68,7 +68,7 @@ namespace AutotrasportiFantini.controller
 				return tipologia;
 
 			//	Log operazione
-			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha modificato la tipologia "+tipologia.tipologia+" in "+nomeTipologia);
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha modificato la tipologia "+tipologia.tipologia+" in "+nomeTipologia);
 
 			tipologia.tipologia = nomeTipologia;
 

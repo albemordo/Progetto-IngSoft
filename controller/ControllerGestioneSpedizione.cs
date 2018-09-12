@@ -24,14 +24,16 @@ namespace AutotrasportiFantini.controller
 
 		public void AssegnaDelegato(ISpedizione spedizione, IDelegato delegato)
         {
-			
-			spedizione.delegato = delegato;
+			if (!delegato.idAziendale.Equals(spedizione.delegato.idAziendale))
+			{
+				//	Log operazione
+				logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha assegnato alla spedizione " + spedizione.id + " il delegato " + delegato.idAziendale + ", sostituendo " + spedizione.delegato.idAziendale);
 
-			//	L'assegnazione del delegato viene resa persistente
-			repository.aggiorna(spedizione);
+				spedizione.delegato = delegato;
 
-			//	Log operazione
-			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha assegnato alla spedizione "+spedizione.id+" il delegato "+delegato.idAziendale);
+				//	L'assegnazione del delegato viene resa persistente
+				repository.aggiorna(spedizione);
+			}
 		}
 
         public ISpedizione CreaSpedizione(IIndirizzo partenza, IIndirizzo arrivo, List<IPuntoSpedizione> puntiSpedizione, float distanzaStimata, ITipologiaMerce tipologiaMerce, float quantitaMerce)
@@ -69,7 +71,7 @@ namespace AutotrasportiFantini.controller
 				repository.elimina(spedizione.id);
 
 			//	Log operazione
-			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha eliminato la spedizione "+spedizione.id);
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha eliminato la spedizione "+spedizione.id);
 		}
 
         public ISpedizione ModificaDati(ISpedizione spedizione, IIndirizzo partenza, IIndirizzo arrivo, List<IPuntoSpedizione> puntiSpedizione, float distanzaStimata, float distanzaEffettiva, int tempoPercorrenza, ITipologiaMerce tipologiaMerce, float quantitaMerce, IAutista autista, IAutomezzo automezzo, IDelegato delegato, DateTime partenzaPrevista, DateTime arrivoPrevisto, DateTime partenzaEffettiva, DateTime arrivoEffettivo)
@@ -121,7 +123,7 @@ namespace AutotrasportiFantini.controller
 				spedizione.orarioEffettivoArrivo = arrivoEffettivo;
 
 			//	Log operazione
-			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha modificato la spedizione "+spedizione.id);
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha modificato la spedizione "+spedizione.id);
 
 			return spedizione;
         }

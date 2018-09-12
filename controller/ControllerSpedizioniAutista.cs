@@ -32,7 +32,7 @@ namespace AutotrasportiFantini.controller
 			repositorySpedizione.aggiorna(spedizione);
 
 			//	Log operazione
-			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha registrato i dati per concludere la spedizione "+spedizione.id+": orario di arrivo "+arrivo+", distanza effettiva "+distanzaEffettiva+", tempo effettivo "+tempoEffettivo);
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha registrato i dati per concludere la spedizione "+spedizione.id+": orario di arrivo "+arrivo+", distanza effettiva "+distanzaEffettiva+", tempo effettivo "+tempoEffettivo);
 		}
 
         public void RegistraPartenza(ISpedizione spedizione, DateTime partenza)
@@ -44,7 +44,7 @@ namespace AutotrasportiFantini.controller
 			repositorySpedizione.aggiorna(spedizione);
 
 			//	Log operazione
-			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha registrato l'orario di partenza "+partenza+", per la spedizione "+spedizione);
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha registrato l'orario di partenza "+partenza+", per la spedizione "+spedizione);
 		}
 
         public void RegistraPuntoSpedizione(ISpedizione spedizione, IPuntoSpedizione punto, DateTime orario)
@@ -59,7 +59,7 @@ namespace AutotrasportiFantini.controller
 			repositorySpedizione.aggiorna(spedizione);
 
 			//	Log operazione
-			logger.CreaLog(ControllerAutenticazione.GetIstanza().GetUtenteAutenticato().idAziendale + " ha registrato l'orario di arrivo "+orario+" al punto di spedizione "+punto.indirizzo+" per la spededizione "+spedizione.id);
+			logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha registrato l'orario di arrivo "+orario+" al punto di spedizione "+punto.indirizzo+" per la spededizione "+spedizione.id);
 		}
     }
 }

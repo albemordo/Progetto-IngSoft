@@ -63,11 +63,6 @@ namespace AutotrasportiFantini.controller
 			UtenteAutenticato = null;
 		}
 
-        public IUtente GetUtenteAutenticato()
-        {
-			return UtenteAutenticato;
-        }
-
         /**
          *  Non era da eliminare??
          */
