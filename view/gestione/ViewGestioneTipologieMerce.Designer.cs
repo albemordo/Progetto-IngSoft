@@ -47,7 +47,6 @@
             this.ClientSize = new System.Drawing.Size(1008, 642);
             this.Controls.Add(this.creaTipologiaMerceButton);
             this.Name = "ViewGestioneTipologieMerce";
-            this.Activated += new System.EventHandler(this.ViewGestioneTipologieMerce_Activated);
             this.Controls.SetChildIndex(this.creaTipologiaMerceButton, 0);
             this.ResumeLayout(false);
 

@@ -1,4 +1,6 @@
-﻿using AutotrasportiFantini.modello;
+﻿using AutotrasportiFantini.controller;
+using AutotrasportiFantini.controller.interfacce;
+using AutotrasportiFantini.modello;
 using AutotrasportiFantini.modello.factory;
 using AutotrasportiFantini.modello.interfacce;
 using AutotrasportiFantini.view.dettagli;
@@ -48,34 +50,7 @@ namespace AutotrasportiFantini.view
 
         protected override void addTableRows()
         {
-            ///CODICE DI PROVA
-            ///
-            Automezzo automezzo = new Automezzo();
-            automezzo.targa = "randomTarga";
-            automezzo.produttore = "randomproduttore";
-            automezzo.modello = "randommodello";
-            automezzo.targaRimorchio = "random targa rimorchio";
-            automezzo.codiceDelegato = "random code";
-            automezzi = new List<IAutomezzo>();
-            automezzi.Add(automezzo);
-            automezzo = new Automezzo();
-            automezzo.targa = "MORDO";
-            automezzo.produttore = "ALBERTO";
-            automezzo.modello = "albertoCamion";
-            automezzo.targaRimorchio = "targaRimorchioMordo";
-            automezzo.codiceDelegato = "3";
-            automezzi.Add(automezzo);
-            ///CODICE DI PROVA
-            //////CODICE DI PROVA
-
-            ///CODICE REALE
-            ///
-            ///IControllerAutenticazione Controller = ControllerAutenticazione.GetIstanza();
-            ///IControllerAutomezzi controllerAutomezzi = new ControllerAutomezzi();
-            ///List<IAutomezzo> automezzi = controllerAutomezzi.ListaAutomezzi((Delegato) Controller.GetUtenteAutenticato());
-            ///CODICE REALE
-            ///
-
+            automezzi = controllerAutomezzi.ListaAutomezzi((Delegato)controllerAutenticazione.UtenteAutenticato);
             dataTable.Rows.Clear();
             foreach (Automezzo sp in automezzi)
             {
@@ -83,6 +58,8 @@ namespace AutotrasportiFantini.view
             }
         }
 
+        IControllerAutomezzi controllerAutomezzi = new ControllerAutomezzi();
+        IControllerAutenticazione controllerAutenticazione = ControllerAutenticazione.GetIstanza();
         List<IAutomezzo> automezzi;
         ViewDettagliAutomezzo viewDettagliAutomezzo;
         ViewCreazioneAutomezzo viewCreazioneAutomezzo;

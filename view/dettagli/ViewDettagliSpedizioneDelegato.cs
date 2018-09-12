@@ -71,7 +71,7 @@ namespace AutotrasportiFantini.view.dettagli
         private void fillComboBoxAutomezzi()
         {
             this.listBoxAutomezzo.Items.Clear();
-            foreach (IAutomezzo automezzo in controllerAutomezzi.ListaAutomezzi((IDelegato) this.controllerAutenticazione.GetUtenteAutenticato()))
+            foreach (IAutomezzo automezzo in controllerAutomezzi.ListaAutomezzi((IDelegato) this.controllerAutenticazione.UtenteAutenticato))
             {
                 this.listBoxAutomezzo.Items.Add(automezzo);
             }

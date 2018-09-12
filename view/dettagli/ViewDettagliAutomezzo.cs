@@ -26,16 +26,25 @@ namespace AutotrasportiFantini.view.dettagli
 
         private void modificaButton_Click(object sender, EventArgs e)
         {
-            controllerAutomezzi.ModificaAutomezzo(automezzo, this.targaBox.Text, this.marcaBox.Text, this.modelloBox.Text, this.targaRimorchioBox.Text, (Delegato)controllerAutenticazione.GetUtenteAutenticato());
+            controllerAutomezzi.ModificaAutomezzo(automezzo, this.targaBox.Text, this.marcaBox.Text, this.modelloBox.Text, this.targaRimorchioBox.Text, (Delegato)controllerAutenticazione.UtenteAutenticato);
+            this.pulisci();
         }
 
         private void eliminaButton_Click(object sender, EventArgs e)
         {
             controllerAutomezzi.EliminaAutomezzo(automezzo);
+            this.pulisci();
         }
 
+        private void pulisci()
+        {
+            this.modelloBox.Text = "";
+            this.targaBox.Text = "";
+            this.targaRimorchioBox.Text = "";
+            this.marcaBox.Text = "";
+        }
         IControllerAutomezzi controllerAutomezzi = new ControllerAutomezzi();
         IControllerAutenticazione controllerAutenticazione = ControllerAutenticazione.GetIstanza();
-        private IAutomezzo automezzo;
+        IAutomezzo automezzo;
     }
 }

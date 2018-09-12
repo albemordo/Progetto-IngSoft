@@ -23,13 +23,13 @@ namespace AutotrasportiFantini
             {
                 this.Hide();
                 HomeTemplate homeUtente = new HomeTemplate();
-                if (Controller.GetUtenteAutenticato() is Delegato)
+                if (Controller.UtenteAutenticato is Delegato)
                 {
                     homeUtente = new HomeDelegato();
                 }
                 else
                 {
-                    if(Controller.GetUtenteAutenticato() is Autista)
+                    if(Controller.UtenteAutenticato is Autista)
                     {
                         homeUtente = new HomeAutista();
                     }

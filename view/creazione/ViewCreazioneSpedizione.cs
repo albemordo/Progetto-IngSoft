@@ -22,6 +22,7 @@ namespace AutotrasportiFantini.view
             this.dateTimePickerPartenzaPrevisto.Format = DateTimePickerFormat.Custom;
             this.dateTimePickerPartenzaPrevisto.CustomFormat = "MM/dd/yyyy hh:mm:ss";
             this.merceListBox.Items.Clear();
+            MessageBox.Show("" + controllerTipologiaMerce.ListaTipologieMerce().Count, "Errore Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
             foreach (ITipologiaMerce tipologiaMerce in controllerTipologiaMerce.ListaTipologieMerce())
             {
                 this.merceListBox.Items.Add(tipologiaMerce);

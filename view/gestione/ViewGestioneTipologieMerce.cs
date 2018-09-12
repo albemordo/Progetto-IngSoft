@@ -1,4 +1,6 @@
-﻿using AutotrasportiFantini.modello;
+﻿using AutotrasportiFantini.controller;
+using AutotrasportiFantini.controller.interfacce;
+using AutotrasportiFantini.modello;
 using AutotrasportiFantini.modello.factory;
 using AutotrasportiFantini.modello.interfacce;
 using System;
@@ -33,30 +35,8 @@ namespace AutotrasportiFantini.view
         }
         protected override void addTableRows()
         {
-            ///CODICE REALE
-            ///
-            ///IControllerAutenticazione Controller = ControllerAutenticazione.GetIstanza();
-            ///ControllerTipologiaMerce controllerTipologiaMerce = new ControllerTipologiaMerce();
-            ///tipologie = controllerTipologiaMerce.ListaTipologieMerce();
-            ///CODICE REALE
-            ///
-
-
-            ///CODICE TEST
-            ///
-            TipologiaMerce tipologiaMerce1 = new TipologiaMerce();
-            tipologiaMerce1.tipologia = "legno";
-            tipologiaMerce1.id = 1;
-            tipologie = new List<ITipologiaMerce>();
-            tipologie.Add(tipologiaMerce1);
-            TipologiaMerce tipologiaMerce2 = new TipologiaMerce();
-            tipologiaMerce2.tipologia = "droga";
-            tipologiaMerce2.id = 2;
-            tipologie.Add(tipologiaMerce2);
-            ///CODICE TEST
-            ///
-
             dataTable.Rows.Clear();
+            tipologie = controllerTipologia.ListaTipologieMerce();
             foreach (TipologiaMerce sp in tipologie)
             {
                 dataTable.Rows.Add(sp.tipologia);
@@ -72,10 +52,6 @@ namespace AutotrasportiFantini.view
         ViewDettagliTipologiaMerce viewDettagliTipologiaMerce;
         ViewCreazioneTipologiaMerce creaTipologiaMerce;
         ITipologiaMerce tipologiaMerce = new RisorseFactory().GetTipologiaMerce();
-
-        private void ViewGestioneTipologieMerce_Activated(object sender, EventArgs e)
-        {
-            MessageBox.Show("Ho il focus nella gestione tipologie", "Errore Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
+        IControllerTipologiaMerce controllerTipologia = new ControllerTipologiaMerce();
     }
 }

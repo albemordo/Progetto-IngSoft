@@ -35,7 +35,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(1008, 645);
             this.Name = "ViewAssegnazioneSpedizione";
-            this.Activated += new System.EventHandler(this.ViewAssegnazioneSpedizione_Activated);
             this.ResumeLayout(false);
 
         }

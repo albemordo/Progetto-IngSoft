@@ -1,4 +1,6 @@
-﻿using AutotrasportiFantini.modello;
+﻿using AutotrasportiFantini.controller;
+using AutotrasportiFantini.controller.interfacce;
+using AutotrasportiFantini.modello;
 using AutotrasportiFantini.modello.factory;
 using AutotrasportiFantini.modello.interfacce;
 using AutotrasportiFantini.view.dettagli;
@@ -56,104 +58,7 @@ namespace AutotrasportiFantini.view
 
         protected override void addTableRows()
         {
-            ///CODICE DI PROVA
-            ///
-            TipologiaMerce tipologiaMerce = new TipologiaMerce();
-            tipologiaMerce.id = 1;
-            tipologiaMerce.tipologia = "droga";
-            Automezzo automezzo = new Automezzo();
-            automezzo.targa = "randomTarga";
-            automezzo.produttore = "randomproduttore";
-            automezzo.modello = "randommodello";
-            automezzo.targaRimorchio = "random targa rimorchio";
-            automezzo.codiceDelegato = "random code";
-            Delegato delegato = new Delegato();
-            delegato.cognome = "fantini";
-            delegato.idAziendale = "1";
-            delegato.nome = "davide";
-            Autista autista = new Autista();
-            autista.cognome = "progetto";
-            autista.idAziendale = "2";
-            autista.nome = "luca";
-            Indirizzo partenza = new Indirizzo();
-            partenza.id = 1;
-            partenza.localita = "bologna";
-            partenza.nome = "mmmh nome?";
-            partenza.provincia = "random";
-            partenza.qualificatore = "asd";
-            partenza.cap = "12322";
-            partenza.civico = "lknasd";
-            Indirizzo arrivo = new Indirizzo();
-            arrivo.id = 1;
-            arrivo.localita = "reggio";
-            arrivo.nome = "mmmh nome?";
-            arrivo.provincia = "random";
-            arrivo.qualificatore = "asd";
-            arrivo.cap = "12322";
-            arrivo.civico = "lknasd";
-            List<IPuntoSpedizione> puntiSpedizione = new List<IPuntoSpedizione>();
-            PuntoSpedizione puntoSpedizione = new PuntoSpedizione();
-            puntoSpedizione.id = 1;
-            Indirizzo indirizzoPuntoSpedizione = new Indirizzo();
-            indirizzoPuntoSpedizione.id = 1;
-            indirizzoPuntoSpedizione.localita = "puntoSpedizione1";
-            indirizzoPuntoSpedizione.nome = "mmmh nome?";
-            indirizzoPuntoSpedizione.provincia = "random";
-            indirizzoPuntoSpedizione.qualificatore = "asd";
-            indirizzoPuntoSpedizione.cap = "12322";
-            indirizzoPuntoSpedizione.civico = "lknasd";
-            puntoSpedizione.indirizzo = indirizzoPuntoSpedizione;
-            puntoSpedizione.orarioArrivo= new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 14, 00, 00);
-            puntoSpedizione.spedizione = 1;
-            puntiSpedizione.Add(puntoSpedizione);
-            Indirizzo indirizzoPuntoSpedizione2 = new Indirizzo();
-            PuntoSpedizione puntoSpedizione2 = new PuntoSpedizione();
-            indirizzoPuntoSpedizione2.id = 1;
-            indirizzoPuntoSpedizione2.localita = "puntoSpedizione2";
-            indirizzoPuntoSpedizione2.nome = "asasdw?";
-            indirizzoPuntoSpedizione2.provincia = "raagwgagasndom";
-            indirizzoPuntoSpedizione2.qualificatore = "aasgasgsd";
-            indirizzoPuntoSpedizione2.cap = "12123322";
-            indirizzoPuntoSpedizione2.civico = "lknasd";
-            puntoSpedizione2.indirizzo = indirizzoPuntoSpedizione2;
-            puntoSpedizione2.orarioArrivo = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 15, 00, 00);
-            puntoSpedizione2.spedizione = 2;
-            puntiSpedizione.Add(puntoSpedizione2);
-            DateTime orarioPrevistoPartenza = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 10, 00, 00);
-            DateTime orarioPrevistoArrivo = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day + 1, 20, 00, 00);
-            DateTime orarioEffettivoPartenza = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 10, 1, 0);
-            DateTime orarioEffettivoArrivo = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day + 1, 20, 1, 0);
-            Spedizione spedizione = new Spedizione();
-            spedizione.autista = autista;
-            spedizione.automezzo = automezzo;
-            spedizione.delegato = delegato;
-            spedizione.destinazione = arrivo;
-            spedizione.distanzaEffettiva = 1200;
-            spedizione.distanzaStimata = 1000;
-            spedizione.id = 1;
-            spedizione.orarioEffettivoArrivo = orarioEffettivoArrivo;
-            spedizione.orarioEffettivoPartenza = orarioEffettivoPartenza;
-            spedizione.orarioPrevistoArrivo = orarioPrevistoArrivo;
-            spedizione.orarioPrevistoPartenza = orarioPrevistoPartenza;
-            spedizione.partenza = partenza;
-            spedizione.destinazione = arrivo;
-            spedizione.puntiSpedizione = puntiSpedizione;
-            spedizione.quantitaMerce = 1000;
-            spedizione.tempoPercorrenza = 10;
-            spedizione.tipologiaMerce = tipologiaMerce;
-            ///CODICE DI PROVA
-            //////CODICE DI PROVA
-
-            ///CODICE REALE
-            ///
-            //IControllerAutenticazione Controller = ControllerAutenticazione.GetIstanza();
-            //IControllerListaSpedizioni controllerListaSpedizioni = new ControllerListaSpedizioni();
-            //List<ISpedizione> spedizioni = controllerListaSpedizioni.ListaSpedizioni(Controller.GetUtenteAutenticato());
-            ///CODICE REALE
-            ///
-
-            spedizioni = new List<ISpedizione>();
-            spedizioni.Add(spedizione);
+            spedizioni = controllerListaSpedizioni.ListaSpedizioni(Controller.UtenteAutenticato);
             dataTable.Rows.Clear();
 
             int max = 0;
@@ -201,10 +106,8 @@ namespace AutotrasportiFantini.view
         ViewCreazioneSpedizione viewCreaSpedizione;
         ISpedizione spedizione = new RisorseFactory().GetSpedizione();
         List<ISpedizione> spedizioni;
+        IControllerAutenticazione Controller = ControllerAutenticazione.GetIstanza();
+        IControllerListaSpedizioni controllerListaSpedizioni = new ControllerListaSpedizioni();
 
-        private void ViewGestioneSpedizione_Activated(object sender, EventArgs e)
-        {
-            MessageBox.Show("Ho il focus nella gestione spedizione", "Errore Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
     }
 }
