@@ -18,7 +18,7 @@ namespace AutotrasportiFantini.persistenza.repository
 
         public bool aggiorna(ITipologiaMerce oggetto)
         {
-            String sql = "UPDATE TipologiaMerce SET id = @Id, tipologia = @Tipologia";
+            String sql = "UPDATE TipologiaMerce SET tipologia = @Tipologia WHERE id = @Id";
 
             using (var connection = this.getConnection())
             {

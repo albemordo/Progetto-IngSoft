@@ -17,8 +17,8 @@ namespace AutotrasportiFantini.persistenza.repository
         }
         public bool aggiorna(IIndirizzo oggetto)
         {
-            String sql = "UPDATE Indirizzo SET id = @Id, qualificatore = @Qualificatore, nome = @Nome, " +
-                "civico = @Civico, cap = @Cap, localita = @Localita, provincia = @Provincia";
+            String sql = "UPDATE Indirizzo SET qualificatore = @Qualificatore, nome = @Nome, " +
+                "civico = @Civico, cap = @Cap, localita = @Localita, provincia = @Provincia WHERE id = @Id";
 
             using (var connection = this.getConnection())
             {
@@ -56,7 +56,7 @@ namespace AutotrasportiFantini.persistenza.repository
 
         public void elimina(int id)
         {
-            String sql = "DELETE FROM Automezzo WHERE id = @Id";
+            String sql = "DELETE FROM Indirizzo WHERE id = @Id";
 
             using (var connection = this.getConnection())
             {
@@ -78,12 +78,12 @@ namespace AutotrasportiFantini.persistenza.repository
 
         public IIndirizzo cercaIndirizzo(String qualificatore, String nome, String civico, String cap, String localita, String provincia)
         {
-            String sql = "SELECT * FROM Indirizzo WHERE qualificatore LIKE @Qualificatore AND nome = @Nome AND civico = @Civico AND cap = @Cap" +
-                "AND localita = @Localita AND provincia = @Provincia";
+            String sql = "SELECT * FROM Indirizzo WHERE qualificatore LIKE @Qualificatore AND nome LIKE @Nome AND civico LIKE @Civico AND cap LIKE @Cap " +
+                "AND localita LIKE @Localita AND provincia LIKE @Provincia";
 
             using (var connection = this.getConnection())
             {
-                IIndirizzo indirizzo = connection.QuerySingle<Indirizzo>(sql, new
+                IIndirizzo indirizzo = connection.QueryFirstOrDefault<Indirizzo>(sql, new
                 {
                     Qualificatore = qualificatore,
                     Nome = nome,
