@@ -8,7 +8,6 @@ namespace AutotrasportiFantini.controller.interfacce
     {
         IUtente VerificaCredenziali(String username, String password);
 		IUtente OttieniUtente(String idAziendale);
-        String RuoloUtente(IUtente utente);
         List<IDelegato> ListaDelegati();
         List<IAutista> ListaAutisti();
     }

@@ -1,4 +1,6 @@
 ﻿using AutotrasportiFantini.modello.interfacce;
+using System;
+using System.Collections.Generic;
 
 namespace AutotrasportiFantini.modello.factory
 {

@@ -44,6 +44,7 @@
             this.modificaButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.salvaOrarioButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // civicoBox
@@ -144,7 +145,7 @@
             // 
             // eliminaButton
             // 
-            this.eliminaButton.Location = new System.Drawing.Point(258, 208);
+            this.eliminaButton.Location = new System.Drawing.Point(334, 208);
             this.eliminaButton.Name = "eliminaButton";
             this.eliminaButton.Size = new System.Drawing.Size(101, 26);
             this.eliminaButton.TabIndex = 59;
@@ -154,7 +155,7 @@
             // 
             // modificaButton
             // 
-            this.modificaButton.Location = new System.Drawing.Point(81, 208);
+            this.modificaButton.Location = new System.Drawing.Point(38, 208);
             this.modificaButton.Name = "modificaButton";
             this.modificaButton.Size = new System.Drawing.Size(101, 26);
             this.modificaButton.TabIndex = 58;
@@ -178,11 +179,22 @@
             this.dateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker.TabIndex = 62;
             // 
+            // salvaOrarioButton
+            // 
+            this.salvaOrarioButton.Location = new System.Drawing.Point(187, 208);
+            this.salvaOrarioButton.Name = "salvaOrarioButton";
+            this.salvaOrarioButton.Size = new System.Drawing.Size(101, 26);
+            this.salvaOrarioButton.TabIndex = 63;
+            this.salvaOrarioButton.Text = "Salva Orario";
+            this.salvaOrarioButton.UseVisualStyleBackColor = true;
+            this.salvaOrarioButton.Click += new System.EventHandler(this.salvaOrarioButton_Click);
+            // 
             // ViewDettagliPuntoSpedizione
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(468, 246);
+            this.Controls.Add(this.salvaOrarioButton);
             this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.eliminaButton);
@@ -224,5 +236,6 @@
         private System.Windows.Forms.Button modificaButton;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dateTimePicker;
+        private System.Windows.Forms.Button salvaOrarioButton;
     }
 }

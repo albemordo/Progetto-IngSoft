@@ -14,6 +14,7 @@ namespace AutotrasportiFantini.controller.utilita
 		 *	per fare match tra il formato del sistema esterno
 		 *	e il loro signifcato all'interno dell'applicazione
 		 */
+
 		readonly string IDAZIENDALE = "idAziendale";
 		readonly string NOME = "nome";
 		readonly string COGNOME = "cognome";

@@ -5,6 +5,7 @@ using AutotrasportiFantini.modello.factory;
 using AutotrasportiFantini.modello.interfacce;
 using AutotrasportiFantini.persistenza;
 using AutotrasportiFantini.persistenza.repository.factory;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -24,7 +25,7 @@ namespace AutotrasportiFantini.controller
 
 		public void AssegnaDelegato(ISpedizione spedizione, IDelegato delegato)
         {
-			if (!delegato.idAziendale.Equals(spedizione.delegato.idAziendale))
+			if (delegato != null && !delegato.idAziendale.Equals(spedizione.delegato.idAziendale))
 			{
 				//	Log operazione
 				logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha assegnato alla spedizione " + spedizione.id + " il delegato " + delegato.idAziendale + ", sostituendo " + spedizione.delegato.idAziendale);
@@ -47,10 +48,10 @@ namespace AutotrasportiFantini.controller
 			if (arrivo != null)
 				spedizione.destinazione = arrivo;
 
-			if (puntiSpedizione != null)
+            if (puntiSpedizione != null)
 				spedizione.puntiSpedizione = puntiSpedizione;
 
-			if (distanzaStimata > 0)
+            if (distanzaStimata > 0)
 				spedizione.distanzaStimata = distanzaStimata;
 
 			if (quantitaMerce >= 0)
@@ -126,21 +127,21 @@ namespace AutotrasportiFantini.controller
 				spedizione.tipologiaMerce = tipologiaMerce;
 			}
 
-			if (autista != null && !spedizione.autista.idAziendale.Equals(autista.idAziendale))
+			if (autista != null && (spedizione.autista == null || !spedizione.autista.Equals(autista)))
 			{
-				cambiamenti += "[autista: da " + spedizione.autista.idAziendale + " a " + autista.idAziendale + "] ";
+				cambiamenti += "[autista: da " + (spedizione.autista != null ? spedizione.autista.idAziendale : "vuoto" ) + " a " + autista.idAziendale + "] ";
 				spedizione.autista = autista;
 			}
 
-			if (automezzo != null && !spedizione.automezzo.id.Equals(automezzo.id))
+			if (automezzo != null && (spedizione.automezzo == null ||  !spedizione.automezzo.Equals(automezzo)))
 			{
-				cambiamenti += "[automezzo: da " + spedizione.automezzo.id + " a " + automezzo.id + "] ";
+				cambiamenti += "[automezzo: da " + (spedizione.automezzo != null ? spedizione.automezzo.id.ToString() : "vuoto" ) + " a " + automezzo.id + "] ";
 				spedizione.automezzo = automezzo;
 			}
 
-			if (delegato != null && !spedizione.delegato.idAziendale.Equals(delegato.idAziendale))
+			if (delegato != null && (spedizione.delegato == null ||  !spedizione.delegato.Equals(delegato)))
 			{
-				cambiamenti += "[delegato: da " + spedizione.autista.idAziendale + " a " + autista.idAziendale + "] ";
+				cambiamenti += "[delegato: da " + (spedizione.automezzo != null ?  spedizione.autista.idAziendale : "vuoto")  + " a " + autista.idAziendale + "] ";
 				spedizione.delegato = delegato;
 			}
 
@@ -172,6 +173,8 @@ namespace AutotrasportiFantini.controller
 
 			//	Log operazione
 			logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha modificato "+cambiamenti+" della spedizione "+spedizione.id);
+
+            repository.aggiorna(spedizione);
 
 			return spedizione;
         }

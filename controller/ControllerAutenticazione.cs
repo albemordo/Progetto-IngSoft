@@ -8,21 +8,21 @@ namespace AutotrasportiFantini.controller
 {
     class ControllerAutenticazione : IControllerAutenticazione
     {
-        protected static IControllerAutenticazione istanza;
-
 		//	Logger
 		IControllerLog logger = ControllerLog.GetIstanza();
 
+		//	Istanza del controller 
 		IControllerGestioneDipendenti autenticazione = new ControllerGestioneDipendenti();
 
-		//	Viene salvata l'istanza dell'utente che si è autenticato, per tutta la durata della sessione
+		//	Viene salvata l'istanza dell'utente che si è autenticato
 		public IUtente UtenteAutenticato { get; private set; }
 
         private ControllerAutenticazione() { }
 
-		/**
-         *  Singleton
-         */
+		//	Istanza della classe
+		protected static IControllerAutenticazione istanza;
+
+		//	Singleton
 		public static IControllerAutenticazione GetIstanza()
 		{
 			if (istanza is null)

@@ -24,7 +24,10 @@ namespace AutotrasportiFantini.view.dettagli
             this.qualificatoreBox.Text = puntoSpedizione.indirizzo.qualificatore;
             this.capBox.Text = puntoSpedizione.indirizzo.cap;
             this.civicoBox.Text = puntoSpedizione.indirizzo.civico;
-            this.dateTimePicker.Value = puntoSpedizione.orarioArrivo;
+            if (puntoSpedizione.orarioArrivo != DateTime.MinValue)
+            {
+                this.dateTimePicker.Value = puntoSpedizione.orarioArrivo;
+            }
             this.dateTimePicker.Format = DateTimePickerFormat.Custom;
             this.dateTimePicker.CustomFormat = "MM/dd/yyyy hh:mm:ss";
         }
@@ -33,7 +36,6 @@ namespace AutotrasportiFantini.view.dettagli
         {
             IIndirizzo indirizzo = controllerIndirizzi.CreaIndirizzo(this.qualificatoreBox.Text, this.nomeBox.Text, this.civicoBox.Text, this.capBox.Text, this.localitaBox.Text, this.provinciaBox.Text);
             controllerPuntiSpedizione.AggiornaIndirizzo(puntoSpedizione, indirizzo);
-            controllerPuntiSpedizione.RegistraArrivo(puntoSpedizione, dateTimePicker.Value);
         }
 
         private void eliminaButton_Click(object sender, EventArgs e)
@@ -41,9 +43,16 @@ namespace AutotrasportiFantini.view.dettagli
             controllerPuntiSpedizione.EliminaPuntoSpedizione(puntoSpedizione);
         }
 
+        private void salvaOrarioButton_Click(object sender, EventArgs e)
+        {
+            puntoSpedizione = controllerPuntiSpedizione.RegistraArrivo(puntoSpedizione, dateTimePicker.Value);
+        }
+
         IPuntoSpedizione puntoSpedizione;
         IControllerIndirizzi controllerIndirizzi = new ControllerIndirizzi();
         IControllerPuntiSpedizione controllerPuntiSpedizione = new ControllerPuntiSpedizione();
+
+       
     }
 
     

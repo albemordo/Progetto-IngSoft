@@ -82,6 +82,7 @@
             this.listBoxAutomezzo = new System.Windows.Forms.ListBox();
             this.merceListBox = new System.Windows.Forms.ListBox();
             this.label22 = new System.Windows.Forms.Label();
+            this.aggiornaTabellaButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -125,6 +126,7 @@
             this.eliminaButton.TabIndex = 26;
             this.eliminaButton.Text = "Elimina";
             this.eliminaButton.UseVisualStyleBackColor = true;
+            this.eliminaButton.Click += new System.EventHandler(this.eliminaButton_Click_1);
             // 
             // modificaButton
             // 
@@ -134,6 +136,7 @@
             this.modificaButton.TabIndex = 25;
             this.modificaButton.Text = "Modifica";
             this.modificaButton.UseVisualStyleBackColor = true;
+            this.modificaButton.Click += new System.EventHandler(this.modificaButton_Click_1);
             // 
             // luogoPartenzaLabel
             // 
@@ -352,7 +355,7 @@
             this.dataTable.MultiSelect = false;
             this.dataTable.Name = "dataTable";
             this.dataTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataTable.Size = new System.Drawing.Size(841, 266);
+            this.dataTable.Size = new System.Drawing.Size(814, 266);
             this.dataTable.TabIndex = 50;
             this.dataTable.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataTable_CellDoubleClick);
             // 
@@ -504,6 +507,7 @@
             this.listBoxDelegato.Name = "listBoxDelegato";
             this.listBoxDelegato.Size = new System.Drawing.Size(120, 95);
             this.listBoxDelegato.TabIndex = 71;
+            this.listBoxDelegato.SelectedIndexChanged += new System.EventHandler(this.listBoxDelegato_SelectedIndexChanged);
             // 
             // listBoxAutomezzo
             // 
@@ -530,11 +534,22 @@
             this.label22.TabIndex = 130;
             this.label22.Text = "Tipologia Merce";
             // 
+            // aggiornaTabellaButton
+            // 
+            this.aggiornaTabellaButton.Location = new System.Drawing.Point(876, 412);
+            this.aggiornaTabellaButton.Name = "aggiornaTabellaButton";
+            this.aggiornaTabellaButton.Size = new System.Drawing.Size(102, 33);
+            this.aggiornaTabellaButton.TabIndex = 132;
+            this.aggiornaTabellaButton.Text = "Aggiorna Tabella";
+            this.aggiornaTabellaButton.UseVisualStyleBackColor = true;
+            this.aggiornaTabellaButton.Click += new System.EventHandler(this.aggiornaTabellaButton_Click);
+            // 
             // ViewDettagliSpedizione
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 681);
+            this.Controls.Add(this.aggiornaTabellaButton);
             this.Controls.Add(this.merceListBox);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.listBoxAutomezzo);
@@ -653,5 +668,6 @@
         private System.Windows.Forms.ListBox listBoxAutomezzo;
         private System.Windows.Forms.ListBox merceListBox;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Button aggiornaTabellaButton;
     }
 }

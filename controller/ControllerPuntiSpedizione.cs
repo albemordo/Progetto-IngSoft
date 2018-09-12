@@ -29,6 +29,8 @@ namespace AutotrasportiFantini.controller
 			{
 				puntoSpedizione.indirizzo = indirizzo;
 
+				repository.aggiornaPuntoSpedizione(puntoSpedizione);
+
 				//	Log operazione
 				logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha aggiornato il punto di sped. " + puntoSpedizione.id + ", assegnandogli l'indirizzo " + indirizzo);
 			}
@@ -55,7 +57,13 @@ namespace AutotrasportiFantini.controller
 
         public IPuntoSpedizione RegistraArrivo(IPuntoSpedizione puntoSpedizione, DateTime orario)
         {
+			if (orario == null)
+				return puntoSpedizione;
+
 			puntoSpedizione.orarioArrivo = orario;
+
+			//	La registrazione dell'orario viene resa persistente
+			repository.aggiornaPuntoSpedizione(puntoSpedizione);
 
 			//	Log operazione
 			logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha confermato l'arrivo al punto di spedizione "+puntoSpedizione.indirizzo+" della spedizione "+puntoSpedizione.spedizione);

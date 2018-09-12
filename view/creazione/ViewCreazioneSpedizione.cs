@@ -2,6 +2,7 @@
 using AutotrasportiFantini.controller.interfacce;
 using AutotrasportiFantini.modello.factory;
 using AutotrasportiFantini.modello.interfacce;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -18,10 +19,6 @@ namespace AutotrasportiFantini.view
         
         private void setup()
         {
-            this.dateTimePickerArrivoPrevisto.Format = DateTimePickerFormat.Custom;
-            this.dateTimePickerArrivoPrevisto.CustomFormat = "MM/dd/yyyy hh:mm:ss";
-            this.dateTimePickerPartenzaPrevisto.Format = DateTimePickerFormat.Custom;
-            this.dateTimePickerPartenzaPrevisto.CustomFormat = "MM/dd/yyyy hh:mm:ss";
             this.merceListBox.Items.Clear();
             foreach (ITipologiaMerce tipologiaMerce in controllerTipologiaMerce.ListaTipologieMerce())
             {
@@ -32,11 +29,13 @@ namespace AutotrasportiFantini.view
         {
             IIndirizzo partenza = controllerIndirizzi.CreaIndirizzo(this.qualificatorePartenzaBox.Text, this.nomePartenzaBox.Text, this.civicoPartenzaBox.Text, this.capPartenzaBox.Text, this.localitaPartenzaBox.Text, this.provinciaPartenzaBox.Text);
             IIndirizzo arrivo = controllerIndirizzi.CreaIndirizzo(this.qualificatoreArrivoBox.Text, this.nomeArrivoBox.Text, this.civicoArrivoBox.Text, this.capArrivoBox.Text, this.localitaArrivoBox.Text, this.provinciaArrivoBox.Text);
-            ISpedizione spedizione = controllerSpedizioni.CreaSpedizione(partenza, arrivo, puntiSpedizione, float.Parse(this.distanzaBox.Text), (ITipologiaMerce)this.merceListBox.SelectedItem, float.Parse(this.quantitaBox.Text));
-            foreach(IPuntoSpedizione ps in puntiSpedizione)
+            foreach (IPuntoSpedizione ps in puntiSpedizione)
             {
-                controllerIndirizzi.CreaIndirizzo(ps.indirizzo.qualificatore, ps.indirizzo.nome, ps.indirizzo.civico, ps.indirizzo.cap, ps.indirizzo.localita, ps.indirizzo.provincia);
+                ps.indirizzo = controllerIndirizzi.CreaIndirizzo(ps.indirizzo.qualificatore, ps.indirizzo.nome, ps.indirizzo.civico, ps.indirizzo.cap, ps.indirizzo.localita, ps.indirizzo.provincia);
             }
+            Console.WriteLine(JsonConvert.SerializeObject(puntiSpedizione));
+            ISpedizione spedizione = controllerSpedizioni.CreaSpedizione(partenza, arrivo, puntiSpedizione, float.Parse(this.distanzaBox.Text), (ITipologiaMerce)this.merceListBox.SelectedItem, float.Parse(this.quantitaBox.Text));
+            
             this.pulisciCampi();
         }
 
