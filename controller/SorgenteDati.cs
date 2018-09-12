@@ -46,7 +46,7 @@ namespace AutotrasportiFantini.controller
 			string dati = null;
 
 			//	Password codificata in SHA equivalente a "password"
-			if (username.ToUpper().Equals("DAS544") && password.Equals("-231203086"))
+			if (username.ToUpper().Equals("2") && password.Equals("-842352754"))
 				dati = @"
 				{
 					'idAziendale' : 'DAS544',
@@ -55,7 +55,7 @@ namespace AutotrasportiFantini.controller
 					'ruolo' : 'delegato'
 				}";
 
-			else if (username.ToUpper().Equals("ADX132") && password.Equals("-231203086"))
+			else if (username.ToUpper().Equals("1") && password.Equals("-842352753"))
 				dati = @"
 
 				{
@@ -67,7 +67,7 @@ namespace AutotrasportiFantini.controller
 				
 				";
 
-			else if (username.ToUpper().Equals("ACD132") && password.Equals("-231203086"))
+			else if (username.ToUpper().Equals("3") && password.Equals("-842352755"))
 				dati = @"
 				{
 					'idAziendale' : 'ACD132',
@@ -130,5 +130,12 @@ namespace AutotrasportiFantini.controller
 
 			return dati;
 		}
+		public static void Main()
+		{
+			string lol = "3";
+			Console.WriteLine(lol.GetHashCode());
+		}
 	}
+
+	
 }
