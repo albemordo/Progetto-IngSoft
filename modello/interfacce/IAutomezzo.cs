@@ -9,5 +9,6 @@ namespace AutotrasportiFantini.modello.interfacce
         String modello { get; set; }
         String targaRimorchio { get; set; }
         String codiceDelegato { get; set; }
+		int id { get; set; }
     }
 }
