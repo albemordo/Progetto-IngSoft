@@ -12,7 +12,7 @@ namespace AutotrasportiFantini.view.dettagli
         {
             InitializeComponent();
             this.spedizione = spedizione;
-            
+            setup();
         }
 
         private void setup()
@@ -50,6 +50,7 @@ namespace AutotrasportiFantini.view.dettagli
         }
         private void addTableColumns()
         {
+            this.dataTable.Columns.Clear();
             dataTable.Columns.Add("localita", "Località");
             dataTable.Columns.Add("nome", "Nome");
             dataTable.Columns.Add("provincia", "Provincia");
@@ -60,6 +61,7 @@ namespace AutotrasportiFantini.view.dettagli
         }
         private void addTableRows()
         {
+            this.dataTable.Rows.Clear();
             for (int i = 0; i < spedizione.puntiSpedizione.Count; i++)
             {
                 this.dataTable.Rows.Add();
@@ -96,13 +98,20 @@ namespace AutotrasportiFantini.view.dettagli
 
         private void terminaButton_Click(object sender, System.EventArgs e)
         {
-            TimeSpan span = this.dateTimePickerArrivoEffettivo.Value.Subtract(this.dateTimePickerPartenzaEffettiva.Value);
-            controllerSpedizioniAutista.RegistraFineSpedizione(spedizione, this.dateTimePickerArrivoEffettivo.Value, float.Parse(this.distanzaEffettivaBox.Text), span.Minutes);
+            controllerSpedizioniAutista.RegistraFineSpedizione(spedizione, this.dateTimePickerArrivoEffettivo.Value, float.Parse(this.distanzaEffettivaBox.Text), int.Parse(this.tempoPercorrenzaBox.Text));
+        }
+
+        private void aggiornaTabellaButton_Click(object sender, EventArgs e)
+        {
+            this.addTableColumns();
+            this.addTableRows();
         }
 
         IControllerSpedizioniAutista controllerSpedizioniAutista = new ControllerSpedizioniAutista();
         ViewDettagliPuntiSpedizioneAutista viewDettagliPuntoSpedizione;
         private ISpedizione spedizione;
         private IPuntoSpedizione puntoSpedizione;
+
+        
     }
 }

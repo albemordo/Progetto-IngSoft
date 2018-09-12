@@ -24,7 +24,8 @@ namespace AutotrasportiFantini.view.dettagli
             this.qualificatoreBox.Text = puntoSpedizione.indirizzo.qualificatore;
             this.capBox.Text = puntoSpedizione.indirizzo.cap;
             this.civicoBox.Text = puntoSpedizione.indirizzo.civico;
-            this.dateTimePicker.Value = puntoSpedizione.orarioArrivo;
+            if (puntoSpedizione.orarioArrivo != DateTime.MinValue)
+                this.dateTimePicker.Value = puntoSpedizione.orarioArrivo;
             this.dateTimePicker.Format = DateTimePickerFormat.Custom;
             this.dateTimePicker.CustomFormat = "MM/dd/yyyy hh:mm:ss";
         }
