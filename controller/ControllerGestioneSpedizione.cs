@@ -28,7 +28,7 @@ namespace AutotrasportiFantini.controller
 			if (delegato != null && (spedizione.delegato == null || !delegato.idAziendale.Equals(spedizione.delegato.idAziendale)))
 			{
 				//	Log operazione
-				logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha assegnato alla spedizione " + spedizione.id + " il delegato " + delegato.idAziendale + ", sostituendo " + spedizione.delegato.idAziendale);
+				logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha assegnato alla spedizione " + spedizione.id + " il delegato " + delegato.idAziendale + ", sostituendo " + spedizione.delegato == null ? "vuoto" : spedizione.delegato.idAziendale);
 
 				spedizione.delegato = delegato;
 
