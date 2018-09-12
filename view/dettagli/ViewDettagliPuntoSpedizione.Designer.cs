@@ -178,7 +178,7 @@
             this.dateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker.TabIndex = 62;
             // 
-            // ViewDettagliPuntoSpedizioneAutista
+            // ViewDettagliPuntoSpedizione
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -199,8 +199,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.provinciaBox);
-            this.Name = "ViewDettagliPuntoSpedizioneAutista";
-            this.Text = "ViewDettagliPuntoSpedizioneAutista";
+            this.Name = "ViewDettagliPuntoSpedizione";
+            this.Text = "Dettagli Punto Spedizione";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -128,7 +128,7 @@
             this.Controls.Add(this.modelloLabel);
             this.Controls.Add(this.marcaLabel);
             this.Name = "ViewCreazioneAutomezzo";
-            this.Text = "ViewCreazioneAutomezzo";
+            this.Text = "W";
             this.ResumeLayout(false);
             this.PerformLayout();
 

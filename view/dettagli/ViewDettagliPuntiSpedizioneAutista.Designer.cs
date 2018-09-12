@@ -194,7 +194,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.provinciaBox);
             this.Name = "ViewDettagliPuntiSpedizioneAutista";
-            this.Text = "ViewDettagliPuntiSpedizioneAutista";
+            this.Text = "Dettagli Punto Spedizione";
             this.ResumeLayout(false);
             this.PerformLayout();
 

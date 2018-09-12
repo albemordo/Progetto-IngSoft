@@ -11,6 +11,7 @@ namespace AutotrasportiFantini.view.dettagli
         {
             InitializeComponent();
             this.spedizione = spedizione;
+            setup();
         }
 
         private void setup()
@@ -35,6 +36,10 @@ namespace AutotrasportiFantini.view.dettagli
             this.provinciaPartenzaBox.Text = spedizione.partenza.localita;
             this.dateTimePickerArrivoPrevisto.Value = spedizione.orarioPrevistoArrivo;
             this.dateTimePickerPartenzaPrevisto.Value = spedizione.orarioPrevistoPartenza;
+            this.dateTimePickerArrivoPrevisto.Format = DateTimePickerFormat.Custom;
+            this.dateTimePickerArrivoPrevisto.CustomFormat = "MM/dd/yyyy hh:mm:ss";
+            this.dateTimePickerPartenzaPrevisto.Format = DateTimePickerFormat.Custom;
+            this.dateTimePickerPartenzaPrevisto.CustomFormat = "MM/dd/yyyy hh:mm:ss";
             this.fillComboBoxAutisti();
             this.fillComboBoxAutomezzi();
         }

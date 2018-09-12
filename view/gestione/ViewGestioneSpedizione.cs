@@ -201,5 +201,10 @@ namespace AutotrasportiFantini.view
         ViewCreazioneSpedizione viewCreaSpedizione;
         ISpedizione spedizione = new RisorseFactory().GetSpedizione();
         List<ISpedizione> spedizioni;
+
+        private void ViewGestioneSpedizione_Activated(object sender, EventArgs e)
+        {
+            MessageBox.Show("Ho il focus nella gestione spedizione", "Errore Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
 }

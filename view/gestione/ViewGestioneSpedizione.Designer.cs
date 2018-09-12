@@ -48,6 +48,7 @@
             this.Controls.Add(this.creaSpedizioneButton);
             this.Name = "ViewGestioneSpedizione";
             this.Text = "View Gestione Spedizione";
+            this.Activated += new System.EventHandler(this.ViewGestioneSpedizione_Activated);
             this.Controls.SetChildIndex(this.creaSpedizioneButton, 0);
             this.ResumeLayout(false);
 

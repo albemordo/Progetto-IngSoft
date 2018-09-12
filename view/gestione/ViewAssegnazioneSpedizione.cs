@@ -179,5 +179,10 @@ namespace AutotrasportiFantini.view.gestione
         ISpedizione spedizione;
         List<ISpedizione> spedizioni;
         ViewDettagliSpedizioneDelegato viewDettagliSpedizioneDelegato;
+
+        private void ViewAssegnazioneSpedizione_Activated(object sender, EventArgs e)
+        {
+            MessageBox.Show("Ho il focus!", "Errore Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
 }
