@@ -7,12 +7,13 @@ using System.Linq;
 using AutotrasportiFantini.modello.factory;
 using AutotrasportiFantini.modello;
 using Newtonsoft.Json;
+using AutotrasportiFantini.persistenza.repository.factory;
 
 namespace AutotrasportiFantini.persistenza.repository
 {
     class RepositorySpedizione : RepositoryBase, IPersistenzaSpedizione
     {
-        public RepositorySpedizione(IDbConnection connection) : base(connection)
+        public RepositorySpedizione(DbConnectionFactory factory, DbConnectionFactory.SupportedDBMS dbms, String connectionName) : base(factory, dbms, connectionName)
         {
         }
 
@@ -22,10 +23,13 @@ namespace AutotrasportiFantini.persistenza.repository
                 "orarioeffettivoarrivo = @OrarioEffettivoArrivo, distanzastimata = @DistanzaStimata, distanzaeffettiva = @DistanzaEffettiva, durata = @Durata, codicedelegato = @CodiceDelegato, " +
                 "codiceautista = @CodiceAutista, fk_tipologiamerce = @CodiceTipologiaMerce, fk_automezzo = @CodiceAutomezzo, quantitamerce = @QuantitaMerce, fk_indirizzo_partenza = @CodiceIndirizzoPartenza, " +
                 "fk_indirizzo_arrivo = @CodiceIndirizzoArrivo WHERE id = @Id";
-            String sqlPuntoSpedizione = "UPDATE PuntoSpedizione SET fk_spedizione = @CodiceSpedizione, fk_indirizzo = @CodiceIndirizzo, orario_arrivo = @OrarioArrivo WHERE id = @Id";
 
-            using (var connection = this.connection)
+            using (var connection = this.getConnection())
             {
+                String codiceDelegato = oggetto.delegato == null ? null : oggetto.delegato.idAziendale;
+                String codiceAutista = oggetto.autista == null ? null : oggetto.autista.idAziendale;
+                String codiceAutomezzo = oggetto.automezzo == null ? null : oggetto.automezzo.targa;
+
                 int aggiornaSpedizione = connection.Execute(sqlSpedizione, new
                 {
                     @OrarioPrevistoPartenza = oggetto.orarioPrevistoPartenza,
@@ -35,10 +39,10 @@ namespace AutotrasportiFantini.persistenza.repository
                     @DistanzaStimata = oggetto.distanzaStimata,
                     @DistanzaEffettiva = oggetto.distanzaEffettiva,
                     @Durata = oggetto.tempoPercorrenza,
-                    @CodiceDelegato = oggetto.delegato.idAziendale,
-                    @CodiceAutista = oggetto.autista.idAziendale,
+                    @CodiceDelegato = codiceDelegato,
+                    @CodiceAutista = codiceAutista,
                     @CodiceTipologiaMerce = oggetto.tipologiaMerce.id,
-                    @CodiceAutomezzo = oggetto.automezzo.targa,
+                    @CodiceAutomezzo = codiceAutomezzo,
                     @QuantitaMerce = oggetto.quantitaMerce,
                     @CodiceIndirizzoPartenza = oggetto.partenza.id,
                     @CodiceIndirizzoArrivo = oggetto.destinazione.id,
@@ -48,15 +52,8 @@ namespace AutotrasportiFantini.persistenza.repository
                 bool aggiornaPuntoSpedizione = true;
                 foreach (IPuntoSpedizione puntoSpedizione in oggetto.puntiSpedizione)
                 {
-                    int aggiornati = connection.Execute(sqlPuntoSpedizione, new
-                    {
-                        @CodiceSpedizione = puntoSpedizione.spedizione,
-                        @CodiceIndirizzo = puntoSpedizione.indirizzo.id,
-                        @OrarioArrivo = puntoSpedizione.orarioArrivo,
-                        @Id = puntoSpedizione.id
-                    });
-
-                    aggiornaPuntoSpedizione = aggiornati > 0;
+                    if (!this.aggiornaPuntoSpedizione(puntoSpedizione))
+                        aggiornaPuntoSpedizione = false;
                 }
 
                 return (aggiornaSpedizione == 1 && aggiornaPuntoSpedizione);
@@ -82,7 +79,7 @@ namespace AutotrasportiFantini.persistenza.repository
                     "INNER JOIN indirizzo as ips ON ips.id = ps.fk_indirizzo" +
                     "WHERE s.codiceAutista = @CodiceAutista";
 
-            using (var connection = this.connection)
+            using (var connection = this.getConnection())
             {
                 var dizionarioSpedizioni = new Dictionary<int, Spedizione>();
                 IEnumerable<ISpedizione> spedizioni = connection.Query<Spedizione, TipologiaMerce, Automezzo, Indirizzo, Indirizzo, PuntoSpedizione, Indirizzo, Spedizione>(
@@ -133,7 +130,7 @@ namespace AutotrasportiFantini.persistenza.repository
                     "INNER JOIN indirizzo as ips ON ips.id = ps.fk_indirizzo" +
                     "WHERE s.codiceDelegato = @CodiceDelegato";
 
-            using (var connection = this.connection)
+            using (var connection = this.getConnection())
             {
                 var dizionarioSpedizioni = new Dictionary<int, Spedizione>();
                 IEnumerable<ISpedizione> spedizioni = connection.Query<Spedizione, TipologiaMerce, Automezzo, Indirizzo, Indirizzo, PuntoSpedizione, Indirizzo, Spedizione>(
@@ -172,8 +169,12 @@ namespace AutotrasportiFantini.persistenza.repository
                 "@DistanzaStimata, @DistanzaEffettiva, @Durata, @CodiceDelegato, @CodiceAutista, @CodiceTipologiaMerce, @CodiceAutomezzo, @QuantitaMerce, @CodiceIndirizzoPartenza, @CodiceIndirizzoArrivo) RETURNING id";
             String sqlPuntoSpedizione = "INSERT INTO PuntoSpedizione (fk_spedizione, fk_indirizzo, orario_arrivo) VALUES (@CodiceSpedizione, @CodiceIndirizzo, @OrarioArrivo) RETURNING id";
 
-            using (var connection = this.connection)
+            using (var connection = this.getConnection())
             {
+                String codiceDelegato = oggetto.delegato == null ? null : oggetto.delegato.idAziendale;
+                String codiceAutista = oggetto.autista == null ? null : oggetto.autista.idAziendale;
+                String codiceAutomezzo = oggetto.automezzo == null ? null : oggetto.automezzo.targa;
+
                 int idSpedizione = connection.QuerySingle<int>(sqlSpedizione, new
                 {
                     @OrarioPrevistoPartenza = oggetto.orarioPrevistoPartenza,
@@ -183,10 +184,10 @@ namespace AutotrasportiFantini.persistenza.repository
                     @DistanzaStimata = oggetto.distanzaStimata,
                     @DistanzaEffettiva = oggetto.distanzaEffettiva,
                     @Durata = oggetto.tempoPercorrenza,
-                    @CodiceDelegato = oggetto.delegato.idAziendale,
-                    @CodiceAutista = oggetto.autista.idAziendale,
+                    @CodiceDelegato = codiceDelegato,
+                    @CodiceAutista = codiceAutista,
                     @CodiceTipologiaMerce = oggetto.tipologiaMerce.id,
-                    @CodiceAutomezzo = oggetto.automezzo.targa,
+                    @CodiceAutomezzo = codiceAutomezzo,
                     @QuantitaMerce = oggetto.quantitaMerce,
                     @CodiceIndirizzoPartenza = oggetto.partenza.id,
                     @CodiceIndirizzoArrivo = oggetto.destinazione.id
@@ -220,7 +221,7 @@ namespace AutotrasportiFantini.persistenza.repository
                     "a.*, " +
                     "ip.id, ip.qualificatore, ip.nome, ip.civico, ip.cap, ip.localita, ip.provincia, " +
                     "ia.id, ia.qualificatore, ia.nome, ia.civico, ip.cap, ia.localita, ia.provincia, " +
-                    "ps.id, ps.fk_spedizione, ps.orario_arrivo, " +
+                    "ps.id, ps.fk_spedizione as spedizione, ps.orario_arrivo, " +
                     "ips.id, ips.qualificatore, ips.nome, ips.civico, ips.cap, ips.localita, ips.provincia " +
                     "FROM spedizione as s " +
                     "INNER JOIN tipologiamerce as tm ON tm.id = s.fk_tipologiamerce " +
@@ -230,7 +231,7 @@ namespace AutotrasportiFantini.persistenza.repository
                     "INNER JOIN puntospedizione as ps ON ps.fk_spedizione = s.id " +
                     "INNER JOIN indirizzo as ips ON ips.id = ps.fk_indirizzo";
 
-            using (var connection = this.connection)
+            using (var connection = this.getConnection())
             {
                 var dizionarioSpedizioni = new Dictionary<int, Spedizione>();
                 IEnumerable<ISpedizione> spedizioni = connection.Query<Spedizione, TipologiaMerce, Automezzo, Indirizzo, Indirizzo, PuntoSpedizione, Indirizzo, Spedizione>(
@@ -266,7 +267,7 @@ namespace AutotrasportiFantini.persistenza.repository
         {
             String sql = "DELETE FROM Spedizione WHERE id = @Id";
 
-            using (var connection = this.connection)
+            using (var connection = this.getConnection())
             {
                 connection.Execute(sql, new { Id = id });
             }
@@ -280,7 +281,7 @@ namespace AutotrasportiFantini.persistenza.repository
                     "a.*, " +
                     "ip.id, ip.qualificatore, ip.nome, ip.civico, ip.cap, ip.localita, ip.provincia, " +
                     "ia.id, ia.qualificatore, ia.nome, ia.civico, ip.cap, ia.localita, ia.provincia, " +
-                    "ps.id, ps.fk_spedizione, ps.orario_arrivo, " +
+                    "ps.id, ps.fk_spedizione as spedizione, ps.orario_arrivo, " +
                     "ips.id, ips.qualificatore, ips.nome, ips.civico, ips.cap, ips.localita, ips.provincia " +
                     "FROM spedizione as s " +
                     "INNER JOIN tipologiamerce as tm ON tm.id = s.fk_tipologiamerce " +
@@ -291,7 +292,7 @@ namespace AutotrasportiFantini.persistenza.repository
                     "INNER JOIN indirizzo as ips ON ips.id = ps.fk_indirizzo " +
                     "WHERE s.id = @Id";
 
-            using (var connection = this.connection)
+            using (var connection = this.getConnection())
             {
                 var dizionarioSpedizioni = new Dictionary<int, Spedizione>();
                 IEnumerable<ISpedizione> spedizioni = connection.Query<Spedizione, TipologiaMerce, Automezzo, Indirizzo, Indirizzo, PuntoSpedizione, Indirizzo, Spedizione>(
@@ -320,6 +321,24 @@ namespace AutotrasportiFantini.persistenza.repository
                     ).Distinct();
 
                 return spedizioni.Single();
+            }
+        }
+
+        public bool aggiornaPuntoSpedizione(IPuntoSpedizione puntoSpedizione)
+        {
+            String sqlPuntoSpedizione = "UPDATE PuntoSpedizione SET fk_spedizione = @CodiceSpedizione, fk_indirizzo = @CodiceIndirizzo, orario_arrivo = @OrarioArrivo WHERE id = @Id";
+
+            using (var connection = this.getConnection())
+            {
+                int aggiornati = connection.Execute(sqlPuntoSpedizione, new
+                {
+                    @CodiceSpedizione = puntoSpedizione.spedizione,
+                    @CodiceIndirizzo = puntoSpedizione.indirizzo.id,
+                    @OrarioArrivo = puntoSpedizione.orarioArrivo,
+                    @Id = puntoSpedizione.id
+                });
+
+                return aggiornati > 0;
             }
         }
     }

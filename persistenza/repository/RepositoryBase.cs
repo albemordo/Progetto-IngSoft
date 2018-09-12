@@ -1,16 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using AutotrasportiFantini.persistenza.repository.factory;
 
 namespace AutotrasportiFantini.persistenza.repository
 {
     abstract class RepositoryBase
     {
-        protected IDbConnection connection;
+        protected DbConnectionFactory connectionFactory;
+        protected String connectionName;
+        protected DbConnectionFactory.SupportedDBMS dbms;
 
-        public RepositoryBase(IDbConnection connection)
+        public RepositoryBase(DbConnectionFactory factory, DbConnectionFactory.SupportedDBMS dbms, String connectionName)
         {
-            this.connection = connection;
+            this.connectionFactory = factory;
+            this.dbms = dbms;
+            this.connectionName = connectionName;
+        }
+
+        protected IDbConnection getConnection()
+        {
+            return this.connectionFactory.GetConnection(this.dbms, this.connectionName);
         }
     }
 }

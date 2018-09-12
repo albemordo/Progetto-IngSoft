@@ -6,12 +6,13 @@ using System.Data;
 using AutotrasportiFantini.modello.factory;
 using System.Linq;
 using AutotrasportiFantini.modello;
+using AutotrasportiFantini.persistenza.repository.factory;
 
 namespace AutotrasportiFantini.persistenza.repository
 {
     class RepositoryTipologiaMerce : RepositoryBase, IPersistenzaTipologiaMerce
     {
-        public RepositoryTipologiaMerce(IDbConnection connection) : base(connection)
+        public RepositoryTipologiaMerce(DbConnectionFactory factory, DbConnectionFactory.SupportedDBMS dbms, String connectionName) : base(factory, dbms, connectionName)
         {
         }
 
@@ -19,7 +20,7 @@ namespace AutotrasportiFantini.persistenza.repository
         {
             String sql = "UPDATE TipologiaMerce SET id = @Id, tipologia = @Tipologia";
 
-            using (var connection = this.connection)
+            using (var connection = this.getConnection())
             {
                 int righeAggiornate = connection.Execute(sql, oggetto);
 
@@ -32,7 +33,7 @@ namespace AutotrasportiFantini.persistenza.repository
             String sql = "INSERT INTO TipologiaMerce (tipologia)" +
                 "VALUES (@Tipologia) RETURNING id";
 
-            using (var connection = this.connection)
+            using (var connection = this.getConnection())
             {
                 int id = connection.QuerySingle<int>(sql, oggetto);
                 oggetto.id = id;
@@ -45,7 +46,7 @@ namespace AutotrasportiFantini.persistenza.repository
         {
             String sql = "SELECT * FROM TipologiaMerce";
 
-            using (var connection = this.connection)
+            using (var connection = this.getConnection())
             {
                 IEnumerable<ITipologiaMerce> risultato = connection.Query<TipologiaMerce>(sql);
 
@@ -57,7 +58,7 @@ namespace AutotrasportiFantini.persistenza.repository
         {
             String sql = "DELETE FROM TipologiaMerce WHERE id = @Id";
 
-            using (var connection = this.connection)
+            using (var connection = this.getConnection())
             {
                 connection.Execute(sql, new { Id = id });
             }
@@ -67,7 +68,7 @@ namespace AutotrasportiFantini.persistenza.repository
         {
             String sql = "SELECT * FROM TipologiaMerce WHERE id = @Id";
 
-            using (var connection = this.connection)
+            using (var connection = this.getConnection())
             {
                 ITipologiaMerce risultato = connection.QuerySingle<TipologiaMerce>(sql, new { Id = id });
 

@@ -6,12 +6,13 @@ using System.Data;
 using AutotrasportiFantini.modello.factory;
 using System.Linq;
 using AutotrasportiFantini.modello;
+using AutotrasportiFantini.persistenza.repository.factory;
 
 namespace AutotrasportiFantini.persistenza.repository
 {
     class RepositoryIndirizzo : RepositoryBase, IPersistenzaIndirizzo
     {
-        public RepositoryIndirizzo(IDbConnection connection) : base(connection)
+        public RepositoryIndirizzo(DbConnectionFactory factory, DbConnectionFactory.SupportedDBMS dbms, String connectionName) : base(factory, dbms, connectionName)
         {
         }
         public bool aggiorna(IIndirizzo oggetto)
@@ -19,7 +20,7 @@ namespace AutotrasportiFantini.persistenza.repository
             String sql = "UPDATE Indirizzo SET id = @Id, qualificatore = @Qualificatore, nome = @Nome, " +
                 "civico = @Civico, cap = @Cap, localita = @Localita, provincia = @Provincia";
 
-            using (var connection = this.connection)
+            using (var connection = this.getConnection())
             {
                 int righeAggiornate = connection.Execute(sql, oggetto);
 
@@ -32,7 +33,7 @@ namespace AutotrasportiFantini.persistenza.repository
             String sql = "INSERT INTO Indirizzo (qualificatore, nome, civico, cap, localita, provincia)" +
                 "VALUES (@Qualificatore, @Nome, @Civico, @Cap, @Localita, @Provincia) RETURNING id";
 
-            using (var connection = this.connection)
+            using (var connection = this.getConnection())
             {
                 int id = connection.QuerySingle<int>(sql, oggetto);
                 oggetto.id = id;
@@ -45,7 +46,7 @@ namespace AutotrasportiFantini.persistenza.repository
         {
             String sql = "SELECT * FROM Indirizzo";
 
-            using (var connection = this.connection)
+            using (var connection = this.getConnection())
             {
                 IEnumerable<IIndirizzo> indirizzi = connection.Query<Indirizzo>(sql);
 
@@ -57,7 +58,7 @@ namespace AutotrasportiFantini.persistenza.repository
         {
             String sql = "DELETE FROM Automezzo WHERE id = @Id";
 
-            using (var connection = this.connection)
+            using (var connection = this.getConnection())
             {
                 connection.Execute(sql, new { Id = id });
             }
@@ -67,7 +68,7 @@ namespace AutotrasportiFantini.persistenza.repository
         {
             String sql = "SELECT * FROM Indirizzo WHERE id = @Id";
 
-            using (var connection = this.connection)
+            using (var connection = this.getConnection())
             {
                 IIndirizzo indirizzo = connection.QuerySingle<Indirizzo>(sql, new { Id = id });
 
@@ -80,7 +81,7 @@ namespace AutotrasportiFantini.persistenza.repository
             String sql = "SELECT * FROM Indirizzo WHERE qualificatore LIKE @Qualificatore AND nome = @Nome AND civico = @Civico AND cap = @Cap" +
                 "AND localita = @Localita AND provincia = @Provincia";
 
-            using (var connection = this.connection)
+            using (var connection = this.getConnection())
             {
                 IIndirizzo indirizzo = connection.QuerySingle<Indirizzo>(sql, new
                 {

@@ -11,5 +11,6 @@ namespace AutotrasportiFantini.persistenza
     {
         List<ISpedizione> cercaPerDelegato(String codiceDelegato);
         List<ISpedizione> cercaPerAutista(String codiceAutista);
+        bool aggiornaPuntoSpedizione(IPuntoSpedizione puntoSpedizione);
     }
 }
