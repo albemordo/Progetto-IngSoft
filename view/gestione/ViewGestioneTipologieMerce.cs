@@ -31,7 +31,8 @@ namespace AutotrasportiFantini.view
         }
         protected override void addTableColumns()
         {
-           dataTable.Columns.Add("nomeTipologiaMerce", "Nome Tipologia Merce");
+            dataTable.Columns.Clear();
+            dataTable.Columns.Add("nomeTipologiaMerce", "Nome Tipologia Merce");
         }
         protected override void addTableRows()
         {
