@@ -77,14 +77,6 @@ namespace AutotrasportiFantini.controller
 			return result;
 		}
 
-        /**
-         *  Anche questo andava eliminato
-         */
-        public string RuoloUtente(IUtente utente)
-        {
-			throw new NotImplementedException();
-        }
-
 		public IUtente OttieniUtente(string idAziendale)
 		{
 			//	Ottenimento dei dati dal sistema esterno

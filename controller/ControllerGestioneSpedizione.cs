@@ -24,7 +24,7 @@ namespace AutotrasportiFantini.controller
 
 		public void AssegnaDelegato(ISpedizione spedizione, IDelegato delegato)
         {
-			if (!delegato.idAziendale.Equals(spedizione.delegato.idAziendale))
+			if (delegato != null && !delegato.idAziendale.Equals(spedizione.delegato.idAziendale))
 			{
 				//	Log operazione
 				logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha assegnato alla spedizione " + spedizione.id + " il delegato " + delegato.idAziendale + ", sostituendo " + spedizione.delegato.idAziendale);

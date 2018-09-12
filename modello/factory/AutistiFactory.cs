@@ -9,6 +9,6 @@ namespace AutotrasportiFantini.modello
 {
 	class FactoryAutisti : FactoryUtenti
 	{
-		public static IUtente GetAutista() => new Autista();
+		public static IUtente GetUtente() => new Autista();
 	}
 }
