@@ -559,7 +559,7 @@
             this.Controls.Add(this.luogoPartenzaLabel);
             this.MaximizeBox = false;
             this.Name = "ViewDettagliSpedizioneAutista";
-            this.Text = "ViewDettagliSpedizioneAutista";
+            this.Text = "Dettagli Spedizione";
             ((System.ComponentModel.ISupportInitialize)(this.dataTable)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

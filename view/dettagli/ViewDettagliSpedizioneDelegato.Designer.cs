@@ -405,7 +405,7 @@
             this.modificaButton.Name = "modificaButton";
             this.modificaButton.Size = new System.Drawing.Size(101, 26);
             this.modificaButton.TabIndex = 106;
-            this.modificaButton.Text = "Modifica";
+            this.modificaButton.Text = "Modifica Orari";
             this.modificaButton.UseVisualStyleBackColor = true;
             this.modificaButton.Click += new System.EventHandler(this.modificaButton_Click);
             // 
@@ -493,7 +493,7 @@
             this.Controls.Add(this.luogoPartenzaLabel);
             this.MaximizeBox = false;
             this.Name = "ViewDettagliSpedizioneDelegato";
-            this.Text = "ViewDettagliSpedizioneDelegato";
+            this.Text = "Dettagli Spedizione";
             ((System.ComponentModel.ISupportInitialize)(this.dataTable)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

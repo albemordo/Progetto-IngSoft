@@ -72,5 +72,10 @@ namespace AutotrasportiFantini.view
         ViewDettagliTipologiaMerce viewDettagliTipologiaMerce;
         ViewCreazioneTipologiaMerce creaTipologiaMerce;
         ITipologiaMerce tipologiaMerce = new RisorseFactory().GetTipologiaMerce();
+
+        private void ViewGestioneTipologieMerce_Activated(object sender, EventArgs e)
+        {
+            MessageBox.Show("Ho il focus nella gestione tipologie", "Errore Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
 }
