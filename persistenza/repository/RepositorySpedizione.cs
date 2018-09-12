@@ -8,6 +8,8 @@ using AutotrasportiFantini.modello.factory;
 using AutotrasportiFantini.modello;
 using Newtonsoft.Json;
 using AutotrasportiFantini.persistenza.repository.factory;
+using AutotrasportiFantini.controller.interfacce;
+using AutotrasportiFantini.controller;
 
 namespace AutotrasportiFantini.persistenza.repository
 {
@@ -233,6 +235,8 @@ namespace AutotrasportiFantini.persistenza.repository
 
             using (var connection = this.getConnection())
             {
+                IControllerGestioneDipendenti gestioneDipendenti = new ControllerGestioneDipendenti();
+
                 var dizionarioSpedizioni = new Dictionary<int, Spedizione>();
                 IEnumerable<ISpedizione> spedizioni = connection.Query<Spedizione, TipologiaMerce, Automezzo, Indirizzo, Indirizzo, PuntoSpedizione, Indirizzo, Spedizione>(
                     sql,
@@ -250,6 +254,11 @@ namespace AutotrasportiFantini.persistenza.repository
                             spedizione.destinazione = indirizzoArrivo;
 
                             dizionarioSpedizioni.Add(spedizione.id, entrySpedizione);
+
+                            if (spedizione.codiceAutista != null)
+                                spedizione.autista = (IAutista)gestioneDipendenti.OttieniUtente(spedizione.codiceAutista);
+                            if (spedizione.codiceDelegato != null)
+                                spedizione.delegato = (IDelegato)gestioneDipendenti.OttieniUtente(spedizione.codiceDelegato);
                         }
 
                         puntoSpedizione.indirizzo = indirizzoPuntoSpedizione;
@@ -294,6 +303,8 @@ namespace AutotrasportiFantini.persistenza.repository
 
             using (var connection = this.getConnection())
             {
+                IControllerGestioneDipendenti gestioneDipendenti = new ControllerGestioneDipendenti();
+
                 var dizionarioSpedizioni = new Dictionary<int, Spedizione>();
                 IEnumerable<ISpedizione> spedizioni = connection.Query<Spedizione, TipologiaMerce, Automezzo, Indirizzo, Indirizzo, PuntoSpedizione, Indirizzo, Spedizione>(
                     sql,
@@ -311,6 +322,11 @@ namespace AutotrasportiFantini.persistenza.repository
                             spedizione.destinazione = indirizzoArrivo;
 
                             dizionarioSpedizioni.Add(spedizione.id, entrySpedizione);
+
+                            if (spedizione.codiceAutista != null)
+                                spedizione.autista = (IAutista) gestioneDipendenti.OttieniUtente(spedizione.codiceAutista);
+                            if (spedizione.codiceDelegato != null)
+                                spedizione.delegato = (IDelegato) gestioneDipendenti.OttieniUtente(spedizione.codiceDelegato);
                         }
 
                         puntoSpedizione.indirizzo = indirizzoPuntoSpedizione;
