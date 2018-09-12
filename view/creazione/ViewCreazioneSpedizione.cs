@@ -13,6 +13,7 @@ namespace AutotrasportiFantini.view
         public ViewCreazioneSpedizione()
         {
             InitializeComponent();
+            setup();
         }
         
         private void setup()
@@ -22,7 +23,6 @@ namespace AutotrasportiFantini.view
             this.dateTimePickerPartenzaPrevisto.Format = DateTimePickerFormat.Custom;
             this.dateTimePickerPartenzaPrevisto.CustomFormat = "MM/dd/yyyy hh:mm:ss";
             this.merceListBox.Items.Clear();
-            MessageBox.Show("" + controllerTipologiaMerce.ListaTipologieMerce().Count, "Errore Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
             foreach (ITipologiaMerce tipologiaMerce in controllerTipologiaMerce.ListaTipologieMerce())
             {
                 this.merceListBox.Items.Add(tipologiaMerce);
@@ -48,12 +48,14 @@ namespace AutotrasportiFantini.view
         private void inserisciPuntoSpedizioneButton_Click(object sender, EventArgs e)
         {
             puntoSpedizione = new RisorseFactory().GetPuntoSpedizione();
-            puntoSpedizione.indirizzo.qualificatore = this.qualificatorePunto.Text;
-            puntoSpedizione.indirizzo.nome = this.nomePunto.Text;
-            puntoSpedizione.indirizzo.civico = this.civicoPunto.Text;
-            puntoSpedizione.indirizzo.cap = this.capPunto.Text;
-            puntoSpedizione.indirizzo.localita = this.localitaPunto.Text;
-            puntoSpedizione.indirizzo.provincia = this.provinciaPunto.Text;
+            indirizzo = new RisorseFactory().GetIndirizzo();
+            indirizzo.qualificatore = this.qualificatorePunto.Text;
+            indirizzo.nome = this.nomePunto.Text;
+            indirizzo.civico = this.civicoPunto.Text;
+            indirizzo.cap = this.capPunto.Text;
+            indirizzo.localita = this.localitaPunto.Text;
+            indirizzo.provincia = this.provinciaPunto.Text;
+            puntoSpedizione.indirizzo = indirizzo;
             puntiSpedizione.Add(puntoSpedizione);
             pulisciCampiPuntoSpedizione();
         }
@@ -91,5 +93,6 @@ namespace AutotrasportiFantini.view
         IControllerIndirizzi controllerIndirizzi = new ControllerIndirizzi();
         List<IPuntoSpedizione> puntiSpedizione = new List<IPuntoSpedizione>();
         IPuntoSpedizione puntoSpedizione;
+        IIndirizzo indirizzo;
     }
 }

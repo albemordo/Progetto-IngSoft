@@ -78,12 +78,12 @@ namespace AutotrasportiFantini.persistenza.repository
 
         public IIndirizzo cercaIndirizzo(String qualificatore, String nome, String civico, String cap, String localita, String provincia)
         {
-            String sql = "SELECT * FROM Indirizzo WHERE qualificatore LIKE @Qualificatore AND nome = @Nome AND civico = @Civico AND cap = @Cap" +
+            String sql = "SELECT * FROM Indirizzo WHERE qualificatore LIKE @Qualificatore AND nome = @Nome AND civico = @Civico AND cap = @Cap " +
                 "AND localita = @Localita AND provincia = @Provincia";
 
             using (var connection = this.getConnection())
             {
-                IIndirizzo indirizzo = connection.QuerySingle<Indirizzo>(sql, new
+                IIndirizzo indirizzo = connection.QueryFirstOrDefault<Indirizzo>(sql, new
                 {
                     Qualificatore = qualificatore,
                     Nome = nome,
