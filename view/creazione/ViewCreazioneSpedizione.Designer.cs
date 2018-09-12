@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             this.confirmButton = new System.Windows.Forms.Button();
-            this.dateTimePickerArrivoPrevisto = new System.Windows.Forms.DateTimePicker();
-            this.label19 = new System.Windows.Forms.Label();
-            this.dateTimePickerPartenzaPrevisto = new System.Windows.Forms.DateTimePicker();
-            this.label16 = new System.Windows.Forms.Label();
             this.civicoArrivoBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -90,38 +86,6 @@
             this.confirmButton.Text = "Conferma";
             this.confirmButton.UseVisualStyleBackColor = true;
             this.confirmButton.Click += new System.EventHandler(this.confirmButton_Click);
-            // 
-            // dateTimePickerArrivoPrevisto
-            // 
-            this.dateTimePickerArrivoPrevisto.Location = new System.Drawing.Point(132, 378);
-            this.dateTimePickerArrivoPrevisto.Name = "dateTimePickerArrivoPrevisto";
-            this.dateTimePickerArrivoPrevisto.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePickerArrivoPrevisto.TabIndex = 114;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(191, 362);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(76, 13);
-            this.label19.TabIndex = 111;
-            this.label19.Text = "Orario Previsto";
-            // 
-            // dateTimePickerPartenzaPrevisto
-            // 
-            this.dateTimePickerPartenzaPrevisto.Location = new System.Drawing.Point(132, 168);
-            this.dateTimePickerPartenzaPrevisto.Name = "dateTimePickerPartenzaPrevisto";
-            this.dateTimePickerPartenzaPrevisto.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePickerPartenzaPrevisto.TabIndex = 110;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(182, 152);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(76, 13);
-            this.label16.TabIndex = 107;
-            this.label16.Text = "Orario Previsto";
             // 
             // civicoArrivoBox
             // 
@@ -517,10 +481,6 @@
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.provinciaPunto);
-            this.Controls.Add(this.dateTimePickerArrivoPrevisto);
-            this.Controls.Add(this.label19);
-            this.Controls.Add(this.dateTimePickerPartenzaPrevisto);
-            this.Controls.Add(this.label16);
             this.Controls.Add(this.civicoArrivoBox);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label12);
@@ -562,10 +522,6 @@
 
         #endregion
         private System.Windows.Forms.Button confirmButton;
-        private System.Windows.Forms.DateTimePicker dateTimePickerArrivoPrevisto;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.DateTimePicker dateTimePickerPartenzaPrevisto;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox civicoArrivoBox;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
