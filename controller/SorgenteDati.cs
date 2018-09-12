@@ -130,11 +130,6 @@ namespace AutotrasportiFantini.controller
 
 			return dati;
 		}
-		public static void Main()
-		{
-			string lol = "3";
-			Console.WriteLine(lol.GetHashCode());
-		}
 	}
 
 	
