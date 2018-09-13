@@ -77,6 +77,9 @@
             this.label18 = new System.Windows.Forms.Label();
             this.distanzaEffettivaBox = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
+            this.aggiornaTabellaButton = new System.Windows.Forms.Button();
+            this.tempoPercorrenzaBox = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -155,7 +158,7 @@
             // 
             this.automezzoComboBox.Enabled = false;
             this.automezzoComboBox.FormattingEnabled = true;
-            this.automezzoComboBox.Location = new System.Drawing.Point(573, 228);
+            this.automezzoComboBox.Location = new System.Drawing.Point(573, 252);
             this.automezzoComboBox.Name = "automezzoComboBox";
             this.automezzoComboBox.Size = new System.Drawing.Size(211, 21);
             this.automezzoComboBox.TabIndex = 143;
@@ -163,7 +166,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(508, 231);
+            this.label15.Location = new System.Drawing.Point(508, 255);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(59, 13);
             this.label15.TabIndex = 142;
@@ -173,7 +176,7 @@
             // 
             this.autistaComboBox.Enabled = false;
             this.autistaComboBox.FormattingEnabled = true;
-            this.autistaComboBox.Location = new System.Drawing.Point(573, 189);
+            this.autistaComboBox.Location = new System.Drawing.Point(573, 213);
             this.autistaComboBox.Name = "autistaComboBox";
             this.autistaComboBox.Size = new System.Drawing.Size(211, 21);
             this.autistaComboBox.TabIndex = 141;
@@ -215,7 +218,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(523, 192);
+            this.label14.Location = new System.Drawing.Point(523, 216);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(39, 13);
             this.label14.TabIndex = 136;
@@ -503,11 +506,40 @@
             this.label19.TabIndex = 157;
             this.label19.Text = "Distanza Effettiva";
             // 
+            // aggiornaTabellaButton
+            // 
+            this.aggiornaTabellaButton.Location = new System.Drawing.Point(783, 363);
+            this.aggiornaTabellaButton.Name = "aggiornaTabellaButton";
+            this.aggiornaTabellaButton.Size = new System.Drawing.Size(102, 33);
+            this.aggiornaTabellaButton.TabIndex = 159;
+            this.aggiornaTabellaButton.Text = "Aggiorna Tabella";
+            this.aggiornaTabellaButton.UseVisualStyleBackColor = true;
+            this.aggiornaTabellaButton.Click += new System.EventHandler(this.aggiornaTabellaButton_Click);
+            // 
+            // tempoPercorrenzaBox
+            // 
+            this.tempoPercorrenzaBox.Location = new System.Drawing.Point(676, 181);
+            this.tempoPercorrenzaBox.Name = "tempoPercorrenzaBox";
+            this.tempoPercorrenzaBox.Size = new System.Drawing.Size(108, 20);
+            this.tempoPercorrenzaBox.TabIndex = 161;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(523, 181);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(82, 13);
+            this.label20.TabIndex = 160;
+            this.label20.Text = "Tempo Effettivo";
+            // 
             // ViewDettagliSpedizioneAutista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(803, 636);
+            this.ClientSize = new System.Drawing.Size(926, 636);
+            this.Controls.Add(this.tempoPercorrenzaBox);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.aggiornaTabellaButton);
             this.Controls.Add(this.distanzaEffettivaBox);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.dateTimePickerArrivoEffettivo);
@@ -617,5 +649,8 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox distanzaEffettivaBox;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button aggiornaTabellaButton;
+        private System.Windows.Forms.TextBox tempoPercorrenzaBox;
+        private System.Windows.Forms.Label label20;
     }
 }

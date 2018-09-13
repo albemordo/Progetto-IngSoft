@@ -4,6 +4,7 @@ using AutotrasportiFantini.controller.log.interfacce;
 using AutotrasportiFantini.modello.interfacce;
 using AutotrasportiFantini.persistenza;
 using AutotrasportiFantini.persistenza.repository.factory;
+using System;
 using System.Collections.Generic;
 
 namespace AutotrasportiFantini.controller
@@ -35,7 +36,7 @@ namespace AutotrasportiFantini.controller
 
 			//	Viene creato il log dell'operazione
 			logger.CreaLog(ControllerAutenticazione.GetIstanza().UtenteAutenticato.idAziendale + " ha richiesto la lista delle spedizioni");
-			
+
 			return listaSpedizioni;
         }
     }

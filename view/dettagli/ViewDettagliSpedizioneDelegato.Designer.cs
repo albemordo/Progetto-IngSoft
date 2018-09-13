@@ -412,23 +412,23 @@
             // listBoxAutomezzo
             // 
             this.listBoxAutomezzo.FormattingEnabled = true;
-            this.listBoxAutomezzo.Location = new System.Drawing.Point(609, 180);
+            this.listBoxAutomezzo.Location = new System.Drawing.Point(613, 180);
             this.listBoxAutomezzo.Name = "listBoxAutomezzo";
-            this.listBoxAutomezzo.Size = new System.Drawing.Size(120, 95);
+            this.listBoxAutomezzo.Size = new System.Drawing.Size(158, 95);
             this.listBoxAutomezzo.TabIndex = 112;
             // 
             // listBoxAutista
             // 
             this.listBoxAutista.FormattingEnabled = true;
-            this.listBoxAutista.Location = new System.Drawing.Point(483, 180);
+            this.listBoxAutista.Location = new System.Drawing.Point(438, 180);
             this.listBoxAutista.Name = "listBoxAutista";
-            this.listBoxAutista.Size = new System.Drawing.Size(120, 95);
+            this.listBoxAutista.Size = new System.Drawing.Size(158, 95);
             this.listBoxAutista.TabIndex = 111;
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(637, 164);
+            this.label21.Location = new System.Drawing.Point(668, 164);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(59, 13);
             this.label21.TabIndex = 110;
@@ -437,7 +437,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(521, 164);
+            this.label17.Location = new System.Drawing.Point(487, 164);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(39, 13);
             this.label17.TabIndex = 109;
