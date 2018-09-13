@@ -6,7 +6,7 @@ using static AutotrasportiFantini.modello.FactoryUtenti;
 
 namespace AutotrasportiFantini.controller.utilita
 {
-	class JsonParser
+	class JsonParser : IParser
 	{
 
 		/**

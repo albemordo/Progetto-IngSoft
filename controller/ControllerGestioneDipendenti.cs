@@ -1,4 +1,5 @@
-﻿using AutotrasportiFantini.controller.interfacce;
+﻿using AutotrasportiFantini.controller.factory;
+using AutotrasportiFantini.controller.interfacce;
 using AutotrasportiFantini.controller.log;
 using AutotrasportiFantini.controller.log.interfacce;
 using AutotrasportiFantini.controller.utilita;
@@ -16,11 +17,11 @@ namespace AutotrasportiFantini.controller
 		 */
 		public enum ListeSupportate { AUTISTI, DELEGATI };
 
-		//	Classe che mi restituisce le stringe json desiderate
-		ISorgenteDati sorgente = new SorgenteDati();
+		//	Interfaccia del sistema esterno
+		ISorgenteDati sorgente = SorgenteDatiFactory.GetSorgenteDati(SorgenteDatiFactory.SistemiSupportati.TESTING);
 
 		//	Classe che aiuta a parsificare le stringhe json
-		JsonParser helper = new JsonParser();
+		IParser helper = ParserFactory.GetParser(ParserFactory.Formati.JSON);
 
 		//	Logger
 		IControllerLog logger = ControllerLog.GetIstanza();

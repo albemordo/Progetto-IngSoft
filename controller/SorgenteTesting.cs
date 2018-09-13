@@ -3,7 +3,7 @@ using System;
 
 namespace AutotrasportiFantini.controller
 {
-	class SorgenteDati : ISorgenteDati
+	class SorgenteTesting : ISorgenteDati
 	{
 		public string ListaAutisti()
 		{
